@@ -1,0 +1,73 @@
+@charset "ISO-8859-1";
+.side {
+	/*position: absolute;*/
+	font-size: 100%;
+	background-color: #d9d0c2;
+    min-height:23px;
+	line-height: 120%; 
+}
+.big {
+	position: relative;
+	top: 2%;
+	left: 0%;
+	/* background-color: #80ffff; */
+	/* height: 20px;  */
+}
+
+.meduim {
+	position: relative;
+	font-size: 90%;
+	padding: 0% 0% 0% 0%;
+	left: 4%;
+	top: 2%;
+/* 	background-color: #80ff80; */
+	width:96%;
+}
+
+.small {
+	position: relative;
+	font-size: 90%;
+	padding: 0% 0% 0% 0%;
+	left: 8%;
+	top: 2%;
+	 background-color: #c0c0c0; 
+	width:92%;
+}
+
+#arrow {
+	position:absolute;
+	height: 100%;
+	width: 20%;
+	left:-40%;
+	top:15%;
+	z-index:4;
+}
+#side:hover {
+	color: black;
+	width: 30%;
+	z-index:2;
+}
+
+#side {
+position: relative;
+	color: transparent;
+	top: -0%;
+	left: 0.2%;
+	height: 92.5%;
+	width: 2%;
+	transition: 1s;
+	overflow-y:scroll;
+	overflow-x:hidden;
+
+
+}
+
+.noSelect{
+	 -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+    display:block;
+}
+

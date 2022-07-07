@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="utf-8">
+<title>Set theory,latex.codecogs.com</title>
+</head>
+<script>
+
+  </script>
+  
+
+<body>
+
+	<div layout:fragment="content">
+	
+<h1 id="7">7 Classical approach to statistical inference</h1>
+<h2 id="7_1">7.1 Random sampling</h2>
+<h3 id="7_1_1">7.1.1 Introduction</h3>
+The goal of statistical inference is to make accurate conclusion about a population using 
+a limited sample from that  population, for example to estimate some characteristics of the 
+population say expected value, or variance.
+The population characteristics are called parameters whereas the sample characteristics 
+are called statistics.
+The challenge is that we don't know the underlying distribution of the population, 
+on the other hand the sample used is subject to randomness, so the estimation of the 
+parameter we're looking for.
+<br>For example we want to know the proportion p of people with high blood among 
+male smokers above  40.
+We can estimate this parameter by taking a sample of 100 male smokers above 40 , 
+and count Y the number of people with high blood pressure.
+so we can write \( \hat{p}=\frac{Y}{100}\).
+The classical approach for inference studied in this chapter suppose that the estimated 
+parameter is deterministic that is it is not subject to random variation, conversely when 
+this is not the case we talk about Bayesian Inference.
+
+  <h3 id="7_1_2">7.1.2 Order statistics</h3>
+ &#9827;  The sequence \(X_{(1)},..,X_{(n)}\) obtained by ordering the sample  \(X_1,..,X_n\) from the 
+ smallest to the largest is called the order statistics.
+ Let \(X_{(1)},..,X_{(n)}\)  be the order statistics from a continuous RV X, we have:
+ <br> &#9755; \(F_{X_{(i)}}(x)=\sum\limits_{k=i}^{n} \binom{n}{k}.(F_X(x))^k.(1-F_X(x))^{n-k}\)
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+ <br>   Actually, 
+    For a given x,  consider the RV Y, where Y is the number of \(X_i\) such as \(X_i &le; x\)
+    so \(Y \sim Binomial(n,p) \) where \(p=P(X_i &le; x )=F_X(x)\), since the \(X_i\) are i.i.d, 
+    so \(F_{X_{(i)}}(x)=P(X_{(i)} &le;x)=P(Y &ge;i)=
+    \sum\limits_{k=i}^{n}\binom{n}{k}.(F_X(x))^k.(1-F_X(x))^{n-k}\)
+</span>
+<br> &#9755; \(f_{X_{(i)}}(x)=\frac{n!}{(i-1)!(n-1)!}.f_X(x).(F_X(x))^{i-1}.(1-F_X(x) )^{n-i}\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br>Actually, 
+    \(f_{X_{(i)}}(x)=\frac{dF_{X_{(i)}}(x)}{dx}\), that is 
+ \( f_{X_{(i)}}(x)= \sum\limits_{k=i}^{n-1}(\binom{n}{k}.k.f_X(x).(F_X(x))^{k-1}.(1-F_X(x))^{n-k}-
+   \binom{n}{k}.(F_X(x))^k.(n-k).f_X(x).(1-F_X(x))^{n-k-1})+n.(F_X(x))^{n-1} 
+     \)
+     \(f_X(x).(\sum\limits_{k=i}^{n-1}\binom{n}{k}.k.(F_X(x))^{k-1}.(1-F_X(x))^{n-k}-
+ \sum\limits_{k=i}^{n-1}  \binom{n}{k}.(n-k).(F_X(x))^k.(1-F_X(x))^{n-k-1})+n.(F_X(x))^{n-1})
+     
+   \\  =f_X(x).( \sum\limits_{k=i}^{n-1}a_k(F_X(x))^{k-1}.(1-F_X(x))^{n-k}-
+ \sum\limits_{k=i}^{n-1}  b_k.(F_X(x))^k.(1-F_X(x))^{n-k-1})+n.(F_X(x))^{n-1} )\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    where \(a_k=\binom{n}{k}.k \) and \(b_k=\binom{n}{k}.(n-k)\)
+    and we have \(a_k=b_{k-1}\)
+  </span>
+ \(
+   \\  =f_X(x).( \sum\limits_{k=i}^{n-1}a_k(F_X(x))^{k-1}.(1-F_X(x))^{n-k}-
+ \sum\limits_{k=i+1}^{n}  b_{k-1}.(F_X(x))^{k-1}.(1-F_X(x))^{n-k})+n.(F_X(x))^{n-1} )
+  \\  =f_X(x).( a_i(F_X(x))^{i-1}.(1-F_X(x))^{n-i}+\sum\limits_{k=i+1}^{n-1}a_k(F_X(x))^{k-1}.(1-F_X(x))^{n-k}-
+ \sum\limits_{k=i+1}^{n-1}  b_{k-1}.(F_X(x))^{k-1}.(1-F_X(x))^{n-k})-\\b_{n-1}.(F_X(x))^{n-1}+n.(F_X(x))^{n-1}) 
+\\=f_X(x).(a_i(F_X(x))^{i-1}.(1-F_X(x))^{n-i}-b_{n-1}.(F_X(x))^{n-1}+n.(F_X(x))^{n-1} )=
+\\a_i.f_X(x).(F_X(x))^{i-1}.(1-F_X(x))^{n-i}=\frac{n!}{(i-1)!(n-1)!}.f_X(x).(F_X(x))^{i-1}.
+(1-F_X(x))^{n-i}
+    \)
+  </span>
+
+
+<br> &#9755; \( f_{X_{(1)}..X_{(n)}} (x_1,..,x_n)=
+\left\{\begin{matrix}
+ n!f_X(x_1)..f_X(x_n)& for \;x_1 &le;x_2 &le;..&le; x_n \\
+ &  \\
+ 0 & otherwise \\
+\end{matrix}\right.
+
+\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    
+  </span>
+   <h3 id="7_2">7.2 Point estimation</h3>
+  <h3 id="7_2_1">7.2.1 Estimators</h3>
+Suppose that the parameter \(\theta \) to be estimated is the average weight \(E(X)\)  of 
+children in a well defined population
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     for example children between 10 and 12 years old in a given geographic region.
+</span>
+
+We take a sample of n children and we measure the weight \(X_1,..,X_n\), since the 
+population is finite, if we want the \(X_i\) to be independent of each other we must make 
+a sampling by replacement,  nevertheless in practice population are large enough to 
+suppose that sampling without replacement is almost equivalent to sampling with 
+replacement because the probability to choose an individual more than once is very weak.
+Unless otherwise stated the sampling method used in general is the simple random 
+sampling where each member of the subset has an equal probability of being chosen.
+<br>Here, every \(X_i\) is a RV, and the \(X_i\) are i.i.d
+<br>A good choice of an estimator (we call it \(\hat{\Theta} \)) for the average is the 
+sample mean, that is \(\hat{\Theta}=\overline{X}=\frac{X_1+..+X_n}{n} \), \(\hat{\Theta}\) is
+ a RV and it is called a point estimator, it is a function of the \(X_i\), we write:
+\(\hat{\Theta}=h_1(X_1,..,X_n)\).
+<br>For a given sample 
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    After performing the experiment
+  </span> \(\hat{\Theta}=\hat{\theta} \) is called an estimate.
+  <br> A good estimator is one that gives us values close to  \(\theta\).
+  <h3 id="7_2_2">7.2.2 Evaluating Estimators</h3>
+  &#9827; \(B(\hat{\Theta})=E(\hat{\Theta})-\theta \) is called the bias of the point estimator 
+  \(\hat{\Theta}\).
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    where \(\hat{\Theta}=h(X_1,..,X_n)\) is a point estimator of \(\theta\).
+  </span>
+  <br>&#9827; We say that  \(\hat{\Theta}\) is an <b>unbiased estimator </b>
+  of \(\theta\) if \(B(\hat{\Theta})=0\)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> \(B(\hat{\Theta})\) may depend on the value of \(\theta\).
+  </span>
+ <br>&#9755; <b>Example: </b>  
+    \(\overline{X}\) is an unbiased estimator for \(E(X_i)\)
+   <br> &#9755; An unbiased estimator is not necessarily a good estimator.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  Take for example   \(\hat{\Theta}=X_1\), this estimator is unbiased but it's obviously not 
+  a good estimator (at least not as good as \(\overline{X}\), we therefore need a other preperty
+  to qualify good estimators.
+  
+  </span>
+ <br> &#9827; \(MSE(\hat{\Theta})=E((\hat{\Theta}-\theta)^2)\) is called the mean 
+ squared error.
+ 
+ The smaller MSE is the best the estimator is.
+ <br> &#9755; \(\overline{X}\) is a better estimator than \(X_i\).
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Because \(MSE(\overline{X})=\frac{\sigma^2}{n} &le; MSE(X_i)=\sigma^2\)
+  </span>
+  <br>&#9755; \(MSE(\hat{\Theta})=Var(\hat{\Theta})+(B(\hat{\Theta}))^2\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Actually, \(MSE(\hat{\Theta})=E((\hat{\Theta}-\theta)^2)=
+    Var(\hat{\Theta}-\theta)+(E(\hat{\Theta}-\theta))^2=Var(\hat{\Theta})+(B(\hat{\Theta}))^2
+    \)
+  </span>
+  <br> &#9827; We say that \(\hat{\Theta}_n\) is <b>a consistent estimator</b> of \(\theta\)
+   if \(\hat{\Theta}_n \overset{p}{\rightarrow} \theta \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Where \(\hat{\Theta}_1, ..,\hat{\Theta}_n \) is a sequence of point estimator of \(\theta\)
+    
+  </span>
+ <br> &#9755;  \(\overline{X}\) is a consistent estimator for \(E(X_i)\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    By the W.L.L.N
+  </span>
+  <br>&#9755; \(\displaystyle \lim_{n \to +\infty}MSE(\hat{\Theta}_n)=0 
+  \Rightarrow \hat{\Theta}_n \) is a consistent estimator.
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually,  we have 
+    \(P(|\hat{\Theta}_n-\theta |&ge;\epsilon )=P((\hat{\Theta}_n-\theta)^2&ge;\epsilon^2)\), 
+    using Markov's inequality for \((\hat{\Theta}_n-\theta)^2 \), we have 
+    \(P((\hat{\Theta}_n-\theta)^2&ge;\epsilon^2) &le; 
+    \frac{E((\hat{\Theta}_n-\theta)^2)}{\epsilon^2}=\frac{MSE(\hat{\Theta})}{\epsilon^2}\), so 
+    \(\displaystyle \lim_{n \to +\infty}P(|\hat{\Theta}_n-\theta |&ge;\epsilon )=0\)
+   
+  </span>
+<h3 id="7_2_3">7.2.3 Point Estimators for Mean and Variance</h3>
+ &#9755; \(\hat{\sigma}^2=\frac{1}{n}\sum\limits_{k=1}^{n}(X_k-\mu)^2  \) is an 
+ unbiased estimator for \(\sigma^2 \).
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Actually, \(E(\hat{\sigma}^2)=\sigma^2\)
+  </span>
+  <br> &#9755; \(\hat{\sigma}^2\) is a consistent estimator for the variance.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>  Actually, according to W.L.L.N applied to the sequence \(Y_1,..,Y_n\), where
+     \(Y_k=(X_k-\mu)^2\), we have
+   \(\hat{\sigma}^2=\overline{Y}\overset{p}{\rightarrow}  E((X_k-\mu)^2)\), that is 
+   \(\hat{\sigma}^2\overset{p}{\rightarrow}  Var(X_i)\), hence 
+ \(\hat{\sigma}^2\overset{p}{\rightarrow}  \sigma^2\).
+ <br> In practice we don't know \(\mu\) so we replace it by \(\overline{X}\).
+  </span>
+  <br> &#9755; \(\overline{S}^2=\frac{1}{n}\sum\limits_{k=1}^{n}(X_k-\overline{X})^2=
+  \frac{1}{n}\sum\limits_{k=1}^{n} (X_k^2-\overline{X}^2)
+   \) 
+  is a biased estimator for the variance, actually \(B(\overline{S}^2)=-\frac{\sigma^2}{n}  \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br>Actually, 
+   \(
+ \overline{S}^2=  \frac{1}{n}\sum\limits_{k=1}^{n}(X_k^2-2.X_k.\overline{X}+\overline{X}^2)=
+\frac{1}{n}(\sum\limits_{k=1}^{n}X_k^2-2.\overline{X}.\sum\limits_{k=1}^{n}X_k+\sum\limits_{k=1}^{n}\overline{X}^2)=
+\frac{1}{n}(\sum\limits_{k=1}^{n}X_k^2-2.\overline{X}.\sum\limits_{k=1}^{n}X_k+n.\overline{X}^2)=\\
+\frac{1}{n}(\sum\limits_{k=1}^{n}X_k^2+\overline{X}.(n.\overline{X}-2.\sum\limits_{k=1}^{n}X_k))=
+\frac{1}{n}(\sum\limits_{k=1}^{n}X_k^2+\overline{X}.(n.\overline{X}-2.n.\overline{X}))=
+\frac{1}{n}(\sum\limits_{k=1}^{n}X_k^2-n.\overline{X}^2)
+   \), on the other hand we have:
+   \(E(X_k^2-\overline{X}^2)=E(X_k^2)-E(\overline{X}^2)=Var(X_k)+(E(X_k))^2-(Var(\overline{X})+(E(\overline{X}))^2 )=\\
+\sigma^2+\mu^2-\sigma^2/n-\mu^2=\frac{n-1}{n}.\sigma^2
+    \), that is 
+    \(E(\overline{S}^2)=\frac{n-1}{n}.\sigma^2\), so 
+    \(B(\overline{S}^2)=\frac{n-1}{n}.\sigma^2-\sigma^2=-\frac{\sigma^2}{n}\)
+  </span>
+  <br>&#9827; \(S^2=\frac{n}{n-1}. \overline{S}^2\) is called the <b>sample variance.</b>
+  <br>&#9755; \(S^2\) is an unbiased estimator for \(\sigma^2\).
+  <br>&#9827; \(S=\sqrt{S^2}  \) is called the <b> sample standard deviation</b>
+  <br>&#9755; S is abiased estimator for \(\sigma\).
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually consider the RV S, we have \(Var(S)=E(S^2)-(E(S))^2 \), since the 
+    variance is always strictly positive (S is not a constant RV), we have 
+    \(E(S^2) &gt; (E(S))^2\), that is \(\sigma^2 &gt; (E(S))^2\), so \(\sigma \neq E(S)\)
+  </span>
+  <h3 id="7_2_4">7.2.4 Maximum Likelihood Estimation MLE</h3>
+  
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>   The estimators we've seen so far were calculated based on our experience, we guessed 
+  that the sample mean would be "good" estimator for the expected value and so on.
+  But now we want a systematic way to find a good estimator.
+  </span>
+ <br>&#9827; \(L(x,\theta)=\left\{\begin{matrix}
+P_{X}(x,\theta)  &  &   if \; the \; X_i \; are \;jointly \;continuous    \\
+f_{X}(x,\theta)  &  &   if \; the \; X_i \; are \; discrete  \\
+
+\end{matrix}\right.\)  is called the likelihood function.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  
+    <br>where \(X_1=x_1,..X_n=x_n\) are the observed values of the random sample 
+\(X_1,..,X_n\) from the distribution with the parameter \(\theta\).
+<br>Here we used the compact notation that is \(X=(X_1,..,X_n)\) and \(x=(x_1,..,x_n)  \)
+  </span>
+  <br>&#9827; The maximum likelihood estimate MLE of θ denoted as 
+  \(\hat{\theta}_{ML}\) is the value where the likelihood function is at its maximum.
+  <br>\(\theta\) can be a single parameter or a vector that is 
+  \(\theta=(\theta_1,..,\theta_k\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>That is the value of \(\theta \) where it is very likely to have the observed values.
+  </span>
+  <br>
+  <div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 1: Proportion of male smokers.</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   Find p the proportion of male smokers within a certain age group, knowing that 
+    the observed values of a random sample of size n is \(x_1,..,x_n\).
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   the \(x_i\) can take two values 1 if the male is a smoker and 0 otherwise, we have 
+   \(P_{X_i}(x_i)=p\) if \(x_i=1\) and \(P_{X_i}(x_i)=1-p\) if \(x_i=0\), so 
+  <br> \(P_{X}(x,p)=P_{X_1}(x_1)..P_{X_n}(x_n)=
+   p^{(\sum\limits_{i=1}^{n}x_i)}.(1-p)^{(n-\sum\limits_{i=1}^{n}x_i)}\), to find p 
+   let's look for the value where this probability is at its maximum, that is where 
+   \(\frac{\partial P_{X}(x,p)}{\partial p}=0 \), this is somewhat complicated to calculate, 
+   we use instead the natural log function (because \(P_{X}(x,p)\) and \(Ln (P_{X}(x,p))\) are 
+   maximised at the same value of p.
+    <img src="/img/figure145.png"  style="float: right; width: 52%; height: 85%;" class="image1">		
+   <br> We have then \(Ln(P_{X}(x,p))={(\sum\limits_{i=1}^{n}x_i)}.Ln(p)+\)\(
+   {(n-\sum\limits_{i=1}^{n}x_i)}.Ln(1-p)\), so 
+   \(\frac{\partial Ln(P_{X}(x,p))}{\partial p}=\frac{{(\sum\limits_{i=1}^{n}x_i)}}{p}-
+   \frac{{(n-\sum\limits_{i=1}^{n}x_i)}}{1-p}\) so  
+    \(\frac{\partial Ln(P_{X}(x,p))}{\partial p}=0 \) means that  
+  \(  (\sum\limits_{i=1}^{n}x_i).p^{-1}
+   -(n-\sum\limits_{i=1}^{n}x_i)(1-p)^{-1}=0\), that is 
+   \((1-p).\sum\limits_{i=1}^{n}x_i-p. (n-\sum\limits_{i=1}^{n}x_i)=0\), that is 
+   \(\sum\limits_{i=1}^{n}x_i-p.n=0  \), that is \(p=\frac{\sum\limits_{i=1}^{n}x_i}{n}\), so 
+   \(p=\frac{\sum\limits_{i=1}^{n}x_i}{n}  \) is a critical point, we must verify that it is an absolute
+   maximum, by the second test derivative, actually we have 
+    \(\frac{\partial^2 Ln(P_{X}(x,p))}{\partial p^2}=-\sum\limits_{i=1}^{n}x_i. p^{-2} 
+    -(n-\sum\limits_{i=1}^{n}x_i)(1-p)^{-2}
+    \), this function is negative, so \(\hat{p}=\frac{\sum\limits_{i=1}^{n}x_i}{n}  \) is a 
+    maximum,  actually this function has one critical point (besides the boundaries), where the 
+    function which is defined in the interval [0,1] is at its minimum 
+    (see figure 145, this figure gives the function and its natural Log)
+    <br> \(\hat{P}=\frac{\sum\limits_{i=1}^{n}X_i}{n}\) is called the maximum likelihood 
+    estimator and  \(\hat{p}=\frac{\sum\limits_{i=1}^{n}x_i}{n}\) is called the maximum 
+    likelihood estimate.
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+    <div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 2: Maximum Likelihood estimate of the expected value of the \(Exponential (\theta)\)</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    Find the Maximum Likelihood estimate of the expected value of the 
+    \(Exponential (\theta)\), when the observed values are \(x_1,..,x_n\).
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    We have \(f_X(x,\theta)=\theta^n. e^{-\theta.\sum\limits_{i=1}^{n}x_i}\), so 
+    \(Ln(f_X(x,\theta))=n.Ln(\theta)-\theta.\sum\limits_{i=1}^{n}x_i\), so 
+    <br>\(\frac{\partial Ln(f_X(x,\theta))}{\partial \theta}=\frac{n}{\theta}-\sum\limits_{i=1}^{n}x_i  \), 
+    so \(\hat{\theta}_{ML}=\frac{n}{\sum\limits_{i=1}^{n}x_i}\) (the second derivative test shows that 
+    this a relative maximum, since there is one critical point, it is an absolute maximum.)
+    <br>Actually as we saw in the chapter related to random variable for the exponential 
+    distribution, \(\theta\) can be the mean number of emails I receive in a given time period 
+    , in this case \(\frac{n}{\sum\limits_{i=1}^{n}x_i}\) is indeed intuitively a good estimator 
+    or \(1/\theta\) is the time until I receive the first email (or the lifetime of light bulb), 
+    in this case  \(\frac{1}{\hat{\theta}_{ML}}=\frac{\sum\limits_{i=1}^{n}x_i}{n}\), 
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	
+	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 3:Maximum likelihood estimator of distribution with two parameters</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   Find the Maximum likelihood estimator for \(\theta=(\theta_1,\theta_2)\) if 
+   \(X_1,..,X_n \sim N(\theta_1,\theta_2)  \), that is
+   \(f_{X_i}(x_i,\theta_1,\theta_1)=\frac{1}{\sqrt{2.\pi\theta_2}}e^{-\frac{(x_i-\theta_1)^2}{2.\theta_2}}\).
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+		 <br>Since \(X_i \sim N(\theta_1,\theta_2)  \) we have \(\theta_1=E(X_i)\) and 
+		 \(\theta_2=Var(X_i)\), so as we saw earlier  \(E(S^2)=\theta_2\) where \(S^2\) is 
+		 the sample variance, on the other hand we have 
+  \(L(x_1,..,x_n,\theta_1,\theta_2)=((2.\pi.\theta_2)^{-1/2})^n.
+  e^{-\frac{1}{2.\theta_2}.\sum\limits_{i=1}{n}(x_i-\theta_1)^2 }=
+  (2.\pi)^{\frac{-n}{2}}.(\theta_2)^{\frac{-n}{2}}.
+  e^{-\frac{1}{2.\theta_2}.\sum\limits_{i=1}^{n}(x_i-\theta_1)^2 }\), that is 
+  \(Ln(L(x_1,..,x_n,\theta_1,\theta_2))=\frac{-n}{2}.Ln(2.\pi)+\frac{-n}{2}.Ln(\theta_2)
+  -\frac{1}{2.\theta_2}.\sum\limits_{i=1}^{n}(x_i-\theta_1)^2
+   \), the maximum likelihood estimate for \(\theta\) is the solution to the equations:
+   \( \frac{\partial Ln(L(x_1,..,x_n,\theta_1,\theta_2)}{\partial \theta_1}=0 \) and 
+   \( \frac{\partial Ln(L(x_1,..,x_n,\theta_1,\theta_2)}{\partial \theta_2}=0 \), which are 
+   \(\frac{1}{\theta_2} \sum\limits_{i=1}^{n}(x_i-\theta_1)=0 \) and 
+   \(\frac{-n}{2.\theta_2}+  \frac{1}{2.\theta_2^2}.\sum\limits_{i=1}^{n}(x_i-\theta_1)^2=0 \)
+ , so \(\hat{\theta_1}=\frac{1}{n}.\sum\limits_{i=1}^{n}x_i \), and 
+ \(\hat{\theta_2}=\frac{1}{n}.\sum\limits_{i=1}^{n}(x_i-\hat{\theta_1})^2\), 
+ so \(\hat{\theta_1}\) is the sample mean, which is denoted by \(\overline{X}\), so we 
+ conclude that \(\hat{\theta_1}=\overline{X}\) and 
+ \(\hat{\theta_2}=\frac{1}{n}.\sum\limits_{i=1}^{n}(x_i-\overline{X})^2\), so the estimators are 
+ \(\hat{\Theta}_1=\overline{X} \) and 
+ \(\hat{\Theta}_2=\frac{1}{n}.\sum\limits_{i=1}^{n}(x_i-\overline{X})^2\), so 
+ \(\hat{\Theta}_2=\frac{n-1}{n}.S^2\), so \(E(\hat{\Theta}_2)=\frac{n-1}{n}.\theta_2\), 
+ we conclude that \(\hat{\Theta}_2 \) is a biased estimator of the variance, however the 
+ bias gets very small when n is sufficiently large.
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	<h3 id="7_2_5">7.2.5 Asymptotic Properties of MLEs</h3>
+	&#9755; \(\displaystyle \lim_{n \to \infty} P(| {\hat{\Theta}}_{ML}-\theta | &gt;\epsilon )=0 \),
+	we say that \({\hat{\Theta}}_{ML}  \) is asymptotically consistent.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    
+  </span>
+  <br>&#9755; \(\displaystyle \lim_{n \to \infty} E({\hat{\Theta}}_{ML})=\theta \), 
+  we say that \({\hat{\Theta}}_{ML}  \) is asymptotically unbiased.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  
+  </span>
+    <br> &#9755; \(\frac{{\hat{\Theta}}_{ML}-\theta}{\sqrt{Var({\hat{\Theta}}_{ML})}}\overset{d}{\rightarrow} N(0,1)\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    
+  </span>
+  	<h2 id="7_3">7.3 Interval Estimation (Confidence Intervals)</h2>
+  <h3 id="7_3_1">7.3.1 Definition</h3>
+  	&#9827; \([\hat{\Theta}_l, \hat{\Theta}_h]\) is called a \((1-\alpha) 100\%\) confidence
+interval for \(\theta\) if \(P(\hat{\Theta}_{l} &le; \theta &le; \hat{\Theta}_{h})&ge;1-\alpha\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br>\(1-\alpha\) is called confidence level.
+   <br>So far we've been estimating parameters by figuring out some estimates that are 
+   close to the parameter we're looking for, but how far that estimate from this parameter.
+   This is the goal behind interval estimation.  
+  </span>
+  <h3 id="7_3_2">7.3.2 Finding the confidence interval</h3>
+  &#9755; If X is a continuous RV then 
+  \([x_{l},x_{h}]=[F_X^{-1}(\frac{\alpha}{2}),F_X^{-1}(1-\frac{\alpha}{2})]\) is a 
+  \((1-\alpha) 100\%\) confidence interval for \(X\).
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br> Actually, 
+   \(P(x_{l} &le; X &le; x_{h})=1-P(x_{l} 
+   &gt; X \;or\; X &gt; x_{h})=\)\(1-(P(x_{l} \)\(
+   &gt;X)+P(X &gt; x_{h}) )=\)\(1-(P(X &le; x_{l})+1-P(X &le; x_{h}))=P(X &le; x_{h})- P(X &le; x_{l})=\)
+   \(F_X(x_{h})-F_X(x_{l})=1-\frac{\alpha}{2}- \frac{\alpha}{2}=1-\alpha\) 
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>because \(x_{l}=F_X^{-1}(\frac{\alpha}{2})\) and 
+   \(x_{h}=F_X^{-1}(1-\frac{\alpha}{2})\), 
+  </span>
+ that is  \(P(x_{l} &le; X &le; x_{h})&ge;1-\alpha\)
+   <br>The interval above is not the only \((1-\alpha) 100\%\) confidence interval for \(X\), 
+   actually all intervals containing the interval above are \((1-\alpha) 100\%\).
+   <br>Except otherwise stated, in all the following we will consider confidence intervals 
+   where  \(P( X &le; x_{l})=P(X &ge; x_{h})\)
+  </span>
+  
+  <div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 1: Confidence interval for Normal distribution</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+  Find the 95% confidence interval for the RV Z if \(Z \sim N(0,1)\)
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+We have \(\alpha=1-0.95=0.05 \), so \(P(Z &le; z_l)=\frac{0.05}{2}\) means that
+\(z_l=-1.96 \) and \(P(z_h &le; Z)=\frac{0.05}{2}\) means that \(z_h=1.96 \).
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 2: Confidence Interval for the mean of Normal distribution based
+ on a random sample</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+Find a 95% confidence interval for \(\theta\) based on the sample \(X_1,..,X_n\) if 
+\(X_i \sim N(\theta,1)\). 
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    We know that \(\overline{X} \sim N(\theta,\frac{1}{n})\), that is 
+    \(\frac{\overline{X}-\theta}{\frac{1}{\sqrt{n}}} \sim N(0,1) \), hence 
+   \(\sqrt{n}.(\overline{X}-\theta) \sim N(0,1) \), so 
+   \( P(-1.96&le; \sqrt{n}.(\overline{X}-\theta)  &le;1.96)=0.95\), that is 
+   \( P(\overline{X}-\frac{1.96}{\sqrt{n}} &le; \theta  &le;\overline{X}+\frac{1.96}{\sqrt{n}})=0.95\), 
+   that is \([x_l,x_h]=[\overline{X}-\frac{1.96}{\sqrt{n}},\overline{X}+\frac{1.96}{\sqrt{n}}] \)
+   
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	
+	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 3: Confidence interval for the mean based on a large random sample</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   We take a random sample \(X_1,..,X_n\) from a distribution with known variance \(\sigma^2\).
+   <br>What is the \((1-\alpha)\) confidence interval  for the mean knowing that the size
+    of the sample is sufficiently large ?
+<br>&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   Since n is sufficiently large
+     \(\frac{\overline{X}-\theta}{\frac{\sigma}{\sqrt{n}}} \sim N(0,1)\) , so 
+   \( P(-z_{\frac{\alpha}{2}} &le; \frac{\overline{X}-\theta}{\frac{\sigma}{\sqrt{n}}} 
+   &le;z_{\frac{\alpha}{2}})=1-\alpha\), 
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    we note by \(z_p\) the value  for which   \( P(Z &gt;z_p)=p \).
+  </span>
+    that is 
+   \( P(\overline{X}-z_{\frac{\alpha}{2}}.\frac{\sigma}{\sqrt{n}} &le; \theta 
+   &le;\overline{X}+z_{\frac{\alpha}{2}}.\frac{\sigma}{\sqrt{n}})=1-\alpha\), so 
+   \([\overline{X}-z_{\frac{\alpha}{2}}.\frac{\sigma}{\sqrt{n}},
+   \overline{X}+z_{\frac{\alpha}{2}}.\frac{\sigma}{\sqrt{n}}]\) is approximately a \(1-\alpha\) confidence 
+   interval for \( \theta\). (here we used the word approximately because we used the CTL).
+   
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	
+	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 4 : Simulating Normal distribution with varying means, standard deviations 
+and in confidence intervals in Excel</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    Create a chart in excel where you can enter Mean, Standard deviation and confidence 
+    interval and get a the chart of the PDF.
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+  Download the following Excel file 
+   <a href="/data/normal with confidence interval.xlsx" download="NormalChartWcExcelFile">
+   Normal Distribution Chart With Confidence Interval</a> 
+  , you'll get a sheet like the one in figure 154, just enter 
+  data in red cells and the chart will update, if you don't want a density function to not show up
+   just enter 0 for the standard deviation.
+ 
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+     <img src="/img/figure154.png"  style="float: right; width: 80%; height: 80%;" class="image1">	
+  <br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	
+		&#9755; If the variance is unknown there is two approaches:
+	<br>Approach 1:   \([\overline{X}-z_{\frac{\alpha}{2}}.\frac{\sigma_{max}}{\sqrt{n}},
+	\overline{X}+z_{\frac{\alpha}{2}}.\frac{\sigma_{max}}{\sqrt{n}}]\) is a 
+	\(1-\alpha\) confidence interval for \( \theta\). 
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>Where  \(\sigma_{max}\)  is a value such as \(\sigma &le; \sigma_{max}\), 
+actually in this case, 
+  \([\overline{X}-z_{\frac{\alpha}{2}}.\frac{\sigma}{\sqrt{n}},
+   \overline{X}+z_{\frac{\alpha}{2}}.\frac{\sigma}{\sqrt{n}}]\) is included in 
+   \([\overline{X}-z_{\frac{\alpha}{2}}.\frac{\sigma_{max}}{\sqrt{n}},
+	\overline{X}+z_{\frac{\alpha}{2}}.\frac{\sigma_{max}}{\sqrt{n}}]\)   anyways
+  </span>
+	<br>Approach 2: Use an estimate for the variance.
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    This estimate should be accurate, since n is sufficiently large. 
+  </span>
+	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 4: Estimating the mean of a Bernoulli distributed RV</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+ Find a \((1-\alpha)100%\) confidence interval for the proportion p of male smokers 
+ within a well defined population, knowing that 
+ the observed values of a random sample of size n is \(x_1,..,x_n\), use two approaches.
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+<div class="tooltiptext" >
+<div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   1. We know from previous paragraphs that an estimator of p based on maximum likelihood 
+    estimate is \(\overline{X}= \frac{\sum\limits_{i=1}^{n}X_i}{n}\), we know also that 
+    \(\frac{\overline{X}-p}{\frac{\sigma}{\sqrt{n}}} \sim N(0,1)\), where \(\sigma^2=Var(X_i)\)
+   , that is \(\sigma^2=p.(1-p)\), but p is unknown, so is \(\sigma\), to solve this problem 
+   we have to figure out a value \(\sigma_m\) such as \(\sigma &le; \sigma_m\), 
+   the maximum value of the function \(f(x)=x.(1-x)\) is \(x=\frac{1}{2}\), so
+   \(\sigma &le;1/2\), that is a \((1-\alpha)100%\) confidence interval for p is 
+   \([\overline{X}-\frac{z_{\frac{\alpha}{2}}}{2.\sqrt{n}},
+	\overline{X}+\frac{z_{\frac{\alpha}{2}}}{2.\sqrt{n}}]\).
+	<br>2. This approach may be too conservative since the true variance may be less than 
+	its maximum value, we use instead an estimate for the variance based on the sample
+	 mean, we know that for a Bernoulli RV, we have \(\sigma^2=p.(1-p)\), so 
+	 an estimate for \(sigma\) would be \(\hat{\sigma}=\sqrt{\hat{p}.(1-\hat{p})} \)
+where \(\hat{p}\) is an estimate for p, this would be \(\overline{X}\), so 
+\(\hat{\sigma}=\sqrt{\hat{p}.(1-\hat{p})}=\sqrt{\overline{X}.(1-\overline{X})} \), so 
+a \((1-\alpha)100%\) confidence interval for p is 
+ \([\overline{X}-z_{\frac{\alpha}{2}}.\sqrt{\frac{\overline{X}.(1-\overline{X})}{n}},
+\overline{X}+z_{\frac{\alpha}{2}}.\sqrt{\frac{\overline{X}.(1-\overline{X})}{n}}]\)
+	<br>
+	
+</div>
+</div>
+</div>
+  </div>
+	</div>
+&#9755; \([\overline{X}-z_{\frac{\alpha}{2}}.\frac{S}{\sqrt{n}},
+\overline{X}+z_{\frac{\alpha}{2}}.\frac{S}{\sqrt{n}}]\) is a \((1-\alpha)100%\) confidence
+interval for the mean.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Where :
+    <br> - \(X_i\) is a random sample from a distribution with unknown variance.
+  <br> - S is the sample standard deviation
+  <br> - n is large
+  </span>
+    <h3 id="7_3_3">7.3.3 Confidence interval in case of Normal distribution</h3>
+    &#9755; \([\overline{X}-z_{\frac{\alpha}{2}}.\frac{\sigma}{\sqrt{n}},
+	\overline{X}+z_{\frac{\alpha}{2}}.\frac{\sigma}{\sqrt{n}}]\) is a \((1-\alpha)\) confidence interval
+	 for \(\mu\), where \(X_i \sim N(\mu, \sigma)\), i=1,..,n
+	 <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    the variance is known
+  </span>
+    <br> &#9755;  \([\overline{X}-t_{\frac{\alpha}{2},n-1}.\frac{S}{\sqrt{n}},
+	\overline{X}+t_{\frac{\alpha}{2},n-1}.\frac{S}{\sqrt{n}}]\) is a \((1-\alpha)\) confidence interval
+	 for \(\mu\), where \(X_i \sim N(\mu, \sigma)\), i=1,..,n
+	 <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    the variance is unknown
+  </span>
+  
+  <br>&#9755;  \(\left[ \frac{(n-1)S^2}{\chi^2_{\frac{\alpha}{2},n-1}},
+	\frac{(n-1)S^2}{\chi^2_{1-\frac{\alpha}{2},n-1}}\right]\) confidence interval
+	 for \(\sigma\), where \(X_i \sim N(\mu, \sigma)\), i=1,..,n
+	<h2 id="7_4">7.4 Hypothesis testing</h2>
+	<h3 id="7_4_1">7.4.1 Setting the framework</h3>
+	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example: Is this coin fair ?</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    We toss a fair coin n times and we record the number of heads.
+    <br> When can we conclude with 95% confidence (certainty) that the coin is unfair ? use 
+    Binomial distribution then Standard Normal distribution.
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+ <div class="tooltiptext" >
+ <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+The situation can be taught of as doing a random experiment and depending on the outcome 
+of this experiment we decide whether the coin is fair or not, so we are interested in the fairness 
+property of the coin, that is a success in our random experiment is " the coin is unfair "
+	<img src="/img/figure152.png"  style="float: right; width: 52%; height: 65%;" class="image1">	 
+ <br><b>1) Using Binomial </b> 
+ <br>  - We call the null hypothesis \(H_0\) the hypothesis related to a failure in our random 
+ experiment (the coin is fair), which is the default hypothesis, we call the alternative 
+ hypothesis \(H_1\) the opposite one, that is the hypothesis  related to a success 
+ (the coin is unfair).
+ <br> - As you may guess our conclusion regarding the fairness of the coin will be based only 
+ on the number of throws that landed on a head, let the outcome of our random experiment 
+ be traced by the RV Y which is the number of heads.
+ <br> - Suppose that the coin is fair, the number of throws that will land on head will be at 
+ average \(\frac{n}{2}\), that is if \(Y=\sum\limits_{i=1}^{n}X_i\) we will have  
+ \(E(Y)=\frac{n}{2}\), so when we  repeat the random experience several times we will have 
+ different values of Y but all these values will be concentrated around the expected value, so 
+ let's find the values l and d such that  P(l &le; Y &le; d)=0.95, that is the values such that if the 
+ null hypothesis is true the outcome of  the random experiment will be within those values with
+  a confidence of 95%.
+ <br> - As we did for interval estimation of parameters we choose l and d such as 
+ P(Y &lt; l)=0.05/2=0.0025=P(d &lt;Y), knowing that 
+ \(P(Y &lt; l)=\sum\limits_{i=0}^{l-1}\binom{n}{i}.\theta^{n-i+1}.(1-\theta)^{i-1}=
+ (1/2)^{n}\sum\limits_{i=0}^{l-1}\binom{n}{i} \) , because \(\theta=1/2\) and 
+  \(P(d &lt;Y)=(1/2)^n.\sum\limits_{i=d+1}^{n}\binom{n}{i} \), 
+  Y is not continuous so we may not find a value d such that P(d &lt;Y)=0.025, so we look for 
+  a value d such that P(d &lt;Y) &le; 0.025 (the same goes for l).
+  <br>Let's take for example n=100, we have P(Y &lt; 40)=0.0176 &le;0.025 (40 is the greatest 
+  value such as P(Y &lt; l) &le; 0.025, because P(Y &lt; 41)=0.0284 &gt; 0.025), on the other hand 
+  
+P(60 &lt;Y)=0.0176, but P(59 &lt;Y)=0.028, so in conclusion if the coin was fair 95% at least of 
+the outcomes will be included in the interval \(\left\{41,42,..,60 \right\}\), that is it is if the coin is fair it is very 
+unlikely to have an outcome outside this interval (indeed the probability to have a value 
+outside this interval is 1-P(41)-..-P(60)=1-0.953=0.047 &le;0.05), so finding an outcome outside this 
+interval suggests that the coin is unfair.
+<br> - So in conclusion we proceeded like this 
+\(H_1=1 \Rightarrow (H_0=1 \Rightarrow  \text{"Some contradiction"} )\), we saw earlier 
+that "Some contradiction" in terms of probability means some very unlikely preposition.
+<br>Note: Having an outcome inside   \(\left\{41,42,..,60 \right\}\)won't suggest any thing, that is the test is 
+inconclusive, but in hypothesis testing literature we say that we don't reject \(H_0\), not 
+rejecting the null hypothesis dosen't mean we confirm the null hypothesis, so in our example if
+ we find an outcome inside 
+ the interval \(\left\{41,42,..,60 \right\}\)we say that we don't reject the null hypothesis but that 
+ doesn't mean  we confirm that the coin is fair.
+ <br> <br><b>2) Using Standard Normal Distribution </b> 
+ <br>- Since we are more familiar with Normal standard distribution than with Binomial, 
+ besides, Binomial is discrete, we can use "CLT" (Central Limit Theorem) to approximate Binomial 
+ provided n is large enough, that is \(\overline{X}=\frac{\sum\limits_{i=1}^{n}X_i}{n}=\frac{Y}{n}\), 
+ with  \(Y \sim Binomial(n,\theta)\), so  
+ \(\frac{\overline{X}-\theta}{\sqrt{\theta.(1-\theta)/n)}} \dot{\sim} N(0,1)\), if \(H_0\) is true we
+  have   \(\frac{\overline{X}-\frac{1}{2}}{\frac{1}{2}.\sqrt{1/n}} \dot{\sim} N(0,1)\), that is 
+  \((2.\overline{X}-1)\sqrt{n} \dot{\sim} N(0,1)\), that is
+   \(P(-z_{\frac{0.05}{2}} &le; (2.\overline{X}-1)\sqrt{n} &le;  z_{\frac{0.05}{2}})=0.95 \), since 
+   \(\frac{0.05}{2}=1.96\) we have   \(P(-1.96.n &le; (2.Y-n)\sqrt{n} &le;  1.96.n)=0.95  \), that is 
+   \(P(-1.96.\sqrt{n} &le; (2.Y-n) &le;  1.96.\sqrt{n})=0.95  \), we get thus 
+   \(P(-0.98.\sqrt{n}+\frac{n}{2} &le; Y &le;  0.98.\sqrt{n}+\frac{n}{2})=0.95  \), 
+   for n=100 we get \(P(-9.8+50 &le; Y &le;  9.8+50)=0.95  \) finally we get 
+    \(P(40.2 &le; Y &le;  59.8)=0.95  \), that is if the null hypothesis is true Y must be in the
+     interval [40.2,59.8], but since Y is discrete it must be in the interval \(\left\{41,..,59 \right\}\).
+     <br>Finally if \(Y \in \left\{41,..,59 \right\}\) we accept \(H_0\) otherwise we accept \(H_1\).
+     <br>We got approximately similar results as in 1).
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	<h3 id="7_4_2">7.4.2 Definitions</h3>
+	Hypothesis testing is a method  used to decide whether available data sufficiently support a 
+	particular hypothesis.
+	<br>To explain the new terminology used for hypothesis testing, we use the example above .
+	<br> 1) &#9755; \(\theta=E(X_i)\) is the unknown parameter  
+	<br> 2) &#9755; A hypothesis is a statement such as \(\theta =1/2\), \(\theta &gt; 1/3\),..
+	<br> 3) &#9755; In hypothesis testing we need to decide between two contradictory hypothesis 
+	\(H_0\) and \(H_1\).
+	<br> 4) &#9755; \(S ,S_0\) and \(S_1\) are sets such as   \(H_0:\theta \in S_0\) and
+	 \(H_1:\theta \in S_1\), \(S=S_0 \cup S_1\)
+	 <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    In the example above \(S=[0,1]\), \(S_0=1/2\), \(S_1=[0,1] - \left\{ 1/2 \right\}\)
+  </span>
+  <br> 5) &#9755; If \(S_0\) contains only one value we say that \(H_0\) is a simple hypothesis, 
+  conversely \(H_1\) is a composite hypothesis.
+  <br> 6) &#9755; A statistic is a real valued function \(W(X_1,..,X_n\) of the data 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Y is a statistic because it is a function of the \(X_i\)
+  </span>
+  <br> 7) &#9755; A test statistic is a statistic based on which we build our test.
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Y in our example
+  </span>
+    <br> 8) &#9755; The acceptance region is the region of all possible values of W for which we 
+    would accept H0.
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \left\{41,..,60 \right\}in our example
+  </span>
+   <br> 9) &#9755; R-A is called the rejection region
+   \(\left\{0,..,40 \right\} \cup \left\{61,..,100 \right\}\) 
+    <br> 10) &#9755; Type I error is the event that we reject \(H_0\) when it is true, that is 
+   <br> 11) &#9755; The test is level \(\alpha\)    \(P(Type\; I \;error) &le;\alpha \)
+      <br> 12) &#9755; Type II error is the event that we accept \(H_0\) when it is false.
+<!-- *****************************************************Example******************************************* -->
+<!-- *****************************************************Example******************************************* -->
+<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 1: Radar System Detection Error</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   A radar system can detect an aircraft by measuring a received signal, the received signal is 
+   a RV X such that  \(X=\theta+e\), where \(\theta=\mu\) if an aircraft is present and \(\theta=0\)
+    if there is no aircraft and \(e \sim N(0;\sigma^2)\).
+   
+    <br>1) If the system detects an aircraft,  can we conclude that an aircraft is present ?
+    <br>2) Find the probability of type II error, if \(\mu=1\) and \(\sigma=1 \)
+<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+<div class="tooltiptext" >
+<div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    Let \(H_0\) be the null hypothesis, that is no aircraft is present, so \(H_1\) is the hypothesis 
+    related to the presence of an aircraft.
+    When the radar gets a signal it means that \(\theta=1\), so \(X=1+e\), where \(e \sim N(0,1)\).
+
+    <br>So the received signal is either from the distribution in the left (in green) with 
+    mean 0 or from the distribution on the right with blue color with mean 1.
+    <br> Consider the green distribution e, 95% of the values are less than  
+    \(t=\sigma_e.z_{0.05}+\mu_e=\sigma.\Phi^{-1}(0.95)+0=1.645.\sigma\).
+    (the value corresponding to red stripped area in figure  155)
+    <br>So if the radar receiver measures a signal of magnitude greater than 
+    \(1.645.\sigma\) we
+     will conclude with 95% confidence the presence of an aircraft, otherwise we accept
+      the null   hypothesis (test inconclusive) .
+    <br><b> NB: </b> We don't care about smaller values, that is values in the leftmost of the 
+    green bell curve, because they, just like most values, indicate the absence of an aircraft.
+    <br>Now let's calculate the Type II error, that is the probability of accepting \(H_0\) while 
+    we should've reject it that accept \(H_1\), in our example the Type II error corresponds to 
+    missing a present aircraft.
+    <br>\(P(\beta)=P(X &le;t)=P(\mu+\sigma.z &le;1.645.\sigma)=
+    P(z &le;\frac{1.645.\sigma-\mu}{\sigma})\), for \(\mu=1 \) and \(\sigma=1/4\) we have 
+    \(P(\beta)=\Phi(-2.355)=0.00926\)
+     <br>Figure 155-1,-2-3 gives  the chart of both bell curves with Mean =0 and Mean=1, 
+     notice that as:
+     <br>- The Mean gets greater we have better results.
+     <br>- Sigma gets smaller we have better results, as the curves are less dispersed.
+    <br>The following Excel file  
+    <a href="/data/Beta error.xlsx" download="bettaError">Beta Error</a> 
+    gives you the chart of both distribution as well as the area related 
+    to \(\alpha\) and \(\beta\) error.
+   
+ <br>   \( \frac{1}{\sqrt{2.\pi}.\sigma_1}e^{\frac{(x-\mu_1)^2}{2}}=
+    \frac{1}{\sqrt{2.\pi.\sigma_2}}e^{\frac{(x-\mu_2)^2}{2}}\) 
+    \( \Rightarrow e^{\frac{(x-\mu_1)^2}{2}}=\sqrt{\frac{\sigma_1}{\sigma_2}}e^{\frac{(x-\mu_2)^2}{2}} \)
+\( \Rightarrow (x-\mu_1)^2=2.Ln(\sqrt{\frac{\sigma_1}{\sigma_2}})+(x-\mu_2)^2 \Rightarrow \)
+\(x=\frac{\mu_2^2-\mu_1^2+2.Ln(\sqrt{\frac{\sigma_1}{\sigma_2}})}{2.(\mu_2-\mu_1)} \)
+ particularly if \( \mu_1=0 \) and \(\sigma_1=\sigma_2\)  we have \( x=\frac{\mu_2}{2}  \)
+  <img src="/img/figure155-1.png"  style="float: right; width: 80%; height: 80%;" class="image1">
+  <img src="/img/figure155-2.png"  style="float: right; width: 80%; height: 80%;" class="image1">
+  <img src="/img/figure155-3.png"  style="float: right; width: 80%; height: 80%;" class="image1">
+</div>
+</div>
+</div>
+</div>
+</div> 
+<h3 id="7_4_3">7.4.3 Testing for the Mean</h3>
+Depending on the inference  we want to make there are different cases:
+<h4 id="7_4_3_1">7.4.3.1 Two sided test</h4>
+ &#9755;   \(H_0:\mu=\mu_0\), \(H_1:\mu \neq \mu_0\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>  \(\mu \neq \mu_0 \Leftrightarrow \mu &lt; \mu_0 \;or \; \mu &gt; \mu_0\) ,
+   the term "two" is 
+    used because \(H_1\) is two sided.
+    <br>In this test we have not only to decide whether  \(\mu \neq \mu_0\), but we have to 
+    decide in which side \(\mu\) resides, that is if you tell for example \(\mu &gt; \mu_0\), you 
+    still have to  decide if \(\mu=\mu_0\) or \(\mu &lt; \mu_0\)
+  </span>
+<br>&nbsp;&nbsp;	&#x27A5; Normal distribution
+ <!-- //////////////////////////////////Example 1///////////////////////////////////////////////////// -->
+ <div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 1 : Estimating the mean based on a sample from Normal Distribution 
+"known variance"</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+ Based on the random sample  \(X_1,..,X_n\)  from the distribution \(N(\mu,\sigma^2)\),
+<br>1. When can we decide with 95% confidence that \(\mu=\mu_0\) ?
+<br>2. Find \(\beta\) error.
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+  1. In this case \(H_0:\mu=\mu_0\) and \(H_1:\mu \neq \mu_0\), on the other hand 
+    \(\frac{\overline{X}-\mu}{\frac{\sigma}{\sqrt{n}}} \sim N(0,1)\).
+    <br>\(H_0=1 \Rightarrow \frac{\hat{\overline{X}}-\mu_0}{\frac{\sigma}{\sqrt{n}}} \in 
+    [-z_{\frac{\alpha}{2}},z_{\frac{\alpha}{2}} ]\) with a confidence of 95%, where \(\hat{\overline{X}}\)
+     is the statistic of the mean based on the actual sample.
+     <br> So if \(\frac{\hat{\overline{X}}-\mu_0}{\frac{\sigma}{\sqrt{n}}} \notin 
+     [-z_{\frac{\alpha}{2}},z_{\frac{\alpha}{2}}]\), 
+     that is  \(\hat{\overline{X}} \notin  [\mu_0-z_{\frac{\alpha}{2}}.\frac{\sigma}{\sqrt{n}},\mu_0+
+     z_{\frac{\alpha}{2}}.\frac{\sigma}{\sqrt{n}} ]\) 
+     we can reject \(H_0\) otherwise we accept it
+      (test inconclusive). 
+      <br><b>NB:</b> \(H_0=1\) means \(H_0\) is true.
+      <br>  On the other hand since 
+        \(\frac{\overline{X}-\mu}{\frac{\sigma}{\sqrt{n}}} \sim N(0,1)\) that is 
+        \(\frac{\overline{X}-\mu_0}{\frac{\sigma}{\sqrt{n}}} \in 
+    [-z_{\frac{\alpha}{2}},z_{\frac{\alpha}{2}} ]\) with a probability of 0.95 or with confidence 
+    of 95%, 
+    which is practically true for all cases, hence we can write using simple math that 
+    \(\mu_0 \in  [\overline{X}-z_{\frac{\alpha}{2}}.\frac{\sigma}{\sqrt{n}},\overline{X}+
+     z_{\frac{\alpha}{2}}.\frac{\sigma}{\sqrt{n}} ]\), this is the \((1-\alpha)\) confidence interval for 
+     the mean.
+    <br>2. The \(\beta\) error corresponds to accepting \(H_0\) while it is false, that is 
+    \(\mu \neq \mu_0\), 
+    so \(\beta(\mu)=P(\text{Type II error}|_{\mu})=
+    P(\mu_0-z_{\frac{\alpha}{2}}.\frac{\sigma}{\sqrt{n}}&le; 
+    \overline{X}  &le;\mu_0+z_{\frac{\alpha}{2}}.\frac{\sigma}{\sqrt{n}}_{\mu})=\)
+    \( P( \frac{\mu_0-\mu}{\frac{\sigma}{\sqrt{n}}} -z_{\frac{\alpha}{2}}&le; 
+    \frac{\overline{X}-\mu}{\frac{\sigma}{\sqrt{n}}}  &le;
+     \frac{\mu_0-\mu}{\frac{\sigma}{\sqrt{n}}} +z_{\frac{\alpha}{2}})  =\) 
+     \( P( \frac{\mu_0-\mu}{\frac{\sigma}{\sqrt{n}}} -z_{\frac{\alpha}{2}}&le;  z  &le;
+     \frac{\mu_0-\mu}{\frac{\sigma}{\sqrt{n}}} +z_{\frac{\alpha}{2}}) =
+     \Phi( \frac{\mu_0-\mu}{\frac{\sigma}{\sqrt{n}}} +z_{\frac{\alpha}{2}})-
+     \Phi(\frac{\mu_0-\mu}{\frac{\sigma}{\sqrt{n}}} -z_{\frac{\alpha}{2}}) \)
+      <img src="/img/figure156-1.png"  style="float: right; width: 82%; height: 85%;" class="image1">   
+      <img src="/img/figure156-2.png"  style="float: right; width: 82%; height: 85%;" class="image1">  
+<br><b>NB:</b>Notice that the closer \(\mu_0\) to \(\mu\) the bigger the \(\beta\) is, 
+this is intuitive because our estimation will be more error prone if we are comparing 
+relatively two values that are close to each other. 
+ <br><br><br><br> <br><br><br><br>
+</div>
+</div>
+</div>
+  </div>
+	</div>
+ <!-- ///////////////////////////////////////Example 2//////////////////////////////////////////////// -->
+ <div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 2: Estimating the mean based on a sample from Normal Distribution 
+"unknown variance"</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   Based on the random sample  \(X_1,..,X_n\)  from the distribution \(N(\mu,\sigma^2)\), 
+   where \(\sigma\) is unkown
+<br>1. When can we decide with 95% confidence that \(\mu=\mu_0\) ?
+<br>2. Find \(\beta\) error.
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    Since the variance is unkown we use the sample variance \(S^2\), so 
+    \(H_0=1 \Rightarrow   \frac{\overline{X}-\mu}{\frac{S}{\sqrt{n}}} \sim t(n-1)\)\)
+    <br>With the same reasoning as above we can say that if  
+    \(\hat{\overline{X}} \notin  [\mu_0-t_{\frac{\alpha}{2},n-1}.\frac{\sigma}{\sqrt{n}},\mu_0+
+     t_{\frac{\alpha}{2},n-1}.\frac{\sigma}{\sqrt{n}} ]\) 
+     we can reject \(H_0\) otherwise we accept it
+      (test inconclusive). 
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+&nbsp;&nbsp;	&#x27A5; Non Normal distribution
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br>    In the examples above we supposed that the distribution is normal, the calculation 
+	we did in those examples is still valid even if the distribution is not normal provided 
+	the sample is sufficiently large.
+  </span>
+	<h4 id="7_4_3_2">7.4.3.2 One sided test</h4>
+&#9755; \(1^{st} case:\) \(H_0:\mu &le;\mu_0\), \(H_1:\mu &gt;\mu_0\), 
+
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   Suppose \(H_0\) is true that is \(\mu &le;\mu_0\), 
+   considering the distribution \(N(\mu, \sigma)\) we have
+\(\overline{X} &le; z_{1-\alpha}.\sigma+\mu\) with a confidence of \((1-\alpha)*100%\)
+ since\(\mu &le;\mu_0\) we have   \(\overline{X} &le; z_{\alpha}.\frac{\sigma}{\sqrt{n}}+\mu_0\), so 
+ finding a statistic that satisfies  \(\hat{\overline{X}} &gt; z_{\alpha}.\frac{\sigma}{\sqrt{n}}+\mu_0\), 
+ would suggest that this a contradiction with \(H_0\), that is we can reject this hypothesis 
+ with a confidence of  \((1-\alpha)*100%\).
+  </span>
+ <br>&nbsp;&nbsp; \(2^{nd} case:\) \(H_0:\mu &ge;\mu_0\), \(H_1:\mu &lt;\mu_0\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    
+  </span>
+  <br><br>
+  <div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Sumarry
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure158.png"  style="float: right; width: 62%; height: 85%;" class="image1">	
+  </span>
+ </div>
+ <h3 id="7_4_4">7.4.4 P values</h3>
+ P-value is the lowest significance level α that results in rejecting the null hypothesis.
+ 
+ <div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example: p-value in a one-sided test</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+
+   Based on a sample of size n from a Normal distribution \(N(\mu,\sigma^2)\) and
+    knowing that the variance is known, find the p-value for the following one-sided test:
+  <br> \(H_0: \mu=\mu_0 \)
+  <br> \(H_1: \mu &ge; \mu_0\) 
+   
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+\(H_0\) is true implies that 
+\(P(\frac{\overline{X}-\mu_0}{\frac{\sigma}{\sqrt{n}}} &le;z_{p})=1-p\), for our sample
+ let's 
+put \(\hat{z}=\frac{\hat{\overline{X}}-\mu_0}{\frac{\sigma}{\sqrt{n}}}\), so we have 
+\(P(\hat{z} &le;z_{p})=1-p\), now \(\hat{z}\) is fixed, p is not yet defined, 
+\(H_0\) can be rejected if \(z_p &lt;  \hat{z}\) but the maximum value of \(z_p\) for which 
+we can reject \(H_0\) is \(\hat{z}\) we know that as \(z_p\) increases \(p\) decreases so 
+the maximum value of \(z_p\) corresponds to the minimum value of p.
+<br>So the p value corresponds to \(z_p=\hat{z}\), that is \(1-p=\Phi(\hat{z})\), hence 
+\(p=1-\Phi(\hat{z})\).
+
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	<h3 id="7_4_5">7.4.5 The Likelihood Ratio Test</h3>
+	&#9755; If \(H_0:\theta=\theta_0\) and \(H_1: \theta=\theta_1 \), 
+	we reject \(H_0\) if \(\frac{L(x_1,..,x_n,\theta_0) }{L(x_1,..,x_n,\theta_1} &lt;c\) and 
+	accept it otherwise, where 	\(0 &le;c &le;1\).
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br> L is the   likelihood function and c is a constant chosen so that \((1-\alpha)\%\) 
+  of the values respect the 
+  condition \(\lambda &ge;c\), that is \(x \) is more likely to fall in the distribution 
+  with \(\theta_0\) parameter than with \(\theta_1\) parametre.
+    <br>	This test is more general than the tests we have seen so far, consider the 
+    following test:
+	<br>We would accept \(H_1\) so reject \(H_0\) if the sample we got \(x_1,..,x_n\) has 
+	a much greater likelihood with \(\theta_1\) than with \(\theta_0\), that is \(l_1\) is 
+	much greater 	than \(l_0\), where 	\(l_1=L(x_1,..,x_n,\theta_1) \) and
+	 	\(l_0=L(x_1,..,x_n,\theta_0) \), 
+	so we choose a threshold c such that we reject \(H_0\) if \(\lambda &ge;c\), where 
+	\(\lambda=\frac{l_1}{l_2}\)
+	  </span>
+	  
+<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 1: Back to the radar system example</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   Let X be the signal measured by the radar system receiver, 
+ we have \(X=\theta+e\), 
+   where \(e \sim N(0,\sigma^2)\), and \(\theta =\theta_1=1\) if an aicraft is present and 
+   \(\theta=\theta_0=0\) if there is no aircraft.
+   <br>If x is the value measured by the receiver, when can we say with a 
+   95% confidence that an aircraft is present ? 
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   Our hypothesis are like the following:
+   <br>\(H_0:\theta=\theta_0=0\) and \(H_1:\theta=\theta_1=1 \), that is we are testing 
+   the presence of an aircraft against the presence of an aircraft.
+   <br>We have  \(
+    \lambda(x)=\frac{L(x,\theta_0)}{L(x,\theta_1)}=
+   \frac{f_X(x,\theta_0)}{f_X(x,\theta_1)}=
+   \frac{ \frac{1}{\sqrt{2.\pi}.\sigma}e^{-\frac{(x-\theta_0)^2}{2.\sigma^2}}}
+   {\frac{1}{\sqrt{2.\pi.\sigma}}e^{-\frac{(x-\theta_1)^2}{2.\sigma^2}}}=
+e^{-\frac{(x-\theta_0)^2}{2.\sigma^2}+\frac{(x-\theta_1)^2}{2.\sigma^2}}=
+e^{\frac{2.x.(\theta_0-\theta_1)-\theta_0^2+\theta_1^2}{2.\sigma^2}}=
+e^{\frac{-18.x+9}{2}}\).
+<br>If \(H_0\) were true, there must be a number c such that 
+\(\lambda &ge;c\)  with a probability of \((1-\alpha)\%)\), 
+ so \(e^{\frac{-18.x+9}{2}} &ge;c\), that is 
+\( {\frac{-18.x+9}{2}} &ge; Ln(c) \), thus \( x &le; \frac{9-2.Ln(c)}{18}\), let's put 
+\(c'= \frac{9-2.Ln(c)}{18}\), so we must find a number c' such that 
+\(P(x &le; c')=1-\alpha\), that is \(P(\frac{x-\theta_0}{\sigma} &le; 
+\frac{c'-\theta_0}{\sigma})=1-\alpha  \) , hence
+ \(\Phi(\frac{c'-\theta_0}{\sigma})=1-\alpha \), that is 
+ \(\frac{c'-\theta_0}{\sigma}=\Phi^{-1}(1-\alpha)\), that is
+  \( c'=\sigma.\Phi^{-1}(1-\alpha)+\theta_0\).
+  <br>In conclusion \(H_0\) is acceped if \(x &le;c'\) and rejected otherwise.
+   
+
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	&#9755; If \(H_0:\theta \in S_0  \) and \(H_1:\theta \in S_1\), 
+	we reject \(H_0\) if \(\frac{Sup\left\{L(x_1,..,x_n,\theta_0); \theta \in S_0 \right\}}
+	{Sup\left\{L(x_1,..,x_n,\theta_1); \theta \in S_0 \right\}} &lt;c\) and 
+	accept it otherwise, where 	\(0 &le;c &le;1\).
+	
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    where \(S_0\) and 	\(S_1\) is a partition of S.
+  </span>
+  <br><br>
+===========================================================================================
+===========================================<b>Practice</b>==========================================
+===========================================================================================
+	<br><br>
+	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+
+<b>Practice 1 : Hypothesis testing for \(Geometric(\theta)\) distribution</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+  We observe an outcome of a RV X where \(X \sim Geometric(\theta)\).
+  <br>If \(H_0:\theta=\theta_0\) and \(H_1:\theta=\theta_1\) where 
+  \(\theta_1 &lt; \theta_0\), when can \(H_0\) be rejected, with a significance level 
+  \((1-\alpha)\%\) (take \(\theta_0=0.5\)) ? 
+ 
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+  We have \(P(X &le; k)=\sum_\limits{i=0}^{k}P(X=i)\), suppose \(H_0\) is true, then 
+  \(P(X=i)=(1-\theta_0)^{i-1}.\theta_0\), so 
+  \(P(X &le; k)=  \theta_0.\sum_\limits{i=1}^{k}(1-\theta_0)^{i-1}
+  =\theta_0.\sum_\limits{i=0}^{k-1}(1-\theta_0)^{i}
+  = \theta_0.\frac{1-(1-\theta_0)^k}{\theta_0}=1-(1-\theta_0)^k  \), 
+  (note that we're looking for k such that with the null hypothesis assumption, 
+  the majority \((1-\alpha\%)\) of samples fall below it, that is if we found a sample not
+   respecting this condition we will reject the null hypothesis), 
+so  \(P(X &le; k)=1-\alpha\) means that \((1-\theta_0)^k=\alpha\), that is 
+\(k.Ln(1-\theta_0)=Ln(\alpha)\), hence \(k=\frac{Ln(\alpha)}{Ln(1-\theta_0)}\), 
+for \(\theta_0=0.5 \) and \(\alpha=0.05\), we have 
+\(k=\frac{Ln(\alpha)}{Ln(1-\theta_0)}=4.32\), since k is a positive integer and we want 
+to have at least \((1-\alpha)\%\) of cases below k, k must be arronded at upper integer 
+greater than 4.32, that is k=5.
+<br>We conclude then that if \(H_0\) were true \(1-\alpha)\%\) of the oucome must 
+fall in the set \( \left\{ 1,2,3,4,5 \right\}\), that is if an outcome is not in that set, we would 
+reject the null hypothesis. 
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+
+   
+ <br><br><br><br>
+
+
+  <br><br>
+</div>
+
+</body>
+</html>

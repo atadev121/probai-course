@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="utf-8">
+<title>Set theory,latex.codecogs.com</title>
+</head>
+<script>
+
+    </script>
+
+<body>
+
+	<div layout:fragment="content">
+
+
+		<h1 id="6">6. Sampling Distributions and Limits </h1>
+		<h2 id="6_1">6.1 Introduction </h2>
+		In a manufacturing plant producing chocolate bars, we set the manufacturing process so that the 
+		weight of each bar is \(200g &plusmn; 10g \), we know that distribution of weight is N(200g,10g)
+		, in order to control the average weight we draw a sample of n units each hour, and we calculate
+		 the mean of the sample \(X_1,X_2,..,X_n\), we want to have an idea about the average weight of the
+		  chocolate bars, the sample is drawn at the same process conditions (because it is drawn at 
+		  a relatively short interval of time, so the process "has not enough time to change significantly")
+		  so we can suppose that the  \(X_i \) are identically distributed with expected value \(\mu_x\) and 
+		  variance \(\sigma_x^2\), drawing a sample doesn't affect 
+		  the process, so the \(X_i \) are independent, finally we can put \(X_i \sim N(\mu_x,\sigma_x^2) \), 
+		  our problem is to evaluate \(\mu_x \) and \(\sigma_x\) depending on the values of \(X_i\), 
+		 we can compute for example  \(Y=\frac{X_1+X_2+..+X_n }{n} \), can we conclude that
+		  What is P( |Y_s-\mu_x| &le; 0.9), where \(Y_s\) is the value of Y for the considered 
+		  sample. 
+		  <br>Sometimes we don't even know the distributions of \(X_i\), but we still can figure out 
+		  the \(\mu_x\) using a theorem called central limit theorem, this theorem requires that sample 
+		  size is big enough, when n is not big enough we can use the Monte Carlo method.
+		  <h2 id="6_2">6.2 Convergence </h2>
+		  <h3 id="6_2_1">6.2.1 Convergence in probability </h3>
+	&#9755; Definition:	  \(X_n  \overset{P}{\rightarrow} Y \Leftrightarrow  \)
+		   \(\displaystyle \lim_{ n \to \infty}P(|X_n-Y | \geqslant \epsilon )=0  \) for all 
+		   \(\epsilon &gt; 0  \).
+
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+    Where  \(\left\{X_i \right\} \) is an infinite sequence of RVs, and Y is a RV.
+    <br> we say \(\left\{X_i \right\} \) converges in probability to Y.
+</span>
+<br> &#9755; \(\overline{X} \overset{P}{\rightarrow} \mu \).
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually, applying Chebychev's inequality to \( \overline{X}\) gives 
+    \(\forall \epsilon &gt;0 \; P(|\overline{X}-\mu| &ge;\epsilon) &le; \frac{Var(\overline{X})}{\epsilon^2}=
+    \frac{\sigma^2}{n.\epsilon^2}
+     \), that is \(\displaystyle \lim_{ n \to \infty} P(|\overline{X}-\mu| &ge;\epsilon)=0\)
+  </span>
+<h3 id="6_2_2">6.2.2 The Weak Law of Large Numbers Theorem  </h3>
+&#9755;  \(M_n  \overset{P}{\rightarrow} \mu \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Where \(M_n=\frac{X_1+X_2+..+X_n}{n} \), and \(\left\{X_i \right\}\) is a sequence of 
+    independent RV having the same mean \(\mu  \) and finite variances.
+     <br>Actually, we have \( E(M_n)=\frac{E(X_1)+E(X_2)+..+E(X_n)}{n}=\frac{n.\mu}{n}=\mu\).
+    <br>For the variance we have \(Var(M_n)= \frac{Var(X_1)+Var(X_2)+..+Var(X_n)}{n^2} \), since all 
+    variances  are finite, there is a real number \(\lambda \), such as \(Var(X_i) \leqslant  \lambda \), 
+    that is 
+     \(Var(M_n)  \leqslant \frac{\lambda+\lambda+..+\lambda}{n^2} = \)
+       \(\frac{n.\lambda}{n^2}=\)
+       \(\frac{\lambda}{n}\), so   \(Var(M_n) \leqslant \frac{\lambda}{n} \).
+       <br>Applying Chebychev's inequality on \(M_n \), gives us
+        \(P(|M_n-\mu_{M_n}| \geqslant \epsilon) \leqslant \frac{Var(M_n)}{\epsilon^2} \), since 
+        \(\mu_{M_n}=\mu \) and \(Var(M_n) \leqslant \frac{\lambda}{n} \), we have 
+        \(P(|M_n-\mu| \geqslant \epsilon) \leqslant \frac{\lambda}{n.\epsilon^2} \), so 
+        \( \displaystyle \lim_{n \to \infty} P(|M_n-\mu| \geqslant \epsilon)=0\), that is 
+        \(\left\{M_n \right\} \overset{P}{\rightarrow} \mu \).
+    <br><b>N.B</b>
+    <br>1. When n is fixed that is the variability of \(M_n\) is caused only by the variability 
+    of \(\left\{X_i \right\}\), we denote it in this case by \(\overline{X}\), in this case we have 
+    a different RV for each n, that is a sequence of RVs, if n is not fixed all the randomness 
+    (randomness of Xi, and of n) is studied by the same RV, we shall not discuss this case 
+    here.
+    <br>2. If \(\left\{X_i \right\}\) were i.i.d we don't even need that their variance to be 
+    finite.
+  </span>
+  <h3 id="6_2_3">6.2.3 Convergence with probability 1  </h3>
+  &#9755; <b>Definition:</b> \(X_n \overset{a.s}{\rightarrow} Y \Leftrightarrow \)
+  \( P(\displaystyle \lim_{n \to \infty} X_n=Y)=1\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Where \(\left\{X_i \right\}\) is a sequence of RVs and Y is a RV.
+    <br>We say that \(\left\{X_i \right\}\) converges to Y with probability 1 or almost surely (a.s), 
+     \( \displaystyle \lim_{n \to \infty} X_n=Y\) can be simply written in the following form: 
+       \(X_n {\rightarrow} Y \), so we can write for example 
+       \( P(X_n {\rightarrow} Y)=1\),
+       <br>This definition is equivalent to say:
+       <br>\(X_n\) converges to X with probability 1 (or almost surely) if there is a set 
+       \(A \subset \Omega\), 
+       such as:
+       <br>1. \(\forall w \in A \;  \displaystyle \lim_{n \to \infty} X_n(w)=X(w)\)
+       <br>2.P(A)=1 
+  </span>
+    <h3 id="6_2_4">6.2.4 Convergence with probability 1 implies converge in probability </h3>
+    &#9755;  \(X_n \overset{a.s}{\rightarrow} Y \Rightarrow \)
+    \(X_n \overset{P}{\rightarrow} Y \).
+   
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>  Let \(\epsilon &gt;0 \), let's prove 
+    \(\displaystyle \lim_{ n \to \infty}P(|X_n-Y | \geqslant \epsilon )=0 \)
+     <br> Let \(\left\{A_i \right\}\) a sequence of events such that 
+    \(A_n= \left\{s:|X_m(s)-Y(s)| &ge; \epsilon , \forall m &ge;n\right\}\), so we have 
+ \(A_n=\bigcup\limits_{i=n}^{\infty}B_i \), where 
+ \(B_i= \left\{s:|X_i(s)-Y(s)| &ge; \epsilon \right\}\), 
+ so we have \(A_1 \supset A_2 \supset  ..A_{\infty }  \), we can write thus 
+ \(A_{\infty }=\bigcap\limits_{i &ge;1}A_i\) and
+ \( \displaystyle \lim_{ n \to \infty}A_n=A_{\infty } \), with continuity of probability we have
+ \( \displaystyle \lim_{ n \to \infty}P(A_n)=P(A_{\infty }) \), now let's prove that 
+ \(P(A_{\infty })=0 \).
+ <br>Actually \(X_n \overset{a.s}{\rightarrow} Y\) mean that \(P(E)=1\), where
+ 
+ \(E=\left\{s:\displaystyle \lim_{ n \to \infty}X_n(s)=Y(s)  \right\}\), thus 
+ \(\overline{E}=\left\{s:\displaystyle \lim_{ n \to \infty}X_n(s) \neq Y(s)  \right\}\)  and 
+ we have \(P(\overline{E})=0\), let  \(s \in E\), there is a number N for which we have 
+ \( |X_n(s)-Y(s)| &lt;\epsilon \) for every n &ge;N , that is \(s \notin A_N\) , 
+ that is \(s \notin A_{\infty}\), so we proved that 
+ \(s \in E  \Rightarrow s \notin A_{\infty} \), that is
+  \(s \in A_{\infty} \Rightarrow s \notin E\), so \(A_{\infty} \subset \overline{E}  \), that is 
+\( P(A_{\infty} ) &le; P(\overline{E} )\), that is \( P(A_{\infty} ) &le; 0\), we conclude then 
+that \( P(A_{\infty} )= 0\).
+<br>By definition we have \( B_n \subset A_n \), that is 
+\(\left\{s: |X_n(s)-Y(s)| &ge;  \epsilon \right\} \subset A_n \), that is \(P(|X_n(s)-Y(s)| &ge; \epsilon ) &le; P(A_n) \)
+ so \(\displaystyle \lim_{ n \to \infty}P(|X_n(s)-Y(s)| &ge; \epsilon ) &le; P(\displaystyle \lim_{ n \to \infty}A_n) \)
+ , we conclude then that \(\displaystyle \lim_{ n \to \infty}P(|X_n(s)-Y(s)| &ge; \epsilon )=0\)
+  </span>
+   <h3 id="6_2_5">6.2.5 Strong Law of Large Numbers </h3>
+  &#9755;  \(M_n  \overset{a.s}{\rightarrow} \mu \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+      Where \(M_n=\frac{X_1+X_2+..+X_n}{n} \), and \(\left\{X_i \right\}\) is a sequence of RV having the
+     same mean \(\mu  \) and finite variances.
+  </span>
+   <h3 id="6_2_6">6.2.6 Convergence in Distribution</h3>
+  &#9755;\(X_n \overset{D}{\rightarrow} Y \Leftrightarrow \)
+  \(F_{X_n}(x)=F_X(x) \;\forall x \in \mathbb{R}\) where \(F_X\) is continuous
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    
+  </span>
+<br>
+  
+  
+  <div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example:Convergence to Exponential</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   Let \(\left\{X_i \right\} \) be a sequence of RVs where 
+  \(F_{X_n}(x)=\left\{\begin{matrix}
+1-(1-\frac{1}{n})^{nx}  &  &  for \; x &gt;0  \\
+ 0  &  &  otherwise  \\
+
+\end{matrix}\right.\).
+<br>Show that \(X_n \overset{D}{\rightarrow} Exponential(1) \)
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    <br> We have \(F_{X_n}(x)= 1-(1-\frac{1}{n})^{nx}=1-((1-\frac{1}{n})^{n})^x=\)
+    \(1-(\sum\limits_{k=0}^n \binom{n}{k}(\frac{-1}{n})^k)^x=\)
+        \(1-(\sum\limits_{k=0}^n (-1)^k \frac{n!}{k!.(n-k)!}(\frac{1}{n})^k)^x=\)
+   \(1-(\sum\limits_{k=0}^n (-1)^k.\frac{1}{k!}\frac{(n-k+1).(n-k+2)..(n-k+k)}{n^k})^x\), so 
+   \(\displaystyle \lim_{n \to \infty}F_{X_n}(x)=
+   1-(\sum\limits_{k=0}^n (-1)^k .\frac{1}{k!}\displaystyle \lim_{n \to \infty}\frac{(n-k+1).(n-k+2)..(n-k+k)}
+   {n^k})^x\), \(\displaystyle \lim_{n \to \infty}\frac{(n-k+1).(n-k+2)..(n-k+k)}{n^k}=1\), because 
+   there as many n's in the numerator as in denominator, so 
+   \(\displaystyle \lim_{n \to \infty}F_{X_n}(x)=
+   1-(\sum\limits_{k=0}^{\infty } (-1)^k.\frac{1}{k!})^x=1-(\sum\limits_{k=0}^{\infty }(-1)^k .\frac{1}{k!})^x\),  
+   we know from Taylor series that \(e^{-1}=\sum\limits_{k=0}^{\infty }(-1)^k .\frac{1}{k!}\), so
+     \(\displaystyle \lim_{n \to \infty}F_{X_n}(x)=1-e^{-x}=\int_{0 }^{x}-e^{-t}.dt=
+     \int_{-\infty }^{x}f_X(t).dt\), where \(f_X(t)\) is the PDF of Exponential(1), so 
+     \(\displaystyle \lim_{n \to \infty}F_{X_n}(x)=F_X(x)\), where \(X \sim Exponential(1)\)
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	<br>&#9755;  \(X_n \overset{P}{\rightarrow} X \Rightarrow X_n \overset{D}{\rightarrow} X\)
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>The opposite is not true, take this example:
+    <br>Let \(Y, X_1,X_2,.. \) be i.i.d RVs each can be equal to \(&plusmn;2 \), we have 
+    
+    \(\forall n \;P(| X-X_n | &ge; 1)=\frac{1}{2 } \), that is 
+    \(\displaystyle \lim_{n \to \infty} P(| X-X_n | &ge; 1)=\frac{1}{2 } \), so \(X_n\) doesn't converge in 
+    probability to X, on the other hand \(X_n\) converge to X in distribution because since they are i.i.d
+     we have \(\forall x \in \mathbb{R}  F_{X_n}(x)=F_X(x)\) , that is
+      \( \displaystyle \lim_{n \to \infty} F_{X_n}(x)=F_X(x)\) , so 
+      \(X_n \overset{D}{\rightarrow} X \).
+      <br>So we conclude that convergence in distribution doesn't imply convergence in probability.
+    <br>Let's prove that \(X_n \overset{P}{\rightarrow} Y \Rightarrow X_n \overset{D}{\rightarrow} Y\).
+    <br>To prove this we must prove that 
+    \(\displaystyle \lim_{n \to \infty} F_{X_n}(a)=F_X(a)\), where \(F_X\) is continuous
+ ,  so let's take a such that \(F_X\) is continuous.
+  <br>In general we have \(P(Y &le; a) &le; P(X &le;a+\epsilon)+P(|Y-X| &gt; \epsilon)  \)
+  for any RVs X and Y, any real number a and any positive real number \( \epsilon\).
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+      \(P(Y &le; a)=P(Y &le;a, X &le;a+\epsilon)+P(Y &le;a, X &gt;a+\epsilon )  \)
+     <br>  \(&le; P(X &le;a+\epsilon)+P(Y-X &le;a-X, a-X&lt; -\epsilon) \)
+       <br>\(&le; P(X &le;a+\epsilon)+P(Y-X &lt; -\epsilon) \)
+        <br>\(&le; P(X &le;a+\epsilon)+P(Y-X &lt; -\epsilon) +P(Y-X &gt; \epsilon)\)
+          <br>\(= P(X &le;a+\epsilon)+P(|Y-X| &gt; \epsilon) \)
+  </span>
+<br>Applying the inequality above for \(X_n \;and\; X\) we have 
+\(P(X_n &le; a) &le; P(X &le;a+\epsilon)+P(|X_n-X| &gt; \epsilon)  \), and for \(X\) and \(X_n\) and 
+\(a-\epsilon\) instead of a we have 
+\(P(X &le; a-\epsilon) &le; P(X_n &le;a)+P(|X-X_n| &gt; \epsilon)  \)
+so we have  
+ \(P(X &le; a-\epsilon) -P(|X-X_n| &gt; \epsilon)&le; P(X_n &le;a)
+ &le;P(X &le;a+\epsilon)+P(|X_n-X| &gt; \epsilon)
+   \), as n goes to infinity this inequality becomes 
+    \(P(X &le; a-\epsilon) -0 &le; P(X_n &le;a)
+ &le;P(X &le;a+\epsilon)+0
+   \), that is \(F_X( a-\epsilon)  &le; F_{X_n}(a) &le;F_X(a+\epsilon)\), as \(\epsilon\) 
+   approaches 0, this becomes 
+   \(F_X( a^-)  &le; \displaystyle \lim_{n \to \infty}F_{X_n}(a) &le;F_X(a^+)\), since \(F_X\) 
+   is continuous at a we have \(F_X( a^-)= F_X(a^+)=F_X(a) \), so 
+   \(\displaystyle \lim_{n \to \infty}F_{X_n}(a)=F_X(a) \), that is 
+   \(X_n \overset{D}{\rightarrow} X\)
+  
+  </span>
+  <br>&#9755; \(X_n \overset{a.s}{\rightarrow} X \Rightarrow X_n \overset{D}{\rightarrow} X\)
+ 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Because a.s convergence implies convergence in probability and the later implies convergence in 
+    distribution,  so the first type of convergence implies the last one.
+  </span>
+<br>&#9755; \(X_n \overset{D}{\rightarrow} c \Rightarrow X_n \overset{P}{\rightarrow} c\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> In this particular case where Y=c is constant the inverse of the property above is true,
+    actually, \(X_n \overset{P}{\rightarrow} c\), 
+    means \(\displaystyle \lim_{n \to \infty} F_{X_n}(x)=F_c(x)\), let \(\epsilon &gt;0 \), we 
+    have \(\displaystyle \lim_{n \to \infty} F_{X_n}(c-\epsilon)=F_c(c-\epsilon)=
+    P(c &le; c-\epsilon)=0 \), on the other hand 
+    \(\displaystyle \lim_{n \to \infty} F_{X_n}(c+\frac{\epsilon}{2})=\)
+       \( F_{c}(c+\frac{\epsilon}{2})=P(c &le;c+\frac{\epsilon}{2})=1 \), it follows that:
+       \(\displaystyle \lim_{n \to \infty} P(|X_n-c| &ge; \epsilon)=\)
+         \(\displaystyle \lim_{n \to \infty} P(X_n-c &ge; \epsilon \;or\; -(X_n-c) &ge; \epsilon)=\)
+   \(\displaystyle \lim_{n \to \infty} P(X_n &ge; c+\epsilon \;or\; c- \epsilon &ge; X_n)=\)
+     \(\displaystyle \lim_{n \to \infty} P(X_n &ge; c+\epsilon)+\displaystyle \lim_{n \to \infty} P( X_n &le; c- \epsilon )=\)
+          \(\displaystyle \lim_{n \to \infty} P(X_n &ge; c+\epsilon)+\displaystyle \lim_{n \to \infty} F_{ X_n}( c- \epsilon )=\)
+           \(\displaystyle \lim_{n \to \infty} P(X_n &ge; c+\epsilon)+F_{c}( c- \epsilon )=\)   
+           \(\displaystyle \lim_{n \to \infty} P(X_n &ge; c+\epsilon)+0 &le;\)  
+ \(\displaystyle \lim_{n \to \infty} P(X_n &gt; c+\frac{\epsilon}{2})\), we have 
+ \(P(X_n &gt; c+\frac{\epsilon}{2})=1-P(X_n &le; c+\frac{\epsilon}{2})=1-1=0)\), 
+ we conclude  then     \(\displaystyle \lim_{n \to \infty} P(|X_n-c| &ge; \epsilon) &le;0\), 
+ since probability is always positive we have 
+  \(\displaystyle \lim_{n \to \infty} P(|X_n-c| &ge; \epsilon)=0\)
+ 
+  </span>
+  <br>&#9755; \((X_n \overset{a.s}{\rightarrow} X \;and\;  Y_n \overset{a.s}{\rightarrow} Y)
+  \Rightarrow (X_n+Y_n \overset{a.s}{\rightarrow} X+Y)\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br>   \(X_n \overset{a.s}{\rightarrow} X\) means that P(A)=1, where 
+    \(A=\left\{s \in S : \displaystyle \lim_{n \to \infty} X_n(s)=X(s) \right\}\), the same 
+    goes for  \(B=\left\{s \in S : \displaystyle \lim_{n \to \infty} Y_n(s)=Y(s) \right\}\), that is 
+    \(P(B)=1\), in the general \(P(A \cap B) &ge;1-P(\overline{A})-P(\overline{B})\), since 
+    \(P(\overline{A})=P(\overline{B})=0  \) we have
+    \(P(A \cap B) &ge;1\), so \(P(A \cap B)=1\), now we consider the sequence 
+    \(Z_n, n=1,2,..\), where \(Z_n=X_n+Y_n\), 
+    let \(C=\left\{s \in S : \displaystyle \lim_{n \to \infty} Z_n(s)=X(s)+Y(s) \right\}\), 
+    Let \(s \in A \cap B \), that is \(\displaystyle \lim_{n \to \infty} Y_n(s)=Y(s) \) and 
+   \( \displaystyle \lim_{n \to \infty} X_n(s)=X(s)\), so 
+   \(\displaystyle \lim_{n \to \infty} X_n(s)+Y_n(s)=X(s)+Y(s)   \), it follows that 
+   \(\displaystyle \lim_{n \to \infty} Z_n(s)=X(s)+Y(s)   \), 
+   thus \(s \in  C\), so \(A \cap B \subset C\)
+    
+  </span>
+   <br>&#9755; \((X_n \overset{p}{\rightarrow} X \;and\;  Y_n \overset{p}{\rightarrow} Y)
+  \Rightarrow (X_n+Y_n \overset{p}{\rightarrow} X+Y)\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    
+  </span>
+  <br>&#9755; \((X_n \overset{d}{\rightarrow} X \;and\;  Y_n \overset{p}{\rightarrow} c)
+  \Rightarrow
+  
+  	  \left\{\begin{matrix}
+\;\;\;\;\;\;\;\;\;\;\;\;\;\;\diamond\; (X_n+Y_n \overset{d}{\rightarrow} X+c)  &  &   \\
+ \; \;\;\;\;\;\;\;\diamond\; (X_n.Y_n \overset{d}{\rightarrow} X.c) & & \\
+\diamond\; (\frac{X_n}{Y_n} \overset{d}{\rightarrow} \frac{X}{c}) 
+\end{matrix}\right.\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    This is called Slutsky's theorem
+  </span>
+  <br>&#9755; If \(X_i\) and \(Y_i\) are independent  we have: \((X_n \overset{d}{\rightarrow} X \;and \; Y_n \overset{d}{\rightarrow} Y )
+  \Rightarrow X_n.Y_n \overset{d}{\rightarrow} X.Y \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Actually this is true because \(F(X_n.Y_n)=F(X_n).F(Y_n)\)
+  </span>
+  <h3 id="6_2_7">6.2.7 Convergence of Moment Generating Function implies convergence in 
+  Distribution</h3>
+	&#9755; \(\forall s \in ]-s_0,s_0[ \; \displaystyle \lim_{n \to \infty} m_{X_n}(s)=m_X(s) \Rightarrow
+	X_n \overset{D}{\rightarrow} X \)
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Where \(X,X_1,X_2..\) are any RVs such that there exists \(s_0 &gt;0\) for which we have
+     \(\forall s \in  ]-s_0,s_0[ \;m_{X_n}(s) &lt;\infty\) and \(m_{X}(s) &lt;\infty\)
+  </span>
+  <h3 id="6_2_8">6.2.8 Continuous mapping theorem</h3>
+  &#9755;\(X_n \overset{a.s}{\rightarrow} Y \Rightarrow f(X_n) \overset{a.s}{\rightarrow} f(Y)\)
+  <br> &#9755;\(X_n \overset{P}{\rightarrow} Y \Rightarrow f(X_n) \overset{P}{\rightarrow} f(Y)\)
+   <br>&#9755;\(X_n \overset{D}{\rightarrow} Y \Rightarrow f(X_n) \overset{D}{\rightarrow} f(Y)\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Where f is a continuous function
+  </span>
+  <h2 id="6_3">6.3 Central Limit Theorem</h2>
+  &#9755; \(Z_n \overset{D}{\rightarrow} Z \), where 
+  \(Z_n=\frac{\overline{X}-\mu_{\overline{X} }}{\sigma_{\overline{X} }}=
+  \frac{\overline{X}-\mu}{\sigma/\sqrt{n}}  \), 
+   \( \overline{X}=\frac{S_n }{n} \), \( S_n=X_1+..+X_n \) and 
+  \(Z \sim N(0,1)\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br>   \(X_1,X_2,..\) are i.i.d RVs with expected value \(\mu\) and finite variance
+  \(\sigma^2\).
+<br> The following equalities are equivalent to the one in the definition:
+<br>1. \(\overline{X} \overset{D}{\rightarrow} N(\mu_{\overline{X}},\sigma_{\overline{X}}) \), 
+ that is  \(\overline{X} \overset{D}{\rightarrow} N(\mu,\frac{\sigma}{\sqrt{n} }) \).
+ <br>2. \(S_n \overset{D}{\rightarrow} N(\mu_{S_n},\sigma_{S_n}) \), that is 
+ \(S_n \overset{D}{\rightarrow} N(n.\mu,\sqrt{n}.\sigma) \).
+ <br>Proof:
+ <br>We proved in the chapter related to expectation that 
+ \(\displaystyle \lim_{n \to \infty}m_{Z_n(s)}=e^{\frac{s^2}{2}}\), so using the fact that 
+ convergence in moment generating function implies convergence in distribution we can 
+ conclude that \(Z_n \overset{D}{\rightarrow} Z \), because \( m_Z(s)=e^{\frac{s^2}{2}}\)
+  </span>
+  <div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 1:Cashier Service time</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+  A cashier spends in average 3 minutes serving a customer, 
+  this time has a standard deviation of 2mn, 
+  <br>1- What is the probability that the total time serving 40 customers be less than
+   90mn ?
+<br>2- What is the probability that the total time serving 50 customers be 
+between 90mn and  120?
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+ 1- Suppose \(X_i\) is the time serving customer i, we know that
+  \(\frac{\overline{X}-3}{1/\sqrt{40}} \overset{D}{\rightarrow} N(0,1) \), where 
+   \( \overline{X}=\frac{X_1+..+X_{40} }{40} \), 
+   \(P(X_1+..+X_{40} &le;90)=P(\frac{X_1+..+X_{40} }{40} &le;\frac{90 } {40 })=
+   P(\overline{X}  &le;\frac{90 } {40 })= P(\overline{X}-3  &le;\frac{90 } {40 }-3)=\)
+   \(P(\frac{\overline{X}-3}{\frac{2 }{\sqrt{ 40}}}      &le;
+   \frac{\frac{90 } {40 }-3 }{\frac{2 }{\sqrt{ 40}} }  )\)
+  , since n=40 is relatively big (generally n is considered approaching 
+   infinity if it's greater than 25), we can say that 
+  <br>    \(P(X_1+..+X_{40} &le;90)=\)
+   \(P(Z_{40}  &le; z )\), where  \(Z_{40} \approx N(0,1)\) 
+   and \(z=\frac{\frac{90 } {40}-3 }{\frac{2 }{\sqrt{ 40}} }  \), that is 
+    \(P(X_1+..+X_{40} &le;90)=\Phi(z)=\Phi(-2.371)=0.0089\)
+    <br>2- As explained above \(P(90 &le;X_1+..+X_{50} &le;120)=
+    P(z_l &le;Z_{50}  &le; z_h)=\Phi(z_h)-\Phi(z_l)  \), where
+     \(z_l=\frac{\frac{90 } {50}-3 }{\frac{2 }{\sqrt{ 50}} }  \) and 
+     \(z_h=\frac{\frac{120 } {50}-3 }{\frac{2 }{\sqrt{ 50}} }  \), so 
+     \(P(z_l &le;Z_{50}  &le; z_h)=0.0169-0.000019=0.0169
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+
+<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 2: Passing the Covid Test</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   In an infected area 1000 individuals are passing the Covid test, knowing that the 
+   probability of being tested positive is 0.4%:
+   <br>  What is the probability that the total
+   number of persons tested positive is between 383 and 416 ?
+   
+   <br>Use two approaches to solve  the problem, are the results the same ? how can 
+   we improve the accuracy of approximation by Normal distribution ?
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   Testing a person is a Bernoulli random experiment, if X is the result of the test then 
+   \(X \sim Bernoulli(p)\) where p=0.4, that is the probability of a person being 
+   tested positive \(P(X=1)=0.4\), and the probability of a person being tested 
+   negative is \(P(X=0)=0.6\).
+   <br><b>1. Using Binomial</b>
+   <br> Testing 1000 individuals is a Binomial Random Experiment, let Y be the number
+   of individuals tested positive, \(P(Y=x)=\binom{1000}{x}. p^x.(1-p)^ {1000-x}\) (p=0.4), so
+   <br>a) \(P(383 &le; Y &le; 416)=P(Y=383)+P(Y=384)+..+P(Y=416)=\)
+ \(  \binom{1000}{383}. p^{383}.(1-p)^ {1000-383}+
+   \binom{1000}{384}. p^{384}.(1-p)^ {1000-384}+..+
+   \binom{1000}{416}. p^{416}.(1-p)^ {1000-416}=0.7273
+   \) (you can use a computer program or a spreadsheet to calculate this).
+      <br><b>2. Using CLT</b>
+  <br>a)  Let \(S_n\) be the number of individuals tested positive, we can write 
+  \(S_n=X_1+..+X_n\), where \(X_i \sim Bernoulli(p)\)  (p=0.4 and n=1000)
+   \( \overline{X}=\frac{S_n }{1000} \), 
+  since 1000 is "relatively big" we can write: 
+  \(S_n \overset{D}{\rightarrow} N(n.\mu,\sqrt{n}.\sigma) \), that is 
+  \(S_n \overset{D}{\rightarrow} N(400,\sqrt{1000}.\sqrt{0.4*(1-0.4)} ) \), so 
+  \(S_{1000} \approx  N(400,15.492 ) \), so 
+  \(P(383 &le; S_n &le; 416)=0.7129  \)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    what is interesting about applying CLT is that we don't have to know the distribution 
+    of \(X_i\) we must know only the expected value and the standard deviation.
+  </span>
+ <br> The error or the difference between these two results is 2%, (this difference can 
+ get bigger if n.p gets smaller, see simulation of binomial by normal distribution).
+ <br>Part of the error is coming from the fact that we want to approximate a discrete 
+ distribution by a continuous one, so to overcome this issue we increase the range by 
+ a step (1) \([a,b]\), that is \(P(a &lt;S_n &lt; b)=P(a-0.5 &lt; S_n &lt; b+0.5) \), actually 
+ this gives better results, because \(P(382.5 &le; S_n &le; 416.5)=0.72733  \), the error 
+ in this case is 0.01%, this correction is called "continuity correction".
+ <br>There is an other method (let's call it hybrid method) to have an even more 
+ accurate result, that is by 
+ noting that binomial and normal coincide approximately at value X=1,2,.. that is 
+ \(P(383 &le; X &le; 416)=f(383)+..+f(416) \) where f is the probability density function of
+ the normal distribution approximating the Binomial(n,p), we get 
+  \(P(383 &le; X &le; 416)=f(383)+..+f(416)=0.72734 \), 
+  the error in this method is 0.001%
+  
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	
+	
+	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example:Simulating Binomial with Normal distribution</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   Let \(X \sim Binomail(n,p) \)?, how can X be approximated by a normal distribution, 
+   how the approximation improves varying n and p, take different values and see.
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    As you can see at the figure in the left the PMF of \(Binomial(n,p)\) and PDF of 
+    \(Normal(n.p,\sqrt{n.p*(1-p)})\) coincide pretty well at different value of X
+     even if Binomial is discrete and Normal is continuous.
+     The figure at the right confirms this by comparing CDF of the two distributions, 
+     a and b are two values chosen to calculate the probability 
+     \(P(a &le; S_n &le; b) \)
+     <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+      (in the excel file simulating the binomial approximation by 
+     normal distribution, we took \(a=\mu_{S_n}-\sigma_{S_n}=n.p+\sqrt{n.p*(1-p)}\) and
+     \(b=\mu_{S_n}-\sigma_{S_n}=n.p-\sqrt{n.p*(1-p)}\) 
+  </span>
+    using different method:
+    <br>1.PX is this probability calculated by using regular method (no approximation)
+    <br>2. PX' is this probability calculated by using Normal approximation
+       <br>2. PX'_ is this probability calculated by using Normal approximation with 
+       continuity correction.
+    <br>3. PX" is this probability calculated by using hybrid method
+        ###################################################################""
+    <br><b>Legend:</b>
+    <br>&#9755; %Error1: error of the approximation without continuity correction
+    <br>&#9755; %Error2: error of the approximation with continuity correction
+      <br>&#9755; %Error2: error of the approximation using hybrid method
+      <br>Figure 138-1 gives the simulation for smaller values of np, we can see that all 
+      method gives less accurate results.
+    <img src="/img/figure138.png"  style="float: right; width: 100%; height: 85%;" class="image1">	
+    <img src="/img/figure138-1.png"  style="float: right; width: 100%; height: 85%;" class="image1">			
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+
+
+	&#9755;\(Z_n' \sim N(0,1)\) where \(Z_n'=\frac{S_n-n.\mu}{\sqrt{n}.\sigma_n}\) and
+	\(\sigma_n \overset{a.s}{\rightarrow}  \sigma\) 
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+That is the CLT is true even if we divide by \(\sigma_n\) instead of \(\sigma\)
+</span>
+<h2 id="6_4">6.4 Important distributions based on normal distribution</h2>
+<h3 id="6_4_1">6.4.1 Linear transformation of Normal distributions</h3>	
+Let \(\left\{X_i \right\} \) be some independent RVs where 
+\( X_i \sim N(\mu_i,\sigma_i^2 ) \) let also U,V two RVs defined as 
+\(U=\sum\limits_{i=1}^n a_i.X_i\) and \(V=\sum\limits_{i=1}^n b_i.X_i\)
+where \(\left\{a_i \right\} \) and \(\left\{b_i \right\} \)
+are some constants, we have:
+<br>&#9755; \(Cov(U,V)=\sum\limits_{i=1}^n a_i.b_i.\sigma_i^2\).
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually \(Cov(U,V)=Cov(\sum\limits_{i=1}^n a_i.X_i,\sum\limits_{i=1}^n b_i.X_i )=\)
+ \(=\sum\limits_{i=1}^n \sum\limits_{i=1}^n a_i.b_j.Cov(X_i,X_j)\), since 
+ \(\left\{X_i \right\} \) are independent we have \(Cov(X_i,X_j)=0\), for every \(i \neq j\), 
+ that is \(Cov(U,V)=\sum\limits_{i=1}^n a_i.b_i.Cov(X_i,X_i)=
+ \sum\limits_{i=1}^n a_i.b_i.Var(X_i)=\sum\limits_{i=1}^n a_i.b_i.\sigma_i^2\)
+  </span>
+<br>&#9755; \(Cov(U,V)=0 \Leftrightarrow \) U and V are independent.
+, <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    
+  </span>
+<h3 id="6_4_2">6.4.2  The Chi-squared Distribution</h3>	
+1. \(\chi_n^2=X_1^2+..+X_n^2 \) where  \(X_i \sim N(0,1)\) and i.i.d is called
+Chi-squared distribution with n degrees of freedom.
+<br>2. \(E(\chi_n^2)=n\)  
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br>Actually,    \(E(X_i^2)=Var(X_i)+(E(X_i))^2=\sigma_{X_i}^2+1=0+1 \), that is \(E(X_i^2)=1  \)
+  
+  </span>
+  <br>3.  \(Var(\chi_n^2)=2.n \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ 
+  <br>Actually, 
+   \(Var(X_i^2)=E((X_i^2)^2)-(E(X_i^2))^2=E(X_i^4)-1^2=3-1=2\)
+  </span>
+<br>4. \(Z \sim \chi^2(1) \Rightarrow f_Z(z)=
+ \left\{\begin{matrix}
+\frac{1}{\sqrt{2.\pi.z} }.e^{\frac{-z}{2}} =
+\frac{(1/2)^{1/2} }{\Gamma(1/2) }.z^{-1/2}.e^{-z/2}  &  &  for \; z &gt;0  \\
+ 0  &  &  z &lt; 0  \\
++\infty  &  &  z= 0  \\
+\end{matrix}\right. \Rightarrow  Z \sim Gamma(1/2,1/2)\)
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+    <br>Actually in this case we have \(Z=X^2\) where \(X \sim N(0,1) \), so for \(z &gt; 0\) 
+    we can write 
+    \(P(Z &le; z)=P(0 &le; Z &le; z)=P(0 &le; X^2 &le; z)=P(-\sqrt{z} &le; X &le; \sqrt{z})=
+    \int_{ -\sqrt{z}}^{\sqrt{z}} \phi(x).dx=\int_{0}^{\sqrt{z}}\phi(x).dx-
+    \int_{0}^{-\sqrt{z}}\phi(x).dx=
+    \), let's do the variable change \(s=x^2\), we obtain:
+    <br>
+   \(P(0 &le; Z &le; z)=\int_{0}^{z}f_Z(s).ds= \int_{0}^{z}\phi(\sqrt{s}).(1/2).s^{-1/2}.ds- 
+  \int_{0}^{z}\phi(-\sqrt{s}).(1/2).(-s^{-1/2}.ds) \) 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    for the second integral  \(x=-\sqrt{s}\), because x is negative (since we are 
+    integrating between \(-\sqrt{z} \) and 0
+  </span>
+   <br>
+ that is \(f_Z(s)=\phi(\sqrt{s}).(1/2).s^{-1/2}-\phi(-\sqrt{s}).(1/2).(-s^{-1/2})=\)
+ \(\frac{ 1} {2.\sqrt{s} }.\phi(\sqrt{s})-\frac{-1} {2.\sqrt{s} }.\phi(-\sqrt{s})=\)
+  \(\frac{ 1} {\sqrt{s} }.\phi(\sqrt{s})=\frac{ 1} {\sqrt{2.\pi.s} }.e^{-s/2 }\)
+</span>
+<br>5. 
+ \(Z \sim \chi^2(n) \Rightarrow Z \sim Gamma(n/2,1/2) \Rightarrow 
+ f_Z(z)=\left\{\begin{matrix}
+\frac{ 1}{2^{n/2}.\Gamma(n/2)}.z^{(n/2)-1}.e^{-z/2}  &  &  for \; z &gt;0 \\
+ 0  &  &  for \; z &lt;0  \\
+\end{matrix}\right.\)
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+   <br>Actually, we can write 
+   \(Z=X_1^2+..+X_n^2 \) where \(X_i\) are i.i.d N(0,1), that is \(X_i^2\) are i.i.d 
+   \(\chi^2(1)\), that is \(X_i^2 \sim Gamma(1/2,1/2) \), that is for \(s &lt; 1/2\)
+   \(m_Z(s)=\prod\limits_{i=1}^{n}m_{X_i^2}(s)=
+   \prod\limits_{i=1}^{n}(1-\frac{s}{1/2})^{-1/2 }=
+   \prod\limits_{i=1}^{n}(\frac{1}{2})^{1/2}.(\frac{1}{2}-s)^{-1/2 }=
+   (\frac{1}{2})^{n/2}.(\frac{1}{2}-s)^{-n/2 }=m_Y(s)
+   \), where \(Y \sim Gamma(n/2,1/2)\), that is \(Z \sim Gamma(n/2,1/2)\)
+
+</span>
+<br>6. \(X \sim \chi_n^2 \Rightarrow m_X(t)=(2.t-1)^{\frac{n}{2}} \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, \(
+   E(e^{tX})=\frac{1}{2^{n/2}.\Gamma(n/2)}\int_{0}^{\infty}x^{(n-2)/2}.e^{-x/2}.e^{tx}.dx=\)\(
+\frac{1}{2^{n/2}.\Gamma(n/2)}\int_{0}^{\infty}x^{(n-2)/2}.e^{(t-1/2)x}.dx
+\)  let \(u=(1/2-t)x\)  with \(t &lt; 1/2\) so 
+\(E(e^{tX})=\frac{1}{2^{n/2}.\Gamma(n/2)}\int_{0}^{\infty}(\frac{u}{1/2-t})^{(n-2)/2}.e^{-u}.du.(1/2-t)^{-1}=
+\)\(=\frac{1}{2^{n/2}.\Gamma(n/2)}.({1/2-t})^{1-n/2}.\int_{0}^{\infty}(u)^{(n-2)/2}.e^{-u}.du.(1/2-t)^{-1}=
+\)\(\frac{1}{2^{n/2}.\Gamma(n/2)}.({1/2-t})^{-n/2}.\int_{0}^{\infty}(u)^{(n-2)/2}.e^{-u}.du=\)\(
+\frac{1}{\Gamma(n/2)}.({1-2.t})^{-n/2}.\int_{0}^{\infty}u^{(n-2)/2}.e^{-u}.du=\)\(
+\frac{1}{\Gamma(n/2)}.({1-2.t})^{-n/2}.\Gamma(n/2)=({1-2.t})^{-n/2}(6)
+   \)
+  </span>
+<br>7. \( \frac{n-1}{\sigma^2} .S^2\sim \chi^2(n-1) \), where 
+ \( S^2=\frac{1}{n-1}\sum\limits_{i=1}^{n}(X_i-\overline{X})^2 \)
+ , furthermore \(S^2\) and
+ \(\overline{X}\) are independent
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">  
+  <br>Where \(X_1,..,X_n\) are i.i.d \(N(\mu,\sigma)\)
+   <br>Actually, 
+   using the following property will make things easier, 
+    \(\frac{n-1}{\sigma^2} .S^2=\frac{1}{\sigma^2}\sum\limits_{i=1}^{n} (X_i-\frac{X_1+..+X_n}{n} )^2 =
+   (\frac{X_1-X_2}{\sigma.\sqrt{1.2}})^2+(\frac{X_1+X_2-2.X_3}{\sigma.\sqrt{2.3}})^2+
+   (\frac{X_1+X_2+X_3-3.X_4}{\sigma.\sqrt{3.4}})^2+..+
+      (\frac{X_1+X_2+..+X_{n-1}-(n-1).X_n}{\sigma.\sqrt{(n-1).n}})^2=\)
+    \(U_1^2+..+U_{n-1}^2 \), furthermore
+        \(U_1,..,U_{n-1} \) is a sequence of i.i.d standard normal RVs.
+ 
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>  Actually, take any \(U_i\) and \(U_j\), where \(i \neq j \), suppose \(i &lt;j \), 
+  we have 
+    \(U_i=\frac{X_1+X_2+..+X_i-i.X_{i+1}}{\sigma.\sqrt{i.(i+1)}}=
+    \alpha_i.(X_1+X_2+..+X_i-i.X_{i+1} )\) and 
+     \(U_j=\alpha_j.(X_1+X_2+..+X_i+..+X_j-j.X_{j+1})\)
+     so we can write 
+     \(U_i=\sum\limits_{k=1}^{i+1} a_k.X_k \) and  
+     \(U_j=\sum\limits_{k=1}^{j+1} b_k.X_k \)
+     where \(a_k=\alpha_i\) for \(k &le;i \) and 
+     \(a_{i+1}=-\alpha_i.i\) and \(b_k=\alpha_j\) for \(k &le;j \) and 
+     \(b_{j+1}=-\alpha_j.j \), so according to § "6.4.1 Linear transformation of Normal distributions ", 
+     we have \(Cov(U_i,U_j)=\sum\limits_{k=1}^{j+1} a_k.b_k.\sigma_k=
+     (a_1.b_1+..+a_i.b_i+a_{i+1}.b_{i+1}).\sigma=(\alpha_i.\alpha_j+..+\alpha_i.\alpha_j-
+     \alpha_i.\alpha_j.i ).\sigma\)
+     \(=\alpha_i.\alpha_j.(1+..+1-i).\sigma=\alpha_i.\alpha_j.0.\sigma=0  \), 
+     \(\sigma_k\) is the same for all \(X_k\)
+    that is  \(U_i\) and \(U_j\) are independent, hence \(U_1,..,U_{n-1}\) are independent, 
+     furthermore, according to § 
+    "5.4.2.6 Uniqueness of Moment Generating Function" we know that
+      \(U_1,..,U_{n-1} \) are  normally distributed, with 
+      
+     \(E(U_i)=\alpha_i.(E(X_1)+..+E(X_i)-i.E(X_{i+1})=
+     \alpha_i.(\mu+..+\mu-i.\mu)=\alpha_i.(i.\mu-i.\mu)=\alpha_i.0=0\), on the other hand:
+     <br>\(     Var(U_i)=\alpha_i^2.Var(X_1+X_2+..+X_{i}-i.X_{i+1} )=
+     \alpha_i^2.(i.Var(X_i)+i^2.Var(X_{i}))=\frac{1}{i.(i+1).\sigma^2}i.(i+1).\sigma^2=1 \), 
+     finally we conclude that \(U_1,..,U_{n-1}\) are i.i.d standard normal RVs
+        
+  </span>
+    
+     hence \( \frac{n-1}{\sigma^2} .S^2\sim \chi^2(n-1) \) 
+  </span>
+  <br>8. \(E(S^2)=\sigma^2  \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, \(\frac{n-1}{\sigma^2}.E(S^2)=n-1  \), that is \(E(S^2)=\sigma^2  \)
+  </span>
+  <h3 id="6_4_3">6.4.3  The t-Distribution</h3>	
+  &#9827; \(T=\frac{X}{\sqrt{(X_1^2+..+X_n^2)/n}} \) is said to have the t-Distribution with n degrees of 
+  freedom, where  \(X,X_1,..,X_n \) i.i.d N(0,1). 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <img src="/img/figure139.png"  style="float: right; width: 52%; height: 65%;" class="image1">	
+ <br> This is equivalent to   \(T=\frac{Z}{\sqrt{Y/n}} \), where \(Y \sim\chi^2(n) \), 
+ \(Z \sim N(0,1)\) and Z and Y are independent.
+   <br>We write \(T \sim t(n)  \), actually \(X, \sqrt{(X_1^2+..+X_n^2)/n}\) are independent
+    because if \(X_1,..X_n\) are independent then \(f(X_1),..,f(X_n)\) are independent
+    where \(f(x)=x^2\)
+  <br>This figure gives the t distribution pdf with different degrees of freedom.
+  </span>
+ 
+  <br>&#9755; \(T \sim t(n) \Rightarrow f_T(u)=
+    \frac{ \Gamma(\frac{n+1}{2})}{\sqrt{n}.\Gamma(\frac{1}{2}).\Gamma(\frac{n}{2})}.(1+\frac{u^2}{n})^{-(n+1)/2}\)
+for all \(u \in  \mathbb{R}  \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br>Actually, \(U \sim t(n) \) means that there exists two independent RVs X and Y 
+ such that \(  U=\frac{X}{\sqrt{Y/n}} \), and \(X \sim N(0,1)\) and \(Y \sim \chi^2(n)\).
+ <br>Since X and Y are independent we have  \(f_{XY}(x,y)=f_X(x).f_Y(y)=
+ \frac{ e^{-x^2/2}.y^{(n/2)-1}.e^{-y/2}}{\sqrt{2.\pi}.2^{n/2}.\Gamma(n/2)} \) for \(y &gt;0\)
+ and  \(f_{XY}(x,y)=0\) for \(y &lt;0\).
+ <br>Let's consider the multi-variable change \((U,V)=h(X,Y)=(\frac{X}{\sqrt{Y/n}},Y)\), 
+ see § "4.5 Multidimensional change of variable", we have then
+ 
+ \(f_{UV}(u,v)=\frac{f_{XY}(h^{-1}(u,v))}{|J(h^{-1}(u,v)) |} \), where J is a function of two variables 
+ say a and b, with
+ \( J(a,b)=
+ \begin{vmatrix}
+\frac{\partial u }{\partial x}|_{a,b} & \frac{\partial v}{\partial x}|_{a,b} \\
+\frac{\partial u }{\partial y} |_{a,b}& \frac{\partial v}{\partial y} |_{a,b}\\
+\end{vmatrix}
+  = \begin{vmatrix}
+\frac{1 }{\sqrt{\frac{b }{n}}} & 0 \\
+-\frac{1}{2}.a.\sqrt{n}.b^{-3/2 }& 1\\
+\end{vmatrix}=\frac{\sqrt{n} }{ \sqrt{b}}\), coming to \(h^{-1}(u,v)\), we have 
+\(Y=V \;and\; X=U.\sqrt{\frac{V}{n}} \), that is \((X,Y)=h^{-1}(U,V)=(U.\sqrt{\frac{V}{n}}, V ) \), hence 
+\(h^{-1}\) is a function of two variables say t and r defined 
+\(h^{-1}(t,r)=(t.\sqrt{\frac{r}{n}}, r )\), so 
+\(f_{UV}(u,v)=\frac{f_{XY}(u.\sqrt{\frac{v}{n}},v)}{|J(u.\sqrt{\frac{v}{n}},v)|}=
+\frac{1}{|J(u.\sqrt{\frac{v}{n}},v)|}.f_{XY}(u.\sqrt{\frac{v}{n}},v)=
+\frac{1}{\frac{\sqrt{n} }{ \sqrt{v}}}.
+ \frac{ e^{-x^2/2}.y^{(n/2)-1}.e^{-y/2}}{\sqrt{2.\pi}.2^{n/2}.
+ \Gamma(n/2)}|_{(u.\sqrt{\frac{v}{n}},v ) }=
+ \frac{ \sqrt{v}}{\sqrt{n}}.
+ \frac{ e^{(-{u.\sqrt{\frac{v}{n}} )}^2/2}.v^{(n/2)-1}.e^{-v/2}}{\sqrt{2.\pi}.2^{n/2}.
+ \Gamma(n/2)}\) \(=
+\frac{1 }{\sqrt{n}.\sqrt{2.\pi}.2^{n/2}.
+ \Gamma(n/2)}.
+ e^{-u^2.v/2.n}.v^{(n/2)-1}.e^{-v/2}.\sqrt{v}=
+ \frac{1}{\sqrt{n}.\sqrt{\pi}.2^{(n+1)/2}.
+ \Gamma(n/2)}.
+ e^{-(v/2).(1+u^2/n)}.v^{(n+1)/2-1}
+ \), so
+ \(f_U(u)=\int_{-\infty}^{+\infty}f_{UV}(u,v).dv=
+ \frac{1}{\sqrt{n}.\sqrt{\pi}.2^{(n+1)/2}.\Gamma(n/2)}.\int_{0}^{+\infty} e^{-(v/2).
+ (1+u^2/n)}.v^{(n+1)/2-1}.dv
+ \) with the variable change \(r=v.(1+u^2/n) \)
+ \(f_U(u)=\frac{1}{\sqrt{n}.\sqrt{\pi}.2^{(n+1)/2}.\Gamma(n/2)}.\int_{0}^{+\infty} e^{-(v/2).(1+u^2/n)}.v^{(n+1)/2-1}.dv=
+\\\frac{1}{\sqrt{n}.\sqrt{\pi}.2^{(n+1)/2}.\Gamma(n/2)}.(1+u^2/n)^{-(n+1)/2+1}.2^{(n+1)/2-1}.\int_{0}^{+\infty} e^{-r}.r^{(n+1)/2-1}.dr.2.(1+u^2/n)^{-1}=
+\\\frac{1}{\sqrt{n}.\sqrt{\pi}.2^{(n+1)/2}.\Gamma(n/2)}.(1+u^2/n)^{-(n+1)/2}.2^{(n+1)/2}.\Gamma(\frac{n+1}{2})=
+ \\\frac{\Gamma(\frac{n+1}{2})}{\sqrt{n.\pi}.\Gamma(\frac{n}{2})}.(1+u^2/n)^{-(n+1)/2}
+ \)
+  </span>
+   <br> &#9755; \(T \sim t(n) \Rightarrow E(T)=0\) for \(n &gt; 1  \) 
+   
+  
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   for \(n=1, E(T)\)  is undefined.
+    <br>Actually, \( E(T)=c.\int_{-\infty}^{+\infty}u.f_T(u).du=c.\int_{-\infty}^{+\infty}u.
+    (1+\frac{u^2}{n})^{-(n+1)/2}.du \), where
+     \(c=\frac{ \Gamma(\frac{n+1}{2})}{\sqrt{n.\pi}.\Gamma(\frac{n}{2})} \), by the variable change 
+     \(v=(1+\frac{u^2}{n})\) where  \(a=(n+1)/2\) we obtain 
+     \( E(T)=c.\int_{-\infty}^{+\infty}\frac{n}{2}. v^{-a}.dv=\)
+     \( c.\int_{-\infty}^{+\infty}\frac{n}{2}. v^{-a}.dv=c.\frac{n}{2}.\int_{-\infty}^{+\infty}v^{-a}.dv=
+\frac{c.n}{2.(1-a)}.[v^{(1-a)}]_{-\infty}^{+\infty}=\frac{c.n}{2.(1-a)}.[0-0] \) provided \(1-a&lt;0\), 
+that is \(\frac{1-n}{2} &lt;0 \)
+because if  a=1, that is n=1, we will have  \(E(T)=\frac{c.n}{2}.[Ln(u) ]_{-\infty}^{+\infty}\) which is 
+undefined, 
+     
+  </span>
+  <br> &#9755; \(T \sim t(n) \Rightarrow Var(T)=\frac{n}{n-2}\) for \(n &gt; 2  \) 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually, since \(E(T)=0\), we have
+     \(Var(T)=E(T^2)-E(T)=E(T^2)=a.\int_{-\infty}^{+\infty}u^2.(1+\frac{u^2}{n})^{-b}.du\), 
+    where \(a=\frac{ \Gamma(\frac{n+1}{2})}{\sqrt{n}.\Gamma(\frac{1}{2}).\Gamma(\frac{n}{2})}\), 
+    and \(b=\frac{n+1}{2}\),  let \(y=(1+\frac{u^2}{n})^{-1}\) let's calculate
+     \(u^2.(1+\frac{u^2}{n})^{-b}.du \), we have
+ \(dy=-2.\frac{u}{n}.du.(1+\frac{u^2}{n})^{-2}=-2.\frac{u}{n}.du.y^2 \) so 
+ \(u.du=-(n/2).y^{-2}.dy\), that is
+  \(u^2.(1+\frac{u^2}{n})^{-b}.du=-(n/2).y^{-2}.dy.(n.(y^{-1}-1))^{1/2}.y^b=
+  -n^{3/2}.(1/2).(1-y)^{1/2}.y^{-5/2}.y^b.dy=\)
+  \((-1/2).n^{3/2}.(1-y)^{1/2}.y^{(n/2-2)}.dy\), so
+   \(Var(T)=2.a.\int_{0}^{+\infty}u^2.(1+\frac{u^2}{n})^{-b}.du=
+   -n^{3/2}.(1/2).2.a.\int_{1}^{0}(1-y)^{1/2}.y^{(n/2-2)}.dy=\)\(
+   n^{3/2}.(1/2).2.a.\int_{0}^{1}(1-y)^{1/2}.y^{(n/2-2)}.dy=\)\(
+   n^{3/2}.a.\int_{0}^{1}y^{(n/2-1-1)}.(1-y)^{3/2-1}.dy=n^{3/2}.a.B(\frac{n}{2}-1,\frac{3}{2})\), we
+    know from the § related to the Gamma function that 
+    \(B(x,y)=\frac{\Gamma{x}.\Gamma{y}}{\Gamma{x+y}}\), that is 
+    \(Var(T)=n^{3/2}.a.\frac{\Gamma({\frac{n}{2}-1)}.\Gamma({\frac{3}{2}})}{\Gamma({\frac{n+1}{2}})}\), 
+    knowing that \(\Gamma({\frac{n}{2}})=\Gamma({\frac{n}{2}-1+1})=
+     (\frac{n}{2}-1).\Gamma({\frac{n}{2}-1})  \) and
+      \(\Gamma({\frac{3}{2}})=\frac{1}{2}.\Gamma({\frac{1}{2}})\) and 
+    \(\Gamma({\frac{n}{2}})=\Gamma({\frac{n}{2}}-1+1)=({\frac{n}{2}}-1).\Gamma({\frac{n}{2}}-1)\)
+ so  \(  Var(T)=n^{3/2}.a.\frac{\Gamma({\frac{n}{2}-1)}.\Gamma({\frac{3}{2}})}{\Gamma({\frac{n+1}{2}})}=
+n^{3/2}.\frac{ \Gamma(\frac{n+1}{2})}{\sqrt{n}.\Gamma(\frac{1}{2}).\Gamma(\frac{n}{2})}.\frac{\Gamma({\frac{n}{2}-1)}.\Gamma({\frac{3}{2}})}{\Gamma({\frac{n+1}{2}})}=n^{3/2}.\frac{ \Gamma({\frac{n}{2}-1)}}{\sqrt{n}.
+({\frac{n}{2}}-1).\Gamma({\frac{n}{2}}-1)}.{\frac{1}{2}}=n^{3/2}.\frac{ {\frac{1}{2}}}{\sqrt{n}.
+({\frac{n}{2}}-1)}=\frac{n}{n-2}\)
+  </span>
+    <br>&#9827; for any \(p \in [0,1]\) we define \(t_{p,n}\) as the value for which 
+    \(P(T &ge; t_{p,n})=p\).
+ <br>  &#9755; \(t_{1-p,n})=-t_{p,n}\) 
+  <br>&#9755; \(t(n) \overset{d}{\rightarrow} N(0,1)  \) 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br>Actually, we have according to definition 
+    \(t(n)=\frac{X}{\sqrt{(X_1^2+..+X_n^2)/n}}\), since \(X_i \sim N(0,1)\), we have 
+    \(E(X_i^2)=1 \) and \(Var(X_i^2)=2\), so Strong Law of Large Number tells us that 
+    \((X_1^2+..+X_n^2)/n \overset{a.s}{\rightarrow}  E(X_i^2)\), that is 
+     \((X_1^2+..+X_n^2)/n \overset{p}{\rightarrow}  1\), 	that is
+      \(\sqrt{(X_1^2+..+X_n^2)/n } \overset{p}{\rightarrow}  1\) and since  
+     \(Z \overset{d}{\rightarrow} Z \) we have 
+     \(\frac{Z}{\sqrt{(X_1^2+..+X_n^2)/n }} \overset{d}{\rightarrow} Z \) that is 
+     \(t(n) \overset{d}{\rightarrow} N(0,1)  \) 
+  </span>
+  <br> &#9755; \(\frac{\overline{X}-\mu}{S/\sqrt{n}} \sim t(n-1)\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually, we define \(Z=\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}\), and 
+    \(Y=\frac{(n-1)S^2}{\sigma^2}\), so \(Z \sim N(0,1)\) and \(Y \sim \chi^2(n-1)\), so 
+    \(T=\frac{Z}{\sqrt{\frac{Y}{n-1}}} \sim t(n-1)\) , that is  
+    \(\frac{\overline{X}-\mu}{S/\sqrt{n}} \sim t(n-1)\)
+  </span>
+<br>  &#9755; Verify the result above with simulation:
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+<br> <img src="/img/figure150.png"  style="float: right; width: 52%; height: 50%;" class="image1">   
+Using Data Analysis Tool in Excel we generate a population of size 20000 from a Normal distribution of mean 
+200 and standard deviation 30, then we take 10000 random samples of size 5 from this population and we 
+calculate \(\frac{\overline{X}-\mu}{S/\sqrt{n}}\) for each of those 30000 samples, we plot the histograms.
+(we take histograms of width 1). 
+</span>
+   <h3 id="6_4_4">6.4.4  The F-Distribution</h3>
+   &#9827;  \( Z=\frac{(X_1^2+..+X_m^2)/m }{(Y_1^2+..+Y_n^2)/n } \)  has a distribution 
+   called the F-distribution, where \(X_1,..X_m\) and \(Y_1,..,Y_n\) are all i.i.d with N(0,1).
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>And we write \(Z \sim F(m,n)\)
+    This is equivalent to \( Z=\frac{X/m}{Y/n} \), where \(X \sim \chi^2(n) \) and 
+    \(Y \sim \chi^2(n) \) and X and Y are independent.
+  </span>
+  <br>&#9755; \(U \sim F(m,n) \Rightarrow 
+  
+  
+  f_U(u)=
+  \left\{\begin{matrix}
+ \frac{\Gamma(\frac{m+n}{2} ) }{\Gamma(\frac{m}{2} ).
+  \Gamma(\frac{n}{2})}.(\frac{m}{n}.u)^{(\frac{m}{2}-1)}.
+  (1+\frac{m}{n}.u)^{(-\frac{m+n}{2}) }.\frac{m}{n}  &  &  for \; u &ge;0 \; (m &gt;1)   \\
+ 0  &  &  for \; u &lt;0  \\
+ +\infty   &  &  for \; u=0 \; (m=1)  \\
+ 
+\end{matrix}\right. \)
+<br> &#9755; \(Z \sim F(m,n) \Rightarrow \frac{ 1}{Z } \sim F(n,m) \)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Actually \(Z \sim F(m,n)  \Rightarrow Z=\frac{X/m}{Y/n} \Rightarrow
+     \frac{ 1}{Z }=\frac{Y/n}{X/m} \Rightarrow \frac{1}{Z} \sim F(n,m) \)
+  </span>
+  
+  <br> &#9755; \(Z_n \sim F(m,n) \Rightarrow m.Z_n \overset{d}{\rightarrow} \chi^2(m) \)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually,  we can write 
+    \(m. Z_n=\frac{(X_1^2+..+X_m^2) }{(Y_1^2+..+Y_n^2)/n } \)
+    
+    by definition we have  \(X_1^2+..+X_m^2 \sim \chi^2(m) \), or 
+    \(X_1^2+..+X_m^2 \overset{d}{\rightarrow} \chi^2(m) \)
+ , on the other hand we have seen so far that 
+    \((Y_1^2+..+Y_n^2)/n \overset{p}{\rightarrow} 1 \), we conclude then that 
+    \(m.Z_n \overset{d}{\rightarrow} \chi^2(m) \)
+  </span>
+  <br> &#9755; \(Z \sim t(n) \Rightarrow Z^2 \sim F(1,n) \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Direct conclusion from the definition
+  </span>
+<br><br><br><br><br><br>
+</div>
+	
+
+
+</body>
+</html>

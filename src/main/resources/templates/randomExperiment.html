@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="utf-8">
+<title>Set theory</title>
+</head>
+<script>
+
+  </script>
+  
+
+<body>
+
+	<div layout:fragment="content">
+	
+   <h1 id="3">3 Founding concepts</h1>
+    <h2 id="3_1">3.1 Introduction</h2>
+    Probability stands on a solid background of theories, in this chapter we're going to see the basis of probability theory. 
+   <h2 id="3_2">3.2 Random experiment</h2>
+   <h3 id="3_2_1">3.2.1 What is a random experiment ?</h3>
+     A random experiment is a process by which we observe something uncertain <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">Like:
+  <br>- Tossing a coin, we can't predict if the result will be head or tail, so the result is uncertain.
+  <br>- Observing tomorrow's weather, we don't know if it will be sunny or snowy.
+  <br>- Number of times per month the bank machine is not working when someone tries to use it.
+  </span>
+  <h3 id="3_2_2">3.2.2 Outcome</h3>
+The result of a random experiment is called an outcome <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">The outcomes in:
+  <br> - The coin toss experiment is either a head (H) or a tail (T), 
+  <br> - A six sided die tossing experiment,  are 1,2,3,4,5,6
+  <br> - Observing tomorrow's weather are 'rainy', 'snowy', 'sunny'
+
+  </span>
+ <h3 id="3_2_3">3.2.3 Sample space</h3>
+ The sample space S is the set of all possible outcomes <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"><br>* In the coin toss experiment S={H,T}, 
+  <br>* In the die toss experiment S={1,2,3,4,5,6} 
+  <br> * If the experiment consists of observing number of accidents in a given area of the city per month, S={0,1,2,...}
+ </span>
+   <h3 id="3_2_4">3.2.4 Trial</h3>
+  Each time the random experiment is repeated, this is called a trial
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>If the random experiment consists of tossing the coin one time,  
+  we can do as many trials as we wish, we can have as a result:
+  T1={H}, T2={T}, T3={T}, .., in this case S={H,T}
+  <br>If the random experiment consists of tossing a coin three times, 
+  the result can be T1={H,T,T}, T2={H,H,T}, T3={T,T,T}, T4={H,H,T}, T5={H,H,T},.., in this case 
+  S={(H,H,T),(H,T,T),(T,T,T),(T,H,T),(T,T,T),(H,T,H),(H,H,H),(T,T,H)}</span>
+
+ <h3 id="3_2_5">3.2.5 Event</h3>
+An event is a subset of the sample space.<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">We assume that every subset is an event</span>
+The set of all events is denoted by &#8497;.
+<br> We have for a finite sample space S: \( |&#8497;|=2^{|S|}  \)<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">See combinatorics</span>
+ <br> &#9827;  If \(  A_{i} \) is a countable sequence of events then
+  \(A=\bigcup A_{i} \) is also an event, and we say that A has occurred if  at 
+  least one of the \(A_{i} \) events has occurred
+ <br> &#9827;  If \(  A_{i} \) is a countable sequence of events then \(A=\bigcap A_{i} \) 
+ is also an event, and we say that A has occurred if all of the \(A_{i} \) events 
+ has occurred.
+ <br> Examples:
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+<br>1. We are forecasting tomorrow's weather, suppose that the possible outcomes are S={rainy, snowy, clear}, this is the sample space which is the set of all possible outcomes,
+an event is completely different from outcomes, the set of all possible events is:  &#8497;={&#8709;;{rainy},{snowy},{clear},{rainy,snowy},{rainy,clear},{snowy,clear},{rainy,snowy,clear}}.
+<br>The event  A={snowy,rainy} is defined as such,  the two following prepositions are true 
+(where s is the outcome of the random experiment):
+<br>1)  s={snowy} &#8658;  A has occurred ,  2) s={rainy} &#8658;  A has occurred .
+<br>2.  In the experiment of tossing a coin three times, ( we've seen above), if we call A 
+the event consisting of having two heads then A={ (H,H,T) , (H,T,H) , (T,H,H)}, 
+(having two heads is equivalent to having one tail), if we get two heads in a trial we say 
+that event A has occurred.
+
+  </span>
+   <h3 id="3_2_6">3.2.6 Elementary event</h3>
+An elementary event (atomic event or sample point) is an event which corresponds to a single 
+outcome 
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">Elementary event and corresponding outcomes are written
+   interchangeably, so we write P(H) instead of P({H}) in a coin toss experiment
+  and P(1) instead P({1}) in a die toss experiment
+ <br>Example:
+ Let S be a sample space such as S={\(s_1, s_2, s_3, ..\)}, \(s_i \) are the responses or the outcomes and
+  we write \(s_i \in S \), \(s_i \) are also called individual events.
+  An event in S is a subset of S, for example A={\(s_1,s_3\)}, we write \(A \subset S \).
+  In general a sample space is not countably infinite, it can be also uncountably infinite.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">If the random experiment consists of tossing a coin two times, elementary events are (H,H) ,(T,T) , (H,T) , (T,H) </span> </span>
+<h2 id="3_3">3.3 Probabilities</h2>
+<h3 id="3_3_1">3.3.1 What is a probability ?</h3>
+We've seen above the concept of a random experiment, but to define a probability 
+model we need to define a measure 
+which is a function that associates every event to a number from 0 to 1, P: &#8497;  
+&#8594; [0,1], P is called a probability measure, we denote by P(A) the probability that event A occurs.
+<br> So a probability model consists of non empty set called  a sample space S and a collection of events that are subsets of the sample space and a probability measure.
+<h3 id="3_3_2">3.3.2 Axioms of probabilities</h3>
+We accept the following statement as true:
+<br>1. P(A)≥0, &forall; A &#8712; &#8497; <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br> Probability is never negative, if P(A)=0, it means that A will never occur, 
+  A is called the impossible event.
+  <br> As P(A) becomes smaller (closer to 0), A becomes more unlikely to occur, 
+  and vice-versa, as P(A) becomes bigger (close to 1), A becomes more likely to occur
+  </span>
+<br>2. P(A)=0 &rArr; A=&empty; <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"> Only the empty set event is impossible to occur </span>
+<br>3. P(S)=1 <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"> It is certain that one of the possible outcomes will occur </span>
+  <br>4. If \(A_{1},A_{2}..\) is a countable sequence of disjoint events, then \( P(A_{1}\cup A_{2}\;\cup...)=P(A_{1})+P(A_{2})+..\)
+
+
+<h3 id="3_3_3">3.3.3 Intersection, union and probabilities</h3>
+1. If A and B are two events, and  \(C=A\cap B\), C occurs if and only if A and B occur
+<br>2. If A and B are two events, and  \(C=A\cup B\), C occurs if and only if A or B occurs.
+<div class="box1">
+ Example:<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  In a random experiment we toss a coin two times, if A is the event that  corresponds to having at least one head, 
+  and B is the event that corresponds to having at least one tail, then we have: S={(H,H), (H,T) ,(T,H), (T,T)},  
+  A={(H,H), (H,T),(T,H)} and B={(T,H),(H,T),(T,T)}, so we have \( A\cap B=\left\{ (H,T),(T,H) \right\} \) and  \(A\cup B=S\)
+  </span>
+</div>
+
+  
+  
+  <h3 id="3_3_4">3.3.4 Calculating probability</h3>
+  Probability calculation is based generally on information provided from knowing the 
+  random experiment and probability axioms, let's take an example:
+calculate the probability of having exactly one head in the fair coin tossing twice 
+experiment.
+<br>  &#9755; We have S={(H,H), (H,T), (T,T), (T,H)} (the set of all possible outcomes) and if A is the event that corresponds to having exactly one head then A={ (H,T), (T,H)}
+ <br>&#9755; Since the coin is fair we have P(H,T)=P(H,H)=P(T,T)=P(T,H)=p<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">remember that we write elementary event and corresponding outcomes interchangeably for example {(H,T)} and (H,T) </span>
+<br>&#9755; We know from probability axioms that P(S)=1 and since the outcomes are disjoint events we have P(S)=P(H,T)+P(H,H)+P(T,H)+P(T,T)=4*p=1, so p=1/4
+<br>&#9755; We have also P(A)=P(H,T)+P(T,H) so P(A)=1/2
+
+<h3 id="3_3_5">3.3.5 Some important properties from probability axioms</h3>
+For any event A and B we have:
+<br>
+a-\(  P(\overline{A})=1-P(A) \) <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">since A and its complement are a partition of S we have \(  P(S)=P(\overline{A})+P(A) =1\)</span><br>
+b-\(  P(\varnothing  )=0 \)<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  \(  P(\varnothing  )=1-P(\overline{\varnothing})=1-P(S)=0  \)
+  </span><br>
+c-\( P(A)\leqslant 1,\; \) &forall; A &#8712; &#8497; <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\(P(A)=1-P(\overline{A}), \;since\; P(\overline{A}) \geqslant   0\;we\;have\; P(A) \leqslant 1 \)</span><br>
+d-\( P(A-B)=P(A)-P(A \cap B)  \)<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">since \(  A=(A-B) \cup (A \cap B)   \) and A-B and \( A \cap B   \) are disjoint we have \(P(A)=P(A-B)+P(A \cap B)   \)   </span><br>
+e-\( P(A \cup B)=P(A)+P(B)-P(A \cap B)    \)<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">since \( (A-B) \cup (A \cap B) \cup (B-A)=A\cup B   \) and 
+  \( (A-B) , (A \cap B)  \;and\; (B-A)\; are\;disjoint   \)
+  we have: \( P(A-B) +P(A \cap B) + P(B-A)=P(A\cup B)   \), that is: \( P(A)+P(B-A)=
+  P(A \cup B)  \),   using d we have: \( P(B-A)=P(B)-P(A \cap B) \), finally we get the equality in e.
+  </span>   
+  <br>f-If \( B \subseteq A\) we have:\( P(A)=P(B)+P(A \cap \overline{B})  \)<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\( A=B \cup (A \cap \overline{B}) \), B and \(  (A \cap \overline{B}) \) are disjoint</span>
+<br>g-If \(\;A \subseteq B  \) then \( P(A) \leqslant P(B) \)<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\(A \subset B \;means\; B=(B-A) \cup A\; so\; P(B)=P(B-A)+P(A)\) since P(B-A) is positive we get the inequality in f</span><br>
+h-For any finite collection of disjoint events \( A_{i} \) we have:
+\( P( \bigcup\limits_{i=1}^{n }A_{i} )= \sum\limits_{i=1}^{n }P(A_{i})   \)
+
+<br>
+i-If \( A_{1}, A_{2},.. \) is a finite or countably infinite sequence of events then:
+\( P( \bigcup\limits_{i=1}^{\infty }A_{i} ) \leqslant \sum\limits_{i=1}^{\infty }P(A_{i})   \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">since we can prove it by recursion for any n, then it's true for \(  n \rightarrow  \infty \)(the events are not necessarily disjoint) </span>
+
+<br>j-Probability is continuous, this means if \( A_{1}, A_{2},.. \) is a finite or countably infinite sequence of events then:
+\( (A_{i} \rightarrow A)  \Rightarrow  \lim\limits_{i \to \infty}P(A_{i})=P(A) \), hint:<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"> transform the problem of  limits in sets to limits in numbers<br></span>Proof:
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <img src="/img/figure22.png" id="vennPresentationImg" style="float: right; width: 45%; height: 95%;">
+  \( (A_{i} \rightarrow A) \Leftrightarrow  ( (A_{i} \rightarrow A^-) \;or \; (A_{i} \rightarrow A^+)) \) <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">Limits in the sense of sets are not the same as in the sense of functions</span>
+ 
+ <br>- 1<sup>st</sup> case:\(A_{i} \rightarrow A^-\):
+ <br> By definition:
+  \(  ( (A_{i} \rightarrow A^-) \Rightarrow  A_{1} \subseteq A_{2} ....\subseteq A\) (.. means the infinite sequence), 
+  so we have for every n (you can see from figure 22 that it's obvious for n=3):
+  \( A_{1} \cup (\overline{A_{1}} \cap A_{2}) \;\cup  .. (\overline{A_{n-1}} \cap A_{n}) =A_{n}\) and 
+  \( A_{1} \cup (\overline{A_{1}} \cap A_{2}) \;\cup  ..  =A\)  (for \(n \to \infty  \))
+ , since  \( A_{i} \) and\( (\overline{A_{i}} \cap A_{i+1}) \) are disjoint, we have: 
+   \(P( A_{1})+P(\overline{A_{1}} \cap A_{2}) \; + .. +P(\overline{A_{n-1}} \cap A_{n})=P(A_{n})\) and 
+   \(P( A_{1})+P (\overline{A_{1}} \cap A_{2}) \; +P (\overline{A_{2}} \cap A_{3}) ..  =P(A)\), 
+   we can easily see that:
+   
+    <br>\( \lim\limits_{n \to \infty}   (P( A_{1})+P(\overline{A_{1}} \cap A_{2}) \; + .. +P(\overline{A_{n-1}} \cap A_{n}))=\lim\limits_{n \to \infty}P(A_n)\)
+    \(=P( A_{1})+P (\overline{A_{1}} \cap A_{2}) \; +P (\overline{A_{2}} \cap A_{3}) .. \)=P(A), 
+    this is what we've been looking for!
+  <br>- 2<sup>nd</sup> case:\(A_{i} \rightarrow A^+\):
+  <br>In this case:\( A...\subseteq A_{3} \subseteq A_{2}  \subseteq A_{1}\), so \(\overline{A_{n}} \rightarrow (\overline{A })^- \), hence,
+   \( \lim\limits_{n \to \infty} P(\overline{A_{n}})=P(\overline{A }) \) it follows  \( \lim\limits_{n \to \infty} (1-P(A_{n}))=1-P(A ) \), by removing 1 from each side of this equation we get the result we've been looking for!
+  </span>
+  <div  class="box1" style="margin-left: 2%;margin-top: 1%;margin-bottom: 0%;font-size:0.94em">
+<b>Example:  Turn a biased coin to an unbiased one.</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+   <div   style="margin-left: 2%;margin-top: 1%;margin-bottom: 0%;font-size:1em">
+ We want to get a sample \(S_{p} \) of five outcomes with probability of success p, for this we must toss a biased 
+ coin with probability of heads coming up p five times  and record the outcomes.
+The problem is we don't have a biased coin, all we have  is a fair coin, how shall we proceed ?
+
+<br><b>&#9755; Solution:</b> 
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext">
+  <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: -1%;font-size:0.94em">
+The samples we're looking for are the result of a random experiment \(E_p \) where success corresponds to an event \(H_p \) such as \( P(H_p)=p\)
+and failure  to the event \(T_p \) such as \( P(T_p)=1-p\).
+
+ <br>1. Let's first take an example where:
+ <div class="oneRetrait">
+ a) p= 0.875, Solution:
+ 
+ <div class="tooltip">&#128216;</div>
+  <div class="tooltiptext">
+ <div class="box1">
+ In this case the way we simulate our biased coin by a fair coin   is given in figure 15, here's why:
+  <img src="/img/figure15.png"  style="float: right; width: 45%; height: 65%;" class="image1">
+ <br> Fortunately we can write p in an "inspiring" format, actually \( p={1\over 2} +{1 \over 2^2}+{1 \over 2^3 }\).
+
+<br>Let's consider the experiment \(E_{p} \) where we toss a fair coin three times, so 
+<br>S={HHT,HTH,HHH,HTT,THT,THH,TTH,TTT}
+  <br>if we consider \(H_{p}=A \cup B \cup C \) as the event corresponding to a success in our random experiment, where  
+  A={HHT,HTH,HHH,HTT},   B={THH,THT} and  C={TTH}, (that is a failure in our random experiment correspond to tree successive tails)
+  we will have :<br> \(P(H_{p})=P(A \cup B \cup C) \)=P({HHT,HTH,HHH,HTT,THT,THH,TTH}), 
+  so \(P(H_{p})={7 \over 8}={{2^2+2+1}\over 8} ={1\over 2} +{1 \over 2^2}+{1 \over 2^3 }\).
+ <br> Note that:P(A)=\( {1 \over 2}\), P(B)=\( {1 \over 2^2}\), P(C)=\( {1 \over 2^3}\)
+  <br>So a success in this experiment corresponds to one of those exclusive events:
+  <br>- a head in the first toss (event A) 
+  <div class="tooltip">&#128216;</div>
+  <div class="tooltiptext">
+    no matter what the second and the third toss are so we don't have to do the second and the third toss  if the first toss is a head</div> 
+   <br>-  a tail in the first toss and a head in the second toss (event B)<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext">no matter what the third toss is, so we don't have to do the 
+  third toss</div>
+   <br>- a tail in the first toss and a tail in the second toss and a head in the third toss
+    (event C).
+  <br>In conclusion there's how we simulate tossing the unbiased coin: 
+<br>i) We toss the  fair coin once, if it is head we conclude that the result is a success, 
+and we add a success to our sample \( S_{p}\). 
+<br>ii) If the outcome of the toss is a tail, we proceed to the second toss, if the 
+outcome is a head (TH) we add a success to our sample  \( S_{p}\). 
+<br>iii)  If the outcome of first and second two tosses is tail (TT), we proceed to the 
+third toss and add a success to our sample \(S_{p}\) if the outcome is head (TTH), and a 
+failure otherwise.
+
+</div>
+</div>
+<br>b) p= 0.625, Solution:
+ <div class="tooltip">&#128216;</div>
+  <div class="tooltiptext">
+  <div class="box1">
+  This times the binary form for 0.625 is a little trickier than the  case where p=0.825. figure 16 gives the way we simulate the biased coin in this case, here's why:
+   <img src="/img/figure16.png"  style="float: right; width: 45%; height: 65%;" class="image1">
+  <br>For p=0.625, we have \( p={1\over 2} +{1 \over 2^3 }\), again we toss a coin three times so:
+  S={HHT,HTH,HHH,HTT,THT,THH,TTH,TTT}, consider events A and C where: A={HHT,HTH,HHH,HTT} and  C={TTH}.
+  <br>If we consider a success an outcome in the event \(H_{p} \)    where \(H_{p}=A  \cup C \)
+  <br>We have: \(P(H_{p})=P(A  \cup C) \)=P(A)+P(C)=\( p={1\over 2} +{1 \over 2^3 }\)
+  <br> Notice that we can write:\( p={b_{1}\over 2} +{b_{2} \over 2^2 }+{b_{3} \over 2^3 }\) where \( b_{1}=b_{3}=1 \) and \( b_{2}=0 \) 
+  we can consider that the random experiment gives:
+  <br>- a success when the n<sup>th</sup> toss comes up head and  \( b_{n}=1\) 
+   <br>- a failure when the n<sup>th</sup> toss comes up head and  \( b_{n}=0\) 
+</div>
+  </div>
+  </div>
+  2. Now let's simulate the biased coin for any p:
+  <div class="tooltip">&#128216;</div>
+  <div class="tooltiptext">
+  <div class="oneRetrait">
+   <img src="/img/figure23.png"  style="float: right; width: 45%; height: 85%;" class="image1">
+ 
+Any p can be written in  its binary form as: \( p= \sum_\limits{i=1}^{+\infty}{b_{i} \over 2^i} \) 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"> \( b_{0}=0 \) since p&lt;1,  </span>
+where \(b_{i} \in \left\{0,1\right\} \), 
+this writing is not always infinite as we saw in the first two examples \( p= \sum_\limits{i=1}^{n}{b_{i} \over 2^i} \), 
+besides we cannot handle a probability p where p is expressed in an infinite number of digits, so even in this case we have to take a
+ finite number of terms according to the precision we want.
+So we handle only the case where \( p= \sum_\limits{i=1}^{n}{b_{i} \over 2^i} \).
+  <br> Let's consider the random experience \( E_p\) where we toss a coin n times, figure 23  gives a graphical representation of the 
+  outcomes of this experiment.
+  <br>Figure 24  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     <img src="/img/figure24.png"  style="float: right; width: 45%; height: 65%;" class="image11">
+ </span>helps to identify events corresponding to probabilities: \( {b_{i} \over 2^i} \), for example event 
+  \(A_1 \) corresponds to head coming up in the first toss (no matter what the outcomes of the subsequent tosses are) with 
+  \( P(A_1)={{1} \over {2} }\), so \(H_p=\cup A_i \) where \( b_i \neq 0\)
+  <br>  If \(b_{1}=1 \), a head coming up in the first toss corresponds to a success of our random experiment \( E_{p}\), but  
+  If \(b_{1}=0 \) a head 
+  coming up in the first toss means that all other event \( A_2, A_3..A_n\) didn't occur, which leads to a failure in our random 
+  experiment \(E_p \)
+ <br> Figure 17 gives the simulation method in the general case:
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <img src="/img/figure17.png"  style="float: right; width: 45%; height: 25%;" class="image11">
+   </span>
+    </div>
+
+
+
+</div>
+</div>
+</div>
+</div>
+    
+  </div>
+</div>
+<h3 id="3_3_6">3.3.6 Discrete  probability model</h3>
+We talk about discrete probability model when the sample space S is countable.
+Since S is countable we have \( S=\left\{s_{1},s_{2},..\right\} \) 
+<br>Any event A is also countable and we have \( P(A)= \sum\limits_{s_{i} \in  A}P(s_{i}) \)
+<br>Particularly if S is finite and the elementary events are equally likely, we have \(P(A)={|A| \over |S|}. \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\(S_{i}\) are equally likely means that \( P(s_{i})= P(s_{1}) \, \forall \, i \),  so \(P(A)=|A|.P(s_{1}) \)
+  , we know that \(     P(S)=P( \bigcup\limits_{i} s_{i} )= \sum\limits_{i}P(s_{i})=|S|. P(s_{1})  \), since P(S)=1 we have 
+  \(    P(s_{1})={1 \over |S|}   \), that is \( P(A)={|A| \over |S|}  \).
+  </span>
+<h3 id="3_3_7">3.3.7 Continuous probability models</h3>
+All that we have seen so far is related to random experiments where the sample space is countable, but what if the sample
+ is uncountable like  an interval [a,b] where a and b are two real numbers, for example,  in a random experiment we measure
+  in minutes the flight arrival delays  in an airport, the outcome  can be any positive real  number, suppose that we want to find 
+  the probability of this delay being equal to 20mn.
+ but what about P(20.0000000000001)  and P(19.99999999999999999) are they equal to P(20), as you may guess finding the
+  probability of a single point is meaningless, 
+we have to calculate the probability of an interval for example \( P(10 mn \leq  d \leq 20 mn)  \) (d is the delay time).
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  For a continuous probability model the probability of a single point is 0
+  </span>
+
+<h3 id="3_3_8">3.3.8 Mutually exclusive events</h3>
+If \(A_{i} \) is a countable sequence of events  then \(A_{i} \) are said to be mutually exclusive if the occurrence of one the events
+ implies the non-occurrence of the other events<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    No two events of the sequence can occur simultaneously,
+  </span>that is \( P(A_{i} \cap A_{j})=0, \forall \; i \; and \; j.  \) <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Disjoint implies mutually exclusive but the opposite is note true, imagine two uncountable sets A and B that have a single point (sp) in 
+    common, \( P(A \cap B)=P(sp)=0 \) but A and B are not disjoint.
+  </span>
+  
+  	<div  class="box1" style="margin-left: 2%;margin-top: 1%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example:Basketball free throws</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    In a basketball game two players are making free throws, the first one to make a basket is the winner, knowing 
+    that the probability of
+     making a basket  is \( p_{1} \) for the first player and  \( p_{2} \) for the second one and that the shots are independent, what is the 
+     probability that the first player wins the game? (suppose player 1 makes the first shot)
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%">
+    Player 1 wins if:
+    <br> - He makes a basket at the first shot (event \( A_{1}={H}\))
+    <br>-  Both players miss their first shot, then player 1 makes a basket in his second shot (event \( A_{2}={TT'H}\)) 
+    <br>- Both players miss their first and second shots, then player 1 makes a basket in his third shot (event \( A_{3}={TT'TT'H}\)) 
+    <br>- Both players miss their first, second and third shots, then player 1 makes a basket in his fourth shot (event \( A_{4}={TT'TT'TT'H}\)) 
+    <br>- ..
+  <br>Notice that the \( A_{i} \) events are disjoint, since if one them occurs the others don't.
+  So the probability of player 1 wins is \( P(W_{1})= P(A_{1})+P(A_{2})+..\), that is:
+  \( P(W_{1})= P(H)+P(TT'H)+P(TT'TT'H)+P(TT'TT'TT'H)+..\), hence
+  \( P(W_{1})=p_{1}+p_{1}(1-p_{1})(1-p_{2})+p_{1}(1-p_{1})^2(1-p_{2})^2+..=p_{1}(1+q+q^2+q^3+..)\) 
+  
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    We know that: \( \sum_\limits{i=0}^{n}q^i={ {1-q^n  }  \over  {1-q  }  } \) and since:
+      \(\displaystyle \lim_{n \to +\infty} q^n=0 \) (because q &lt; 1)  we have: \( \sum_\limits{i=0}^{+\infty}q^i={1  \over  {1-q  }  } \) 
+  </span>
+  where \(q= (1-p_{1})(1-p_{2})\), it follows that \( P(W_{1})=p_{1}. { {1 \over {1-q }} }\) finally we get:
+  \(P(W_{1})  ={p_{1} \over  { p_{1}+p_{2}-p_{1}p_{2} }  } \)
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+  
+  
+  
+  
+  
+<h2 id="3_4">3.4 Conditional Probability</h2>
+Sometimes when we are calculating the probability of a given event, we may know that some  other events has already occurred.
+	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: -1%;font-size:0.94em">
+	  <b>Example:Tossing a fair coin twice</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: -1%;font-size:1em">
+    We toss a fair coin twice, what is the probability of having one head (event A) knowing that we had already at least one head (event B)?
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: -1%;font-size:0.94em">
+    we have S={(H,H),(H,T),(T,H),(T,T)}, A={(H,T),(T,H)}, B={(H,H),(H,T),(T,H)}
+<br> Intuitively, since B has occurred it becomes our new sample space and we calculate all probabilities according to this new sample space, so P(A)=2/3.
+<br>In general since B has occurred we must get rid of all elementary events of A that doesn't satisfy this condition (that is event B has occurred) by taking into consideration only the elementary events that belong to both A and B
+so  \( P(A|B)={|A\cap B|\over |B| }={{|A\cap B|\over |S| }\over{|B|\over |S|}}={ P(A\cap B)\over P(B) }\)
+This formulae has been explained for a finite sample space where outcomes are equally likely, but it is also true for any sample space.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    this is how conditional probability is defined
+  </span>
+  </div>
+</div>
+  </div>
+    
+    
+  </div>
+	</div>
+
+
+
+<h3 id="3_4_1">3.4.1 Formula of conditional Probability</h3>
+For any events A and B in  sample space, the conditional probability of A given B is:
+ \( P(A|_B)={P(A\cap B)\over P(B) }.\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">B occurred means that P(B) is not null.</span>
+  <br> Conditional probability  is a probability measure, so it satisfies probability axioms:
+ <br>- For any event A, \(P(A|_B)\geqslant 0 \) 
+ <br>-\( P(B|_B)=1 \)
+ <br>- If \(A_1,A_2,..,\) are disjoint, then \(P(A_1 \cup A_2 \cup ..|_B)=P(A_1|_B)+ P(A_2|_B)+..\)
+ <br> All the properties we have seen so far for conventional probability in 3.3.5 are valid for conditional probability.  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">particularly:
+ <br>- \( P(\overline{A}|_B)=1-P(A|_B) \)
+ <br>- \(P(\varnothing |_B)=0 \)
+ <br>- \(P(A|_B)\leqslant 1 \)
+ <br>- \(P((A-B)|_C)=P(A|_C) -P((A \cap B)|_C)\)
+ <br>- \( P((A \cup B)|_C)=P(A|_C)+P(B|_C)-P((A \cap B) |_C)\)
+ <br>- If \(A \subset B \) then \( P(A|_C) \leqslant P(B|_C)  \)
+ </span>
+ <h3 id="3_4_2">3.4.2 Interpretation of conditional Probability</h3>
+ What is really interesting about conditional probability is that events can belong to totally different random 
+ experiments.
+ <div  class="box1" style="margin-left: 2%;margin-top: 1%;margin-bottom: -1%;font-size:0.9em">
+<b>Example:Tossing a fair coin and a fair die</b> 
+ <span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+
+  <br> In a random experiment we toss a fair coin and a fair die with 6 sides numbered from 1 to 6, we want to 
+  find the probability of the event A corresponding  to the coin landing on head and the die landing on the 
+  1 side.
+  <br><b>&#9755; Solution:</b>
+  <span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+  <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em">
+   In this experiment, S={H1,H2,H3,H4,H5,H6,T1,T2,T3,T4,T5,T6}, \( A=B \cap C \) where B is the event 
+ corresponding to the coin landing on head and C is the event corresponding to die landing on the 1 side
+ so B={H1,H2,H3,H4,H5,H6} and C={H1,T1} so \( B \cap C \)={H1}, it follows that 
+ P(A)=|A|/|S|=1/12, P(B)=6/12, and P(C)=2/12, notice that P(A)=P(B&cap;C)=P(B).P(C)
+ 
+ <br> But what is interesting about conditional probability or Baysian Approach for probability 
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">(in contrast to frequentist approach, what we've done so far) </span>
+  is that we could've done this much more simply, by imagining two random experiments, 1<sup>st</sup> one
+   is tossing the coin and 2<sup>nd</sup> one is tossing the die, 
+  this time we have two sample spaces \( S_{1}=\left\{H,T\right\} \;and\;S_{2}=\left\{1,2,3,4,5,6 \right\} \) , if D={H} 
+  is the event corresponding to the coin landing on head (for the 1<sup>st</sup> experiment) and E={1} is
+   the event corresponding to the die landing on the 1 side, 
+  by using Baysian approach (conditional probability) we can write 
+  P(A)=P(D&cap;E )=P(D|E).P(E)=P(D).P(E)=1/12 (because those two experiments are completely independent 
+  from each other, which is not true for all random experiments).
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"> we can see that P(D).P(E)=1/12, but can we say that \(D \cap E\) is the event 
+  corresponding to having the coin landing on head and the die landing on the 1 side ? we're not trying to 
+  give a thorough demonstration for this approach, but we will try to walk you through an example just to 
+  explain that the two approach are much the same 
+<br>In the absolute sense and according to what we've seen so far, we can't talk about \( D \cap E  \), because 
+those events belong to two different random experiments, but by imagining a "joint" experience, having a 
+sample space \( S_{1} \times S_{2}\)
+for this experiment the event corresponding to the coin landing on head is  \(D'=D \times S_{2}\) and the event 
+corresponding to die landing on the 1 side is \(E'=S_{1}  \times E \), this will lead us back to the frequentist 
+approach of probability, and we have \( P(D' \cap E')=P(D').P(E') \)
+  </span>
+ 
+  
+ </div>
+  
+   </div>
+  </div>
+  </div>
+
+<h3 id="3_4_3">3.4.3 Chain rule for conditional probability</h3>
+
+For n events \(A_{i} \) (n>1), we have:
+\( P(A_{1} \cap A_{2}... \cap \;A_{n})=P(A_{1}).P(A_{2}|_{A_{1}}).P(A_{3}|_{A_{1},A_{2}})..
+P(A_{n}|_{A_{1},A_{2},..,A_{n-1}}) \)
+
+<br>Proof:<span class="tooltip">&#128216;</span>
+ <span class="tooltiptext">
+  Let's prove this property by recursion.
+  <br>We know this is true for n=2 (conditional probability definition),suppose it's true for n-1.
+<br>  We have: \( P(A_{n}|_{(A_{1},A_{2},..,A_{n-1})})=
+{P(A_{n} \cap (A_{1} \cap A_{2}..\cap \;A_{n-1})) \over P(A_{1} \cap A_{2}..\cap \;A_{n-1})}=
+{P( A_{1} \cap A_{2}..A_{n-1} \cap A_{n}) \over P(A_{1} \cap A_{2}..\cap \;A_{n-1})}\)
+<br>hence  \(P( A_{1} \cap A_{2}..A_{n-1} \cap A_{n})= 
+P(A_{n}|_{(A_{1},A_{2},..,A_{n-1}}).P(A_{1} \cap A_{2}..\cap \;A_{n-1}) \)
+<br>\(P( A_{1} \cap A_{2}..A_{n-1} \cap A_{n}) =
+P(A_{n}|_{(A_{1},A_{2},..,A_{n-1}})).P(A_{1}).P(A_{2}|_{A_{1}}).P(A_{3}|_{A_{1},A_{2}})..
+P(A_{n-1}|_{A_{1},A_{2},..,A_{n-2}}) \)
+ it follows:
+  <br>\(P( A_{1} \cap A_{2}..A_{n-1} \cap A_{n}) =
+  P(A_{1}).P(A_{2}|_{A_{1}}).P(A_{3}|_{A_{1},A_{2}})..P(A_{n-1}|_{A_{1},A_{2},..,A_{n-2}}).
+  P(A_{n}|_{(A_{1},A_{2},..,A_{n-1})})\)
+  <br> that is:<span class="result">\(P( A_{1} \cap A_{2}..A_{n-1} \cap A_{n}) =
+  P(A_{1}).P(A_{2}|_{A_{1}}).P(A_{3}|_{A_{1},A_{2}})...P(A_{n}|_{(A_{1},A_{2},..,A_{n-1})})\)</span>
+, which means the property is also true for n.
+  </span>
+  
+  
+ <div  class="box1" style="margin-left: 2%;margin-top: 1%;margin-bottom: -1%;font-size:0.94em">
+  <b>Example: Drawing 6 units form a box </b>
+  
+  
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+    <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%">
+    In a box we have 100 units, 6 are defective, we draw three units from the box, what is the probability that all
+    the three units are good ?
+  <br><b>&#9755; Solution:</b>
+
+  <span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+  <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%">
+  Let A,B and C be respectively the events that the first, the second  and the third units are good.
+  We want to calculate \( P(A \cap B \cap C).\)
+ <br>We know that  \( P(A \cap B \cap C)=P(A).P(B|_A).P(C|_A,B), \)
+  we have: \( P(A)={ 94 \over 100}  \), \( P(B|_A)={ 93 \over 99  } \) and \( P(C|_A,B)={ 92 \over 98  } \) so 
+  \( P(A \cap B \cap C)={ {94.93.92} \over {100.99.98}}. \)
+  <br>Of course we could've get the same result without referring to conditional probability, actually if D is the 
+  event corresponding to drawing three good units, we have:
+  <br>\( P(D)={    { \binom{3}{94} }   \over  {  \binom{3}{100}}   } ={    { { 94! }  \over {3! . 91!  } }   \over   { { 100! }  \over {3! . 97!  } }   }=
+  {    {  94! .  3! . 97! }   \over   {  100! . 3! . 91!   }   }={ 94!  \over 91! } . { 97! \over 100!  } 
+  ={ 92.93.94  \over  98.99.100 } .  \)
+  
+  </div>
+  </div>
+  </div>
+</div>
+
+  </div>
+  <h3 id="3_4_4">3.4.4 Independent event</h3>
+    &#9755; Two events A and B are independent if and only if: P(A|_B)=P(A) or P(B|_A)=P(B)
+   <br> &#9755; A collection of events A<sub>1</sub>,A<sub>2</sub>,A<sub>3</sub>...are independent if:
+   P(A<sub>i<sub>1</sub></sub>&cap;..&cap; A<sub>i<sub>j</sub></sub>)= P(A<sub>i<sub>1</sub>
+   </sub>).. P(A<sub>i<sub>j</sub></sub>)
+   for any sub-collection of distinct events A<sub>i<sub>1</sub></sub>,...,A<sub>i<sub>j</sub></sub>  
+ 
+<br>As a result of this definition we have :
+<br>1) A and \( \overline{B} \) are independent, and B and \( \overline{A} \) are independent.
+<br>2)  \( \overline{B} \) and \( \overline{A} \) are independent.
+<br>3) If  \( A_{1},A_{2},..,A_{n}\) are independent then:\( P(A_{1} \cup A_{2} \cup ..A_{n})=
+1-(1-P(A_{1})).(1-P(A_{2}))..(1-P(A_{n}))\)
+<br>4) Let A and B be two events such as, \(P(A) \neq 0 \) and \( P(B) \neq 0 \), if
+A and B are disjoint then A and B are not independent.
+<br>Proof:<span class="tooltip">&#128216;</span>
+ <span class="tooltiptext">
+ <br>1) Since \( B \cup \overline{B}=S \), we have \((B \cup \overline{B}) \cap A=S \cap A=A \)
+ it follows  \((B \cap A) \cup (\overline{B} \cap A)=A \), and since \((B \cap A) \;and\; (\overline{B} \cap A) \) are 
+ disjoint we have:
+ \(P(\overline{B} \cap A)=P(A)-P(B \cap A) \), and since A and B are independent we have:
+ \(P(\overline{B} \cap A)=P(A).(1-P(B))=P(A).P(\overline{B}) \)
+ <br><br>2) We have \( A \cup  \overline{A} =S \), so \(  (A \cup \overline{A}) \cap  \overline{B}=\overline{B}  \),
+  so \(  (A \cap \overline{B}) \cup (\overline{A} \cap \overline{B})=\overline{B}  \), 
+  since \(  A \;and\;   \overline{A} \; are \;disjoint \), \(  (A \cap \overline{B}) \;and\;  
+ (\overline{A} \cap \overline{B}) \;are\;disjoint \), 
+ so  \( P (A \cap \overline{B}) +P (\overline{A} \cap \overline{B})=P(\overline{B} ) \), we know already that
+   \( A \;and\; \overline{B} \) are independent,
+ that means \( P (\overline{A} \cap \overline{B})=P(\overline{B} )-P (A).P( \overline{B})=P(\overline{B} ).(1-P(A)\) 
+ <br>finally we get:<span class="result">\( P (\overline{A} \cap \overline{B})=
+ P(\overline{A} ).P(\overline{B} ) \)</span> 
+ <br><br> 3) According to Morgan's Law, we have: 
+ \( \overline{\overline{A_{1}} \cap \overline{A_{2}}\; \cap..\cap \;\overline{A_{n}}} =
+ A_{1} \cup A_{2}\; \cup ..\cup \;A_{n} \)
+ , so  \( P(A_{1} \cup A_{2}\; \cup ..\cup \;A_{n}) =
+ 1-P(\overline{A_{1}} \cap \overline{A_{2}}\; \cap..\cap \;\overline{A_{n}}) \), since \(A_{i} \) are independent, 
+ \( P(\overline{A_{1}} \cap \overline{A_{2}}\; \cap..\cap \;\overline{A_{n}}) =
+ P(\overline{A_{1}}).P(\overline{A_{2}})..P(\overline{A_{n}})\), knowing that:\( P(\overline{A_{i}})=1-P(A_{i}) \), 
+ we get that equality in 3
+ <br><br>4. since A and B are disjoint their intersection is null, so \(P(A \cap B)=0 \neq P(A).P(B) \)
+ This can also be deduced intuitively, because when you say A and B are disjoint, you mean they never happen 
+ simultaneously, that is if A occurs B doesn't and vice-versa, so they're not independent 
+ </span>
+ <div class="box1">
+  <b>Example:Random Experiment Design and independence</b>
+  <span class="tooltip">&#128216;</span>
+ <div class="tooltiptext">
+ <br>We want to know the impact of the design of the random experiment particularly the number of possible 
+ outcomes on the independence of events, for this we are going to perform two random experiments where 
+ the number of possible outcomes is different and check the independence of some 
+ events.  
+ <br>In the 1<sup>st</sup> random experiment we toss a four sided fair die, in the 2<sup>nd</sup> 
+ experiment we toss a six sided fair die, the following table gives the details of each one of those two random 
+ experiments:
+ 
+ 
+ <table style="width:100%">
+  <tr>
+    <th style="width:33%">Events</th>
+    <th style="width:33%">1<sup>st</sup> Random Experiment:S={1,2,3,4}</th>
+  <th style="width:34%">2<sup>nd</sup> Random Experiment:S={1,2,3,4,5,6}</th>
+  </tr>
+  <tr>
+    <td>A={Die comes up 1 or 3 side}, A={1,3}</td>
+    <td>P(A)=2/4=1/2</td>
+     <td>P(A)=2/6=1/3</td>
+  </tr>
+  <tr>
+    <td>B={Die comes up 3 or 4 side}, B={3,4} </td>
+    <td>P(B)=2/4=1/2 </td>
+   <td> P(B)=2/6=1/3</td>
+  </tr>
+    <tr>
+    <td>A &cap; B={3} </td>
+    <td>P(A &cap; B)=1/4</td>
+    <td>P(A &cap; B)=1/6</td>
+  </tr>
+  
+   <tr>
+    <td>Independence check: 1<sup>st</sup> method</td>
+    <td>P(A).P(B)=(1/2).(1/2)=P(A &cap; B)&rArr; <br>A and B  independent</td>
+    <td>P(A).P(B)=(1/3).(1/3)=1/9&ne;P(A &cap; B)&rArr; <br>A and B not independent</td>
+  </tr>
+  
+   <tr>
+    <td>Independence check: 2<sup>nd</sup> method</td>
+    <td>P(A|B)=\(|A &cap; B| \over |B|\)=\(1 \over 2 \)=\(2 \over 4 \)=P(A)&rArr;<br>A and B  independent</td>
+    <td>P(A|B)=\(|A &cap; B| \over |B|\)=\(1 \over 2 \)&ne;\(1 \over 3 \)=P(A) &rArr;<br>A and B not independent</td>
+  </tr>
+  <tr>
+    <td>Conclusion</td>
+    <td colspan="2">Independence not so intuitive !</td>
+  
+  </tr>
+  <tr>
+    
+    <td colspan="3">In some cases independence is intuitive, for example when you toss a coin then a die, 
+    having a head is independent from having a 1, no need to do the calculations!</td>
+  
+  </tr>
+</table>
+  </div>
+ </div>
+ 
+ 
+ <h3 id="3_4_5">3.4.5 Law of total probability</h3>
+For any event A and partition \( B_{1}, B_{2}, ...\) of the sample space, we have: 
+\( P(A)=\sum\limits_{i} P(A \cap B_{i})= \sum\limits_{i} P(A|_{B_{i}}).P(B_{i})\), 
+ Proof:
+ <span class="tooltip">&#128216;</span>
+ <span class="tooltiptext">
+ See 2.3.10 c) and the definition of conditional probability
+ </span>
+ 
+  <h3 id="3_4_6">3.4.6 Bayes' Rule</h3>
+ a) For any two events A and B, where \(  P(A) \neq0 \), we have: \(P(B|_A)={P(A|_B)P(B) 
+ \over P(A)} \)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Because \(P(B|_A)=\frac{P(A \cap B)}{P(A)} \) and \(P(A|_B)=\frac{P(B \cap A)}{P(B)} \)
+  </span>
+<br> b) For any partition \(B_{1}, B_{2},..\) of the sample space, we have:
+   \(P(B_{j}|_A)={P(A|_{B_{j}}).P(B_{j}) \over {\sum_\limits{i}  P(A|_{B_{i}})P(B_{i})}}  \)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Use law of total probability
+  </span>
+   
+   
+   <div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: -1%;font-size:0.94em;padding:0%">
+	  <b>Example:False positive paradox</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+A harmful bacteria affects the stomach of one out of 80000 male smoker, fortunately this bacteria can 
+be detected by a very accurate test. Actually when 1000 not affected persons are tested, only 2 are positive
+, conversely 3 out of 1000 affected persons are declared to be free from that bacteria by this test.
+  
+<br> If a randomly chosen male smoker (with no symptoms) is tested positive, what is the probability that this 
+ person is affected ?
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em">
+We want to calculate P(A|T), where:
+<br>- A the event corresponding to that person being affected., so \( \overline{A} \) is the event 
+corresponding to that person not affected.
+<br>- T the event corresponding to that person being tested positive, so \( \overline{T} \) is the event 
+corresponding to that person being tested negative.
+<br> Applying Bayes' Rule (3.4.6 b) gives us:
+\( P(A|_T)={{P(T|_A).P(A) } \over {P(T|_A).P(A)+P(T|_\overline{A}).P(\overline{A}) }} \)
+<br> We know that \( P(A)= { 1 \over 80000 }=1-P(\overline{A}) \) and 
+\( P(T|_\overline{A})={ 2 \over 1000 } \) also 
+we know that:\( P(\overline{T}|_A)=1-P(T|A)={ 3 \over 1000 } \), substituting those terms in the 
+equation above gives:
+<br> \( P(A|_T)= {    { (1-3/1000) *(1/80000)}   \over     {(1-3/1000) *(1/80000)+ (2/1000)*(1-1/80000)}  } 
+= { {997/(8*10^7 )  } \over { 997/(8*10^7 ) +79999*2/(8*10^7)}    }
+= { {997  } \over { 997 +79999*2}    }=6.19*10^{-3}
+\).
+<br> We expected some very high probability such as 0.99 (99%) as the test is very 
+accurate, how can we 
+explain such a very small probability, the simple answer to this paradox is the rareness 
+of this disease, 
+which supersedes the accuracy of the test.
+<br>  Figure 39 gives an explanation on the repartition of a population of 80 000 000 
+male smoker, 
+as\(  P(A|_T)={  {997 } \over {997+159998 }   } =6.19*10^{-3}\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure39.png"  style="float: right; width: 65%; height: 45%;" class="image1">
+  </span>
+, note that we get the same result as above.
+ 
+
+
+
+
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+   
+   
+   
+<h3 id="3_4_7">3.4.7 Conditional Independence</h3>
+  a)  A and B are conditionally independent given C if and only if: 
+  <span class="result">\(P((A|_B)|_C)=P(A|_{(B,C)})=P(A|_C)\)</span>
+ <br>b) We have also as a direct result of this definition:
+ <span class="result">\(  P((A \cap B)|_C)=P(A|_C)P(B|_C)  \)</span> 
+ Proof:<span class="tooltip">&#128216;</span>
+ <span class="tooltiptext">
+ \( P(A|B,C)=\frac{P(A \cap B \cap C)}{P(B \cap C)}=\frac{\frac{P(A \cap B \cap C)}{P(C)}}{\frac{P(B \cap C)}{P(C)}}
+ ={P(A \cap B|_C)\over P(B|_C)}\) 
+ <span class="tooltip">&#128216;</span>
+ <span class="tooltiptext">
+ \( A \cap B|_C=(A \cap B)|_C \)  as \( A \cap (B|_C) \) is meaningless !</span>
+ </span>
+  <div  class="box1" style="margin-left: 2%;margin-top: 1%;margin-bottom: -1%;font-size:0.94em">
+ <b>Example:Tossing a fair coin three times</b>
+  <span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+  <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%">
+1 When tossing a fair coin three times, 
+
+<div  style="margin-left: 2%;margin-top: -4%;margin-bottom: -2%;font-size:0.9em">
+<br>1.1What is the probability of having a head in the third toss (event A) knowing 
+that we had a head in the first toss and a tail in the second toss (event B) ?
+<br>1.2 What is the probability of having a head in the third toss (event A) knowing  
+that we had at least one head in the first two tosses (event C) ?
+<br>1.3 What is the probability of having a head in the third toss (event A) knowing  
+that we had at least one head in the second two tosses (event D) ? are events A and D 
+independent ?
+<br>1.4 Knowing that at least one of the three tosses is a head (event E), what is the 
+probability of getting at least two tails (Event F), are events F and E independent ?
+
+</div>
+
+<br>2. Now our random experiment consists of tossing an unfair coin three times, 
+knowing that the probability of having a head is P(H)=p, what is the probability of 
+having a head in the first toss and a tail in the third toss  (Event G)?
+<br>3. Answer the questions above (1) in the case of a biased coin.
+  <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%">
+Solution:
+
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext"> 
+  <br>1. When the coin is fair
+  <div  style="margin-left: 2%;margin-top: -4%;margin-bottom: -2%;font-size:0.9em">
+<br>  1.1 We want to find \(P(A|_B)\), we know that \( P(A|_B)={P(A \cap B) \over P(B) } \), so
+ we need to find 
+\(P(A \cap B) \) and P(B)
+<br>we have S={(H,H,H),(H,H,T),(H,T,H),(H,T,T),(T,H,H),(T,H,T),(T,T,H),(T,T,T)}, 
+B={(H,T,H),(H,T,T)},
+<br>A={(H,H,H),(H,T,H),(T,H,H),(T,T,H)}, so  we know that \(A \cap B=(H,T,H ) \), 
+so \(P(A \cap B)={1\over 8 }\) and \(P(B)={2\over 8 }\), 
+finally we have:<span class="result">\(P(A|_B)=1/2 \) </span>
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">We could've figured this out intuitively, because the third 
+  toss is independent from other tosses, so the probability of having a head in the third 
+  toss is equal to having a head in a random toss, that is 50% or 1/2.
+  </span>
+<br> 1.2 We want to find \(P(A|_C)\), we know that \( P(A|_C)={P(A \cap C) \over P(C) } \), so 
+we need to find \(P(A \cap C) \) and P(C)
+<br> We have C={(H,H,T),(H,T,H),(T,H,H),(H,T,T),(H,H,H),(T,H,T)}, so 
+\(A \cap C ={(H,H,H),(H,T,H),(T,H,H)} \), so 
+\(P(A \cap C) ={ 3 \over 8}\) and \( P(C)={6 \over 8 }  \), finally we get 
+<span class="result">\(P(A|_C)=1/2\)</span>
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">We could've figured this out intuitively, because the third 
+  toss is independent from other tosses, so the probability of having a head in the third 
+  toss is equal to having a head in a random 
+  toss, that is 50% or 1/2.
+  </span>
+
+<br> 1.3 We want to find \(P(A|_D)\), we have D={(H,H,H) ,(H,H,T),(H,T,H),(T,H,H),(T,H,T),
+(T,T,H)}, so  \( D\cap A={(H,H,H),(H,T,H),(T,H,H),(T,T,H)} \) and \( P(D\cap A)=
+{{|D\cap A|}\over {|S|}}={4\over 8} \), we have also 
+ \( P(D)={|D|\over|S|}={6 \over 8} \),(note that \( A \subset D \))
+, finally we get <span class="result">P(A|D)=2/3</span> \( \neq P(A)\)
+<br>1.4 We want to find P(F|_E), we have E={(H,H,H),(H,H,T),(H,T,H),(H,T,T),(T,H,H),(T,H,T),
+(T,T,H)},
+<br> and F={(H,T,T),(T,H,T),(T,T,T),(T,T,H)} so \( F \cap E={ (H,T,T),(T,H,T),(T,T,H)} \), 
+so \(P( F \cap E)={3 \over 8} \) and \(P(E)={7 \over 8 }   \), 
+<br>we finally get <span class="result"> \(P(F|_E)=3/7\)</span>  \( \neq \) P(E)\)
+which means F and E are not independent.
+
+</div>
+<br>2.For a biased coin it's hard to use the frequentist approach, we use instead the 
+bayesian one, we have P(G)=P(HHT,HTT)=P(HHT)+P(HTT)=P(H).P(H).P(T)+P(H).P(T).P(T) 
+(since any toss is independent from other tosses), that is:
+P(G)=\( p^2.(1-p)+p.(1-p)^2 =p.(1-p)\), we could've imagine this result intuitively, 
+because: 
+<br>P(G)=P(first toss is head).P(third toss is tail)=p.(1-p)
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

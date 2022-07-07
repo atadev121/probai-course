@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="utf-8">
+<title>Introduction to probability</title>
+</head>
+
+<body>
+
+	<div  layout:fragment="content">
+<div id="introduDiv">
+		<script>
+			console.log("before require myf")
+			requirejs(['introduction'], function(m) {
+			});
+		</script>
+		
+		<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+		
+<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example:Tossing a fair coin twice</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    We toss a fair coin twice, what is the probability of having one head (event A) 
+    knowing that we had already at least one head (event B)?
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    we have S={(H,H),(H,T),(T,H),(T,T)}, A={(H,T),(T,H)}, B={(H,H),(H,T),(T,H)}
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+		
+			<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+		
+		  \(\left\{\begin{matrix}
+c  &  &  for \; x=c  \\
+ 0  &  &  elsewhere  \\
+
+\end{matrix}\right.\)
+		
+	\left\{cc \right\}	
+		
+		\( \sum_\limits{i=0}^{n}q^i={ {1-q^n  }  \over  {1-q  }  } \)
+  <img src="/img/figure77.png"  style="float: right; width: 22%; height: 45%;" class="image1">		
+		
+ \(f(x)=\frac{1}{\sigma} \phi(\frac{x-\mu}{\sigma})=
+{1 \over  {\sigma \sqrt{2 \pi} }} e^ {-{ { (x - \mu )}^2 \over { 2 \sigma^2 }} }\)
+
+\int_{-\infty }^{+\infty }
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, 
+  </span>
+	\sum\limits_   &#9312;
+	  ,https://arachnoid.com/latex/	
+	  \mathbb{R}
+	<!-- **********************************************************-->  
+&#9755;**** &#9827;***** \leqslant***** \geqslant***** \Leftrightarrow*****
+ \left\{gg \right\}
+**** \frac{}{}******\displaystyle \lim_{ \to 0}*****<!-- comment -->****************
+<a href="Folder/myimagehavenoname.png" download="myImage">Download image</a> 
+
+\begin{bmatrix}
+ & \\ 
+ & 
+\end{bmatrix}
+*******************
+	  
+		
+		   <br><br><span style="margin-left: 46%;">            ---------|||--------</span>
+ <br><br>
+		
+		
+		
+		X &le; Y &rArr; X(s) &le; Y(s) &forall; s &isin; 
+		
+		<div class="box1"> </div>
+		 <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: -1%;font-size:0.9em"></div>
+		 <div  class="box1" style="margin-left: 2%;margin-top: 1%;margin-bottom: 0%;font-size:0.94em"></div>
+		
+		
+           <h1 id="1_1">1 Introduction to probability</h1>
+		   <h2 >1.1 Real life example</h2>
+<div>
+			<img style="float: right; width: 15%; height: 15%;"
+				src="/img/leak.jpg" id="productionImg" class="image1">Flow Ti
+			is a first class company designing and producing pipes for many
+			applications such as irrigation and waste management, Flow Ti is
+			committed to deliver to its customers leak proof pipes with a
+			probability of leaks at the field less than 5% with 99% certainty (as
+			you may guess only God knows for sure if a pipe will or won't
+			leak), for this it has required to its subsidiaries that all
+			production lots of the pipes holding their trademark must undergo a
+			hydraulic or leak test, by testing a sample from each lot and if some
+			rejection threshold is reached (say 1 or 2 out of a sample of 10
+			pipes ) has leaked, 100% of the lot must be tested, for this, their
+			quality manager has to set the sample size and the rejection
+			threshold.
+
+		</div>
+
+
+		<h2  id="1_2">1.2 Population</h2>
+		<div>
+			<img src="/img/200w.webp" id="productionImg" class="image1"
+				style="float: right; width: 30%; height: 30%;"> Before going
+			any further in this example, let's consider the concept of
+			population, in the context of Flow Ti pipes a population of pipes is
+			a set of pipes produced under same set of characteristics (production
+			conditions, raw materials, work force, process configuration..), to
+			be more precise let's say a population is much related to a
+			production lot, we start a production run (or order) which may last
+			for weeks, we suppose that production characteristics are more likely
+			to drift away or simply change from the standard with time, so within
+			a reduced laps of time those characteristics are more likely to stay
+			the same, so a production lot may correspond to a quantity of 100
+			pipe or the production of one shift if we need more than one shift to
+			produce 100 pipes. For the sake of simplicity let's suppose that we
+			are producing pipes of small diameter, and that we need less than one
+			shift to produce 100 pipes, so a population correspond to a
+			production of 100 pipes. In the same production run we produce 100
+			pipes within some production conditions which corresponds to some
+			quality level and we mean by quality level, leak rate say 8%, lets
+			say this population 1(p1), after this 100 pipes, the guy in the
+			winder machine did some adjustment and quality goes up, which
+			corresponds to another population say population 2 (p2) with a
+			rejection rate of less than 4%. Now suppose that we're producing non
+			stop under conditions of population1, that is we are producing pipes
+			with a rejection probability of say 8%, let's do an experiment, take
+			10 pipes every day and test them.
+		</div>
+
+		<p>
+		<h2 id="1_3">1.3 The coin toss trap</h2>
+	
+		<div>
+			<img src="/img/coin-toss.jpg" id="coinTossImg" class="image1"
+				style="float: left; width: 15%; height: 15%">
+
+			<div>The pipe experiment described above is exactly the same as
+				tossing a die ten times, and note how many heads and tails (for
+				example 5 out of 10) and repeat the experiment many times , as you
+				may guess the number of heads (good result, or good pipe, successes
+				) depends of the probability of having a head when you toss the coin
+				(one time) but also on how many times we tossed the coin (for this
+				experiment it's 10)</div>
+		</div>
+
+		<div style="clear: left">
+
+			<h3 id="1_3_1">1.3.1 Tossing a biased coin n times</h3>
+			Let's do an experiment, toss a biased			<span class="tooltip" id="rt">&#128216;</span> 
+				<span class="tooltiptext">a biased coin is a coin with the
+					probability of getting head and tail not the same, if we toss a
+					fair coin, the probability of having a head is the same as the
+					probability of having a tail which is 50% or 0.5</span>
+		coin n times and note how many heads we get. <span class="tooltip">&#128216;</span>
+				<span class="tooltiptext"> getting a head is called a success
+					in the probability terminology, because this what we're concerned
+					about, this has nothing to do with whether or not it's a "good"
+					thing, note that for Flow Tit it's a failure to have a pipe with
+					leak
+			</span> 
+	<br>	Suppose that the probability of having a head in one toss is p.
+			<span class="tooltip">&#128216;</span>
+			<span class="tooltiptext">	 getting a head is
+			like finding a pipe with leak in the Flow Ti case, for the pipe
+			problem, n=10 and p=8%, or 0.08 </span>
+		
+		<br>	Let's do a computer simulation for this experiment, enter n and p in the following boxes 
+			and get a random result. <span class="tooltip">&#128216; </span><span
+				class="tooltiptext">keep pushing the "Toss button" for more
+					trials.</span>
+
+		</div>
+
+		<div>
+
+			<br><span>Enter n:</span><input id="numberOfTosses" type="text"
+				value="1000"
+				style="position: relative; width: 10%; height: 10%; top: 1%; left: 1%; border-style: groove;">
+			<span style="padding: 1%;">Enter p:</span><input
+				id="probabilityOfHavingHeads" value="0.1" type="text"
+				style="position: relative; width: 10%; height: 10%; top: 1%; left: 1%; border-style: groove;">
+			<button id="tosseButton" type="button" class="myButton1">Toss!</button>
+			&nbsp;&nbsp;&nbsp;&nbsp; the result is the following:
+            <span id="probabilityOfSuccess" style="display:none;">0.1</span>
+		</div>
+
+
+
+
+		<div>
+			
+			<br>	 &nbsp;&nbsp;- Number of Heads (nh) <span id="numberOfTossesN" style="display:none;">1000</span>
+			=<span id="numberOfHeads" >99</span>
+
+		<br>&nbsp;&nbsp;- <span style="font-size:1.5em;"> \({   {  (n*p-nh)*100}\over nh    }   =\) </span><span id="nTimesPid" >1%</span>
+
+			
+
+		</div>
+		<div>
+			&nbsp;&nbsp;-  outcomes =<span class="tooltip">&#128216;</span>
+			<span id="tossResult" class="tooltiptext">...</span>
+		<br>	<br><span>As you may have noticed the number of heads is around n*p, but this value can fluctuates significantly 
+		depending on n*p, as n*p grows this fluctuation gets smaller and smaller.
+		 </span>
+			<span class="tooltip">&#128216;</span>
+			<span class="tooltiptext">To get some insight from this experiment, try to enter different values of n, and p that 
+			gives less heads then other values to get more heads, for example for n=1 and p=0.1 you won't be able to have a head unless 
+			you do several trials, around 10, you can be very lucky and get a head in the first toss, but generally it is very unlikely 
+			to not have  a head after 10 tosses.
+			<br> To see the effect of the number of tosses keep p=0.5 (fair coin) and start to increase n, you'll notice 
+			that for small values of n (below 10) the difference between the number of heads and tails is quiet significant, 
+			but as soon as n starts to grow this difference gets smaller and smaller</span>
+		</div>
+
+		<h3 id="1_3_2">1.3.2 Distribution</h3>
+		
+		Tossing the coin n times is called a trial, let's do many trials and
+		note the number of heads in each trial, the result of each trial is of
+		course random, it can vary from 0 to n, but it depends most certainly
+		on n and p, for the sake of simplicity let's suppose that our coin is
+		fair that is p=0.5, so having the majority of trials with no heads or
+		no tails is not very probable, for example in 10 tosses we expect to
+		have almost as many heads as tails, this guess is not valid for each
+		trial, but for the whole set of trials, let's see how..
+		<p>Let's do a simulation to get the result of k trials (number of
+			heads in each trial with n and p)
+		<p>
+
+			<span>Enter k:</span><input id="numberOfTrialsInput" type="text"
+				value="1000"
+				style="position: relative; width: 10%; height: 10%; top: 1%; left: 1%; border-style: groove;">
+			<button id="numberOfHeadsButton" type="button" class="myButton1"
+				style="position: relative; width: 12%; height: 10%; top: 1%; left: 1%; border-style: groove;">
+				Keep pushing!</button>
+				<span class="tooltip">&nbsp;&nbsp;&#128216;</span>	
+				<span  class="tooltiptext" >you can change n,p in the boxes above</span>
+		</p>
+	<span>Result of a set of </span>	<span id="numberOfTrials" >1000</span>&nbsp;trials:
+		<div style="position: relative;  left: 1%; ">
+	
+		<span>- The mean value of Number of heads:</span> <span id="meanValueOfNumberOfHeads">100</span>
+	
+		<br><span>- A combination of number of heads:</span><span class="tooltip">&#128216;</span>	<span id="numberOfHeadsInktrials" class="tooltiptext">....</span>
+		</div>
+		
+		
+
+<div style="position: absolute; width: 90%; height: 70%;background-color:black; overflow: hidden;">
+<canvas  id="barChart" style="  max-height: 100%; "></canvas> 
+	<button id="refreshButton" type="button" class="myButton1"
+				style="position: absolute; width: 12%; height: 10%; top: 20%; left: 86%; border-style: groove;">
+				Keep pushing!</button>
+				<span style="position: absolute; width: 12%; height: 15%; top: 30%; left: 86%; ">
+				n=<span id="nubmberOfTossesInsideChart"></span><br>
+				p=<span id="probabilityInsideChart"></span><br>
+				k=<span id="numberOfTrialsInsideChart"></span><br>
+				Mean=<span id="meanValueInsideChart"></span><br>
+				n*p=<span id="nTimespInsideChart"></span>
+				</span>
+</div>
+
+<div>
+<br><br><br><br><br><br><br><br>
+<br><h4>Analysis of the distribution:</h4>
+<div 	style="position: relative; left: 2%;width:98%">
+Let's denote by X the random variable associated to the number of heads:
+<br>1/ The number of possible values that X can take is equal to n, 
+
+
+	<span class="tooltip">&nbsp;&nbsp;&#128216;</span>	
+	<span  class="tooltiptext" >for example for n=10, this number is 10, for n=100 this number is 100,
+	because when you toss a coin 10 times, you can have no heads, one head, 2,3..or 10 heads, so the graphic above 
+representing the histogram of number of heads in k trials contains theoretically n values, </span>
+
+
+<br>2/ The values that the random variable X   can take are concentrated around the expected value of X.
+<span class="tooltip">&nbsp;&nbsp;&#128216;</span>	
+	<span  class="tooltiptext" >
+	this more clear for bigger values of the expected value of X
+ (the expected value of X is not the value of X, for example if n=100 and p=0.3, X can be any number form 0 to 100, 
+ but the expected value of X as the term "Expected" may suggest is 100*0.3=30  )  for example for n=100 and p=0.5, the expected number of heads is 50 so values that are far from this 
+value (0,1,2, 98,99,100), are almost certain not to have them as the outcome (because the expected value of X is 50), and the probability to have such values gets smaller 
+as those values gets further from the expected value 
+	</span>
+
+</div>
+
+</div>
+
+		
+</div>
+
+	</div>
+
+</body>
+</html>

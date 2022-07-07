@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="utf-8">
+<title>Set theory,latex.codecogs.com</title>
+</head>
+<script>
+
+  </script>
+  
+
+<body>
+
+	<div layout:fragment="content">
+	
+  
+	<h1 id="8">8. Linear models and regression analysis </h1>
+	<h2 id="8_1">8.1 Definitions </h2>
+	1. A model is a well defined function that predicts the outcome of a random 
+	process y based on a set of RVs 	\(X_1,..,X_k\)	.
+	<br>2. 	 The model can be expressed as: 
+	\(y=f(X_1,..,X_k,\beta_1,..,\beta_k)+\epsilon\) 
+	<br>3. y is called the dependent variable.
+	<br>4. \(X_1,..,X_k\) are called the explanatory variables.
+	<br>5.	\(\beta_1,..,\beta_k\) are the parameters which caracterize the role and contribution 
+		of \(X_1,..,X_k\).
+<br>6. \(\epsilon\) is a rondom term that represents the error introduced 
+		by our statistical model.
+		<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br> This term can also be regarded as the sum of the impact of all explanatory variables over 
+  which we don't  have control or which are difficult to control.
+  <br> If there were no random residual term \(\epsilon\), the model would be mathematical 
+    not statistical.
+  </span>
+  <br>7. The model is linear if it is linear in parameters.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>1.  \(\frac{\partial y}{\partial \beta_i}\) is independent from \(\beta_i\) for all the parameters.
+  <br>2. \(y=\beta_0.X^{\beta_1}\) is also linear because we can come up with a transformation which 
+  can turns up this model to a linear one, actually, \(Ln(y)=Ln(\beta_0)+\beta_1.Ln(X)\), so 
+  \(y'=\beta_0'+\beta_1.X'\) where \(y'=Ln(y)\), \(X'=Ln(X)\) and \(\beta_0'=Ln(\beta_0)\)
+  <br>3. \( y=\beta_0+\beta_1.X+\beta_2.X^3 \) is linear because we can use the variable change  
+  \(X'=X^3\) to turn our model to a linear one.
+  <br>4. \(y=\frac{\beta_0}{\beta_0+\beta_1.X}\) and \(y=\beta_0+\beta_1.X^{\beta_2} \) are non 
+  linear.
+  
+  </span>
+  <br>8. A linear model can be expressed as \(y=\beta_0+\beta_1.X_1+..+\beta_k.X_k+\epsilon\), 
+   <br>9. The purpose of linear regression is  to find the parameters \(\beta_1,..,\beta_k\), 
+   given some observations on \(y\) and \(X_1,..,X_k\).
+   <br>10. Where the term "Regression" comes from ?
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Normally we generate data from the model, which we know exists, but in order 
+    to find the model we "move backward" to data to identify the model, 
+  </span>
+  <br>11. With n observations we write
+   \(y_i=\beta_0+\beta_1.x_{i1}+..+\beta_k.x_{ik} +\epsilon_i\),   for i=1,..,n
+   <br>12. Simple vs Multiple regression.
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     When the model contains only one explanatory variable, it's called 
+   a simple regression, whereas it's called a multiple regression when there is more than 
+   one explanatory variable.
+  </span>
+  <br>12. Univariate vs Multivariate regression.
+     <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     When the model contains only one dependent variable, it's called 
+   a Univariate regression, whereas it's called a Multivariate regression when there is 
+   more than one dependent variable.
+  </span>
+  <br>13. The estimated parameters \(\hat{\beta_1},..,\hat{\beta_k}\), and the calculated 
+  dependent variable \(\hat{y_i}\).
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     We use the observations to find an estimate for the parameters 
+  \(\beta_1,..,\beta_k\), those estimations are denoted \(\hat{\beta_1},..,\hat{\beta_k}\).
+ <br> For the dependent variable we have n observations, for each observation we can 
+ defined a value that is calculated by the model (using the estimated parameters) \(\hat{y_i}\)
+  </span>
+   <br>14. Regression techniques:
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br> - When all explanatory variables are qualitative variables we use Analysis of 
+    variance (ANOVA)
+    <br>- When some of explanatory variables are quantitative variables and others are qualitative
+variables we use Analysis of Covariance (ANCOVA)
+<br>- The response variable is qualitative we use the Logistic regression.
+  </span>
+  <h2 id="8_2">8.2 Simple linear regression</h2>
+   <h3 id="8_2_1">8.2.1 Example and definitions</h3>
+ <b>Example:</b>
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <img src="/img/figure161.png"  style="float: right; width: 70%; height: 60%;" class="image1">	
+   <br> Figure 161 gives the fuel consumption in tons par day for a given type of ships as function 
+   of speed in knots, the dots in blue represent the real values and the line represent the model 
+  we constructed using this data, as you can see even for the same value of speed the consumption 
+  we can have  different values of fuel consumption, this difference or call it fluctuation is due to 
+  a large number of factors which we cannot fully understand and control, anyways we can conclude 
+  that there is a linear relationship between the speed and fuel consumption, let's put this 
+  relationship in the following equation   \( FC=\beta_0+\beta_1.S+\epsilon\), 
+  (FC=Fuel consumption and S=speed) or \( y=\beta_0+\beta_1.x+\epsilon\)
+  where \(\beta_0\)   and \(\beta_1\) characterize the linear model or the predicted part as function 
+  of speed and \(\epsilon\) is a RV which quantifies the random part of fuel consumption that we 
+  don't know, in general \(\epsilon \sim N(0,\sigma^2)\) (we incorporate the expected value of 
+  \(\epsilon\) in \(\beta_0\)), let's take two values of the speed, \(x_1\) and \(x_2\), we have 
+  \(y_1=\beta_0+\beta_1.x_1+\epsilon_1\) and  \(y_2=\beta_0+\beta_1.x_2+\epsilon_2\), where 
+  \(\epsilon_1\) and \(\epsilon_2\) are two samples of the RV \(\epsilon\), those two samples are 
+  indeed identically distributed but are not necessarily independent, to make the model easier 
+  we suppose that they are independent, so  \(y\) has a deterministic part which is determined solely 
+  by x (which is \(\beta_0+\beta_1.x\)) and a RV part which changes randomly according to a normal 
+  distribution, so we can write \(E(y)=E(y|_x)=\mu_{y|_x}=\beta_0+\beta_1.x\).
+  <br>But as we said earlier the parameters \(\beta_0\) and \(\beta_1\) are not known, we can only 
+  find an estimate of those parameter based on the data, suppose \(b_0\) and \(b_1\) those two 
+  estimates, that \(\hat{\beta}_0=b_0\) and \(\hat{\beta}_1=b_1\), those estimates are chosen so that 
+  the quantity  \(b_0+b_1.x\) is close to y for all observations as a whole (not for every observation),
+  that is the quantity \(e=y-b_0+b_1.x\) must be minimal.
+
+  <br> <img src="/img/figure160.png"  style="float: right; width: 62%; height: 65%;" class="image1">
+  
+  </span>
+
+<br> 1. \(y=\beta_0+\beta_1.x+\epsilon\) is a simple regression model with \(E(\epsilon)=0\) and 
+\(Var(\epsilon)=\sigma^2\).
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br>  in general we accept that \(\epsilon \sim N(0,\sigma^2)\)
+  </span>
+<br>2.  \(E(y|_x)=\mu_{y|_x}=\beta_0+\beta_1.x\),  \(Var(y|_x)=\sigma^2\) and 
+\(y-\mu_{y|_x}=\epsilon\)
+ <br>3. \(\beta_0\) and \(\beta_1\) are called respectively the intercept and the slope 
+ of the linear model.
+ <br>4. For a given observation i we write  \(y_i=\beta_0+\beta_1.x_i+\epsilon_i\), we suppose that
+ \(cov(\epsilon_i,\epsilon_j)=0\) for \(i \neq j\).
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+<br> In general we suppose that \(\epsilon_i\) are independent  and normally distributed.
+  </span>
+ <br>5. x is the control variable, it is fixed or chosen by the experimenter, whereas y is called the 
+ response variable.
+  <br>6. Based on a sample \((x_1,y_1),..,(x_n,y_n)\) we want to find an estimate for  
+  \(\beta_0\) and \(\beta_1\), let \(b_0\) and \(b_1\) be those estimates.
+
+
+  <br>  7.   \(b_0+b_1.x\) is an estimate of \(\mu_{y|_x}\) and we write
+   \( \widehat{\mu_{y|_x}}=b_0+b_1.x\).
+   <br>8. If \(b_0\) and \(b_1\) are unbiased estimators of \(\beta_0\) 
+   and \(\beta_1\) then  \( \widehat{\mu_{y|_x}}=b_0+b_1.x\) is an unbiased estimator for 
+   \(\mu_{y|_x}=\beta_0+\beta_1.x\)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, \( E(\widehat{\mu_{y|_x}})=E(b_0)+x.E(b_1)=\beta_0+\beta_1.x=\mu_{y|_x} \)
+  </span>
+    <br>9. An estimator for y is  \(\hat{y}=b_0+b_1.x+\epsilon\), where \(E(\epsilon)=0\) and \(Var(\epsilon)=\sigma^2\)
+   <br>10. For the sake of simplicity we write  \(\dot{y}=\widehat{\mu_{y|_x}}=b_0+b_1.x\) and we call 
+   it predicted value.
+   <h3 id="8_2_2">8.2.2 Least squares estimation</h3>
+   1. The least squares method aims to minimize the sum of squares of the
+   deviations of the \(y_i\) from the predicted values.
+      <br>2. Different Least squares methods:
+      <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>As described in figure 159, there are different least squares methods. 
+  <br>Direct regression is also called Ordinary Least Square OLS.
+    <img src="/img/figure159.png"  style="float: right; width: 92%; height: 50%;" class="image1">
+  </span>
+   <h3 id="8_2_3">8.2.3 Direct regression</h3>
+    <h4 id="8_2_3_1">8.2.3.1 The general model</h4>
+   1. This method minimizes the sum 
+   \(S(\beta_0,\beta_1)=\sum\limits_{i=1}^{n}\epsilon_i^2=\sum\limits_{i=1}^{n}(y_i-\dot{y}_i)^2=
+   \sum\limits_{i=1}^{n}(y_i-\beta_0-\beta_1.x_i)^2 \) with respect to \(\beta_0 \) and 
+   \(\beta_1\).
+   <br>2. S is minimized at \(b_1= \frac{S_{xy}}{S_{xx}} \) and
+    \(b_0=\overline{y}-b_1.\overline{x}=\overline{y}-\frac{S_{xy}}{S_{xx}}.\overline{x}\), where 
+  \(S_{xx}= \sum\limits_{i=1}^{n}(x_i-\overline{x})^2\), and \(S_{xy}= \sum\limits_{i=1}^{n}
+   (x_i-\overline{x}).(y_i-\overline{y}) \)
+  
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>
+    <br>actually, we have 
+    \(\frac{\partial S}{\partial \beta_0}(\beta_0,\beta_1)=
+    -2.\sum\limits_{i=1}^{n}(y_i-\beta_0-\beta_1.x_i) (a)\), 
+    on the other hand 
+    \(\frac{\partial S}{\partial \beta_1}(\beta_0,\beta_1)=-2.\sum\limits_{i=1}^{n}x_i.(y_i-\beta_0-\beta_1.x_i) \)
+  <br>\(\beta_0\) and \(\beta_1\) that minimize the sum S are obtained by resolving 
+  the equations : 
+   \(\frac{\partial S}{\partial \beta_0}(b_0,b_1)=0\) and 
+   \(\frac{\partial S}{\partial \beta_1}(b_0,b_1)=0\), where \((b_0,b_1) \) are the least
+    square estimate of \((\beta_0,\beta_1)\).
+  <br> Let  \(  A=\sum\limits_{i=1}^{n}x_i.(y_i-b_0-b_1.x_i),\;so\;A=0 \Rightarrow
+\sum\limits_{i=1}^{n}x_i.y_i-b_0.
+    \sum\limits_{i=1}^{n}x_i-b_1.\sum\limits_{i=1}^{n}x_i^2=0 \Rightarrow
+     \sum\limits_{i=1}^{n}x_i.y_i-b_0.\sum\limits_{i=1}^{n}x_i-b_1.
+     \sum\limits_{i=1}^{n}x_i^2=0, \) 
+     \(\Rightarrow \sum\limits_{i=1}^{n}x_i.y_i-n.b_0.\overline{x}-b_1.
+     \sum\limits_{i=1}^{n}x_i^2=0.\)(a)
+ \(\text{On the other hand let}\; B=\sum\limits_{i=1}^{n}(y_i-b_0-b_1.x_i)\;so\;
+  B=0 \Rightarrow \sum\limits_{i=1}^{n}y_i-n.b_0-b_1.\sum\limits_{i=1}^{n}x_i=0
+\Rightarrow y-b_0-b_1.\overline{x}=0\)
+\( \Rightarrow b_0=y-b_1.\overline{x}.
+\\\text{Going back to equation (a) we have:}
+\sum\limits_{i=1}^{n}x_i.y_i-b_1.\sum\limits_{i=1}^{n}x_i^2-n.\overline{x}.\overline{y}+n.b_1.\overline{x}^2=0
+\Rightarrow \sum\limits_{i=1}^{n}x_i.y_i-n.\overline{x}.\overline{y}+b_1.(n.\overline{x}^2-\\ \sum\limits_{i=1}^{n}x_i^2)=0 
+ \Rightarrow b_1=\frac{\sum\limits_{i=1}^{n}x_i.y_i-n.\overline{x}.\overline{y}}{\sum\limits_{i=1}^{n}x_i^2-n.\overline{x}^2} (h)
+\\\text{, now let's put } S_{xx}=\sum\limits_{i=1}^{n}(x_i-\overline{x})^2 
+\text{ and }
+ S_{xy}=\sum\limits_{i=1}^{n}(x_i-\overline{x})(y_i-\overline{y}) \text{ so }
+S_{xx}=\sum\limits_{i=1}^{n}(x_i^2-2.\overline{x}.x_i+\overline{x}^2)=\sum\limits_{i=1}^{n}x_i^2-n.\overline{x}^2 \), and 
+\(S_{xy}=\sum\limits_{i=1}^{n}x_i.y_i-n.\overline{x}.\overline{y} \), so \(b_1=\frac{S_{xy}}{S_{xx}}\) and 
+\(b_0=\overline{y}-b_1.\overline{x}=\overline{y}-\frac{S_{xy}}{S_{xx}}.\overline{x}\)
+<br>2. Now we have proved that the only stationary  point of S is  \((b_0,b_1) \), 
+now we must prove that this point is relative extrema by proving that the Hessian matrix  of S 
+(H(S)) is either  positive definite or negative definite.
+ <br> We have 
+ \(H(S(x,y)=\begin{bmatrix}
+\frac{\partial S(x,y)}{\partial^2 x} & \frac{\partial S(x,y)}{\partial x \partial y}\\ 
+\frac{\partial S(x,y)}{\partial y \partial x} & \frac{\partial S(x,y)}{\partial^2 y }
+\end{bmatrix}=
+\begin{bmatrix}
+2.n & 2.n.\overline{x}\\ 
+2.n.\overline{x} & 2.\sum\limits_{i=1}^{n}x_i^2
+\end{bmatrix}=2.
+\begin{bmatrix}
+n & n.\overline{x}\\ 
+n.\overline{x} & \sum\limits_{i=1}^{n}x_i^2
+\end{bmatrix}=2.
+\begin{bmatrix}
+1 & .. & 1\\ 
+x_1 & ..& x_1
+\end{bmatrix}.\begin{bmatrix}
+1 & x_1\\ 
+: & :\\
+1 & x_n
+\end{bmatrix}
+\), on the other hand \(det(H(S(\beta_0,\beta_1))=4.n.(\sum\limits_{i=1}^{n}x_i^2-n.\overline{x}^2)=
+4.n.\sum\limits_{i=1}^{n}(x_i-\overline{x})^2
+\), so \(det(H(S(\beta_0,\beta_1)) &gt;0\) (the case where this determinant is equal 0 is not considered 
+because there will be no regression all the values are the same), so H is positive definite
+ (Sylvester's Criterion), so \(\beta_0,\beta_1)\) is a relative minimum .
+ <br>Since \(\beta_0,\beta_1)\) is the only relative minimum so it's a global minimum.  
+  </span>
+   <br>3. \(\dot{y}_i=b_0+b_1.x_i\) is called the predicted or the fitted value.
+   <br>4. \(e_i=y_i-\dot{y}_i=y_i-b_0-b_1.x_i\) is called \(i^{th}\) residual or error.
+   <br>5. \(b_1=\sum\limits_{i=1}^{n}k_i.y_i \), where \(k_i=\frac{(x_i-\overline{x})}{S_{xx}}\) and we 
+   have \(\sum\limits_{i=1}^{n}k_i=0\) and \(\sum\limits_{i=1}^{n}k_i.x_i=1\)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, 
+    we have \( 
+S_{xy}=\sum\limits_{i=1}^{n}(x_i-\overline{x})(y_i-\overline{y})=
+    \sum\limits_{i=1}^{n}(x_i-\overline{x})y_i-\overline{y}\sum\limits_{i=1}^{n}(x_i-\overline{x})=
+ \sum\limits_{i=1}^{n}(x_i-\overline{x})y_i-\overline{y}(\sum\limits_{i=1}^{n}x_i-\sum\limits_{i=1}^{n}\overline{x})=
+\\\sum\limits_{i=1}^{n}(x_i-\overline{x})y_i-\overline{y}(n.\overline{x}-n.\overline{x})=
+\sum\limits_{i=1}^{n}(x_i-\overline{x})y_i\)
+so \(b_1=\frac{S_{xy}}{S_{xx}}=\frac{\sum\limits_{i=1}^{n}(x_i-\overline{x})y_i}{S_{xx}}=
+\sum\limits_{i=1}^{n}\frac{(x_i-\overline{x})}{S_{xx}}.y_i=\sum\limits_{i=1}^{n}k_i.y_i \), 
+where \(k_i=\frac{(x_i-\overline{x})}{S_{xx}}\) depends only on \(x_i\), 
+    and we have \(\sum\limits_{i=1}^{n}k_i=0\)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br>Actually
+  \(\frac{\sum\limits_{i=1}^{n}(x_i-\overline{x})}{S_{xx}}=\frac{(n.\overline{x}-n.\overline{x})}{S_{xx}}=0\)
+  </span>
+ and    \(\sum\limits_{i=1}^{n}k_i.x_i=1\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>Actually \(  k_i=\frac{(x_i-\overline{x})}{S_{xx}} \Rightarrow \sum\limits_{i=1}^{n}k_i.x_i=
+\frac{\sum\limits_{i=1}^{n}(x_i-\overline{x}).x_i}{S_{xx}}=\frac{\sum\limits_{i=1}^{n}(x_i^2-
+\overline{x}.x_i)}{S_{xx}}=
+\frac{\sum\limits_{i=1}^{n}x_i^2-n.\overline{x}^2}{S_{xx}}\) on the other hand 
+\(S_{xx}=\sum\limits_{i=1}^{n}(x_i-\overline{x})^2=\sum\limits_{i=1}^{n}x_i^2-2.\overline{x}.
+\sum\limits_{i=1}^{n}x_i+\sum\limits_{i=1}^{n}\overline{x}^2=
+\sum\limits_{i=1}^{n}x_i^2-2.n.\overline{x}^2+n.\overline{x}^2=
+\sum\limits_{i=1}^{n}x_i^2-n.\overline{x}^2\) so \(\sum\limits_{i=1}^{n}k_i.x_i=1\)
+</span>    
+<br> Here the random variables are y and \(\epsilon\), \(y_1,..,y_n\) and \(\epsilon_1,..,\epsilon_n\) 
+  are two random samples from y and \(\epsilon\) with \(y_i=\beta_0+\beta_1.x+\epsilon_i\) so 
+  \(E(y_i)=\beta_0+\beta_1.x_i\), because \(E(\epsilon_i)=0\), so
+  </span>
+   
+   
+   
+   <br>6. \(b_1\)  is an unbiased estimator of \(\beta_1\) and \(b_0\) is an unbiased estimator of 
+   \(\beta_0\).
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br> 
+  \(E(b_1)=\sum\limits_{i=1}^{n}k_i.E(y_i)=\sum\limits_{i=1}^{n}k_i.(\beta_0+\beta_1.x_i)=
+ \beta_0. \sum\limits_{i=1}^{n}k_i+\beta_1.\sum\limits_{i=1}^{n}k_i.x_i=\beta_0.0+\beta_1.1=\beta_1\), 
+ so \(b_1\) is an unbiased estimator for \(\beta_1\).
+ On the other hand \(E(b_0)=E(\overline{y})-\overline{x}.E(b_1)  \), on the other hand we have 
+ \(y_i=\beta_0+\beta_1.x_i+\epsilon_i\), so 
+ \(\overline{y}=\beta_0+\beta_1.\overline{x}+\overline{\epsilon}\), 
+ so \( E(\overline{y})=\beta_0+\beta_1.\overline{x} \), so 
+ \(E(b_0)=\beta_0+\beta_1.\overline{x}-\beta_1.\overline{x}=\beta_0\), so \(b_0\) is an unbiased
+  estimator of \(\beta_0\). 
+</span>
+  <br>7. \(Var(b_1)=\frac{\sigma^2}{S_{xx}}\), providing \(\epsilon_i\) are independently distributed.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually since \(b_1=\sum\limits_{i=1}^{n}k_i.y_i \) we have 
+    \(Var(b_1)=\sum\limits_{i=1}^{n}k_i^2.Var(y_i)+
+    \sum\limits_{i=1}^{n}\sum\limits_{j \neq i}k_i.k_j.cov(y_i,y_j)\), 
+    if \(y_i\) are independent, we have \(cov(y_i,y_j)=0 \), on the other hand
+     \(Var(y_i)=Var(\beta_0+\beta_1.x)+Var(\epsilon_i)=0+\sigma^2\) so, 
+     \(Var(b_1)=\sigma^2.\sum\limits_{i=1}^{n}k_i^2=\sigma^2.
+     \frac{\sum\limits_{i=1}^{n}(x-\overline{x})^2}{S_{xx}^2}=\frac{\sigma^2}{S_{xx}}\)
+     <br>\(\epsilon_i\) are independently distributed implies that \(y_i \) are independently distributed.
+  </span>
+  <br>8. \(Var(b_0)=\sigma^2.( \frac{1}{n}+\frac{\overline{x}^2}{S_{xx}} ) \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually since \(b_0=\overline{y}+(-\overline{x}.b_1)\), so 
+    \(Var(b_0)=Var(\overline{y})+Var(-\overline{x}.b_1)+2.cov(\overline{y},-\overline{x}.b_1)\), that is 
+     \(Var(b_0)=Var(\overline{y})+(-\overline{x})^2.Var(b_1)-2.\overline{x}.cov(\overline{y},b_1)=
+   Var(\frac{\sum\limits_{i=1}^{n}y_i}{n})+\overline{x}^2.Var(b_1)-2.\overline{x}.cov(\overline{y},b_1)=
+   \frac{\sigma^2}{n}+\overline{x}^2.\frac{\sigma^2}{S_{xx}}-2.\overline{x}.\)\(cov(\overline{y},b_1)
+   \), on the other hand 
+   \( cov(\overline{y},b_1)=cov(\sum\limits_{i=1}^{n}\frac{1}{n}.y_i,\sum\limits_{j=1}^{n}k_j.y_j)=
+\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}\frac{1}{n}.k_i.cov(y_i,y_j)=
+\frac{1}{n}\sum\limits_{i=1}^{n}k_i.\sigma^2=\frac{1}{n}.\sigma^2.0=0\), so 
+\(Var(b_0)=\sigma^2.( \frac{1}{n}+\frac{\overline{x}^2}{S_{xx}})  \)
+   
+     
+     
+  </span>
+ <br> 9. \(cov(b_0,b_1)= -\frac{\overline{x}}{S_{xx}}.\sigma^2 \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually, 
+    \(cov(b_0,b_1)=cov(\overline{y}-b_1.\overline{x},b_1)=cov(\overline{y},b_1)+cov(-b_1.\overline{x},b_1)=
+cov(\overline{y},b_1)-\overline{x}.cov(b_1,b_1)=0-\overline{x}.Var(b_1)=-\overline{x}.\frac{\sigma^2}{S_{xx}}\)
+  </span>
+  <br>10. \(SS_{res}=\sum\limits_{i=1}^{n}e_i^2=S_{yy}-b_1.S_{xy}\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>  Actually, 
+\(    SS_{res}=\sum\limits_{i=1}^{n}e_i^2=\sum\limits_{i=1}^{n}(y_i-\dot{y}_i)^2=
+\sum\limits_{i=1}^{n}(y_i-(\overline{y}-b_1.\overline{x})-b_1.x_i)^2=
+\sum\limits_{i=1}^{n}(y_i-\overline{y}+b_1.\overline{x}-b_1.x_i)^2=
+\\\sum\limits_{i=1}^{n}((y_i-\overline{y})-b_1.(x_i-\overline{x}))^2=
+\sum\limits_{i=1}^{n}(y_i-\overline{y})^2-2.b_1.\sum\limits_{i=1}^{n}(x_i-\overline{x}).(y_i-\overline{y})+
+b_1^2.\sum\limits_{i=1}^{n}(x_i-\overline{x})^2=\\S_{yy}-2.b_1.S_{xy}+b_1^2.S_{xx}=
+S_{yy}-2.\frac{S_{xy}}{S_{xx}}.S_{xy}+(\frac{S_{xy}}{S_{xx}})^2.S_{xx}=S_{yy}-\frac{S_{xy}^2}{S_{xx}}=
+S_{yy}-\frac{S_{xy}}{S_{xx}}.S_{xy}=S_{yy}-b_1.S_{xy}\)
+  </span>
+  <br>11. \(E(S_{yy})=(n-1).\sigma^2+\beta_1^2.S_{xx}\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually, 
+    \(E(S_{yy})=E[\sum\limits_{i=1}^{n}(y_i-\overline{y})^2]=E[\sum\limits_{i=1}^{n}y_i^2-2.y_i.\overline{y}+\overline{y}^2]
+=E[\sum\limits_{i=1}^{n}y_i^2-2.n.\overline{y}^2+n.\overline{y}^2]=E[\sum\limits_{i=1}^{n}y_i^2-n.\overline{y}^2]=
+\\\sum\limits_{i=1}^{n}E(y_i^2)-n.E(\overline{y}^2) \text{ we know that } 
+E(y_i)=\beta_0+\beta_1.x_i \text{ and }
+Var(y_i)=\sigma^2 \text{ so } \\E(y_i^2)=(E(y_i))^2+\sigma^2=(\beta_0+\beta_1.x_i)^2+\sigma^2
+\) on the other hand \(E(\overline{y}^2)=Var(\overline{y})+(E(\overline{y}))^2=\frac{\sigma^2}{n}+
+(\beta_0+\beta_1.\overline{x})^2\)
+ so,  
+ \(E(S_{yy})=\sum\limits_{i=1}^{n}(\beta_0+\beta_1.x_i)^2+n.\sigma^2-\sigma^2-
+ n.(\beta_0+\beta_1.\overline{x})^2=(n-1).\sigma^2+
+\sum\limits_{i=1}^{n}\beta_1.(x_i-\overline{x})(2.\beta_0+\beta_1.(x_i+\overline{x}))=
+\\(n-1).\sigma^2+2.\beta_0.\beta_1.\sum\limits_{i=1}^{n}(x_i-\overline{x})+
+\beta_1^2.\sum\limits_{i=1}^{n}(x_i-\overline{x})(x_i+\overline{x})=(n-1).\sigma^2+0+
+\beta_1^2.S_{xx}=\\(n-1).\sigma^2+\beta_1^2.S_{xx}\)
+  </span>
+  <br>12. \(E( \frac{SS_{res}}{\sigma^2})=n-2  \) and \(\frac{SS_{res}}{\sigma^2} \sim \chi^2(n-2)\), 
+
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>  Actually, we have 
+  \( Var(b_1)=\frac{\sigma^2}{S_{xx}}=E(b_1^2)-(E(b_1))^2, \text{ so } 
+E(b_1^2)=\frac{\sigma^2}{S_{xx}}+(E(b_1))^2=\frac{\sigma^2}{S_{xx}}+\beta_1^2, \text{ so } 
+\\E(b_1^2.S_{xx})=\sigma^2+\beta_1^2.S_{xx}\),   on the other hand we have 
+  \( SS_{res}=S_{yy}-b_1^2.S_{xx} \text{  so } E(SS_{res})=E(S_{yy})-E(S_{xx}.b_1^2)=
+(n-1).\sigma^2+\beta_1^2.S_{xx}-\sigma^2-\beta_1^2.S_{xx}=(n-2).\sigma^2 \).
+<br>Since \( SS_{res}=\sum\limits_{i=1}^{n}e_i^2\), 
+    we have \(\frac{SS_{res}}{\sigma^2} = \sum\limits_{i=1}^{n}(\frac{e_i}{\sigma})^2\), where 
+    \(\frac{e_i}{\sigma} \sim N(0,1) \), so \(\frac{SS_{res}}{\sigma^2} \) is a chi squared distribution, 
+    but with how many degrees of freedom?, here we have to be considering the two degrees that 
+    vanished  estimating \(b_0\) and \(b_1\), so \(\frac{SS_{res}}{\sigma^2} \sim \chi^2(n-2)\).
+    (just consider the fact that (\(\sum\limits_{i=1}^{n} e_i=0\), this means that not all the n \(e_i\) 
+    change freely, so normally all the n \(e_i\) are independent, but fixing the model will decrease the 
+    degrees of freedom by two (just consider that the model depends on two parameters that can 
+    change freely \(b_0\) and \(b_1\)  )
+        
+  </span>
+  <br>13. \(s^2=\frac{SS_{res}}{n-2}\) is an unbiased estimator for \(\sigma\), it is also called a model 
+  dependent estimate of \(\sigma^2\).
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually, since  \(\frac{SS_{res}}{\sigma^2} \sim \chi^2(n-2)\), we have 
+    \( E(\frac{SS_{res}}{\sigma^2})=n-2 \), that is \( E(\frac{SS_{res}}{n-2})=\sigma^2 \).
+    <br>On the other hand \(s^2\) is called a model dependent estimate for \(\sigma\) because it
+     depends on \(b_0\) and \(b_1\).
+  </span>
+  <br>14. \(\widehat{Var}(b_0)=s^2.(\frac{1}{n}+\frac{x^2}{S_{xx}}) \) and  
+  \(\widehat{Var}(b_1)=  \frac{s^2}{S_{xx}}\) are estimates of variances of \(b_0\) and \(b_1\).
+  <br>15. (a) \( \sum\limits_{i=1}^{n}e_i=0\), (b) \(  \sum\limits_{i=1}^{n}x_i.e_i=0 \), 
+  (c) \(\sum\limits_{i=1}^{n}\dot{y}_i.e_i=0 \), (d) \(  \sum\limits_{i=1}^{n}y_i=
+  \sum\limits_{i=1}^{n}\dot{y}_i \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ 
+  <br>a). Actually, \(   \sum\limits_{i=1}^{n}e_i=\sum\limits_{i=1}^{n}(y_i-\dot{y}_i)=
+\sum\limits_{i=1}^{n}(y_i-(\overline{y}-b_1.\overline{x})-b_1.x_i)=
+\sum\limits_{i=1}^{n}(y_i-\overline{y}+b_1.\overline{x}-b_1.x_i)=\)
+\(\sum\limits_{i=1}^{n}(y_i-\overline{y})-b_1.\sum\limits_{i=1}^{n}(x_i-\overline{x})=
+\sum\limits_{i=1}^{n}y_i-\sum\limits_{i=1}^{n}\overline{y}-b_1.(\sum\limits_{i=1}^{n}x_i-\sum\limits_{i=1}^{n}\overline{x})=
+n.\overline{y}-n.\overline{y}-b_1.(n.\overline{x}-n.\overline{x})=0\).
+<br>b). Actually, \(\sum\limits_{i=1}^{n}e_i.x_i=\sum\limits_{i=1}^{n}(y_i-\dot{y}_i).x_i =\)
+\(\sum\limits_{i=1}^{n}(y_i-(\overline{y}-b_1.\overline{x})-b_1.x_i).x_i =
+\sum\limits_{i=1}^{n}(y_i-\overline{y}+b_1.\overline{x}-b_1.x_i).x_i =\)
+\(\sum\limits_{i=1}^{n}y_i.x_i-\overline{y}.\sum\limits_{i=1}^{n}x_i+b_1.\overline{x}.\sum\limits_{i=1}^{n}x_i
+-b_1.\sum\limits_{i=1}^{n}x_i^2 (4)=(\sum\limits_{i=1}^{n}x_i.y_i-n.\overline{y}.\overline{x})+\)
+\(n.b_1.\overline{x}^2-b_1.\sum\limits_{i=1}^{n}x_i^2
+=b_1.\sum\limits_{i=1}^{n}x_i^2-b_1.n.\overline{x}^2+n.b_1.\overline{x}^2-b_1.\sum\limits_{i=1}^{n}x_i^2=0\)
+
+ (\(\sum\limits_{i=1}^{n}x_i.y_i-n.\overline{y}.\overline{x}=
+ b_1.\sum\limits_{i=1}^{n}x_i^2-b_1.n.\overline{x}^2\) comes from equation (h) in point 2).
+ <br>c). Actually, \(\sum\limits_{i=1}^{n}\dot{y}_i.e_i=\sum\limits_{i=1}^{n}(b_0+b_1.x_i)e_i=
+b_0.\sum\limits_{i=1}^{n}e_i+b_1.\sum\limits_{i=1}^{n}x_i.e_i=b_0.0+b_1.0=0 \)
+<br>d). Actually, 
+\(\sum\limits_{i=1}^{n}(\dot{y}_i-y_i)=\sum\limits_{i=1}^{n}(b_0+b_1.x_i-y_i)=
+n.b_0+b_1.\sum\limits_{i=1}^{n}x_i-\sum\limits_{i=1}^{n}y_i=n.(b_0+b_1.\overline{x}-\overline{y})=
+n.0=0\).
+  </span>
+  <br>16. \(Var(\dot{y}|_{x_0})=\sigma^2.[\frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}}]\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, 
+   \(Var(\dot{y}|_{x_0})=Var(b_0)+x_0^2.Var(b_1)+2.x_0.cov(b_0,b_1)=\sigma^2.(\frac{1}{n}+\frac{\overline{x}^2}{S_{xx}})+x_0^2.\frac{\sigma^2}{S_{xx}}+2.x_0.(-\sigma^2.\frac{\overline{x}}{S_{xx}})=\\
+\sigma^2.(\frac{1}{n}+\frac{\overline{x}^2}{S_{xx}}+\frac{x_0^2}{S_{xx}}-2.x_0.\frac{\overline{x}}{S_{xx}})=
+\sigma^2.(\frac{1}{n}+\frac{\overline{x}^2-2.x_0.\overline{x}+x_0^2}{S_{xx}})=
+\sigma^2.(\frac{1}{n}+\frac{(\overline{x}-x_0)^2}{S_{xx}})\)
+  </span>
+  <br>17. \(Var(\hat{y}|_x)=Var(\dot{y})+Var(\epsilon^2)=\sigma^2.(1+\frac{1}{n}+\frac{(\overline{x}-x_0)^2}{S_{xx}})\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, \(cov(\epsilon,\dot{y})=0\) because the observations are independent of each other
+  </span>
+      <h4 id="8_2_3_2">8.2.3.2 The Centered Model </h4>
+      1. \(y_i=\beta_0'+\beta_1.x_i'+\epsilon_i\) where \(x_i'=x_i-\overline{x}\) and 
+  \(\beta_0'=\beta_0+\beta_1.\overline{x}  \) is called the centered   model.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually, \( y_i=\beta_0+\beta_1.x_i+\epsilon_i=\beta_0+\beta_1.x_i-\beta_1.\overline{x}+
+    \beta_1.\overline{x}+\epsilon_i=\)
+\((\beta_0+\beta_1.\overline{x})+\beta_1.(x_i-\overline{x})+\epsilon_i=
+\beta_0'+\beta_1.x_i'+\epsilon_i\)
+  </span>
+  <br>2. we have \(\hat{y_i}=b_0'+b_1.x_i'\) where \(b_0'=\overline{y}\) and \(b_1=\frac{S_{xy}}{S_{xx}}\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually, \(b_1'=\frac{S_{x'y}}{S_{x'x'}}\) where 
+    \(S_{x'y}=\sum\limits_{i=1}^{n}(x'_i-\overline{x'})(y_i-\overline{y})=
+\sum\limits_{i=1}^{n}(x'_i)(y_i-\overline{y})=\sum\limits_{i=1}^{n}(x_i-\overline{x})(y_i-\overline{y})=S_{xy}\)
+and \( S_{x'x'}=\sum\limits_{i=1}^{n}(x'_i-\overline{x'})^2=\sum\limits_{i=1}^{n}(x'_i-0)^2=
+\sum\limits_{i=1}^{n}(x_i-\overline{x})^2=S_{xx}\) so \(b_1'=b_1\) and 
+\(b_0=\overline{y}-b_1'.\overline{x'}=\overline{y}\)
+  </span>
+  <br>3. \(Var(b_0')=\frac{\sigma^2}{n}, Var(b_1)=\frac{\sigma^2}{S_{xx}}, E(b_0')= \beta_0',
+  E(b_1)=\beta_1  \;and\; cov(b_0',b_1)=0 \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(   Var(b_0')=\sigma^2(\frac{1}{n}+\frac{\overline{x'}^2}{S_{x'x'}})=
+\sigma^2(\frac{1}{n}+\frac{0}{S_{xx}})=\frac{\sigma^2}{n}\)
+  </span>
+  <h4 id="8_2_3_3">8.2.3.3 No intercept model</h4>
+  1. \(y_i=\beta_1''.x_i+\epsilon_i \) is called the no intercept model.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>This model is used when we know that the absence of control variable induces the absence 
+    of a response, for example we know that the traveled distance is 0 then  the fuel consumption is 
+    also 0, so in this case the right model is the no intercept model, but if the response variable is 
+    the price of the car and the control variable is its age, we know that age 0 corresponds to the 
+    initial price of the car which is not 0, the intercept model would be the wrong model to choose in 
+    this case. 
+  </span>
+  <br>2. \(\dot{y}_i=b_1''.x_i\) where
+   \(b_1''=\frac{\sum\limits_{i=1}^{n}y_i.x_i}{\sum\limits_{i=1}^{n}x_i^2}\)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br> \(SS_{res}=\sum\limits_{i=1}^{n}e_i^2=\sum\limits_{i=1}^{n}(y_i-\dot{y}_i)^2=
+\sum\limits_{i=1}^{n}(y_i-\beta_1''.x_i)^2\) so \(\frac{dSS_{res}}{d\beta_1''}=
+-2.\sum\limits_{i=1}^{n}(y_i-\beta_1''.x_i).x_i\)  that is \(\frac{dSS_{res}}{d\beta_1''}=0 \Rightarrow
+\sum\limits_{i=1}^{n}y_i.x_i-\beta_1''.\sum\limits_{i=1}^{n}x_i^2=0\Rightarrow
+\beta_1''=b_1''=\frac{\sum\limits_{i=1}^{n}y_i.x_i}{\sum\limits_{i=1}^{n}x_i^2}\), on the other hand 
+the second order derivative of \(SS_{res}\) regarding \(\beta_1\) is positive, so \(b_1'\) minimizes 
+\(SS_{res}\).
+  </span>
+   
+  
+   <br>3. \(E(b_1'')=\beta_1'', Var(b_1'')=\frac{\sigma^2}{\sum\limits_{i=1}^{n}x_i^2}\).
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>\(E(b_1'')=\frac{\sum\limits_{i=1}^{n}E(y_i).x_i}{\sum\limits_{i=1}^{n}x_i^2}=
+\frac{\sum\limits_{i=1}^{n}\beta_1''.x_i^2}{\sum\limits_{i=1}^{n}x_i^2}
+=\beta_1''.\frac{\sum\limits_{i=1}^{n}x_i^2}{\sum\limits_{i=1}^{n}x_i^2}=\beta_1''\), 
+<br>\(Var(b_1'')=\frac{\sum\limits_{i=1}^{n}x_i^2.Var(y_i)}{(\sum\limits_{i=1}^{n}x_i^2)^2}=
+\frac{\sum\limits_{i=1}^{n}x_i^2.\sigma^2}{(\sum\limits_{i=1}^{n}x_i^2)^2}
+=\frac{\sigma^2}{\sum\limits_{i=1}^{n}x_i^2}\)
+  </span>
+  <br>4. \(E(\frac{\sum\limits_{i=1}^{n}y_i^2-b_1''.\sum\limits_{i=1}^{n}x_i.y_i}{n-1})=\sigma^2  \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br> Actually, \(E(\sum\limits_{i=1}^{n}y_i^2-b_1''\sum\limits_{i=1}^{n}y_i.x_i) =
+    E(\sum\limits_{i=1}^{n}y_i^2)-E(b_1''\sum\limits_{i=1}^{n}y_i.x_i) =\)
+\(    \sum\limits_{i=1}^{n}E(y_i^2)-E(\sum\limits_{i=1}^{n}(b_1''.x_i)^2) =
+\sum\limits_{i=1}^{n}(Var(y_i)-(E(y_i))^2)-(\sum\limits_{i=1}^{n}x_i^2).E(b_1''^2) =\)
+\(\sum\limits_{i=1}^{n}(\sigma^2-(\beta_1''.x_i)^2)-(\sum\limits_{i=1}^{n}x_i^2).(Var(b_1'')-(E(b_1''))^2)=\)
+\(n.\sigma^2-\sum\limits_{i=1}^{n}(\beta_1''.x_i)^2-(\sum\limits_{i=1}^{n}x_i^2).Var(b_1'')+
+(\sum\limits_{i=1}^{n}x_i^2).\beta_1''^2 (f)=
+n.\sigma^2+\sum\limits_{i=1}^{n}(\beta_1''.x_i)^2-\sigma^2-\sum\limits_{i=1}^{n}(\beta_1''.x_i)^2=\\(n-1).\sigma^2
+\)
+  </span>
+  
+     <h3 id="8_2_4">8.2.4 Maximum Likelihood Estimation MLH</h3>
+     1. We have a sample of n observation \(y_i\) from n different distributions \(Y_i\), with
+   \(Y_i \sim  N(\beta_0+\beta_1.x_i,\sigma^2) \),  i=1,..,n.
+   <br>2. We want to find all unknown parameters \(\beta_0,\beta_1,\sigma^2 \) that led to having
+    the n observations \(y_i\) using the MLE technique.
+    <br>3. \(MLF=L(x_i,y_i,\beta_0,\beta_1,\sigma^2)=
+    (2.\pi.\sigma^2)^{-n/2}. e^{-\frac{.\sum\limits_{i=1}^{n}(y_i-\beta_0-\beta_1.x_i)^2}{2.\sigma^2}} 
+      \)
+    
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>     \(   
+    LF=L(\beta_0,\beta_1,\sigma^2)(1)=\prod\limits_{i=1}^{n}\frac{1}{\sigma_i.\sqrt{2.\pi}}.
+    e^{-\frac{(y_i-\mu_{y_i})^2}{2.\sigma_i^2}}\) since the \( \sigma_i\) are equal we have 
+    \(LF =(\frac{1}{\sigma.\sqrt{2.\pi}})^n.\prod\limits_{i=1}^{n}
+    e^{-\frac{(y_i-\beta_0-\beta_1.x_i)^2}{2.\sigma^2}} (3)=\\(2.\pi.\sigma^2)^{-n/2}.
+    e^{-\frac{.\sum\limits_{i=1}^{n}(y_i-\beta_0-\beta_1.x_i)^2}{2.\sigma^2}} 
+    \Rightarrow Ln(LF)=\frac{-n}{2}.Ln(2.\pi)+\frac{-n}{2}.Ln(\sigma^2)-\frac{1}{2.\sigma^2}.
+    \sum\limits_{i=1}^{n}(y_i-\beta_0-\beta_1.x_i)^2
+    \)
+  </span>
+  <br>4. \( \widetilde{b}_0=\overline{y}-\widetilde{b}_1.\overline{x}\), where
+\( \widetilde{b}_1=\frac{S_{xy}}{S_{xx}}=\frac{\sum\limits_{i=1}^{n}(x_i-\overline{x}).(y_i-\overline{y})}
+{\sum\limits_{i=1}^{n}(x_i-\overline{x})^2}\) and \(\widetilde{s}^2=
+\frac{\sum\limits_{i=1}^{n}(y_i-\hat{y_i})^2}{n} \) are the MLE estimate of \(\beta_0, \beta_1\) and 
+\(\sigma^2 \).
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually, 
+    \(MLF=Ln(LF)=\frac{-n}{2}.Ln(2.\pi)+\frac{-n}{2}.Ln(\sigma^2)-\frac{1}{2.\sigma^2}.
+    \sum\limits_{i=1}^{n}(y_i-\beta_0-\beta_1.x_i)^2\), so 
+    <br>* \(\frac{\partial Ln(LF)}{\partial \beta_0}=
+\frac{1}{\sigma^2} \sum\limits_{i=1}^{n}(y_i-b_0-b_1.x_i)\) that is  
+\(\frac{\partial Ln(LF)}{\partial \beta_0}=0 \Rightarrow \sum\limits_{i=1}^{n}(y_i-b_0-b_1.x_i)=0 \Rightarrow
+n.\overline{y}-n.b_0-b_1.n.\overline{x}=0 \Rightarrow b_0=\overline{y}-b_1.\overline{x}\), on the 
+other hand, 
+<br> \(&#9755; \frac{\partial Ln(LF)}{\partial \beta_1}=\frac{1}{\sigma^2} \sum\limits_{i=1}^{n}x_i.(y_i-b_0-b_1.x_i), so, 
+\frac{\partial Ln(LF)}{\partial \beta_1}=0 \Rightarrow \sum\limits_{i=1}^{n}x_i.(y_i-b_0-b_1.x_i)=0 
+\\\Rightarrow \sum\limits_{i=1}^{n}x_i.y_i-b_1.\sum\limits_{i=1}^{n}x_i^2-b_0.n.\overline{x}=0 \Rightarrow
+\sum\limits_{i=1}^{n}x_i.y_i-b_1.\sum\limits_{i=1}^{n}x_i^2- n.\overline{x}.(\overline{y}-b_1.\overline{x})=0
+\Rightarrow \sum\limits_{i=1}^{n}x_i.y_i-b_1.\sum\limits_{i=1}^{n}x_i^2-\\ n.\overline{x}.\overline{y}+
+b_1.\sum\limits_{i=1}^{n}\overline{x}^2=0 \Rightarrow 
+\sum\limits_{i=1}^{n}(x_i-\overline{x}).(y_i-\overline{y})+b_1.
+\sum\limits_{i=1}^{n}(\overline{x}-x_i)^2=0 \Rightarrow 
+b_1=\frac{\sum\limits_{i=1}^{n}x_i.y_i-n.\overline{x}.\overline{y}}{\sum\limits_{i=1}^{n}(x_i^2-\overline{x}^2)}
+=\frac{\sum\limits_{i=1}^{n}(x_i-\overline{x}).(y_i-\overline{y})}{\sum\limits_{i=1}^{n}(x_i-\overline{x})^2}=
+\frac{S_{xy}}{S_{xx}}\)
+<br>&#9755;  \( ,lastly \frac{\partial Ln(LF)}{\partial \sigma^2}=\frac{-n}{2.\sigma^2}+\frac{1}
+{2.\sigma^4} \sum\limits_{i=1}^{n}(y_i-b_0-b_1.x_i)^2\), so 
+\( \frac{\partial Ln(LF)}{\partial \sigma^2}=0 \Rightarrow 
+\frac{n}{2.\widetilde{s}^2}=\frac{1}{2.\widetilde{s}^2} \sum\limits_{i=1}^{n}(y_i-\widetilde{b}_0-
+\widetilde{b}_1.x_i)^2 \Rightarrow  \widetilde{s}^2=\frac{ \sum\limits_{i=1}^{n}(y_i-\widetilde{b}_0-
+\widetilde{b}_1.x_i)^2}{n}=\frac{ \sum\limits_{i=1}^{n}(y_i-\dot{y}_i)^2}{n} \).
+<br>&#9755;  Furthermore, it can be verified that the Hessian matrix is definite negative at 
+\(\widetilde{b}_0, \widetilde{b}_1\) and \( \widetilde{s}^2 \), so the MLH function is maximized at 
+these values.
+  </span>
+<br>5. \(\widetilde{b}_0=b_0, \widetilde{b}_1=b_1\) and \(\widetilde{s}^2=\frac{n-2}{n} s^2 \).
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br> So \(\widetilde{b}_0 \) and \( \widetilde{b}_1\) are respectively unbiased estimators for 
+    \(\beta_0\) and \(\beta_1\) while \(\widetilde{s}^2\) is a biased estimator for \(\sigma^2\), 
+    furthermore \(\widetilde{s}^2\) is a asymptotically unbiased 
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    actually, \( \displaystyle \lim_{n \to +\infty} E(\widetilde{s}^2)=E(s^2)=\sigma^2 \)
+  </span>
+  </span>
+ <h3 id="8_2_5">8.2.5 Hypothesis Testing and Confidence Interval estimation for simple linear 
+ regression  parameters</h3>
+ <h4 id="8_2_5_1">8.2.5.1 Hypothesis Testing and Confidence Intervals for the slope</h4>
+ &#9755; <b>Case 1:</b> "\(\sigma \) known": we reject
+  \(H_0: \beta_1=\beta_{1_0}\) if \(|z_1| &gt; z_{\alpha/2}\), where 
+ \(z_1=\frac{b_1-\beta_{1_0}}{\sqrt{\frac{\sigma^2}{S_{xx}}}}\).
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br> Actually \( b_1=\frac{1}{S_{xx}}.S_{xy}=\sum\limits_{i=1}^{n}\frac{(x_i-\overline{x})}{S_{xx}}.
+    (y_i-\overline{y})= \sum\limits_{i=1}^{n}a_i.v_i\), where 
+    \(v_i \sim N(0,\sigma^2)\) and \( a_i=\frac{x_i-\overline{x}}{S_{xx}}\) so \( b_1\)
+     is normally distributed and we have
+      \( b_1 \sim N(E(b_1),Var(b_1)) \Rightarrow b_1 \sim N(\beta_1,\frac{\sigma^2}{S_{xx}})\)
+  </span>
+ 
+ <br> &#9755; <b>Case 2:</b> "\(\sigma\) unknown": we reject
+  \(H_0: \beta_1=\beta_{1_0}\) if \(|t_1| &gt; t_{n-2,\alpha/2}\), where 
+ \(t_1=\frac{b_1-\beta_{1_0}}{\sqrt{\frac{s^2}{S_{xx}}}}\).
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually, 
+    \(
+    \frac{SS_{res}}{\sigma^2} \sim \chi^2(n-2)\) and  
+    \( b_1 \sim N(\beta_1,\frac{\sigma^2}{SS_{xx}})\), that is
+    \(\frac{b_1-\beta_1}{\sqrt{\frac{\sigma^2}{SS_{xx}}}} \sim N(0,1)\), on the other hand we can show 
+    later on that these two RV's are independent, so
+\(\frac{\frac{b_1-\beta_1}{\sqrt{\frac{\sigma^2}{SS_{xx}}}}}{\sqrt{\frac{SS_{res}}{(n-2).\sigma^2}}} 
+\sim t(n-2) \) that is \( \frac{b_1-\beta_1}{\sqrt{\frac{SS_{res}}{(n-2).SS_{xx}}}} \sim t(n-2)
+\)
+  </span>
+
+<br> &#9755; in case  \(\beta_{1_0}=0\) we are testing for existence of linear regression or not.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>That is rejecting \(H_0:\beta_1=0\) means that there is a linear regression between y and x.
+  </span>
+   <h4 id="8_2_5_2">8.2.5.2 Hypothesis Testing and Confidence Intervals for the intercept</h4>
+   &#9755; <b>Case 1: "\(\sigma\) known"</b> We reject \(H_0: \beta_0=\beta_{0_0}\) if 
+   \(|z_0| &gt; z_{\alpha/2}\), where \(z_0=\frac{b_0-\beta_{0_0}}{\sqrt{\sigma^2.
+   ( \frac{1}{n}+\frac{\overline{x}^2}{S_{xx}})}}  \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually,  \(b_0\) is a linear combination of \(y_i\) which are normally distributed and
+     independent, so \(b_0\) is also normally distribution, that is \(\frac{b_0-E(b_0)}{\sqrt{Var(b_0)}}
+      \sim N(0,1)\).
+  </span>
+<br>   &#9755; <b>Case 2: "\(\sigma\) unknown"</b>   We reject \(H_0: \beta_0=\beta_{0_0}\) if 
+   \(|t_0| &gt; t_{\alpha/2}\), where \(t_0=\frac{b_0-\beta_{0_0}}{\sqrt{s^2.
+   ( \frac{1}{n}+\frac{\overline{x}^2}{S_{xx}})}}  \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually, 
+		</span>
+   <h4 id="8_2_5_3">8.2.5.3 Hypothesis Testing and Confidence Intervals for the variance</h4>
+   &#9755; Reject \(H_0:\sigma=\sigma_0\) if \(C_0 &lt; \chi^2_{n-2,\alpha/2}\) or 
+   \( C_0 &gt; \chi^2_{n-2,1-\alpha/2}\), where \(C_0=\frac{SS_{res}}{\sigma_0^2}  \)
+      <h4 id="8_2_5_4">8.2.5.4 Joint confidence region for \(\beta_0\) and \(\beta_1\)</h4>
+      To be developed subsequently.
+       <h3 id="8_2_6">8.2.6 Hypothesis Testing and Confidence Intervals for regression parameters 
+       using ANOVA</h3>
+    1.  Actual Deviation=Predicted deviation+Residual value (for a given observation)
+  , that is \( (y_i-\overline{y})=(\dot{y}_i-\overline{y})+(y_i-\dot{y}_i)\).
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> For a given observation the deviation from the mean \( (y_i-\overline{y})\) can be explained 
+   by the model \((\dot{y}_i-\overline{y})\) but there will be always a random part that must stay 
+   insignificant ( if the model is good).
+   <br> This is required for the set of all observation and not for each individual observation,  
+   it means that for some isolated observation the requirement above 
+    may not be correct, that is the residual value for some 
+   observations may be significant, but still the model may be good if the sum of all residual values 
+   is insignificant comparing to the sum of all actual deviations.
+  </span>
+  <br> 2. \(SS_T=SS_{reg}+SS_{res}  \), where \(SS_T=\sum\limits_{i=1}^{n}(y_i-\overline{y})^2, 
+  SS_{reg}=  \sum\limits_{i=1}^{n}(\dot{y}_i-\overline{y})^2\) and 
+  \(SS_{res} =\sum\limits_{i=1}^{n}(y_i-\dot{y}_i)^2\).
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> &#9755; \(SS_T\) "Actual or real total sum of squares".
+   <br> &#9755; \( SS_{reg} \) "Total sum of squares due to regression".
+   <br> &#9755; \( SS_{res} \) "Total sum of squares of risiduals".
+ <br> We have:   \(\sum\limits_{i=1}^{n}(\dot{y}_i-\overline{y}).(y_i-\dot{y}_i)=
+\sum\limits_{i=1}^{n}(\dot{y}_i.y_i-\dot{y}_i^2-\overline{y}.y_i+\overline{y}.\dot{y}_i)=
+\sum\limits_{i=1}^{n}\dot{y}_i.y_i-\sum\limits_{i=1}^{n}\dot{y}_i^2-n.\overline{y}^2+
+\overline{y}.\sum\limits_{i=1}^{n}(b_0+b_1.x_i)=\)\(
+\sum\limits_{i=1}^{n}\dot{y}_i.y_i-\sum\limits_{i=1}^{n}\dot{y}_i^2-n.\overline{y}^2+
+n.\overline{y}.(\overline{y}-b_1.\overline{x})+
+n.b_1.\overline{y}.\overline{x}=\sum\limits_{i=1}^{n}\dot{y}_i.y_i-\sum\limits_{i=1}^{n}\dot{y}_i^2=\)\(
+\sum\limits_{i=1}^{n}\dot{y}_i.(y_i-\dot{y}_i)=\sum\limits_{i=1}^{n}\dot{y}_i.e_i=0\), (the later equality 
+has been already proved, see 8.2.3.1. (13)).
+
+  </span>
+  <br>3. \(SS_{reg}=b_1^2.S_{xx}\), furthermore \( E(SS_{reg})=\sigma^2+\beta_1^2.S_{xx}\) and
+    \(\frac{SS_{reg}}{E(SS_{reg})} \sim \chi_1^2  \) .
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, \(SS_{reg}=  \sum\limits_{i=1}^{n}(\dot{y}_i-\overline{y})^2=
+\sum\limits_{i=1}^{n}(b_0+b_1.x_i-b_0-b_1.\overline{x})^2=
+b_1^2.\sum\limits_{i=1}^{n}(x_i-\overline{x})^2=b_1^2.S_{xx}\).
+<br>On the other hand 
+\( E(SS_{reg})=S_{xx}.E(b_1^2)=S_{xx}.(Var(b_1)+(E(b_1))^2)=
+S_{xx}.(\frac{\sigma^2}{S_{xx}}+\beta_1^2)=\sigma^2+\beta_1^2.S_{xx}\)
+<br> Since \(b_1=\frac{S_{xy}}{S_{xx}}\), 
+it is a linear combination of normally distributed RVs, so \(b_1\) is itself a normally distributed RV, 
+so \(\frac{SS_{reg}}{E(SS_{reg})} \sim \chi^2_1\)
+<br>On the other hand  \(SS_{reg}\) depends only on one variable of the model, so it has one
+ degree of freedom.
+  </span>
+  <br>4.\(E(SS_T)= \beta_1.S_{xx}+(n-1).\sigma^2 \) furthermore \(\frac{SS_T.(n-1)}{\beta_1.S_{xx}+(n-1).\sigma^2} \sim \chi^2_{n-1}\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, 
+
+   \(\frac{SS_T.E(\chi^2_{n-1})}{E(SS_T)}\sim \chi^2_{n-1} \Rightarrow \frac{SS_T.(n-1)}{E(SS_{reg})+
+   E(SS_{res})}\sim \chi^2_{n-1} \Rightarrow \frac{SS_T.(n-1)}{\sigma^2+\beta_1.S_{xx}+(n-2).
+   \sigma^2}\sim \chi^2_{n-1} \Rightarrow 
+\frac{SS_T.(n-1)}{\beta_1.S_{xx}+(n-1).\sigma^2}\sim \chi^2_{n-1} , if \; \beta_1=0, \text{we have}
+\\ \frac{SS_T}{\sigma^2}\sim \chi^2_{n-1} \)
+  </span>
+  
+  <br>5. \(SS_{T}\) has (n-1) degrees of freedom.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, \(DF_{SS_{T}}=DF_{SS_{reg}}+DF_{SS_{res}}=1+n-2=n-1\)
+  </span>
+  <br>6. <b>ANOVA Table:</b>
+  <table style="width:100%">
+  <tr>
+    <th style="width:14%;text-align: center">Source of variation</th>
+    
+    <th style="width:14%;text-align: center">SS</th>
+    <th style="width:14%;text-align: center">DF</th>
+    <th style="width:14%;text-align: center">MS</th>
+      <th style="width:14%;text-align: center">E(MS)</th>
+            <th style="width:14%;text-align: center">\(\sim \chi_{DF}^2\)</th>
+        <th style="width:18%;text-align: center">Test</th>
+  </tr>
+  <tr>
+    <td style="text-align: center">Regression</td>
+
+     <td style="text-align: center">\(  SS_{reg} \)</td>
+         <td style="text-align: center">1</td>
+      <td style="text-align: center">\(  MS_{reg}=\frac{SS_{reg}}{1}\)</td>
+           <td style="text-align: center">\(  \sigma^2+\beta_1^2.S_{xx} \)</td>
+    <td style="text-align: center">\(  \frac{MS_{reg}}{\sigma^2+\beta_1^2.S_{xx}}\)</td>
+      <td style="text-align: center">\(  \frac{MS_{reg}}{MS_{res}}\)</td>
+  </tr>
+ 
+   <tr>
+    <td style="text-align: center">Residual</td>
+
+     <td style="text-align: center">\(  SS_{res} \)</td>
+         <td style="text-align: center">n-2</td>
+      <td style="text-align: center">\(  MS_{res}=\frac{SS_{res}}{n-2}\)</td>
+      <td style="text-align: center">\(  \sigma^2 \)</td>
+                
+                            <td style="text-align: center">\(  \frac{(n-2).MS_{res}}{\sigma^2}\)</td>  
+
+  </tr>
+  
+     <tr>
+    <td style="text-align: center">Total</td>
+ 
+     <td style="text-align: center">\(  SS_{T} \)</td>
+        <td style="text-align: center">n-1</td>
+<td style="text-align: center">\( MS_T=\frac{SS_T}{n-1}\)</td>
+<td style="text-align: center">\(\sigma^2+\frac{\beta_1^2}{n-1}.S_{xx}\)</td>
+<td style="text-align: center">\( \frac{MS_T.(n-1)^2}{\beta_1.S_{xx}+(n-1).\sigma^2}\)</td>
+  </tr>
+</table>
+<br>7. We reject \(H_0:\beta_1=0 \) if \(F_0 &gt; F_{\alpha,1,n-2} \), where 
+\(F_0=\frac{MS_{reg}}{MS_{res}}\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, suppose \(H_0 \) is true that is \(\beta_1=0 \), then
+    \( \frac{MS_{reg}}{\sigma^2} \sim \chi^2_1\) and \( \frac{(n-2).MS_{res}}{\sigma^2} \sim 
+    \chi^2_{n-2}\), furthermore \( \frac{(n-2).MS_{res}}{\sigma^2} \) and \( \frac{MS_{reg}}{\sigma^2}\)
+   are independent,    so \(\frac{\frac{\frac{MS_{reg}}{\sigma^2}}{1}}{\frac{\frac{(n-2).MS_{res}}
+   {\sigma^2}}{n-2}} \sim F_{1,n-2}\), that is \( \frac{MS_{reg}}{MS_{res}} \sim F_{1,n-2}\), but why is  
+   this a one-side test ?, the answer resides in the fact that if \(H_0\) is not true we have 
+   \(E(MS_{reg} ) &gt; E(MS_{res}) \), that is \(F_0\) tends to increase, so the test can be expressed as 
+   \(H_0:F_0 \sim F_{1,n-2}\), \(H_1: F_0\) tends to increase.
+   
+  </span>, this test is equivalent to the t test we saw earlier.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, the statistic for the t test we saw earlier is 
+   \( 
+   t_1=\frac{b_1-\beta_{1_0}}{\sqrt{\frac{s^2}{S_{xx}}}}\), in case \(\beta_{1_0}=0\), we have
+   \(t_1=\frac{b_1}{\sqrt{\frac{s^2}{S_{xx}}}}, \Rightarrow t_1^2=\frac{b_1^2.S_{xx}}{s^2}=
+   \frac{b_1^2.S_{xx}}{\frac{SS_{res}}{(n-2)^2}}=
+(n-2).\frac{S^2_{xy}}{S_{xx}.SS_{res}}=
+\frac{\frac{SS_{reg}}{1}}{\frac{SS_{res}}{n-2}}=\frac{MS_{reg}}{MS_{res}}
+    \)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> note that \(SS_{res}=S_{yy}-b_1.S_{xy}=SS_T-b_1.S_{xy}=SS_T-\frac{S^2_{xy}}{S_{xx}}\), so 
+   \( S_{xx}.SS_{res}=S_{xx}.SS_T-S^2_{xy} \Rightarrow S^2_{xy}=S_{xx}.SS_{T}-S_{xx}.SS_{res}
+   =S_{xx}.(SS_T-SS_{res}=S_{xx}.SS_{reg})    \) 
+  </span>
+  </span>
+  
+   <h3 id="8_2_7">8.2.7 Coefficient of determination</h3>
+   1. \(R^2=\frac{SS_{reg}}{SS_T}=1-\frac{SS_{res}}{SS_T}\) is called the "Coefficient of determination", 
+   and we have \(0 &le; R^2 &le; 1\)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> This is a measure of how much the model explains the variation (the total variation is \(SS_T\)
+    and we have \(SS_T=SS_{reg}+SS_{res}\), so there are two portions in \(SS_T\) a portion explained 
+    by the model \(SS_{reg}\) and a portion not explained by the model, the bigger \(SS_{reg}\) the 
+    better our model is, so the more \(R^2 \) approaches 1 the better the model is. 
+  </span>
+<h3 id="8_2_8">8.2.8 Prediction Interval for a New Response</h3>
+<h4 id="8_2_8_1">8.2.8.1 Prediction of Average Value</h4>
+1. \(\dot{y}=\widehat{E(y|_{x_0})}=\widehat{\mu_{y|_{{x_0}}}}=N(\beta_0+\beta_1.x_0,
+\sigma^2.[\frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}}])\).
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+<br>We have \(\widehat{E(y|_{x_0})}=b_0+b_1.x_0=\overline{y}-b_1.\overline{x}+b_1.x_0=
+\overline{y}+b_1.(x_0-\overline{x})=\sum\limits_{i=1}^{n}(1/n).y_i+
+\sum\limits_{i=1}^{n}k_i.(x_0-\overline{x}).y_i=\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> See 8.2.3.1-5 \(b_1=\sum\limits_{i=1}^{n}k_i.y_i \)
+  </span>
+\(\sum\limits_{i=1}^{n}(\frac{1}{n}+\frac{(x_i-\overline{x}).(x_0-\overline{x})}{S_{xx}}).y_i=
+\sum\limits_{i=1}^{n}a_i.y_i\), since \(y_i \sim N(0, \sigma^2 )\) then \(\widehat{E(y|_{x_0})} \)
+is normally distributed, the calculus of the expected value and the variance we've done it before. 
+</span>
+<br>2. In case \(\sigma^2\) is unkown we use \(s^2=ME_{res}\) instead, so .
+\(\frac{\widehat{E(y|_{x_0})}-E(y|_{x_0}) }{\sqrt{ME_{res}.(\frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}})}}
+\sim t_{n-2}  \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, according to 8.2.3.1 -13 we have \(\frac{(n-2).s^2}{\sigma^2} \sim \chi^2_{n-2}  \), 
+   adding the fact that 
+   \( 
+   \frac{\widehat{E(y|_{x_0})}-E(y|_{x_0})}{\sigma.\sqrt{\frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}}}} 
+   \sim N(0,1)
+    \) we have :
+    \(  
+    \frac{\frac{\widehat{E(y|_{x_0})}-E(y|_{x_0})}{\sigma.\sqrt{\frac{1}{n}+
+    \frac{(x_0-\overline{x})^2}{S_{xx}}}} }{\sqrt{\frac{s^2}{\sigma^2}}}\sim t(n-2) \Rightarrow
+  \frac{\widehat{E(y|_{x_0})}-E(y|_{x_0})}{\sqrt{ME_{res}.(\frac{1}{n}+
+  \frac{(x_0-\overline{x})^2}{S_{xx}}})} \sim t(n-2)
+    \)
+  </span>
+<h4 id="8_2_8_2">8.2.8.2 Prediction Interval for a new response</h4>
+1.\( \frac{\dot{y}_0-y_0}{\sqrt{ME_{res}.(1+\frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}}})} \sim t(n-2)   \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, \(E(\dot{y}_0-y_0)=E(b_0+b_1.x_0-(\beta_0+\beta_1.x_0)-\epsilon)=\)\(
+   E(b_0)+E(b_1).x_0-E(\beta_0+\beta_1.x_0)-E(\epsilon)=\beta_0+\beta_1.x_0-\beta_0-\beta_1.x_0-0=0
+     \), on the hand a new observation \(y_0\) is completely independent of previous observations, 
+     since \(\dot{y}_0\) depends on previous n observations, we have \(y_0\) and \(\dot{y}_0\) independent, 
+     so \(Var(\dot{y}_0-y_0)=Var(\dot{y}_0)+Var(y_0)=
+     \sigma^2.(\frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}})+\sigma^2=
+      \sigma^2(1+\frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}})
+     \), the rest of the demonstration is exactly the same as above.
+  </span>
+  <h2 id="8_3">8.3 Multiple linear regression</h2>
+  1. Example:\(y=\beta_0+\beta_1.X_1+\beta_2.X_2+\beta_3.X_3 \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> the yield of a crop (y) is function of irrigation level \(X_1\), quantity of seed \(X_2\) and 
+   quantity of fertilizer \(X_3  \). 
+  </span>
+  <br>2. Model set up: \(y_i=\beta_0+\beta_1.X_{i1}+..+\beta_k.X_{ik} +\epsilon_i \) .
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> - This model has \(k\) control variable.
+   <br> -  \(y_i\) is the \(i^{th}\) observation.
+   <br>-  \(X_{ij}\) is the \(j^{th} \) control variable  associated with the \(i^{th} \) observation.
+   <br>- With n observation we can write:
+   <br>- \( y_1=\beta_0+\beta_1.x_{11}+ \beta_2.x_{12}+..+\beta_k.x_{1k}+\epsilon_1\)
+ <br>- \( y_2=\beta_0+\beta_1.x_{21}+ \beta_2.x_{22}+..+\beta_k.x_{2k}+\epsilon_2\)
+ <br>-                             :
+      
+ <br>- \( y_n=\beta_0+\beta_1.x_{n1}+ \beta_2.x_{n2}+..+\beta_k.x_{nk}+\epsilon_n\)
+      
+  </span>
+  <br>3. Matrix notation: \(Y=X.\beta+\epsilon\).
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> where, \(Y=
+   \begin{pmatrix}
+   y_1 &\\
+   y_2 & \\
+   &#8942;\\
+   y_n & 
+   \end{pmatrix}
+   \) , \(X=
+   \begin{pmatrix}
+1 & x_{11} & x_{12}  & ... & x_{1k} \\ 
+1 & x_{21} & x_{22}  & ... & x_{2k} \\ 
+&#8942; &  &#8942;& &#8942; & &#8942; & &#8942;\\ 
+1 & x_{n1} & x_{n2}  & ... & x_{nk}  
+\end{pmatrix}
+   
+   \), 
+    \(    \beta=
+
+    \begin{pmatrix}
+   \beta_0 &\\
+    \beta_1 & \\
+   &#8942; \\
+    \beta_k & 
+   \end{pmatrix}
+   \)  and \(\epsilon=
+   \begin{pmatrix}
+   \epsilon_1 &\\
+   \epsilon_2 & \\
+   &#8942; \\
+   \epsilon_n & 
+   \end{pmatrix}
+   \)
+  </span>
+ <br>4.Assumptions: &#9312;: \(E(\epsilon)=0\) &#9313;: \(E(\epsilon.\epsilon')=\sigma^2.I_n\)
+ &#9314;: \( Rank(X)=k \)  &#9315;: X is non-stochastic matrix &#9316;: \(\epsilon \sim N(0,\sigma^2.I_n)  \)
+  <br><br>
+  <br><br>
+  <br><br>
+</div>
+
+</body>
+</html>

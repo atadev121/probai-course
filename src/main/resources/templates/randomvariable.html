@@ -1,0 +1,2724 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="utf-8">
+<title>Set theory,latex.codecogs.com</title>
+</head>
+    <script>
+
+    </script>
+  
+<body>
+
+	<div layout:fragment="content">
+	
+		 
+   <h1 id="4">4 Random Variable (RV)</h1>
+   
+A RV is a numeric value that is associated to the outcome of a random experiment, 
+so a RV is a function from  the sample space S to the set of real numbers
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <img src="/img/figure25.png" style="float: right; width: 35%; height: 55%;" class="image1">
+  </span>
+
+, generally 
+we denote by X this RV and we write:
+\( X:S \rightarrow R_{X}  \).
+<br>We have: \(\vee  B \subset S ,\;\exists  B' \subset R_{X} \) where \(s \in B \Leftrightarrow X(s)\in B' \), that is 
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ For every subset B of S there is a subset B' of R<sub>X</sub> where:
+   </span>
+B'={X(s) where s &#8714; B} and B={s where X(s) &#8714; B' } 
+
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+<br>We know that X doesn't take values outside \( R_{X }\), but as convention we write:
+\( X:S \rightarrow \mathbb{R}  \) and we have P(B)=0 if B is not a subset of \( R_{X }\).
+</span>
+<br>In all the following we write \(P(x \in A) \) and P(A) interchangeably for any subset of \( \mathbb{R}\).
+  <h2 id="4_1">4.1 Distribution </h2>
+   <h3 id="4_1_1">4.1.1 Probability distribution </h3>
+   As we saw earlier in 3.3 a probability distribution \( P:\)  &#8497;\( \rightarrow [0,1] \)
+    is a function form the set of events to the interval [0,1].
+   The way we describe this function will differ significantly depending on whether the 
+   RV is discrete or continuous.
+   <h3 id="4_1_2">4.1.2 Distribution of RV</h3>
+   The distribution of a RV X is the set of all probabilities P(B') where 
+   \( B' \subseteq \mathbb{R} \).
+  
+  
+  	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example:Waiting for an important email</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   Consider the random experiment where someone waiting for an important email 
+   checks his email box, suppose that 
+there are three possibilities (outcomes), email received, not received, a spam is 
+received.
+ Suppose also that P(received)=0.1, P(not received) =0.6 and P(spam)=0.3  
+  <br>What is the distribution of the RV X, where X(received)=4, X(not received)=0, 
+  X(spam)=-4.
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    P(B)=\( 0.1* I_{B}(4) +0.6*I_{B }(0)+0.3*I_{B}(-4)\), where
+     \(I_{B}(x)=0 \;if\;  x\notin B \;and \; I_{B}(x)=1 \;if\;  x\in B \)
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+  
+  
+ 
+<h2 id="4_2">4.2 Discrete RV</h2>
+The following definitions are equivalent:
+<br>X is a discrete RV if:
+<br> 1. Its range is countable.
+<br> 2. \( \sum\limits_{x \in \mathbb{R}} P(X=x)=1 \).
+
+
+
+
+		<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example:Tossing a fair coin</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    We toss a fair coin twice, let X be the RV corresponding to the 
+ number of the heads in each trial, the range of X is R<sub>X</sub>={0,1,2}, 
+ what is the distribution of X ?
+
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+      P(X=1)=P(A) where A={HT,TH}  (we know that S={HT,TT,TH,HH})
+ so P(X=1)=2/4=0.5, P(X=0)=P(B) where B={TT}, so P(X=0)=1/4, P(X=2)=1/4, 
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+
+
+
+
+
+
+
+  
+
+
+
+ <h3 id="4_2_1">4.2.1 Law of total probability -discrete RV version-</h3>
+ If X is a RV and A some event, we have:
+ \( P(A)=\sum\limits_{x\in \mathbb{R}}P(X=x).P(A|X=x)  \)
+
+ 
+
+    <h3 id="4_2_2">4.2.2 Probability Mass Function (PMF) </h3>
+ The Probability Mass Function (PMF) is a function that associates a probability to each
+  possible value of X.
+<br>   If X is a discrete RV then its range is countable, we can write thus, 
+\( R_{X}=\left\{ x_{1},x_{2},..\right\}\).
+
+<br> \(P(X=x_{i})=P(A_{i})=
+P(\text{set of all individual outcomes }  s_{i} \;such\; that\; X(s_{i})=x_{i})\)=
+\(P(s_{i} \in S \; | \; X(s_{i})=x_{i}) \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br> We can also write:\( \vee x_{i}  \in R_{X},  \exists A_{i} \subset S \; | \; X(s_{i})=
+ x_{i} \Leftrightarrow  s_{i} \in A \).
+ </span>
+ 
+  <br> The function that affects to each \( x_{i} \) the probability \(P(X=x_{i}) \)  is called the probability mass function PMF of the RV X
+  and is denoted by \( P_{X}(x_{i}) \).
+ It is obvious that \(0 \leqslant  P_{X} \leqslant 1\) but why 
+ \( \sum\limits_{x_{i}\in R_{X}}P_{X}(x_{i} )=1\;? \)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure13.png" id="vennPresentationImg" style="float: right; width: 35%; height: 55%;" class="image1">
+ <br> The following figure is given as an example where |S|=8, and \(|R_{X}|=3  \) to 
+ explain how outcomes are related to values in the range of a RV, and that :
+  \( \sum\limits_{x_{i}\in R_{X}}P_{X}(x_{i} )=\sum\limits_{s_{i}\in S}P(s_{i} )=1\)
+  
+  </span>
+  
+  
+  
+  
+  
+  
+  
+  
+  		<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example: Multiple random experiments corresponding to tossing a fair coin </b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   We have an unfair coin with P(H)=p, find the probability mass function for the RV 
+ associated with the following random experiments:
+ <br>1. We toss the coin n times, X is the number of heads.
+ <br>2. We toss the  coin until we observe a head, X is the number of tosses.
+ <br>3. We toss the coin until we observe n heads, X is the number of tosses.
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+1. \( P_{X}(k)\)= P(having k heads and (n-k) tails), we have \( \binom{n}{k} \) possibilities, all the possibilities have the same probability, which is \(p^k.(1-p)^ {n-k} \)
+  so \( P_{X}(k)=\binom{n}{k}. p^k.(1-p)^ {n-k}\)
+  <br>2. X=k means that we had successively k-1 tail and a head so  \( P_{X}(k)=
+  (1-p)^{k-1}.p \)
+  <br>3. X=k means that \(  k \geqslant  n  \) and that we had n-1 head in k-1 toss, 
+  and the k<sup>th</sup> toss is a head,
+  so: <br>\( P_{X}(k)=\binom{k-1}{n-1}. p^{n-1}.(1-p)^ {k-n}.p=
+  \binom{n-1}{k-1}. p^{n}.(1-p)^ {k-n}\) and 0 elsewhere
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+  
+  
+  
+  
+ 
+ 
+  <h3 id="4_2_3">4.2.3 Special discrete distribution </h3>
+  
+  <h4>4.2.3.1 Bernoulli distribution:</h4>
+    
+   Consider the random experiment of tossing a biased coin where P(H)=p thus 
+   P(T)=1-p, let X be the 
+   RV associated with this experiment where X(H)=1 and X(T)=0.
+  <br>The distribution of X is called  The Bernoulli distribution and denoted by 
+  X\( \sim  \) Bernoulli(p) 
+  and we write:
+  <br>\( P_{X}(x)= \)
+  \(\left\{\begin{matrix}
+ p  &  &  if \; x=1  \\
+ 1-p  &  &  if \; x=0  \\
+ 0  &  &  elsewhere  \\
+\end{matrix}\right.\)
+see picture 
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure14.png"  style="float: right; width: 45%; height: 65%;" class="image1">
+  </span>
+
+<h4 id="4_2_3_2">4.2.3.2 Geometric distribution:</h4>
+
+ 
+ Consider the random experiment where we toss a biased coin with P(H)=p until we 
+ get a head,  X is the RV associated to the number of tosses, the distribution of X is
+  called geometric  distribution,  and we have R<sub>X</sub>={1,2,3,4,..}.
+
+ <br>What is P<sub>X</sub>(x), where n\( \geqslant  \) 1 ?
+ <br>X=n means we got n-1 successive tails then a head, \( P_{X}(x)=(1-p)^{x-1}.p \), 
+ thus this distribution is defined as:\(  P_{X}(x)=\left\{\begin{matrix}(1-p)^{x-1}.p 
+  & x\geqslant 1 \\  \\0 & elsewhere \end{matrix}\right. \), see figure.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <img src="/img/figure26.png"  style="float: right; width: 45%; height: 65%;" >
+  </span>
+   
+<h4 id="4_2_3_3">4.2.3.3 Binomial distribution:</h4>
+   
+<h4>4.2.3.3.1 Definition:</h4>
+
+  The binomial distribution is the distribution of the RV X associated with the number 
+  of   heads we get when we toss a coin n times with P(H)=p.
+ 
+   <br>
+\( P_{X}(x)= \)
+  \(\left\{\begin{matrix}
+ \binom{n}{x}. p^x.(1-p)^ {n-x}  &  &  for \; x=0,1,2...  \\
+ 0  &  &  elsewhere  \\
+
+\end{matrix}\right.\), see figure.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     <img src="/img/figure27.png"  style="float: right; width: 45%; height: 65%;" >
+  </span>
+
+<br>
+
+<h4>4.2.3.3.2 Binomial variable as sum of Bernoulli variables:</h4>
+
+If X<sub>1</sub>, X<sub>2</sub>,..,X<sub>n</sub> are n independent Bernoulli 
+RVs, then the RV X<sub>1</sub>+X<sub>2</sub>+..+X<sub>n</sub>
+ has Binomial(n,p) distribution.
+
+    <h4>4.2.3.4 Negative Binomial (Pascal) Distribution:</h4>
+     
+    
+       The RV associated with this distribution is the number of coin tosses we must 
+       make to get k successes.
+       <br>
+\( P_{X}(x)= \)
+  \(\left\{\begin{matrix}
+ \binom{x-1}{k-1}. p^{k}.(1-p)^ {x-k}  &  &  for \; x=k,k+1,k+2...  \\
+ 0  &  &  elsewhere  \\
+
+\end{matrix}\right.\), see figure.
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure29.png"  style="float: right; width: 45%; height: 65%;" >
+  </span>
+      <h4 id="4_2_3_5">4.2.3.5 Hypergeometric Distribution:</h4>
+    
+    In a box we have <em>b</em> black balls and <em>w</em> white balls, we 
+    choose <em>m</em> 
+    balls from that box without replacement.
+    <br>If the RV X is the number of white balls, then the distribution of X is a 
+    hypergeometric 
+    distribution with parameter <em>w,b</em> and <em>m</em> and we write 
+    <em>    X~Hypergeometric(w,b,m) </em> and we have:
+    <br>
+    \( P_{X}(x)= \)
+  \(\left\{\begin{matrix}
+ {\binom{w}{x}.\binom{b}{m-x}} \over {\binom{b+w}{m}}  &  &  for \; x=max(0,m-b), 
+ max(0,m-b)+1,..,min(m,w)  \\
+ 0  &  &  elsewhere  \\
+
+\end{matrix}\right.\)
+    
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"> 
+  <br>\( P_{X}(x)={{\text{number of possibilities choosing x white balls while 
+  choosing m balls from w white  balls and b black balls}} \over {\text{number of 
+  possibilities while choosing m balls from w+b balls} }}\)
+<br> in each possibility of choosing x white ball (from w white balls) there is 
+\(\binom{b}{m-x}\) possibility (choosing the remaining (m-x) balls from b balls))
+  </span>
+        
+     <h4 id="4_2_3_6">4.2.3.6 Poisson Distribution:</h4>
+
+    A RV is said to be Poisson distributed with parameter &lambda; if:
+   <br> - Its range is:R<sub>X</sub>=0,1,2,3...
+    <br> - Its PMF is:
+    \( P_{X}(x)= \)
+  \(\left\{\begin{matrix}
+{e^{-\lambda}. \lambda^x} \over x!  &  &  for \; x=0,1,2...  \\
+ 0  &  &  elsewhere  \\
+
+\end{matrix}\right.\), see figure.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure30.png"  style="float: right; width: 45%; height: 65%;">
+    <br><br><br><br><br><br><br><br>
+  </span>                                               
+<br> This function is indeed a probability mass function, Proof:
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+We want to prove that: \(\sum\limits_{x=0}^{+\infty}P_{X}(x)=1  \), we have:
+\(\sum\limits_{x=0}^{+\infty}P_{X}(x)=\sum\limits_{x=0}^{+\infty} {{e^{-\lambda}. 
+\lambda^x} \over x!}=
+e^{-\lambda}.\sum\limits_{x=0}^{+\infty} { \lambda^x \over x!}=
+ e^{-\lambda}.e^{\lambda}=1\)
+ 
+ 
+
+  
+  
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ 
+    By applying Taylor series for \( e^x\),  (see prelude on calculus)
+  we have:\( e^x=\sum\limits_{k=0}^{+\infty}{e^a \over k!} (x-a)^k \)
+  , by taking a=0, we have:
+  \( e^x=\sum\limits_{k=0}^{+\infty}{e^0 \over k!} x^k =
+   \sum\limits_{k=0}^{+\infty}{ x^k \over k! }\), so 
+    \( e^\lambda=\sum\limits_{k=0}^{+\infty}{ \lambda^k \over k! } \)
+  </span>
+  
+  
+   
+  
+
+  </span>
+<br>We will see later that the expected value of the RV X (or the average) is 
+\( \lambda \)
+
+
+
+
+
+	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example:Probability of receiving k emails</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+  From previous data, I can tell that I receive in average 20 emails per day.
+<br>1.  What is the probability that  tomorrow I receive  15 emails ?
+
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ \(P_{X}(15)={{e^{-\lambda}. \lambda^{15}} \over 15!} ={{e^{-20}. 20^{15}} \over 15!} \)
+   </span>
+   <br>2. What is the probability that I don't receive any message until 15h30mn?
+   <span class="tooltip">&#128216;</span>
+  
+  <span class="tooltiptext"> Until 15h30 mn in average I should receive 20*(15.5)/24=
+  12.91, so the 
+  probability that I don't   receive any message before 15h30 is:
+   \(P(X=0)={12.91^0.e^{-12.91} \over 0!}\)</span>
+<br>3. What is the probability that I don't receive any message, before the instant t ?
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>- The average number of messages we receive in the interval [0,t] is \(t*20/24=
+  \beta_{0}t \).
+  <br> So  \(P(\text {no message before t})=P_{0}=
+  {e^{-\beta_{0}t}.{(\beta_{0}t)}^0 \over 0!} =e^{-\beta_{0}t}\), where:
+  <br> - \( \beta_{0} \) is the average or expected value of number of messages 
+  (E(X)) I receive per time unit
+  <br> - \({1 \over  \beta_{0}} \) is the average or expected value of time (E(T)) until we 
+  receive next message  
+  <img src="/img/figure147.png"  style="float: right; width: 42%; height: 65%;" class="image1">
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">Or the average waiting time </span>
+  </span>
+ <br>4. We measure the time until the first message arrives, let T be this RV, what is 
+ the distribution of T ?  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  \(T &#62; t \Leftrightarrow \text{no message before t} \), that is \( P(T &#62; t) =
+  P(\text {no message before t})=e^{-\beta_{0}t}\).
+  
+<br>Suppose f is the density function of T, then we have  \( P(T &#62; t)=
+\int_{t}^{+\infty}f(x)dx\), so \(e^{-\beta_{0}t}=\int_{t}^{+\infty}f(x)dx=F(+\infty)-F(t)  \)
+ it follows that: \(-\beta_{0}e^{-\beta_{0}t}=-{dF(t)  \over dt }\), that
+  is \(-\beta_{0} e^{-\beta_{0}t}=-f(t)\), finally we get: \(f(t)=\beta_{0} e^{-\beta_{0}t}\), 
+  so \(T \sim Exponential(\beta_{0}) \)
+  </span>
+<br>5. How can a geometric distribution approximate the exponential distribution ?
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>The geometric distribution is the number of coin throws until we observe a 
+  success, 
+  a success in our experiment is when the event we're expecting occurs 
+  (for example the next email or   earthquake ), we observe 
+  the event every &delta;t time frame (we check if the a success occurs or not, note that
+  &delta;t must be extremely small time frame to be sure not to miss the event when it 
+  occurs ).
+  The mean time before a success occurs is E(T)=n.&delta;t (the expected value of T, see subsequent
+  chapters),  where n is the mean number of time frames &delta;t
+  before a success occurs.
+ <br> Let X be the RV associated to the number of time frames &delta;t before a 
+ success 
+  occurs, so X~Geometric(p), where p is the probability that a success occurs within
+  a time frame &delta;t, we have \(E(X)=\frac{1}{p}=n \)(see chapter on expected value)
+  , that is \(\frac{1}{p} =\frac{E(T)}{\delta t}\), so \(p=\frac{\delta t}{E(T)} \)
+  , that is: \( p=\delta t .\beta_0\).
+  <br> We have: \( P(T &#62; t) =P(\text {no event before t}) =(1-p)^k\) where k is the 
+  number of observation in time frame t, which is \( [{t \over \delta t }] \) where [] is the
+   integer part.
+  that is \( 1-P(T \leqslant  t)=(1-p)^{[{t \over \delta t }]}\) that is
+   \(F(t)=1- (1-p)^{[{t \over \delta t }]}=1- (1-\delta t .\beta_0)^{[{t \over \delta t }]}\)
+  since \( \displaystyle \lim_{ \delta t\to 0} (1-\delta t .\beta_0)^{[{t \over \delta t }]}=
+  e^{-\beta_0 t} \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  because:  \( \displaystyle \lim_{ \delta t\to 0} (1-\delta t .\beta_0)^{[{t \over \delta t }]}=
+  
+  \displaystyle \lim_{ \delta t\to 0} e^{ln    {(1-\delta t .\beta_0)^{[{t \over \delta t }]}}}
+  
+=  \displaystyle \lim_{ \delta t\to 0} e^{ln    {(1-\delta t .\beta_0)^{[{t \over \delta t }]}}}=
+
+e^{\; \displaystyle \lim_{ \delta t\to 0} {ln    {(1-\delta t .\beta_0)^{[{t \over \delta t }]}}}}=\)
+\(
+
+e^{\;t.\displaystyle \lim_{ \delta t\to 0} {{ {ln{(1-\delta t .\beta_0)}} \over \delta t }}}  \)
+ , we have:
+\(
+\displaystyle \lim_{ \delta t\to 0} {{ {ln{(1-\delta t .\beta_0)}} \over \delta t }} 
+
+=\displaystyle \lim_{ \delta t\to 0} {{ {(ln{(1-\delta t .\beta_0)}})' \over (\delta t)' }}
+\)
+\( =(-\beta_0).\displaystyle \lim_{ \delta t\to 0} {{ { {1 \over {1-\delta t .\beta_0}} \over 1 }}}=-\beta_0
+
+  \)
+  
+  </span>
+   , we have \(F(t)=1- e^{-\beta_0 t} \), which is the cumulative function of the 
+   exponential distribution.
+  </span>
+<br>6. Let's consider another situation where the event of interest is a product failure  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">conversely in probability terminology it's a success  
+  </span>, for example a light bulb failure.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  As we saw in previous question, if T is the time before the first failure occurs 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">Actually there is only one failure</span>, then 
+  T~Exp( \({1 \over \mu} \) )  where &mu; is the average time before failure or the 
+  average lifetime.
+  </span>
+
+		
+  </div>
+  </div>
+	</div>
+
+
+
+
+
+
+
+     <h4 id="4_2_3_6_1">4.2.3.6.1 Poisson as Binomial:</h4>
+  &#9755; \(Poisson(\lambda) \approx Binomial(n,\frac{\lambda}{n}) \), with n
+   \( \rightarrow +\infty \).
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     A Poisson distribution with parameter \(\lambda \) can be approximated by a 
+  binomial distribution of parameters n and \(\frac{\lambda}{n} \), with n approaches
+   infinity
+  
+<br>     In our example above, suppose that we check our mail box to see if an email is 
+     received 
+      every minute,  hence we check the email box 1440 times (in a day there is 
+      1440 minutes), this random experiment is equivalent to tossing a coin 1440 times 
+      with the probability of heads coming up p
+      , we know that in average the number of success is np which is &lambda;
+  </span>
+   
+ 
+      <br>Proof:
+       <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+      <br>We have: Let \(X~Binomial(n,{&lambda; \over n})\), so
+       \(  \displaystyle \lim_{ n\to +\infty }P_X(x)=
+      \displaystyle \lim_{ n\to +\infty }\binom{n}{x}.
+\left ( {\lambda \over n} \right )^x.
+ \left ( {1-{\lambda \over n}} \right )^{n-x} =
+  {  &lambda; ^x \over x!} . \displaystyle \lim_{ n\to +\infty }{n! \over (n-x)!} .
+  {1 \over n^x}  .
+ \left ( {1-{\lambda \over n}} \right )^{n-x} \) hence:
+ <br>
+\( \displaystyle \lim_{ n\to +\infty }Binomial(n,{&lambda; \over n}) = 
+{  &lambda; ^x \over x!} . \displaystyle \lim_{ n\to +\infty }{n! \over (n-x)!} .
+  {1 \over n^x}  .
+ \left ( {1-{\lambda \over n}} \right )^{n-x} \)
+ <br>
+ \(= {  &lambda; ^x \over x!} . \displaystyle \lim_{ n\to +\infty }{(n-x+1).(n-x+2)..n} .
+  {1 \over n^x}  .
+ \left ( {1-{\lambda \over n}} \right )^{n} .\left ( {1-{\lambda \over n}} \right )^{-x} 
+ \)
+ <br> We have:
+  \(  \displaystyle \lim_{ n\to +\infty }{(n-x+1).(n-x+2)..n \over n^x}=
+   \displaystyle \lim_{ n\to +\infty }{n^x \over n^x}=1 \),
+  
+   \(  \displaystyle \lim_{ n\to +\infty } \left ( {1-{\lambda \over n}} \right )^{-x} =1 \), 
+   and
+   
+    \(\displaystyle \lim_{ n\to +\infty }\left ( {1-{\lambda \over n}} \right )^{n} =
+    e^{-&lambda;} \)   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">By using Binomial expansion we can write: 
+  \((1+x)^\alpha=\sum\limits_{k=0}^{+\infty}\binom{\alpha}{k} x^k=
+   \sum\limits_{k=0}^{+\infty}{\alpha! \over {k!(\alpha-k)!}}.x^k \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  apply  Taylor series for \(f(x)=(1+x)^\alpha \), in this case \(c_k={f^k(a) \over k!} =
+  {\alpha.(\alpha-1)..(\alpha-k+1) \over k!}{(1+a)^{(\alpha-k)}}=
+  {\alpha! \over {k!(\alpha-k)!}}{(1+a)^{(\alpha-k)}}\) 
+  for a=0 we have \(c_k={\alpha! \over {k!(\alpha-k)!}}.1=\binom{\alpha}{k} \)
+  </span>
+  , if we take \(\alpha=n\) and \(x \over n \) instead of x, we'll get:
+   \(  
+    (1+{x \over n})^n= \sum\limits_{k=0}^{+\infty}{n! \over {k!(n-k)!}}.({x \over n})^k =
+    \sum\limits_{k=0}^{+\infty}{n! \over {k!(n-k)!}}.{x^k \over n^k}=
+    \sum\limits_{k=0}^{+\infty}{n! \over {(n-k)!n^k}}.{x^k \over k!}=
+
+\sum\limits_{k=0}^{+\infty}{(n-k+1).(n-k+2)..n \over {n^k}}.{x^k \over k!}
+    \) so \(  \displaystyle \lim_{n \to +\infty} (1+{x \over n})^n=
+    \sum\limits_{k=0}^{+\infty}\displaystyle \lim_{n \to +\infty} {(n-k+1).(n-k+2)..n \over {n^k}}.{x^k \over k!} \).
+  <br>  since \( \displaystyle \lim_{n \to +\infty} {(n-k+1).(n-k+2)..n \over {n^k}}=
+  \displaystyle \lim_{n \to +\infty} {n^k \over n^k}=1\) we get:
+    \( \displaystyle \lim_{n \to +\infty} (1+{x \over n})^n=
+    \sum\limits_{k=0}^{+\infty}{x^k \over k!}\) we know by Taylor series that: 
+    \( \sum\limits_{k=0}^{+\infty}{x^k \over k!}=e^x\) so\( \displaystyle \lim_{n \to +\infty} (1-{x \over n})^n=e^{-x}\)
+    </span>, finally we have:
+    \( \displaystyle \lim_{ n\to +\infty }Binomial(n,{&lambda; \over n}) ={{e^{-&lambda;} .&lambda;^x} \over x!}=Poisson(&lambda;)\)
+</span>
+ <h4 id="4_2_3_7">4.2.3.7 Point distribution </h4>
+ We say that a RV follows a point distribution with the parameter c and we write 
+ X~Point(c) if its PMF is defined as follows:
+ 
+   \( P_{X}(x)= \)
+  \(\left\{\begin{matrix}
+c  &  &  for \; x=c  \\
+ 0  &  &  elsewhere  \\
+
+\end{matrix}\right.\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br> The point distribution is also called the degenerate distribution or the point distribution.
+  </span>
+
+    <h3 id="4_2_4">4.2.4 Independent discrete RV </h3>
+       <h4 id="4_2_4_1">4.2.4.1 Definition </h4>
+       Two discrete RVs X and Y are said to be independent if
+       for every \(x \in R_X \) and \(y \in R_Y \) and sets \( A \subset R_X \) 
+       and  \( B \subset R_B \) we have:
+      <br>- \( P(X=x,Y=y)=P_X(x).P_Y(y) \)
+        <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">P(X=x,Y=y)=P(X=x).P(Y=y)</span>.
+  In general   \( P(X_1=x_1,X_2=x_2,..X_n=x_n)=P_{X_1}(x_1).P_{X_2}(x_2)..P_{X_n}(x_n) \)
+   <br>-  \(P(x \in A, y \in B)=P_X(x \in A).P_Y(y \in B) \) 
+   <br>- \(P(Y=y|X=x)=P_Y(y) \;and\; P(X=x|Y=y)=P_X(x) \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> X and Y are independent and X and Z are independent doesn't mean X and f(Y,Z) are 
+    independent take for example X=0 if a tossed coin land head and X=1 if it lands tail
+    , the same goes for Y with another coin, take Z=X+Y, then X and Z are not independent.
+    <br>
+  </span>
+      <h3 id="4_3">4.3 Continuous RVs </h3>
+      <h4 id="4_3_1">4.3.1 Definition</h4>
+      A RV is continuous if P(X=x)=0 for every \( x \in \mathbb{R}\)
+      <h4 id="4_3_2">4.3.2 Uniform distribution</h4>
+         Let X be a RV such as \(P(a \leqslant X \leqslant b)=b-a  \)
+         whenever \( 0 \leqslant a \leqslant b \leqslant 1\) and \(P(X &#60; 0)=
+         P(1 &#60; X) =0\).
+         <br> X is  said to be the uniform distribution and we write X~Uniform[0,1].
+         <br>We have also:
+         <br>- \( P( X \leqslant x)=P(X &#60; 0)+P(0 \leqslant X \leqslant  x  )=x-0=x\) for
+          any \( 0 \leqslant x \leqslant  1\)
+         
+         <br>- \( P( X = x)=x-x=0 \) (take a=b) so the uniform distribution is continuous
+         <br>- \(P(a \leqslant X \leqslant b)=\int_{a}^{b} f(x)dx \) for every
+          \( 0 \leqslant a \leqslant  b \leqslant  1 \), where 
+         
+  \( f(x)= \)
+  \(\left\{\begin{matrix}
+  1  &  &  for \; 0 \leqslant x \leqslant 1 &  \\
+  0  &  &  elsewhere  \\
+\end{matrix}\right.\)
+
+	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example 1: Writing Uniform [L , R] using Uniform [0,1]</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    Let L and R be two real numbers such as L &le; R.
+    <br> A RV X is said to be Uniform [L , R] if its probability distribution is defined as 
+    the following:
+ \( P(a &le; X &le; b)=\frac{b-a}{R-L} \) for every two real numbers a and b such as
+  L &le; a &le; b &le; R, with \(P(R &lt; X )=0 \) and \(P(X &lt; L)=0 \)
+ <br> Write X using Uniform [0,1]
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    First we must find \( P(a &le; X &le; b) \) for all values of a and b, not only for 
+   \( L &le; a &le; b &le; R \), we have:
+ <br>P(a &le; X &le; b) =\(
+   \left\{\begin{matrix}
+0 & if\; b &le; L \;or \; a &gt; R  \; (first \;case)\\
+\frac{R-a}{R-L} & if\; L &le; a \;and \; b &gt; R \;(second \;case)\\
+\frac{b-L}{R-L} & if\; a &le; L \;and \; b &le; R \;(third \;case)\\
+\end{matrix}\right.
+\)
+<br>Because P(a &le; X &le; b) =P(a &le; X &le; R)+P(R &le; X &le; b)
+=  \( \frac{R-a}{R-L}\)+0 (for the second case) 
+<br>and P(a &le; X &le; b) =P(a &le; X &le; L)+P(L &le; X &le; b)=0+\( \frac{b-L}{R-L}\)
+(for the third case).
+<br> The density function of X can be defined as: f(x)=
+\(
+\left\{\begin{matrix}
+\frac{1}{R-L} & if\; L &le; x &le; R \\
+0 & elsewhere\\
+\end{matrix}\right.
+\)
+<br>Let X be the RV defined as X=(R-L)U+L, where U~Uniform[0,1], we have:
+<br>\(P(  a &le; X &le; b)=P(a &le;  (L-R)U+L  &le; b)=
+P(\frac{a-L}{R-L} &le;  U  &le; \frac{b-L}{R-L}) \)
+<br>\(L &le; a \) and \(b &le; R \) means that \( \frac{b-L}{R-L}  &le; 1\) and
+ \(0 &le; \frac{a-L}{R-L}  \), so \(P(  a &le; X &le; b)=
+ \int_\frac{a-L}{R-L}^\frac{b-L}{R-L}1.dx =\frac{b-a}{R-L}\), so X~Uniform[L,R]
+</div>
+</div>
+  </div>
+  </div>
+	</div>
+
+
+<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example 2: Simulating coin toss with Math.random()</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+ Math.random() is a function in javascript which gives you a RV X such as
+   \(X \sim U[0,1] \).
+    let p a real number in the interval [0,1].
+    Find a RV Y=f(X) such as \(P(Y=1)=p \) and \(P(Y=0)=1-p\).
+   
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   let Y be another random 
+    variable such as 
+      \(Y=\left\{\begin{matrix}
+1  &  &  if X \in [0,p]  \\
+ 0  &  &  elsewhere  \\
+
+\end{matrix}\right.\)
+we have \(P(Y=1)=P(X \in [0,p]=p\) and  \(P(Y=0)=P(X \in [p,1]=1-p\)
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+     <h4 id="4_3_3">4.3.3 Probability Density Function (PDF)</h4>    
+      a) A function \(f: \mathbb{R} \rightarrow \mathbb{R} \) is a density function if  
+      \(\forall x \in \mathbb{R}\) \(f(x) \geqslant  0  \) and  
+      \( \int_{-\infty}^{+\infty} f(x)dx=1\)    
+      <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">f doesn't need to be continuous, Take
+   \(f(x)=2x \; if \; 0  \leqslant  x  \leqslant  1\), 
+  and 0 otherwise. This is a density function which is not continuous (at the point 1).
+  </span>
+   <br> b) A RV X is said to be absolutely continuous if there is a density function such 
+   that  \(P( X \in B)=\int_{x \in B}f(x)dx \) for all  \(B \subset R_X \)
+   
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  , particularly  \(P(a \leqslant X \leqslant b)=\int_{a}^{b}f(x)dx \) for all  \(a \leqslant b \)
+   <br> If we take \(b \approx a \) that is \(b = a+\delta  \) where  \( \delta \) is a very 
+   small positive real, we 
+   can write:\(P(a \leqslant X \leqslant a+\delta)=\int_{a}^{a+\delta}f(x)dx \).
+   <br> since we are integrating from a to a+&delta; we have:
+   \(a \leqslant x \leqslant a+\delta \) that is 
+    \( \delta \rightarrow 0 \Rightarrow f(x) \approx f(a)\) we suppose f is continuous at a,
+     that is 
+    \(P(a \leqslant X \leqslant a+\delta)=f(a).\delta \)
+ <br> The interpretation of f is the following:
+ <br>If we want to know what the probability looks like near to a real "a", we must 
+ calculate the probability of a 
+ small interval around "a", (otherwise the probability may vary significantly), this 
+ probability as we saw above is nothing but the length of this interval (&delta;) times 
+ f(a).
+   </span>
+   <br> c) If X is an absolutely continuous RV then X is a continuous RV, the 
+   opposite is false. 
+   
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\(P(X=a)=P(a \leqslant X \leqslant a)=\int_{a}^{a}f(x)dx=0 \)
+  </span>
+  <br> d) Absolutely continuous distribution are easy to handle and most of the 
+  continuous distribution are also absolutely continuous, in all the following we 
+  suppose 
+   that continuous distribution are also absolutely continuous.
+     
+      <h3 id="4_3_4">4.3.4 Special continuous distribution</h3>    
+       <h4 id="4_3_4_1">4.3.4.1 Exponential distribution</h4>    
+    A RV X is said to be exponentially distributed if its density function is defined as the
+     following:
+  \( f(x)=\lambda e^{-\lambda x} u(x)\), where u is the unit step function and
+   \(\lambda &gt; 0\) 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+        \( u(x)= 
+\left\{\begin{matrix}
+ 1  &  &  for \;  x  \geqslant  0 \\
+  0  &  & otherwise \\
+
+\end{matrix}\right.\)
+
+</span>, see figure.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     <img src="/img/figure32.png"  style="float: right; width: 45%; height: 65%;" >
+  </span>
+<br>a) f is indeed a density function
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+<br> We have: \(  \forall x, \; f(x) \geqslant 0\) and
+ \( \int_{-\infty}^{+\infty}f(x)dx=\lambda \int_{0}^{+\infty}e^{ -\lambda x}dx=
+ \lambda ({-1 \over \lambda }e^{-x})|_{0}^{+\infty}=(-0)-(-1)=1\), so f is a density 
+ function.
+<br> Also: \( P(a \leqslant X \leqslant b)=\int_{a}^{b} \lambda e^{-x}dx={\lambda \over \lambda } (-e^{-\lambda x})|_{a}^{b} ={   {f(a)-f(b)}   \over  \lambda }\).
+</span>
+<br>b) The random experiment behind the exponential function is the time until an 
+event occurs:
+
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">See the example in 4.2.3.6 for the interpretation of the 
+  exponential distribution.
+ <br>As can be seen in the graphic, the exponential distribution may be relevant of 
+ presenting lifelengths, 
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"> 
+other examples includes, the amount of time  until an earthquake occurs, the amount 
+of money spent in a trip, 
+  </span>
+ that is the probability of X being more than a value x, we note that the smaller x is 
+ the bigger the probability is 
+ and the opposite is true, we write \( P(X \geqslant x)=\int_{x}^{+\infty}\lambda 
+ e^{-\lambda t}dt =e^{-\lambda x}\) 
+ </span>
+<br>c) Exponential distribution is memoryless: that is \(P(X &gt; x+a | X &gt; a )= 
+P(X &gt; x) , for \; any \;a,x \geqslant 0 \)     <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"> 
+  \(P(X &gt; x+a | X &gt; a )={P(X &gt; x+a; X &gt; a) \over P(X &gt; a) }= 
+  {P(X &gt; x+a) \over P(X &gt; a) }=
+   {  {1-F_X(x+a)  }   \over  {1-F_X(x)  }     }=
+   {e^{-\lambda (x+a) } \over {  e^{ -\lambda a } } }=e^{-\lambda x }=
+   P(X &gt; x)\)
+  </span>
+   
+   <h4 id="4_3_4_2">4.3.4.2 The Gamma Distribution</h4>   
+   <h4 id="4_3_4_2_1">4.3.4.2.1 The Gamma function</h4> 
+   
+The Gamma function is used in many distributions <span class="tooltip">&#128216;
+</span>
+  <span class="tooltiptext">
+  such as:Gamma distribution, Beta distribution, Dirichlet distribution, Chi-squared 
+  distribution, and Student’s t-distribution, etc.
+it is also used in data science and machine learning 
+  </span>, it is defined by:\(\Gamma(\alpha)=
+  \int_{0}^{+\infty}t^{\alpha-1}e^{-t}dt  \;where \; \alpha &#62; 0 \)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <img src="/img/figure33.png"  style="float: right; width: 45%; height: 65%;" >
+    <br> This figure gives the graphical representation of the Gamma function  for 
+    different values instead 
+    of +&#8734;, notice that this function converges quickly towards the red curve, 
+    actually \(\int_{0}^{9}t^{\alpha-1}e^{-t}dt \approx \int_{0}^{1000}t^{\alpha-1}
+    e^{-t}dt \approx \int_{0}^{+\infty}t^{\alpha-1}e^{-t}dt \)
+
+  </span>
+   <br>The following are some important properties of the Gamma function:
+<br>a) \(\Gamma(\alpha+1)=\alpha. \Gamma(\alpha)\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  if we take \(f(t)=t^\alpha\) and \( g(t)=e^{-t},\) using product rule (or integration by
+   part) we have (gf)'=g'f+gf' (Lagrange notation) where f' and g' are the derivative of 
+   f and g.
+So \((t^\alpha.e^{-t})'=\alpha.t^{\alpha-1}e^{-t}-t^\alpha.e^{-t} \).
+<br> Integrating this equation between 0 and
+   \( +\infty\) gives: \(\int_{0}^{+\infty}(t^\alpha.e^{-t})'=
+   \int_{0}^{+\infty}\alpha.t^{\alpha-1}e^{-t}-\int_{0}^{+\infty}t^\alpha.e^{-t} \)
+  that means \( (t^\alpha.e^{-t})|_{0}^{+\infty} =
+  \alpha.\Gamma(\alpha)-\Gamma(\alpha+1)\), since \( (0^\alpha.e^{-0})=0*1=0\), and
+    \(\displaystyle \lim_{ t\to +\infty}(t^\alpha.e^{-t})= 0\) 
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+this is obvious for \( \alpha \leqslant 1\); in the case where  \( \alpha \geqslant  1\) 
+we have: \(\displaystyle \lim_{ t\to +\infty}t^\alpha=
+ +\infty\) and  \(\displaystyle \lim_{ t\to +\infty}e^{t}= +\infty\),  using L'Hopital's rule 
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+L'Hopital's rule states that if two functions f and g are such as: 
+\( \displaystyle \lim_{x \to c} {f'(x) \over g'(x)}\) exists, then we have
+ \( \displaystyle \lim_{x \to c} {f(x) \over g(x)}=
+ \displaystyle \lim_{x \to c} {f'(x) \over g'(x)}\) , c can be \( \infty\)
+<br>
+</span>
+we have: 
+  \(\displaystyle \lim_{ t\to +\infty}{t^\alpha \over e^{t}}=
+   \displaystyle \lim_{ t\to +\infty}{(t^\alpha)^{(1)} \over {(e^t)}^{(1)}} =
+   \displaystyle \lim_{ t\to +\infty}{(t^\alpha)^{(k)} \over {(e^t)}^{(k)}}
+  =\displaystyle \lim_{ t\to +\infty}{ { \alpha! \over {(\alpha-k)!}}  t^{\alpha-k} \over e^t}\) 
+where
+  \(f^{(k)} \) is the derivative of k<sup>th</sup> order, and k some natural number 
+  such as \(\alpha-k&#60; 1 \)
+
+  
+ so  \( \displaystyle \lim_{ t\to +\infty}{t^\alpha . e^{-t}}=0 \)
+</span>
+, we get \( \Gamma(\alpha+1)=\alpha.\Gamma(\alpha)\)
+  
+  </span>
+  
+      <br>b) \(\Gamma(n+1)=n! \) where n is a natural number
+      <span class="tooltip">&#128216;</span>
+      
+<span class="tooltiptext">We can prove it by recursion</span>
+<br>c) \(\Gamma(\frac{1}{2})=\sqrt{\pi} \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually, 
+  \(  \Gamma(1/2)=\int_{0}^{+\infty}t^{-1/2}e^{-t}dt=\int_{0}^{+\infty}\frac{e^{-t}}{\sqrt{t}}dt\)
+  , let \(\;u=\sqrt{t}\), then \(du=(1/2).t^{-1/2}.dt=(1/2).dt.u^{-1}\)  that is 
+  \( dt=2.u.du \) so
+   \(\Gamma(1/2)=\int_{0}^{+\infty}2.u.u^{-1}e^{-u^2}du=2.\int_{0}^{+\infty}e^{-u^2}du=
+   \int_{-\infty}^{+\infty}e^{-u^2}du=\sqrt{\pi}\)
+  </span>
+  <br>d) \(B(x,y)=\frac{\Gamma(x).\Gamma(y)}{\Gamma(x+y)}\), where 
+  \(B(x,y)=\int_{0}^{1}t^{x-1}.(1-t)^{y-1}.dt\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> B is called the beta function.
+   
+   <br>Actually, \(\Gamma(x).\Gamma(y)=\int_{0}^{+\infty}u^{x-1}.e^{-u}.du).(\int_{0}^{+\infty}v^{y-1}.e^{-v}.dv)=\)
+\(\int_{0}^{+\infty}\int_{0}^{+\infty}u^{x-1}.v^{y-1}.e^{-(u+v)}.du.dv\)
+ let \(u=zt \) and \(v=z.(1-t)\) we have 
+\(du.dv=\frac{\partial(u,v)}{\partial(z,t)}.dz.dt=\)
+\((\frac{\partial u}{\partial z}.\frac{\partial v}{\partial t}-
+\frac{\partial u}{\partial t}.\frac{\partial v}{\partial z}).dz.dt=(t.(-z)-z(1-t))=-z.dz.dt\)
+<br> \(0 &le;u &lt;+\infty \) and \(0 &le; v &lt;+\infty \) implies that    
+\(0 &le;z &lt;+\infty \) 
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    because z=u+v
+  </span>
+<br>for t it's a little bit trickier, this not similar to calculating limits of function when variable 
+approaches some values, 
+so to figure out the interval in which \(t=\frac{u}{u+v}\) changes, just fix u in any value \(u_0\) 
+from 0 to \(+\infty\) and you'll notice easily that when v varies from 0 to \(+\infty\), t varies 
+from 1 to 0.
+
+<br> so \(\Gamma(x).\Gamma(y)=-\int_{0}^{+\infty}\int_{1}^{0}(zt)^{x-1}.(z(1-t))^{y-1}.
+e^{-z}.z.dz.dt=\)\(
+\int_{0}^{+\infty}z^{x+y-1}.e^{-z}.dz.\int_{0}^{1}t^{x-1}(1-t)^{y-1}.dt=\Gamma(x+y).B(x,y) \)
+   
+   
+  </span>
+   
+  
+  <h4 id="4_3_4_2_2">4.3.4.2.2 The Gamma(&alpha;, &lambda;) Distribution</h4> 
+  
+ Let &alpha; &#62; 0 and &lambda;&#62; 0, a RV X is said to have the 
+ Gamma(&alpha;, &lambda;)
+  distribution if its probability density function is defined as:
+         \( f(x)= 
+\left\{\begin{matrix}
+ { \lambda^\alpha x^{\alpha-1} \over \Gamma(\alpha) } e^{-\lambda x}&  &  for \; x &#62; 0  \\
+  0  &  &  for \;x \leqslant  0 \\
+\end{matrix}\right.\)
+ , note that f is a density function <span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+\( f \geqslant 0 \) and \( \int_{0}^{+\infty}f(x)dx=
+{ \lambda^\alpha \over \Gamma(\alpha)} \int_{0}^{+\infty} x^{\alpha-1}   
+e^{-\lambda x} dx\)
+taking \( x={u \over \lambda} \) we can write  \( \int_{0}^{+\infty}f(x)dx=
+{ \lambda^\alpha \over \Gamma(\alpha)} \int_{0}^{+\infty} ({u \over \lambda})^{\alpha-1}   e^{-u} d({u \over \lambda}) 
+={ \lambda^\alpha \over \Gamma(\alpha)} \int_{0}^{+\infty} { { u ^{\alpha-1}  } 
+\over  { \lambda } ^{\alpha} }  e^{-u} du={ \lambda^\alpha \over \Gamma(\alpha)}
+ { \Gamma(\alpha) \over \lambda^\alpha} =1
+\)
+</span>
+
+<h4 id="4_3_4_3">4.3.4.3 Normal distribution</h4> 
+<h4 id="4_3_4_3_1">4.3.4.3.1 Standard Normal distribution</h4> 
+A RV Z is said to be a standard normal distribution (or gaussian) if its density function 
+is: \( \phi(x)={1 \over \sqrt{2 \pi} } e^ {-{x^2 \over 2} }\) and we write Z~N(0,1), see figure.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure34.png"  style="float: right; width: 45%; height: 65%;" >
+  </span>
+
+<br> &#9755; \(\phi \) is a density function.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  Let's prove that \( A=\int_{^-\infty}^{+\infty} \phi(x)dx=1 \)
+  <br> we have: \(A^2=(\int_{^-\infty}^{+\infty} \phi(x)dx)^2=(\int_{^-\infty}^{+\infty} 
+  \phi(x)dx).
+  (\int_{^-\infty}^{+\infty} \phi(x)dx)=(\int_{^-\infty}^{+\infty} \phi(x)dx).
+  (\int_{^-\infty}^{+\infty} \phi(y)dy)
+  = \int_{^-\infty}^{+\infty} \int_{^-\infty}^{+\infty} \phi(x) \phi(y)dx dy \)
+<br> that is:\( A^2=\int_{^-\infty}^{+\infty} \int_{^-\infty}^{+\infty}{1 \over {2.\pi}} 
+e^ {-{x^2 \over 2} } e^ {-{y^2 \over 2} }dx dy ={1 \over {2.\pi}} 
+\int_{^-\infty}^{+\infty} \int_{^-\infty}^{+\infty}
+e^ {-{{x^2+y^2} \over 2} } dx dy\)
+<br>In the polar system we can write \( x=r.cos(\theta) \; and \; y=r.sin(\theta)\) 
+where \(r \geqslant  0 \) and 
+\( 0 \leqslant  \theta \leqslant 2\pi \) knowing that \( dx.dy=r.dr.d\theta \) and 
+\(x^2+y^2=r^2 \)
+ we have:  \(A^2={1 \over {2\pi}}  \int_{0}^{+\infty} \int_{0}^{2\pi}e^ {-{r^2 \over 2} } r.dr.d\theta
+ ={1 \over {2\pi}}  \int_{0}^{+\infty}e^ {-{r^2 \over 2} } r.dr \int_{0}^{2\pi}d\theta=
+ {{2\pi} \over {2\pi}}  \int_{0}^{+\infty}r e^ {-{r^2 \over 2} } dr =-e^ {-{r^2 \over 2} }
+  |_{0}^{+\infty=1}, \)
+ so \(A^2=1 \), finally we get: \(A=1 \)
+ 
+  </span>
+  <br> &#9755; \(\int_{-\infty}^{+\infty}e^{-t^2}.dt=\sqrt{\pi} \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+      \( A=\int_{-\infty}^{+\infty}e^{-t^2}.dt\)
+   let \( t=u/\sqrt{2}\) ,then 
+   \(A=\frac{\sqrt{2.\pi}}{\sqrt{2}}\int_{-\infty}^{+\infty}\frac{1}{\sqrt{2.\pi}}
+   e^{-u^2/2}.du=\sqrt{\pi}\)
+  </span>
+
+  <br>&#9755; Let \(Z \sim N(0,1)\)  we have  \(P(Z &gt;z)=P(Z &lt;-z) \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually, \(P(Z &lt;-z )=\frac{1}{\sqrt{2.\pi}}\int_{-\infty}^{-z}e^{-\frac{x^2}{2}}.dx\), 
+    the variable change \(y=-x\) will give 
+     \(P(Z &lt;-z )=\frac{1}{\sqrt{2.\pi}}\int_{\infty}^{z}e^{-\frac{y^2}{2}}.(-dy)=
+\frac{1}{\sqrt{2.\pi}}\int_{z}^{\infty}e^{-\frac{y^2}{2}}.dy=P(Z &gt; z)\)
+  </span>
+  <br>&#9827; Let \(Z \sim N(0,1)\) and \(p \in [0,1]  \) we note by \(z_p\) the value 
+  for which   \( P(Z &gt;z_p)=p \) and we have \(z_{1-p}=-z_p\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure151.png"  style="float: right; width: 45%; height: 65%;" >
+  </span>
+   
+  
+<h4 id="4_3_4_3_2">4.3.4.3.2 General Normal distribution</h4> 
+&#9755;<b>Definition:</b>\(X \sim N(&mu;,&sigma;^2)   \Leftrightarrow f_X(x)=
+\frac{1}{\sigma} \phi(\frac{x-\mu}{\sigma})=
+{1 \over  {\sigma \sqrt{2 \pi} }} e^ {-{ { (x - \mu )}^2 \over { 2 \sigma^2 }} }
+\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    where &mu; and &sigma; are two real numbers with &sigma;&gt;0.
+  </span>
+<br>&#9755; Indeed \( f_X\) is a density function
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>\( \int_{-\infty}^{+\infty}f(x)dx= \int_{-\infty}^{+\infty} {1 \over \sigma } 
+  \phi({{x-\mu} \over \sigma})dx  \), taking
+   \(y={{x-\mu} \over \sigma} \) that is \(x={\sigma . y }+\mu \) so:
+  \(  \int_{-\infty}^{+\infty}f(x)dx= \int_{-\infty}^{+\infty} {1 \over \sigma } \phi(y) 
+  \sigma dy = \int_{-\infty}^{+\infty}  \phi(y)  dy=1\)
+  </span>
+  <br>&#9755; \(X \sim N(\mu, \sigma) \Leftrightarrow \frac{ X-\mu}{\sigma}
+  \sim N(0,1)  \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br>And we write \(Z=\frac{ X-\mu}{\sigma} \), 
+   and we have \(P(\frac{ X-\mu}{\sigma}  &le;z)=\Phi(z) \), that is 
+   \(P(X &le;z.\sigma+\mu)=\Phi(z) \)
+   where   \(\Phi\) is the cumulative function of the normal standard deviation.
+   <br>Let's prove that \(Z \sim N(0,1) \), 
+   that is \(P(Z &le; z)=\int_{-\infty }^{z }\phi(t)dt \), where \(\phi \) is the density function 
+   of the normal standard distribution.
+   
+    <br>Actually, \(P(Z &le; z)=P(\frac{ X-\mu}{\sigma} &le; z)= \)
+    \(P(X &le; z.\sigma+\mu)=
+    \int_{-\infty }^{z.\sigma+\mu }\frac{1}{\sigma} \phi(\frac{t-\mu}{\sigma}).dt \), 
+    by the variable change \(x=\frac{t-\mu}{\sigma} \), we obtain 
+    \(P(Z &le; z)= \int_{-\infty }^{z }\phi(x)dx\), by the same method we show the converse.
+  </span>
+  <br>&#9755; Interpretation of \(\mu\) and \(\sigma\)
+  
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br>  The bigger &sigma; is the more flattened the curve of  density function is, &mu; 
+  gives simply the location of the curve,  Figure 38 gives different density functions with different 
+  <img src="/img/figure38.png"  style="float: right; width: 45%; height: 65%;" >
+  <br>values of &mu; and &sigma;, the red curve is N(0,1), the blue is N(2,1) and 
+  green is N(0,2)
+  </span>
+
+    <h2 id="4_4">4.4 Important  properties of RVs</h2>
+     <h3 id="4_4_1">4.4.1 Cumulative distribution function</h3>
+       <h4 id="4_4_1_1">4.4.1.1 Definition</h4>
+   The cumulative distribution function (CDF) for a RV X  is defined as:
+ \( \mathbb{F}_X(x)=P(X \leqslant x) \;for \;all\;x\in \mathbb{R} \)
+<br> One advantage of CDF is that it is defined for all RVs whether it's discrete, 
+continuous or mixed.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">PMF is defined only for discrete variables and PDF is defined 
+  only for continuous RV 
+  </span>
+<br> For every \(a \leqslant b\) we have: \(P(a &#60; X \leqslant b)=
+\mathbb{F}_X(b)-\mathbb{F}_X(a) \) 
+
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>because \(P(a &#60; X \leqslant b)=P(A \cap B)\) where \(A=\left\{a &#60; 
+  X\right\} \;and\; B=\left\{X \leqslant b\right\} \)
+ and \(P(A \cap B)=P(B)+P(A)-1 \) 
+ 
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\(P(A \cup B)=P(A)+P(B)-P(A \cap B) \) see 3.3.5.e  and 
+  \( P(A\cup B)=P(\mathbb{R})=1\)</span>
+ hence  \(P(A \cap B)=P(B)+1-P(\overline{A})-1=P(B)-P(\overline{A})=
+ \mathbb{F}_X(b)-\mathbb{F}_X(a) \), since \(\overline{A} =
+ \left\{X  \leqslant a \right\} \) we get result we're looking for.
+ 
+</span>
+<br><b>Theorem:</b>
+<div class="box1">
+For every subset B of the real numbers set \(\mathbb{R} \), \(P(X \in B) \) can be 
+expressed solely by
+ \(F_X\). Proof:<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>- 1<sup>st</sup> case:B=]a,b]  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\(x \in B \Leftrightarrow  a &#60; x\leqslant b \)</span>
+  Proof: <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   , the theorem has been demonstrated above for this case 
+ </span>
+ <br>- 2<sup>nd</sup> case:B=]a,b[ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\(x \in B \Leftrightarrow  a &#60; x &#60; b \) </span>
+  Proof: <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">we have:
+     \(P(B)=P(\displaystyle \lim_{ n\to +\infty } ]a,b-{1 \over n}])=\displaystyle \lim_{ n\to +\infty } P(]a,b-{1 \over n}]) \)
+ 
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">see 3.3.5 j</span>, it follows
+     \(P(B)= \displaystyle \lim_{ n\to +\infty }
+
+  \mathbb{F}_X(b-{1 \over n})-\mathbb{F}_X(a) =\mathbb{F}_X(b^-)-\mathbb{F}_X(a)\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\(b^-\) is an imaginary number smaller than b but infinitely close to it.</span>
+  </span>
+  <br>- 3<sup>th</sup> case:B=[a,b[ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\(x \in B \Leftrightarrow  a \leqslant  x &#60; b \) </span> 
+  Proof: <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"> \(P(B)=P(\displaystyle \lim_{ n\to +\infty } ]a-{1 \over n},b[)
+  =\displaystyle \lim_{ n\to +\infty }P(]a-{1 \over n},b[) 
+  =\displaystyle \lim_{ n\to +\infty }(\mathbb{F}_X(b^-)-\mathbb{F}_X(a-{1 \over n}))=
+  \mathbb{F}_X(b^-)-\displaystyle \lim_{ n\to +\infty }\mathbb{F}_X(a-{1 \over n})
+ \\= \mathbb{F}_X(b^-)-\mathbb{F}_X(a^-)
+  \)</span>
+  <br>- 4<sup>th</sup> case: B=[a,b]<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\(x \in B \Leftrightarrow  a \leqslant  x \leqslant b \) </span> Proof: <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  in this case:
+   \(P(B)=P(\displaystyle \lim_{ n\to +\infty } ]a-{1 \over n},b])=
+   \displaystyle \lim_{ n\to +\infty }P(]a-{1 \over n},b])
+   
+   =\displaystyle \lim_{ n\to +\infty }(\mathbb{F}_X(b)-\mathbb{F}_X(a-{1 \over n}))=
+   \mathbb{F}_X(b)-\displaystyle \lim_{ n\to +\infty }\mathbb{F}_X(a-{1 \over n})\)
+   , hence \(P(B)=\mathbb{F}_X(b)-\mathbb{F}_X(a^-)
+   \)
+  </span>
+<br>- 5<sup>th</sup> case: B=a <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\(x \in B \Leftrightarrow  x=a \) </span>Proof:
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">this is a special case of 4 where a=b</span>
+ <br>- General case: \(B=\bigcup\limits_{i=1}^{+\infty }A_{i}\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ any subset B of \(\mathbb{R} \) can be written on this form: where \(A_{i} \) is an 
+ interval in one of the forms above
+ </span>
+  Proof: <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  in this case:\( P(B)=\sum\limits_{i=1}^{+\infty}P(A_{i})\), since \(A_{i}\) is an interval in 
+  one of the forms above, \(P(B) \) can be expressed by  \( F_{X}\)
+  </span>
+</span>
+</div>   
+PS:This is why CDF are also called distribution functions.
+     <h4 id="4_4_1_2">4.4.1.2 Properties of Distribution Functions</h4>
+     If \( F_{X}\) is a cumulative distribution function of a RV X, then:
+     <br>a) \(0\leqslant F_{X}(x) \leqslant 1 \) for all x<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">because \(F_X \) is a probability measure</span>
+     <br>b) \( F_{X}(x) \leqslant F_{Y}(y)\) whenever \( x \leqslant y\), that is \(F_{X} \) is 
+     increasing  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">see 3.3.5 g, because if \(A=\left\{  x'| x' \leqslant x  \right\}\) and \(B=\left\{  y'| y' \leqslant y  \right\}\) 
+  then  \( x \leqslant y\) means \(A \subset B \), hence \(P(A) \leqslant P(B) \)</span>
+     <br>c) \( \displaystyle \lim_{ x\to +\infty } F_{X}(x)=1 \)<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  \( \displaystyle \lim_{ x\to +\infty } F_{X}(x)=\displaystyle \lim_{ x\to +\infty } 
+  P(X \leqslant x)=P(\mathbb{R})=1 \)
+  </span>
+     <br>d) \( \displaystyle \lim_{ x\to -\infty } F_{X}(x)=0 \)<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  \( \displaystyle \lim_{ x\to -\infty } F_{X}(x)=P(\varnothing ) =0\)
+  </span>
+   <br>e) \(F_{X}  \) is right continuous <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  To prove that we must prove that for every real number c we have:
+  \( \displaystyle \lim_{ x\to c^+ } F_{X}(x)=F_{X}(c) \) 
+ , this is true because \( \displaystyle \lim_{ x\to c^+ } F_{X}(x)=
+ \displaystyle \lim_{ x\to c^+ } P(X \leqslant  x) =
+ P(\displaystyle \lim_{ x\to c^+ }(X \leqslant  x) )=P(X  \leqslant  c)=F_{X}(c)\) 
+since \(  x \rightarrow c^+  \Rightarrow  c \leqslant x\)
+  </span>
+  <br> f) \(F_{X} \;is \;continous \Rightarrow X \;is \; continuous \) 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\(F_{X} \) is continuous means \(F_{X}(c^-)=F_{X}(c) \) for 
+  every c, hence
+   \( P(X &#60; c )=P( X \leqslant c )=P(X &#60; c )+P(c)\) it follows that P(c)=0</span>
+<br> g) \( P(X=a)=0 \Leftrightarrow F_X   \) is continuous at a 
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">we know that it is right continuous, let's prove it's left 
+  continuous
+  <br>We have:\(  \displaystyle \lim_{ x \to a^{-}} F_X(x)=
+  \displaystyle \lim_{ x \to a^{-}} P(X \leqslant x) =P(X &lt; a)=P(X  \leqslant a)-P(X=a)=
+  F_X(a)-P(X=a)=F_X(a)\)
+  </span>
+<br> Conversely if a function F:\( \mathbb{R} \mapsto \mathbb{R} \) satisfies 
+properties from (a) to (e) then 
+there must be a unique probability measure P such as F is the distribution of P.
+ 
+ 
+  <h4 id="4_4_1_3">4.4.1.3 Cdfs of Discrete Distributions</h4>
+   
+  For a discrete variable X, \(F_{X}(x)=P(X \leqslant x)=
+  \sum\limits_{x_{i} \leqslant x}^{}p_ {_{X}}(x_{i}) \),
+  see figure, 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+      <img src="/img/figure31.png"  style="float: right; width: 45%; height: 65%;">
+  </span>
+   and we have
+   \( F_X(x)=\sum\limits_{x_k \in R_X }p_X(x_k).u(x-x_k)\).
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Actually  for all k 
+    where \(x &lt; x_k\) we have  \(u(x-x_k)=0\) , and for all k where  \(x &ge; x_k\) we have
+     \(u(x-x_k)=1\), so  \( \sum\limits_{x_k \in R_X }p_X(x_k).u(x-x_k)=\)
+     \(\sum\limits_{x_{i} \leqslant x}^{}p_ {_{X}}(x_{i}) \)
+  </span>
+   
+
+
+  <h4 id="4_4_1_4">4.4.1.4 Cdfs of absolutely continuous Distributions</h4>
+  If X is a RV with density function f then from the definition of a density function we 
+  have: \( F_{X}(x)=\int_{-\infty}^{x}f_{X}(x)dx\)  
+  and \( f_{X}(x)=F'_{X}(x)={dF_{X} \over dx}(x) \), F might not be differentiable in some 
+  points, but still the 
+  density function  is defined and the probability remains the same.
+    <h4 id="4_4_1_4_1">4.4.1.4.1 Cdf of standard normal distribution</h4>
+   
+    We denote by \( \Phi\) the Cdf of the standard normal distribution, we have:
+    \( \Phi(x)=\int_{-\infty}^{x}\phi_s(t)dt\).
+ <br>In general, probability calculation of the normal distribution N(&mu;,&sigma;) 
+ is based on Cdf of standard normal distribution N(0,1).<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <img src="/img/figure120.png"  style="float: right; width: 30%; height: 45%;" class="image1">
+   <img src="/img/figure121.png"  style="float: right; width: 20%; height: 45%;" class="image1">
+   Let X~N(&mu;,&sigma;), we have \(P(X \leqslant x )=P({ { X-\mu  }  \over { \sigma } } 
+   \leqslant { { x-\mu  }    \over { \sigma } }  ) \)
+   <br>let \(Z={{ X-\mu} \over {\sigma }}\) so \( X \leqslant x \Leftrightarrow Z \leqslant z \) 
+   where \( z={{ x-\mu}
+    \over {\sigma }}  \) 
+    
+  so \(P(X \leqslant x )=P(Z \leqslant z  )=\Phi(z)\).
+ <br>Figure 120 gives the cumulative distribution of a normally distributed RV for 
+ different values of &mu; and &sigma;
+  <br>Figure 121 gives the inverse cumulative distribution of a normally distributed 
+  variable.
+  
+  </span>
+  
+  <h3 id="4_4_2">4.4.2 Mixed distributions</h3>
+   <h4 id="4_4_2_1">4.4.2.1 Definition and properties of Mixed distributions</h4>
+ A mixed distribution is a distribution that is neither discrete nor continuous, that is, it 
+ has a discrete part and a 
+ continuous part, let's take some examples.
+
+<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example 1:Two correlated RVs</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    Let X be a RV with the following CDF:
+\(  f_{X}(x)=  \left\{\begin{matrix} 2x & &  0 \leqslant  x \leqslant 1
+
+\\ 0 & & \text{Otherwise}
+\end{matrix}\right.
+    \)
+    
+    <br>Let also Y be another RV such as:
+    <br>    \(  Y=h(X)=  \left\{\begin{matrix} X & &  0 \leqslant  X \leqslant {1 \over 2 }
+
+\\ 1/2 & & X &gt; {1 \over 2 }
+\end{matrix}\right.
+    \)
+    <br> What is the distribution of Y ?
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+  		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+		
+    1) Let's find the distribution of X first.
+  <br> We have:
+  \(R_X=[0 , 1] \) and 
+     \(
+     F_{X}(x)= 
+    
+    \left\{\begin{matrix} 0 & & &  x &lt;0
+       \\ x^2   & & & 0 \leqslant  x \leqslant 1
+       \\ 1 & & & x &gt; 1
+    \end{matrix}\right. \)
+  
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     <br>  \(R_X=[0 , 1] \), because out of this range f(x)=0 so \( P(X &lt; 0)=P(X &gt; 1)=0 \), so X can't be out of the interval [0,1]
+    <br> We have \(
+     F_{X}(x)=P(X \leqslant x)=\int_{-\infty}^{x}f(t)dt =
+    
+    \left\{\begin{matrix} 0 & & &  x &lt;0
+       \\ \int_{0}^{x}f(t)dt & & & 0 \leqslant  x \leqslant 1 
+       \\ \int_{0}^{1}f(t)dt & & & x &gt; 1
+    \end{matrix}\right. \)
+     <img src="/img/figure41.png"  style="float: right; width: 45%; height: 65%;">
+    <br> that is:
+    \(
+     F_{X}(x)= 
+    
+    \left\{\begin{matrix} 0 & & &  x &lt;0
+       \\ [{t^2 }]_{0}^{x}  & & & 0 \leqslant  x \leqslant 1
+       \\ [{t^2}]_{0}^{1} & & & x &gt; 1
+    \end{matrix}\right. \)
+    hence, 
+    
+      \(
+     F_{X}(x)= 
+    
+    \left\{\begin{matrix} 0 & & &  x &lt;0
+       \\ x^2   & & & 0 \leqslant  x \leqslant 1
+       \\ 1 & & & x &gt; 1
+    \end{matrix}\right. \)
+  </span>
+  
+  
+  
+    <br> 2) Now let's find the distribution of Y:
+    <br> We have:\( R_Y=[0, {1 \over 2}] \)  and 
+       \(
+     F_{Y}(y)= 
+    
+    \left\{\begin{matrix} 0 & & &  y &lt;0
+       \\ y^2   & & & 0 \leqslant y &lt;{1 \over 2  }
+       \\ 1 & & & y \geqslant {1 \over 2  }
+    \end{matrix}\right. \)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   
+      <br> From the definition of Y we have:\( R_Y=[0, {1 \over 2}] \) 
+   
+   
+    <br>Let y be a real number in the interval \(R_Y \), we have:
+    \( F_Y(y)=P(Y \leqslant  y)=P(Y &lt; 0)+P(0 \leqslant Y \leqslant y) = P(0 \leqslant Y \leqslant y)\), 
+     \(0 \leqslant Y \leqslant y   \Rightarrow  0 \leqslant Y \leqslant {1 \over 2  } \Rightarrow (Y=X \; or \;Y={1 \over 2 })\) 
+   , at this point we are stuck and can't use the distribution of X, because we wanted to calculate 
+   \(F_Y(y) \) for all y in \( [0, {1 \over 2  }] \), we must restrict our choice of y.
+   <img src="/img/figure42.png"  style="float: right; width: 45%; height: 65%;">
+   <br> Let's consider first the case where \(   0 \leqslant  y &lt; {1 \over 2}\) , in this case Y=X, so
+    \( F_Y(y)=F_X(y)=y^2\), 
+    
+  <br> In case  \( y  \geqslant {1 \over 2} \), we have:\( F_Y(y)=P(Y \leqslant {1 \over 2})=1\), because \( R_Y=[0,{1 \over 2}] \)
+  </span>
+    
+, note that \( P(Y={1 \over 2 })=P(X &gt; {1 \over 2 })  =\int_{{1 \over 2 }}^{1}2tdt= [{t^2}]_{{1 \over 2 }}^{1}={ 3 \over 4} \)
+so Y is discrete, besides Y has a continuous part as it is equal to X in [0, 1/2], therefore
+ Y has a continuous and discrete part, we write: \( F_Y(x)=C(x)+D(x) \) where:
+\( C(x)= 
+    \left\{\begin{matrix} 0 & & &  x &lt;0
+       \\ x^2   & & & 0 \leqslant  x \leqslant {1 \over 2}
+       \\  {1 \over 4}  & & &   x &gt; {1 \over 2}
+    \end{matrix}\right. \)
+ and 
+\( D(x)= 
+    \left\{\begin{matrix} 0   & & &  x &lt; {1 \over 2}
+       \\ { 3 \over 4 } & & &  x \geqslant {1 \over 2 } 
+     
+    \end{matrix}\right. \)
+<br> 
+  
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+
+ In General the CDF of a mixed variable can be written as the sum of a continuous function and a stair case 
+ function.
+ <br> \( F_X(x)=C(x)+D(x) \)
+
+
+<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example 2: Waiting time in a train station</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+ 
+   In a train station, three cashiers are in service, but sometimes one of them can be absent, if the three cashiers
+    are there, passengers won't have to wait to buy a ticket, otherwise there will be in average a waiting time of
+     50 seconds.
+<br>Knowing that one of the cashiers is absent 25% of the time, if X is the RV associated with 
+the wait time:
+<br>1. Is X discrete ?
+<br>2. Is X continuous ?
+<br>3. What is the distribution of X ?
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+		
+   \( X:\left\{\begin{matrix}     0 & & & \text{ if the three cashiers are in service} 
+ \\ 
+\\ Y &sim; \text{Exponential(1/50)}  & & & \text{if one of the cashiers is absent}
+\end{matrix}\right.\) 
+<br> 1. We have P(X=0)=3/4, so X can't be continuous
+<br>2. In case one of the cashier is absent X is exponentially distributed, so it's not discrete, so this random 
+variable is not discrete nor continuous. 
+<br>3.Let H be the event corresponding to the three cashiers present, and T the event that one of them is 
+absent, we have: \( F_{X}(x)=P(X \leqslant x )=P(X \leqslant x|H).P(H)+P(X \leqslant x|T).P(T) =
+1.{3 \over 4 }+\int_{0}^{x}{1 \over 50} e^{- {  t \over 50}  }dt.{1 \over 4} \), so
+\( F_{X}(x)={3 \over 4 }+{1 \over 4}.\int_{0}^{x}{1 \over 50} e^{- {  t \over 50}  }dt=
+{3 \over 4 }+{1 \over 4}.[-e^{- {  t \over 50}  }]_{0}^{x}={3 \over 4 }+{1 \over 4}.[1-e^{- {  x \over 50}  }]
+\)
+ <img src="/img/figure43.png"  style="float: right; width: 45%; height: 65%;">
+<br>- 
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+&#9755; The function G defined as \(G(x)=\sum\limits_{i=1}^k p_i.F_i(x)\) where \(F_i\) are CDF of 
+various RV and \(\sum\limits_{i=1}^k p_i=1\)  is a CDF.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Actually, we can verify that it satisfies all the properties of CDF, so it's a CDF
+  </span>
+ 
+   <h4 id="4_4_2_2">4.4.2.2 Discrete RV as a continuous RV-Generalized PDF-</h4>
+   Let X be a discrete RV with range \(R_X=\left\{x_1,x_2,.. \right\} \), we have
+  <br> &#9755; \(f_X(x)=\sum\limits_{x_k \in R_X }P_X(x_k).\delta(x-x_k) \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  
+    <br>Actually, we know that    \( F_X(x)=\sum\limits_{x_k \in R_X }p_X(x_k).u(x-x_k)\).
+     (see paragraph about CDF), using Dirac function we have (see Math prelude) we have 
+     \( f_X(x)=\frac{dF_X}{dx}(x)=\sum\limits_{x_k \in R_X }p_X(x_k).\frac{du}{dx}(x-x_k)=
+     \sum\limits_{x_k \in R_X }p_X(x_k).\delta(x-x_k)
+     \).
+  </span>
+   <br>&#9755; \(E(X)=\int_{-\infty }^{+\infty }x.f_X(x).dx\)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+<br>    Actually \(\int_{-\infty }^{+\infty }x.f_X(x).dx=\int_{-\infty }^{+\infty }x.( \sum\limits_{x_k \in R_X }p_X(x_k).\delta(x-x_k)).dx=\)
+ \(\int_{-\infty }^{+\infty }x.( \sum\limits_{x_k \in R_X }p_X(x_k).\delta(x-x_k)).dx=\)
+  \(\sum\limits_{x_k \in R_X }p_X(x_k).\int_{-\infty }^{+\infty }x.\delta(x-x_k).dx=\)
+    \(\sum\limits_{x_k \in R_X }x_k.p_X(x_k)=E(X)\)
+  </span>
+   <br>&#9755; \(P(X &le; y)=\int_{-\infty }^{y }f_X(x).dx\)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Actually  \(\int_{-\infty }^{y }f_X(x).dx=\)
+    \(\int_{-\infty }^{y }\sum\limits_{x_k \in R_X }P_X(x_k).\delta(x-x_k).dx=\)
+     \(\sum\limits_{x_k \in R_X }P_X(x_k).\int_{-\infty }^{y }\delta(x-x_k).dx=\)
+         \(\sum\limits_{x_k \in R_X }P_X(x_k).\int_{-\infty }^{y-x_k }\delta(z).dz=\)
+         if \(y-x_k &lt; 0 \) then \(\int_{-\infty }^{y-x_k }\delta(z).dz \), so only terms corresponding to 
+         \(y-x_k &ge; 0 \) are kept, that is
+          \(\int_{-\infty }^{y }f_X(x).dx=\sum\limits_{x_k &le; y }P_X(x_k)=P_X(X &le; y)\) QED
+  </span>
+<h3 id="4_4_3">4.4.3 One-Dimensional change of variable</h3>
+   Let X and Y be  two RVs such as Y(s)=g(X(s)) for all \(s \in S \), where
+    \(g:\mathbb{R} \rightarrow \mathbb{R}\) is    some function, we are interested in knowing the 
+    distribution   of Y knowing the distribution of X.
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Just like any other function the form g(X) is just a notation and at a rigorous level cannot be used
+     inside formulas, to do so we have to specify a value for X (X=x), take this example, let the RV
+      \(Z=E(X|_{Y=y})\) 
+      <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    E is the expected value, see chapter related to "Expectation"
+  </span>
+      where X and Y are two RVs, we know that this is a RV that depends solely on the the values that
+       the RV Y takes, but we  cannot at this level express Z in terms of Y.
+       <br>If we want to handle Y we have to specify a value for Y, for example (suppose both 
+       variables are discrete):
+       \(E(Z)=\sum\limits_{y \in \mathbb{R}} E(X|_{Y=y}) P_Y(y)  \)
+  </span>
+     <h4 id="4_4_3_1">4.4.3.1 One-Dimensional change of discrete variable</h4>
+&#9755; 1<sup>st</sup> case:g is a bijection  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     Every number in its co-domain is associated to a unique number in its range.
+  </span>
+ <br>In this case we have: \(  P(Y=y) =P(s:  Y(s)=y)=P(s :  g(X(s))=y)
+ =P(s :  X(s)=g^{-1}(y))= p_X(g^{-1}(y))\)
+     <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     \(  P(X=x) =P(s :  X(s)=x)=p_X(x) \)
+  </span>
+  <br>&#9755; 2<sup>nd</sup> case:g is not a bijection <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     It can associate more than one number to a number in its domain, it means there is
+      multiple numbers X(s)  such as g(X(s))=y, in this case we write
+       \( g^{-1}\left\{ y \right\} \)which denote all numbers X(s) such that:  g(X(s))=y
+  </span>
+  <br>  In this case we have:\(  P(Y=y) =P(s :  Y(s)=y)=P(s :  g(X(s))=y)= 
+  P(s :  X(s) \in g^{-1}\left\{y\right\})\)
+  \(=  \sum_\limits{x_i \in g^{-1}\left\{ y \right\}}^{} P(s : X(s)=x_i)    = 
+   \sum_\limits{x_i \in g^{-1}\left\{ y \right\}}^{} p_X(x_i)    \)
+   	<br>For both cases we can verify that \( \sum\limits_{y}P(Y=y)=1 \)
+   	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example:Tossing a fair die</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    We toss once a fair die whose six sides are labeled {A,B,C,D,E,F}, let X be the RV such as X(A)=X(B)=1, X(C)=2, X(D)=3,X(E)=4,X(F)=5,  
+    and  let Y be a RV such as Y(s)=g(X(s)) where s &isin;{A,B,C,D,E,F} and \( g(x)=x^2-3x+2  \), calculate P(Y=0)
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+		 We have \(P(X=a)=p_X(a)={ 1 \over 6 } \) for every a &isin; {2,3,4,5}, and \(P(X=1)=p_X(1)={ 2 \over 6 } \), 
+  \(  Y=0   \Leftrightarrow g(X)=0   \Leftrightarrow (X=1  \; or \; X=2) \Leftrightarrow
+   (s \in  \left\{ A,B \right\} \; or \; s = \left\{ C \right\}) \Leftrightarrow (s \in  \left\{ A,B,C \right\}) \), so
+   \(P(Y=0)=P(s \in  \left\{ A,B,C \right\}) ={3 \over 6}={1 \over 2}\)
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+     <h4 id="4_4_3_2">4.4.3.2 One-Dimensional change of continuous variable</h4>
+    Let's take an example where X is a continuous variable and g not a continuous function.
+    
+    
+<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example:Discrete transformation of continuous RV</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    Let  X~Exponential(1/8), find the distribution 
+    of the RV Y, where Y=g(X) with:
+
+\( 
+g(x):\left\{\begin{matrix}   6   & & & x \leqslant {1 \over 4 } 
+\\  3 & & & x &gt; {1 \over 4 }
+\end{matrix}\right.
+\) 
+
+
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    Here it's obvious that Y is discrete as it takes only two values, 6 and 3, \(P(Y=6)=p_Y(6)=
+    P(X \leqslant { 1 \over 4} )=[-e^{- {  t \over 8}  }]_{0}^{ { 1 \over 4 }  }=(1-e^{-{ 1 \over 32} }) \)
+    for Y=3 we have \(P(Y=3)=1-P(Y=6) \), P(Y=y)=0 if y &notin; {3,6}
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	To make things simpler let's suppose that g is strictly increasing.
+	<br><b>Theorem 1:</b>
+	<div class="box1"> 
+	Let X be an absolutely continuous RV, with density function \( f_X \). 
+	<br>Let Y be another RV such as Y=g(X), where g is a strictly monotone function 
+	that is differentiable.
+	<br>Then Y is also absolutely continuous, and its density function \( f_Y \)  is given by:
+	\(f_Y(y)={f_X(g^{-1}(y)) \over |g'(g^{-1}(y)) | } \) <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Where g' is the derivative of g and  \( g^{-1}(y)  \) is the unique number such as \(g(g^{-1}(y))=y.  \)
+    
+  </span>
+  Proof:
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br> We prove that for the case where g is increasing and the case where g is decreasing and we 
+	use a different approach for each case.
+	<br> - 1<sup>st</sup> Case: g is strictly increasing
+	<br>\(P(Y \leqslant y)= P(g(X) \leqslant y)=P(X \leqslant g^{-1}(y))=\int_{-\infty}^{g^{-1}(y)}f(x)dx\), 
+	by putting z=g(x), we have:
+	<br>\(P(Y \leqslant y)= \int_{-\infty}^{g^{-1}(y)}f(x)dx\), \((x=g^{-1}(y) \Leftrightarrow z=y) \) 
+	and \((x \rightarrow -\infty \Leftrightarrow z \rightarrow -\infty) \), the latter equivalence is 
+	true because g is strictly decreasing.
+	so \(P(Y \leqslant y)= \int_{-\infty}^{z}f(g^{-1}(z))dx\), we know that \( dz=g(x+dx)-g(x) \), 
+	that is \( dz=g'(x) dx  \), so \(dz=g'(g^{-1}(z)).dx  \), that gives  \(P(Y \leqslant y)=  
+	\int_{-\infty}^{z}{f(g^{-1})(z) \over g'(g^{-1}(z)) } dz  \), so \( f_Y(y)={f(g^{-1})(y) \over g'(g^{-1}(y)) }  \)
+	<br> - 2<sup>nd</sup> Case: g is strictly decreasing
+	<br>\(P(Y \leqslant y)=F_Y(y)= P(g(X) \leqslant y)=P(X \geqslant  g^{-1}(y))=
+	1- P(X \leqslant  g^{-1}(y))=1-F_X(g^{-1}(y))\), so \( f_Y(y)=F'_Y(y)=
+	-{dg^{-1} \over dy}(y).F'_X(g^{-1}(y))=	-{dg^{-1} \over dy}(y).f_X(g^{-1}(y))=-(g^{-1})'(y).f_X(g^{-1}(y))=-{f_X(g^{-1}(y)) \over g'( g^{-1}(y))}\)
+    <br>For both cases we can write:\(f_Y(y)={f_X(g^{-1}(y)) \over {|g'( g^{-1}(y))|}}\)
+  </span>
+	</div>
+	
+	<br>
+    
+    <div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+<b>Example:Transform of normal distribution</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    Let X~N(0,1), and \(Y=g(X)=(X-2)^2 \) , What is the distribution of Y?
+
+ 
+
+
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   We have:\( g^{-1}(x)=\sqrt x+2\), \(g'(x)=2X-4 \) and \(f_Y(y)={f_X(g^{-1}(y)) \over {|g'( g^{-1}(y))|}}\), since \( f_X(x)={1 \over \sqrt{2 \pi} } e^ {-{x^2 \over 2} }\), 
+   we have:\(f_Y(y)={1 \over |2.(\sqrt y+2)-4|.\sqrt{2 \pi} } e^ {-{(\sqrt y+2)^2 \over 2} }=
+   {1 \over 2.\sqrt y.\sqrt{2 \pi} } e^ {-{(\sqrt y+2)^2 \over 2} }
+   \)
+  
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	&#9755;\(X \sim N(\mu_x,\sigma_x ) \Leftrightarrow 
+	a.X+b \sim N(a.\mu_x+b, a^2.\sigma_x^2 )\), \(a &ge; 0  \)
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  
+<br>    Actually, let \(Y=a.X+b =g(X)\), so \(X=g^{-1}(Y)=\frac{Y-b}{a}\) and \(g'(X)=a  \)
+    we have \(f_Y(y)={f_X(g^{-1}(y)) \over |g'(g^{-1}(y)) | } =\)
+    \({f_X(\frac{y-b}{a}) \over |g'(\frac{y-b}{a}) | } =\)
+       \({f_X(\frac{y-b}{a}) \over |a| } \) 
+       since \(X \sim N(\mu_x,\sigma_x )\)   we have 
+ \(f_X(t)=\frac{1 }{\sigma_x }\phi(\frac{t-\mu_x)}{\sigma_x }) \), and since \(a &ge; 0 \), 
+ we have  \(f_Y(y)=\frac{1}{\sigma_x.a}\phi(\frac{y-(b+a.\mu_x ) }{a.\sigma_x })\), that is 
+ \(Y \sim N(a.\mu_x+b, a^2.\sigma_x^2 )\)
+  </span>
+	<br><b>Theorem 2:</b>
+	<div class="box1"> 
+	Theorem 1 still holds true if g is strictly increasing or decreasing only at places where
+	 \(f_X(x) \neq 0 \)
+	 <span class="tooltip">&#128216;</span>
+	
+  <span class="tooltiptext">
+     It doesn't matter how the function g behaves in intervals where  \(f_X(x) = 0 \), or if it is well 
+     defined in those intervals
+  </span>
+	</div>
+	
+	<h3 id="4_4_4">4.4.4 Joint probability distributions (JPD)</h3>
+	Knowing the distribution of two RVs X and Y doesn't tell anything about the 
+	relationship between those two RVs.
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    we may know the distribution of weight and height in 8 years old children, but that doesn't 
+    tell us much about the relationship between weight and height. 
+  </span>
+  
+  	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example:Relationship between two identically distributed RV and another 
+	  variable</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    Let X~Bernoulli(1/2), let \( Y_1\) and  \( Y_2\) be two other RVs such as
+     \( Y_1=X\) and \( Y_2=1-X\) 
+		<br> Clearly the relationship between X and \( Y_1\), and between X and \( Y_2\) is very 
+		different.
+		<br> So \( Y_1\) and \( Y_2\) being identically distributed 
+		<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Actually \(P_{Y_1}(x)=P_{Y_1}(Y_1=x)=P_X(x) \) and \(P_{Y_2}(0)=P_{Y_2}(Y_2=0)=
+    P_{X}(X=1)=1/2\) also \(P_{Y_2}(1)=P_{X}(X=0)=1/2\) so \(Y_1\) and \( Y_2 \) are 
+    normally distributed, note that X can take only two value.
+    =P_X(x) \)
+  </span>
+		
+		doesn't mean that they have the 
+		same relationship with other RVs.
+  </div>
+  </div>
+	</div>
+	
+<b> Definition</b>
+
+	<div class="box1"> 
+	The JPD of two RVs X and Y is the collection of all probabilities 
+	P((X,Y) &in; B)  where B is a sub-set of \( \mathbb{R} ^2\)
+	</div>
+	<h4 id="4_4_4_1">4.4.4.1 Joint Probability Mass Function (JPMF)</h4>
+	The JPMF of two discrete RVs X and Y is defined as:
+ \( P_{XY}(x,y)=P(X=x,Y=y )\).
+ <br> * \( R_{XY}=\left\{ (x,y) \; where \; P_{XY}(x,y) &gt;  0 \right\}\) is the joint range for the
+  JPD of X and Y.<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Particularly if \( R_X=\left\{ x_1,x_2..  \right\}\) and \( R_Y=\left\{ y_1,y_2..  \right\}\) , then
+     \( R_{XY}=\left\{  (x_i,y_j) | x_i \in R_X \;and\; y_j \in R_y \right\}\), to make things simple we 
+     may write:     \( R_{XY}=R_X \times R_Y \) in this case there may be some couples
+      \((x_i,y_j) \) where \(P_{XY}(x_i,y_j)=0 \) 
+  </span>
+ <br>* \(\sum\limits_{(x_i,y_i) \in R_{XY}}P_{XY}(x_i,y_i )=1 \)  
+ <br>* The joint probability (JP) of a subset A of \(\mathbb{R}^2 \) is denoted by \(P_{XY}( A) \)
+  and  we write:  \(P_{XY}( A)= \sum\limits_{(x_i,y_i) \in  A}P_{XY}(x_i,y_i )\)  
+ <h4 id="4_4_4_2">4.4.4.2 Marginal PMF </h4>
+ Knowing only the JPD of two RVs X and Y, we can obtain the PMF of both RVs, actually for 
+ any \(x \in R_{X} \) and \(y \in R_{Y} \)
+ <br>\(P_X(x)=\sum\limits_{y_i \in R_{Y}}P_{XY}(x,y_i ) \), and \(P_Y(y)=\sum\limits_{x_i \in R_{X}}P_{XY}(x_i,y ). \)
+ <br>\(P_X(x) \) and \(P_Y(y) \) are called respectively Marginal PMF of X and Y.
+ 		<br><br>
+ 		<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example:Marginal PMF of two independent RVs</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+In a Random Experiment we toss a fair coin and fair three sided die, whose sides are A,B and C, 
+Let's consider the RV X related to the outcome of the coin which is defined as X(H)=1 and X(T)=0, 
+let also Y br the RV related to the outcome of the die which is defined as Y(A)=3, Y(B)=0 and Y(C)=12.
+<br> 1. Find \(P_{XY}(1,13)\)
+<br>2. Find the JPD of X and Y
+<br>3. Find the marginal JPD of X and Y
+<br>4. Find \(P_{XY}(X &lt;1,Y \leqslant 12)\)
+<br>5. Are X and Y independent ?
+
+
+
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+In this random experiment the sample space is S={(H,A),(H,B),(H,C),(T,A),(T,B),(T,C)}, in terms of RV
+<br> S=R<sub>XY</sub>={(1,3),(1,0),(1,12),(0,3),(0,0),(0,12)}, since the coin and the die are fair all the individual 
+ events in the sample space are equiprobable, let p be this probability, so P(S)=6.p=1, 
+ that is \(p={1 \over 6 } \), the following table gives the JPD of the RVs X and Y.
+ <br> 1. \(P_{XY}(1,13)=0\) since there is no event corresponding to Y=13
+ <br> 2. The following table gives the JPD of RVs X and Y:
+ <br>     <table style="width:100%">
+  <tr>
+    <th style="width:25%"></th>
+    <th style="width:25%">Y=3</th>
+    <th style="width:25%">Y=0</th>
+    <th style="width:25%">Y=12</th>
+  </tr>
+  
+  <tr>
+ <td  style="text-align: center;">X=0</td>
+    <td  style="text-align: center;">\(1 \over 6 \)</td>
+      <td  style="text-align: center;">\(1 \over 6 \)</td>
+       <td  style="text-align: center;">\(1 \over 6 \)</td>
+  </tr>
+  <tr>
+     <td  style="text-align: center;">X=1</td>
+     <td  style="text-align: center;">\(1 \over 6 \) </td>
+    <td  style="text-align: center;"> \(1 \over 6 \)</td>
+     <td  style="text-align: center;">\(1 \over 6 \)</td>
+  </tr>   
+</table> 
+ <br> 3. \( P_X(x)=\sum\limits_{y_i \in R_{Y}}P_{XY}(x,y_i )=P_{XY}(x,3)+P_{XY}(x,0)+P_{XY}(x,12) \)
+ so \( P_X(0)=P_X(1)=3.{1 \over 6}={1 \over 2} \)
+ <br>4. \(P_{XY}(X &lt;1,Y \leqslant 12)=P_{XY}(X =0 \cap (Y= 12 \cup Y=0 \cup Y=3))\)
+ \(=P_{XY}((X =0 \cap Y= 12) \cup (X =0 \cap Y=0) \cup (X =0 \cap Y=3))=\)
+  \(P_{XY}(0, 12) + P_{XY}(0, 0) +P_{XY}(0, 3)=P_X(0)={1 \over 2 } \)
+<br>5. X and Y are independent since \( P_{XY}(x,y)=P_X(x).P_Y(y)\) for every \((x,y) \in R_{XY} \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(P_Y(0)=P_Y(3)=P_Y(12)=\frac{1}{6} \)
+  </span>
+  
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	
+	<br>
+			<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example:Marginal PMF of two dependent RVs</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   Consider the JPD of two RVs X and Y given by the following table:
+       <table style="width:100%">
+  <tr>
+    <th style="width:25%"></th>
+    <th style="width:25%">Y=0</th>
+    <th style="width:25%">Y=4</th>
+    <th style="width:25%">Y=6</th>
+   
+  </tr>
+  
+  <tr>
+ <td  style="text-align: center;">X=1</td>
+    <td  style="text-align: center;">0.2</td>
+      <td  style="text-align: center;">0.12</td>
+       <td  style="text-align: center;">0.12</td>
+
+  </tr>
+  <tr>
+     <td  style="text-align: center;">X=2</td>
+     <td  style="text-align: center;">0.11 </td>
+    <td  style="text-align: center;"> 0.24</td>
+     <td  style="text-align: center;">0.21</td>
+    
+  </tr>   
+
+</table>
+<br>1. What is the Marginal PMF of X and Y.
+<br>2. Are X and Y independent ? 
+
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+ The following table give the marginal PMF of the two RVs X and Y:
+   <table style="width:100%">
+  <tr>
+    <th style="width:20%"></th>
+    <th style="width:20%">Y=0</th>
+    <th style="width:20%">Y=4</th>
+    <th style="width:20%">Y=6</th>
+    <th style="width:20%">Marginal probability</th>
+  </tr>
+  
+  <tr>
+ <td  style="text-align: center;">X=1</td>
+    <td  style="text-align: center;">0.2</td>
+      <td  style="text-align: center;">0.12</td>
+       <td  style="text-align: center;">0.12</td>
+            <td  style="text-align: center;">0.44</td>
+  </tr>
+  <tr>
+     <td  style="text-align: center;">X=2</td>
+     <td  style="text-align: center;">0.11 </td>
+    <td  style="text-align: center;"> 0.24</td>
+     <td  style="text-align: center;">0.21</td>
+          <td  style="text-align: center;">0.56</td>
+  </tr>   
+  <tr>
+     <td  style="text-align: center;">Marginal probability</td>
+     <td  style="text-align: center;">0.31 </td>
+    <td  style="text-align: center;"> 0.36</td>
+     <td  style="text-align: center;">0.33</td>
+          <td  style="text-align: center;">Total=1</td>
+  </tr> 
+</table>
+<br>2. For example \(P_{XY}(1,0)=0.2 \neq P_{X}(1).P_{Y}(0) \) ,
+ \( (P_{X}(1).P_{Y}(0)=0.44*0.31=0.1364) \), so X and Y are not independent.
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+		<h4 id="4_4_4_3">4.4.4.3 Joint cumulative distribution:JCD</h4>
+	The JCD of two RVs X and Y is the function
+	 \(F_{XY} \rightarrow \mathbb{R}^2 \) such that: 
+	 \(F_{XY}(x,y)=P((X,Y) \; where \; (X \leqslant x \;and\; Y \leqslant y)) =P(X \leqslant x, Y \leqslant y)\)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Probability that \(X \leqslant x \) and \(Y \leqslant y \)
+  </span>
+   <br><b>Property:</b>
+   <br> For every \(x_1,x_2,y_1,y_2 \) such as \(x_1 \leqslant x_2 \) and 
+   \(y_1 \leqslant  y_2  \), we have:
+   <br> \(P(x_1 &lt; X  \leqslant  x_2, y_1 &lt; Y  \leqslant  y_2 ) =
+   F_{XY}(x_2,y_2)-F_{XY}(x_1,y_2)-F_{XY}(x_2,y_1)+F_{XY}(x_1,y_1)\), 
+   
+Proof:
+<span class="tooltip">&nbsp;&nbsp;&#128216;</span>	
+	<span  class="tooltiptext" >
+	 <img src="/img/figure68-1.png"  style="float: right; width: 20%; height: 30%;">
+	  <img src="/img/figure68-2.png"  style="float: right; width: 20%; height: 30%;">
+	   <img src="/img/figure68-3.png"  style="float: right; width: 20%; height: 30%;">
+
+	<img src="/img/figure68-5.png"  style="float: right; width: 20%; height: 30%;">
+	<img src="/img/figure68-4.png"  style="float: right; width: 20%; height: 30%;">
+	<br> We want to prove that : 
+	\(P(x_1 \leqslant X  \leqslant  x_2, y_1 \leqslant Y  \leqslant  y_2 ) =
+   (F_{XY}(x_2,y_2)-F_{XY}(x_1,y_2))-(F_{XY}(x_2,y_1)-F_{XY}(x_1,y_1))\)
+	<br>Figure 68-1 gives the localization of two points with coordinates \((x_1,y_1) \) and \((x_2,y_2) \) 
+	<br>* \( F_{XY}(x_2,y_2) \) is the probability of the red stripped area (figure 68-1).
+	<br>* \(F_{XY}(x_1,y_2) \) is the probability of the green dotted area (figure 68-2)
+	<br>* \( F_{XY}(x_2,y_2)-F_{XY}(x_1,y_2) \) is the red dotted area (figure 68-3) 
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Note that the axis  \(x=x_1 \) doesn't belong to this area
+  </span>
+	<br> *\(F_{XY}(x_2,y_1)-F_{XY}(x_1,y_1))\) is the blue dotted area (figure 68-5)
+	<br>* Finally we get the grey dotted area in figure 68-4 which is nothing but 
+	\(P(x_1 \leqslant X  \leqslant  x_2, y_1 \leqslant Y  \leqslant  y_2 ) \) 
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Note that the axis  \(y=y_1 \) doesn't belong to this area
+  </span>
+
+	</span>
+	
+<br>	Theorem
+	<div class="box1">
+	\(P((X,Y) \in B) \) where \(B \in \mathbb{R}^2 \) and X and Y are any RVs can be determined solely by \( F_{XY} \)
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    direct result of property above
+  </span>
+	</div>
+	
+	
+	
+	
+  <h4 id="4_4_4_4">4.4.4.4 Marginal joint cumulative distribution</h4>
+ Knowing only the JCD of two RVs X and Y, we can determine  the marginal JCD of X and Y, 
+ actually
+  <br> \( F_X(x)=\displaystyle \lim_{y \to + \infty} F_{XY}(x,y)= F_{XY}(x,+ \infty)\) and 
+  \( F_Y(y)=\displaystyle \lim_{x \to + \infty} F_{XY}(x,y)= F_{XY}(+ \infty,y). \) 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br>Because \(F_X(x)=P_{XY}(X &le;x, Y \in \mathbb{R})=P_{XY}(X &le;x, Y &le; +\infty) \)
+    , also note that \(F_{XY}(+ \infty,+ \infty)=1\), \(F_{XY}(- \infty,y)=0\), \(F_{XY}(x,- \infty)=0\) for any x and y.
+  </span>
+  
+  
+   	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example:Joint cumulative distribution</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   Let X~Bernoulli(1/2), let \( Y_1\) and  \( Y_2\) be two other RVs such as
+     \( Y_1=X\) and \( Y_2=1-X\), what is the joint cumulative distributions \(F_{X,Y_1} \) and 
+     \(F_{X,Y_2} \)
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+ We know that \( P_X(0)={1 \over 2} \), \( P_X(1)={1 \over 2} \),
+    \( P_{Y_1}(0)={1 \over 2} \), \( P_{Y_1}(1)={1 \over 2}\), \( P_{Y_2}(1)=P_X(0)={1 \over 2}\), 
+    \( P_{Y_2}(0)=P_X(1)={1 \over 2}\)
+    <br> Also we have: \(F_{X,Y_1} (0,0)=F_{X,X} (0,0)=P(X=0,X=0)=P_X(0)\)
+    <br> \(F_{X,Y_1} (x,y)=P(X \leqslant x,Y_1 \leqslant y)=
+    P(X \leqslant x,X \leqslant y)=P(X \leqslant min(x,y))
+    \), so
+    
+ \( F_{X,Y_1} (x,y)= 
+\left\{\begin{matrix}
+0 & min(x,y) &lt;0 \\
+{1 \over 2} & 0 &le; min(x,y) &lt;1 \\
+1 &  min(x,y) &ge; 1  \\
+\end{matrix}\right.
+
+\)
+
+<br> On the other hand we have:\(F_{X,Y_2} (x,y)=P(X \leqslant x,Y_2 \leqslant y)\)=
+\(P(X \leqslant x,X &ge;1- y)=P(1-y &le;X \leqslant x)\), that is:
+ \( F_{X,Y_2} (x,y)= 
+\left\{\begin{matrix}
+0 & x &lt;0 \;or\; x &lt; 1-y\\
+{1 \over 2} & 0 &le; x &lt;1 \;and\; x &ge; 1-y\\
+1 &   x &ge;1 \;and\; x &ge; 1-y  \\
+\end{matrix}\right.
+
+\)
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	  <br>
+	  <div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example: Two independent Bernoulli RVs</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+  Find the joint PMF, the joint CDF and the  Marginal PMF  of two indepent Bernoulli RVs X and Y,  
+  with respectively parameters p and q ?
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+ We have \(P_X(1)=p, P_X(0)=1-p, P_Y(1)=q \; and \;  P_Y(0)=1-q\)
+  <br>\( P_{XY}(x,y)=P(X=x, Y= y) \), since X and Y are independent we have \( P_{XY}(x,y)=P_X(x).P_Y(y) \)
+   so \(R_{XY}=\left\{(0,0), (0,1), (1,0), (1,1)  \right\} \),
+  that is:
+  <img src="/img/figure66.png"  style="float: right; width: 45%; height: 65%;">
+  <br>
+  \( P_{XY}(x,y)=
+  \left\{\begin{matrix}
+(1-p)(1-q) & (0,0) \\
+(1-p)q &  (0,1)  \\
+p(1-q) & (1,0) \\
+pq & (1,1) \\
+\end{matrix}\right.
+\)
+  
+  
+  , Figure 66 gives a way to browse all possible cases for X and Y.
+  <br>\( F_{XY}(x,y)=P(X \leqslant x, Y \leqslant y)=P_X(X \leqslant x).P_Y(Y \leqslant y) \), so
+
+<table style="width:100%">
+  <tr>
+    <th style="width:14.2%"></th>
+    <th style="width:14.2%">x &lt; 0</th>
+     <th style="width:14.2%">y &lt; 0</th>
+    <th style="width:14.2%">0 &leq;  x &lt; 1 and<br> 0 &leq; y &lt; 1</th>
+    <th style="width:14.2%"> 0 &leq; x &lt; 1 and <br> y &GreaterEqual; 1</th>
+   <th style="width:14.2%"> x &GreaterEqual; 1 and <br>0 &leq; y &lt; 1</th>
+    <th style="width:14.2%"> x &GreaterEqual; 1 and y &GreaterEqual; 1</th>
+  </tr>
+  
+   
+  
+    
+  
+  <tr>
+     <td  style="text-align: center;">Joint CDF</td>
+     <td  style="text-align: center;">0 </td>
+    <td  style="text-align: center;"> 0</td>
+     <td  style="text-align: center;">(1-p)(1-q)</td>
+          <td  style="text-align: center;">(1-p)(1-q+q)<br>=1-p</td>
+            <td  style="text-align: center;">(1-p+p)(1-q)<br>=1-q</td>
+          <td  style="text-align: center;">(1-p+p)(1-q+q)<br>=1</td>
+  </tr> 
+</table>
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	
+
+  <h4 id="4_4_4_5">4.4.4.5 Joint probability distribution for continuous RVs </h4>
+  &#9755; A function \(f: \mathbb{R}^2 \rightarrow \mathbb{R}\) is a Joint Density if f is positive and 
+  \( \int_ {-\infty}^{+\infty} \int_ {-\infty}^{+\infty} f(x,y) .dx.dy=1\)
+  <br>&#9755; X and Y are jointly absolutely continuous if there is a joint density 
+  function f such that 
+
+   \( P(a &le; X &le;b,c &le;Y &le; d)=\int_a^b \int_c^d f(x,y) .dx.dy\) for every a &le;b and c &le; d
+   <br>&#9755; Generally for any set \( B \in \mathbb{R}^2 \), we have:
+    \(P_{XY}((X,Y) \in B )=\int\int_{B} f(x,y).dx.dy\) , we denote by \(f_{XY} \) the joint
+     density function f(x,y).
+     <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    This definition is equivalent to the definition using two segments [a,b]x[c,d], but 
+    it's not straithforward, take for example the region \( B=[2,3] \times [x^2, x+3]\).
+    We omit the proof of this equivalence (the proof from the opposit direction is straightforward)
+    
+  </span>
+    <br>&#9755; Marginal denstities are : \( f_X(x)=\int_{-\infty}^{+\infty } f_{XY}(x,y).dy  \) and 
+    \( f_Y(y)=\int_{-\infty}^{+\infty } f_{XY}(x,y).dx  \) for every \((x,y) \in \mathbb{R}^2 \)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    to prove that \( f_X(x)=\int_{-\infty}^{+\infty } f_{XY}(x,y).dy  \), we need to prove that
+     \(P(a &le;X &le; b)=\int_{a}^{b} \int_{-\infty}^{+\infty } f_{XY}(x,y).dy .  dx \), this is 
+     true since
+    \(P(a &le;X &le; b)=P(a &le;X &le; b, -\infty &le;Y &le; +\infty ) \)
+  </span>
+  <br><b>Example:</b>
+  	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Bivariate Normal Distribution</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   &#9755; <b>Definition 1:</b>
+   <br> 1. Two RVs are said to be bivariate normal or jointly normal if a.X+b.Y has a normal distribution
+   for all a,b &isin; \(\mathbb{R} \)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    so X and Y are bivariate implies that they have normal distribution (take a=1 and b=0, then a=0
+     and b=1) 
+  </span>
+   <br>   &#9755; <b>Definition 2:</b>
+   <br>We say that two RVs have a <i>Bivariate Normal</i>
+    \( (\mu_{x},\mu_{y},\sigma_{x}^2,\sigma_{y}^2, \rho) \) distribution
+    if their  joint density function is \(f_{XY}(x,y)=
+    \beta_{xy}.e^{-{{   z_{x}^2+ z_{y}^2-2\rho. z_{x}.z_{y} } \over {2(1-\rho^2) }   } } \) 
+		, where  \( z_{x}={ x-\mu_{X} \over \sigma_{x} } \), 
+		\( z_{y}={ y-\mu_{y} \over \sigma_{y} } \), 
+		 \( \beta_{xy}={1 \over {2 \pi  \sigma_{x}. \sigma_{y}}\sqrt{1-\rho^2}} \) and
+		  \(x,y,\mu_X,\mu_Y, \rho \in \mathbb{R} \) and \(-1 &le; \rho &le; 1 \)
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  \( \rho\) is called the correlation parameter, particualrly if \( \rho=0\) then X and Y are independent
+	
+  </span> and we write \( (X,Y) \sim Bivariate \;Normal \;(\mu_x, \mu_y, \sigma_x^2, \sigma_y^2, \rho) \) or
+  \( (X,Y) \sim BVN \;(\mu_x, \mu_y, \sigma_x^2, \sigma_y^2, \rho) \)
+	   <br>   &#9755; <b>Properties of Bivariate Normal distribution:</b>
+<br>1. If X and Y are \( Bivariate \; Normal \; (\mu_x,\mu_y,\sigma_x^2,\sigma_y^2, \rho) \)
+ then \(X \sim N(\mu_x, \sigma_x^2) \) and 		 \(Y \sim N(\mu_y, \sigma_y^2) \)
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    we know that \( f_X(x)=\int_{-\infty}^{+\infty }f_{XY}(x,y)dy\), so
+    \(f_X(x)= \int_{-\infty}^{+\infty }\beta_{xy}.e^{-{{   z_{x}^2+ z_{y}^2-2\rho .z_{x}.z_{y} }
+     \over {2(1-\rho^2) }   } }dy
+  = \int_{-\infty}^{+\infty }\beta_{xy}.e^{-{{ (\rho. z_x )^2-(\rho .z_x )^2  +
+  z_{x}^2+ z_{y}^2-2\rho z_{x}.z_{y} } \over {2(1-\rho^2) }   } }dy
+ \\  =\beta_{xy}\int_{-\infty}^{+\infty }e^{-{{ (\rho. z_x - z_y)^2 +
+ (1-\rho^2){z_x}^2 } \over {2(1-\rho^2) }   } }dy
+   =\beta_{xy}  e^{-{{z_x^2} \over 2} } \int_{-\infty}^{+\infty }e^{-{{ ( z_y-\rho. z_x )^2  }
+    \over {2(1-\rho^2) }   } }dy
+     \) suppose \(w={ {z_y-\rho z_x } \over  { \sqrt{1-\rho^2  }     } } \), so
+     \(f_X(x)=\sigma_y \sqrt{1-\rho^2  } \beta_{xy} e^{-{{z_x^2} \over 2} }
+      \int_{-\infty}^{+\infty }e^{-{{ w^2  } \over {2}   } }dw\), because: \(dy=\sigma_y .dz_y
+      =\sigma_y \sqrt{1-\rho^2  } dw\)
+  , that is \(f_X(x)={1  \over {\sqrt{2 \pi} \sigma_x} }{ e^{-{{z_x^2} \over 2} }} \), because
+   \(\int_{-\infty}^{+\infty }e^{-{{ w^2  } \over {2}   } }dw=\sqrt {2 \pi } \)
+  , so \( X \sim N(\mu_x, \sigma_x^2) \), similarly we can prove also that
+   \(Y \sim N(\mu_y, \sigma_y^2) \)
+  </div>
+</div>
+  <br>2.   If X and Y are \( Bivariate \; Normal \; (\mu_{x},\mu_{y},\sigma_{x}^2,\sigma_{y}^2, \rho) \), then
+  \(X|_{Y=y} \sim N(\mu_x+\rho.\sigma_x.z_y, \sigma_x^2(1-\rho^2)  ) \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  As you may guess the same goes for Y, that is
+     \(Y|_{X=x} \sim N(\mu_y+\rho.\sigma_y.z_x, \sigma_y^2(1-\rho^2)  ) \)
+     <br> We want to prove that \( f_{Y|_{X=x}}(y)=\frac{1}{\sigma_y.\sqrt{1-\rho^2 }.\sqrt{2.\pi }}.
+     e^{-\frac{(y-\mu_y-\rho.\sigma_y.z_x)^2}{2.\sigma_y^2.(1-\rho)^2} } \), that is 
+     
+     \( f_{Y|_{X=x}}(y)=\frac{1}{\sqrt{2.\pi }.\sigma_y.\sqrt{1-\rho^2 }}.
+     e^{-\frac{(y-\mu_y-\rho.\sigma_y.z_x)^2}{2.\sigma_y^2.(1-\rho)^2} }= \)
+     
+       \( f_{Y|_{X=x}}(y)=\frac{1}{\sqrt{2.\pi }.\sigma_y.\sqrt{1-\rho^2 }}.
+     e^{-\frac{(z_y-\rho.z_x)^2}{2.(1-\rho)^2} } \)
+     
+     <br> Actually, \(f_{Y|_{X=x}}(y)=\frac{f_{XY}(x,y)}{f_X(x)} =
+ \frac{   \beta_{xy}.e^{-{{   z_{x}^2+ z_{y}^2-2\rho. z_{x}.z_{y} } \over {2(1-\rho^2) }   } }}
+ {{1 \over  {\sigma_x \sqrt{2 \pi} }} e^ {-{  z_x ^2 \over { 2  }} }}  =\), on one hand we have 
+
+ 
+  <br>\(\beta_{xy}. {\sigma_x \sqrt{2 \pi} }={1 \over {2 \pi  \sigma_{x}. \sigma_{y}}\sqrt{1-\rho^2}} . 
+  {\sigma_x \sqrt{2 \pi} }=\)
+  \({1 \over { \sqrt{2 \pi}  . \sigma_{y}}\sqrt{1-\rho^2}} \),
+  <br> on the other hand we have 
+  
+
+ 
+ \(e^{-{{   z_{x}^2+ z_{y}^2-2\rho. z_{x}.z_{y} } \over {2(1-\rho^2) }   } }.
+e^ {+{  z_x ^2 \over { 2  }} }= \)
+ 
+ \(e^{{{  - z_{x}^2- z_{y}^2+2\rho. z_{x}.z_{y}+z_x ^2.(1-\rho^2) } \over {2(1-\rho^2) }   } }= \)
+  \(e^{{{  - z_{x}^2- z_{y}^2+2\rho. z_{x}.z_{y}+z_x ^2.(1-\rho^2) } \over {2(1-\rho^2) }   } }= \)
+  \(e^{-{{   z_{y}^2-2\rho. z_{x}.z_{y}+z_x ^2.\rho^2 } \over {2(1+\rho^2) }   } }= \)
+    \(e^{-{{   (z_{y}-\rho.z_x)^2 } \over {2(1+\rho^2) }   } } \), that's what we have been trying to prove.
+    
+  </span>
+ <br> 3.Let \(Z_1 \) and \(Z_2 \) be two independent standard normal  RVs, show 
+		that 		\( (X,Y) \sim BVN (\mu_x,\mu_y,\sigma_x^2,\sigma_y^2,\rho) \)
+<br> 4. \((X,Y) \sim BVN (\mu_x,\mu_y,\sigma_x^2,\sigma_y^2,\rho) 
+ \Leftrightarrow X,Y,X|_{Y=y},Y|_{X=x} \) are univariate normal distribution (have normal distribution)
+  </div>
+		
+	
+  </div>
+	</div>
+	  <h4 id="4_4_4_6">4.4.4.6 More than two RVs</h4>
+	  All we have seen so far is also relevant in the case of more than two RVs, actually if 
+	  \(X_1, X_2, ..,X_n \) are n RVs, we may define:
+	  <br> * A joint PMF for the discrete case by 
+	  \(p_{X_1..X_n}(x_1,x_2,..x_n)=P(X_1=x_1, X_2=x_2,..,X_n=x_n) \)
+	  <br>* A joint PDF for the absolutely continuous case by:
+	   \(P(a_1 &le; X_1 &le; b_1, ..,a_n &le; X_n &le; b_n)=\int_{a_1 }^{b_1}.. \int_{a_n }^{b_n}f(x_1,..,x_n)dx_1..dx_n\)
+
+
+	  <h4 id="4_4_4_7">4.4.4.7 Conditional Distribution and Independence</h4>
+	   <h4 id="4_4_4_7_1">4.4.4.7.1 Independence</h4>
+ Two RVs X and Y are independent if for all subsets \(B_1 \) and \(B_2 \) of the real 
+	   numbers we have:\(P(X \in B_1,Y \in B_2)=P(X \in B_1).P(Y \in B_2) \) 
+	   which is equivalent to \(F_{XY}(x,y)=F_X(x).F_Y(y)\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    This is also equivalent to \(P(a &le;X&le;b,c &le;Y&le;d)=
+    P(a &le;X&le;b).P(c &le;Y&le;d) \)  for any \(a&le;b\) and \(c &le;d\), but as mentioned
+    above passing from regions to segments is not easy and we omit the proof here.
+  </span>
+	   <h4 id="4_4_4_7_2">4.4.4.7.2 Conditional Distribution</h4>
+	  a) The conditional probability distribution of RV Y given that RV X=x is the function
+	   \(f:B\in\mathbb{R} \rightarrow {P(Y \in B ,\;  X=x) \over P(X=x)  } \)
+	
+	
+
+	
+<br>b) The conditional PMF of a RV X given event A is: \(P_{X|_A}(x_i)={P(X=x_i , \; X \in A)
+ \over P(A)} \) 
+for any \(x_i \in R_X \)
+	  
+	  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+       We saw earlier that for two RVs X and Y, \(P(X \in C|_{ Y \in D})=P_{X|_{Y \in D}}(C)=P_{X|_Y}(C|_D)=
+    { P(X \in C, Y \in D ) \over  P(Y \in D) } \) 
+  </span>
+	<br>d) We can define the conditional PMF of Y, given X by:
+	\(p_{Y|_X}(y|_x)=P_{Y|_{X= x}}(y)={ p_{XY}(x,y) \over { \sum_z p_{XY (x,z)  }}}={ p_{XY}(x,y) \over { p_X(x)  }}\)
+	  <br>e) The conditional CDF of X given A is : \(F_{X|_A}(x)=P(X \leqslant  x |_A ) \)
+	
+	<br>f)  \(P(X=x_i|_{Y=y_j})={ P(X=x_i, Y=y_j) \over P(Y=y_j)  } ={ P_{XY}(x_i,y_j) \over P_Y(y_j)  }\) 
+	is the 
+	  conditional PMF of X given Y, and denoted by \(P_{X|_Y}(x_i|_{y_j}) \), for any \(x_i \in R_X \; 
+	  and \; y_j \in R_Y  \).
+	<br>g) X and Y are independent if and only if \(P_{XY}(x,y)=P_X(x).P_Y(y) \) which is 
+	equivalent	 to \(F_{XY}(x,y)=F_X(x).F_Y(y) \)
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(F_{XY}(x,y)=P(X &le; x,Y &le; y)=\sum\limits_{x_i &le; x \; and \;y_i &le; y }
+    P_{XY}(x_i,y_i)=    \sum\limits_{x_i &le;x }\; \sum\limits_{ y_j &le; y }P_X(x_i)P_Y(y_j)\)=
+   \(  \sum\limits_{x_i &le;x }\;P_X(x_i) \sum\limits_{ y_j &le; y }P_Y(y_j)=
+    F_X(x).F_Y(y) \)
+  </span>
+	
+    <br>h) X and Y are independent if and only if \( P_{X|_Y}(x_i|_{y_j})=P_X(x_i)\) for any 
+    \(x_i \in R_X \;  and \; y_j \in R_Y  \) 
+     <h4 id="4_4_4_8">4.4.4.8 Conditioning on Continuous Random Variables </h4>
+
+a) If \(f_{XY} \) is the joint density function of two jointly absolutely continuous RVs X and Y, then 
+the conditional density function of Y given X=x is the function 
+\( f_{Y|_X}(y|x)=f_{Y|_{X=x}}(y)={f_{XY}(x,y) \over f_X(x)}\), for every \(f_X(x) &gt; 0 \)
+
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>In this case the conditional probability of \( a &le; Y &le; b \) given X=x can be defined by
+  \(P(a &le; Y &le; b |_{ X \approx x})= \displaystyle \lim_{\epsilon \to 0} 
+  P(a &le; Y &le; b |_{ x-\epsilon &le; X &le; x+\epsilon})
+  =\displaystyle \lim_{\epsilon \to 0}{ P(a &le; Y &le; b , \; x-\epsilon &le; X &le; x+\epsilon) \over P( x-\epsilon &le; X &le; x+\epsilon)}
+ \\=\displaystyle \lim_{\epsilon \to 0}{ \int_{a}^{b} \int_{x-\epsilon}^{x+\epsilon}f_{XY}(t,h)dt \; dh \over \int_{x-\epsilon}^{x+\epsilon}f_{X}(t)dt }
+  ={ \int_{a}^{b} 2. \epsilon. f_{XY}(x,h) \; dh \over 2. \epsilon.f_{X}(x) } 
+  = \int_{a}^{b} { f_{XY}(x,h)  \over f_{X}(x) }\; dh  \) because 
+  \(f_{XY}(t,h) \approx f_{XY}(x,h)\) around x.
+
+
+  <br>By definition, \(P_{Y|X=x}(a &le; Y &le; b) =\int_{a}^{b} f_{Y|X}(h|x)\; dh\), that is the 
+  conditional probability density function of Y knowing X=x is \(f_{Y|X}(y|x)= { f_{XY}(x,y)  \over f_{X}(x) } \)
+  </span>
+<br>b)  &#10002;<i> \( P(a &le;Y &le; b|_{X=x } ) =\int_{a}^{b}f_{Y|_{X=x}}(y).dy\) 
+is the conditional distribution of Y given X=x.
+ </i>
+ <br>c) Tow absolutely continuous RVs are independent if and only if 
+  \(f_{XY}(x,y)=f_X(x).f_Y(x) \) for all \((x,y) \in \mathbb{R}^2 \).
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>  X and Y are independent implies 
+    \(P((X,Y) \in (B_1,B_2))=P(X \in B_1 \;and\; Y \in B_2)=P(X \in B_1).P(Y \in B_2)\), 
+    we know by definition that 
+    \(P(X \in B_1 \;and\; Y \in B_2)=\int_{B_1\times B_2}f_{XY}(x,y).dx.dy\),
+     \(P(X \in B_1)=\int_{B_1}f_{X}(x).dx\) and 
+       \(P(Y \in B_2)=\int_{B_2}f_{Y}(y).dy\), that is 
+\(\int_{B_1\times B_2}f_{XY}(x,y).dx.dy=\int_{B_1}f_{X}(x).dx. \int_{B_2}f_{Y}(y).dy=\)
+\(\int_{B_1\times B_2}f_{XY}(x,y).dx.dy=int_{B_1\times B_2}f_{X}(x).f_{Y}(y).dx.dy  \), that is
+\(f_{XY}(x,y)=f_{X}(x).f_{Y}(y)\), the opposite implication is straightforward.
+  </span>
+ 
+ 
+<br>d) Tow absolutely continuous RVs X nd Y are independent if  and only if there exist 
+functions g(x) and h(x) such that \(f(x,y)=h(x).g(y) \) for all \((x,y) \in \mathbb{R}^2 \).
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>  For the "only if" just take \(h(x)=f_X(x)\) and \(g(y)=f_Y(y) \).
+    <br>For the 'if" part, we have
+     \(f_X(x)=\int_{\mathbb{R}}f_{XY}(x,y).dy=\)
+   \(  \int_{\mathbb{R}}h(x).g(y).dy=h(x).\int_{\mathbb{R}}g(y).dy\), on the other hand 
+    \(f_Y(y)=g(y).\int_{\mathbb{R}}h(x).dx\), since \(f_{XY}\) is a joint distribution we have 
+    \(\int_{\mathbb{R}}\int_{\mathbb{R}}f_{XY}(x,y).dx.dy=1\), that is 
+       \(\int_{\mathbb{R}}\int_{\mathbb{R}}h(x).g(y).dx.dy=1\), hence 
+       \(\int_{\mathbb{R}}h(x).dx.\int_{\mathbb{R}}g(y).dy=1\), we conclude then that 
+       \(f_X(x).f_Y(y)=h(x).\int_{\mathbb{R}}g(y).dy.g(y).\int_{\mathbb{R}}h(x).dx=\)
+     \(h(x).g(y).\int_{\mathbb{R}}g(y).dy.\int_{\mathbb{R}}h(x).dx=h(x).g(y)\), that is 
+     \(f_{XY}(x,y)=f_X(x).f_Y(y)\)
+  </span>
+<br>e) If X and Y are two independent RVs, and f and g are any functions of real numbers, 
+then g(X) and f(Y) are also independent.
+
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    we have \( P(g(X) \in B_1, f(Y) \in B_2 )=P(X \in g^{-1}(B_1), Y \in f^{-1} ( B_2 ) =P(X \in g^{-1}(B_1)).P( Y \in f^{-1} ( B_2 ) 
+\\=P(g(X) \in B_1).P( f(Y) \in  B_2 )\), so g(X) and f(Y) are independent.
+  </span>
+  <h4 id="4_4_4_9">4.4.4.9 Generalization to n RVs</h4>
+  a) Let \(X_1, X_2,..,X_n\) be a collection of n discrete RVs, then \(X_1,X_2,..,X_n \) are independent
+   if and only if \( p_{X_1..X_n}(x_1,..,x_n)=p_{X_1}(x_1)..p_{X_n}(x_n)\), for all \((x_1,..,x_n) \in \mathbb{R}^n \)
+   <br>If \(X_1, X_2,..,X_n\) are identically distributed then,  \( p_{X_1..X_n}(x_1,..,x_n)=p(x_1)..p(x_n)\)
+    <br>   b) Let \(X_1, X_2,..,X_n\) be a collection of n absolutely continuous RVs, then \(X_1,X_2,..,X_n \) are independent
+   if and only if \( f_{X_1..X_n}(x_1,..,x_n)=f_{X_1}(x_1)..f_{X_n}(x_n)\) for all \((x_1,..,x_n) \in \mathbb{R}^n \)
+<br>If \(X_1, X_2,..,X_n\) are identically distributed then, \( f_{X_1..X_n}(x_1,..,x_n)=f(x_1)..f(x_n)\)
+    	<div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example:Multimonial Distribution</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+  In a box we have 100 balls, 20 are red, 50 are blue and 30 are green, 
+    We draw a ball from that box, let R be a discrete RV related to the color of the drawed ball
+    such as:
+    R(green)= 1, R(blue)=2 and R(red)=3, let
+     \(p_R(1)=\alpha_1=0.3, \;  p_R(2)=\alpha_2=0.5 \; and \; p_R(3)=\alpha_3=0.2\), with 
+     \(\alpha_1+\alpha_2+\alpha_3=1 \)
+     <br>We perform n draws from the box, let \(R_1, R_2, .., R_n \) the RVs related to 
+     the result of those n draws, we know that \(R_1, R_2, .., R_n \) are independent 
+     and identically distributed, what is  \(p_{R_1.. R_n}(k_1,..,k_n)  \), where
+      \(k_i \in \left\{1,2,3 \right\} \) ?
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+since \(R_1, R_2, .., R_n \) are independent  we have:
+\(p_{R_1.. R_n}(k_1,..,k_n)=p_{R_1}(k_1)..p_{R_n}(k_n) \), since they are identically distributed we 
+have: \(p_{R_1.. R_n}(k_1,..,k_n)=p(k_1)..p(k_n) \),the probability to draw a ball of color \(k_j \) is
+ \(p(k_j)= {\alpha_1}^{I_1(k_j)}.{\alpha_2}^{I_2(k_j)}.{\alpha_3}^{I_3(k_j)}\), where \( I_i(k_j)\) is the
+  indicator function defined by the formulae:
+ \( I_i(k_j):  \left\{\begin{matrix}
+1 &  if \;i=k_j \\                      
+0 & if \;  i \neq  k_j \\
+\end{matrix}\right. \), for example:
+  \(p(1)= {\alpha_1}^{I_1(1)}.{\alpha_2}^{I_2(1)}.{\alpha_3}^{I_3(1)}={\alpha_1}^1.{\alpha_2}^0.{\alpha_3}^0=\alpha_1\)
+<br>so \(p(k_1,..,k_n)=\coprod\limits_{j=1}^{n} {\alpha_1}^{I_1(k_j)}.{\alpha_2}^{I_2(k_j)}.{\alpha_3}^{I_3(k_j)}
+={\alpha_1}^{x_1}.{\alpha_2}^{x_2}.{\alpha_3}^{x_3}
+\), where \(x_i= \sum\limits_{j=1}^{n}I_i(k_j) \)
+<br> Now based on the sample \(R_1, R_2, .., R_n \), we define a RV 
+\(X_i=\sum\limits_{j=1}^{n}I_i(R_j)  \), which is the number of i's in the sample, so \(X_i \in \left\{0,1,..,n  \right\} \) and
+\(\sum\limits_{i=1}^{3} X_i=n \), now let's calculate \(p_{X_1X_2X_3}(x_1,x_2,x_3)\).
+<br>We have \(p_{X_1X_2X_3}(x_1,x_2,x_3)=np(x_1,x_2,x_3) {\alpha_1}^{x_1}{\alpha_2}^{x_2}{\alpha_3}^{x_3}\)
+with \(np(x_1,x_2,x_3) \) is the number of possibilities to have \( x_1\) 1, \( x_2\) 2 and \( x_3\) 3, 
+we have \(np(x_1,x_2,x_3)=\binom{n}{x_1}\binom{n-x_1}{x_2}\binom{n-x_1-x_2}{x_3}\)
+<br> In general instead of three colour, suppose we have k colours, and random variables \( R_i\)
+can take values from 1 to k (depending on drawed colour), suppose we do n draws, 
+and we define
+\(X_i \) as the number of drawed ball with colour i, so \(p_{X_1..X_k}(x_1,..,x_k)=
+\binom{n}{x_1}\binom{n-x_1}{x_2}\binom{n-x_1-x_2}{x_3}.. \binom{n-x_1-..-x_{k-2}}{x_{k-1}}\binom{n-x_1-..-x_{k-1}}{x_k}{\alpha_1}^{x_1}..{\alpha_k}^{x_k}
+
+\\=\binom{n}{x_1}\binom{n-x_1}{x_2}\binom{n-x_1-x_2}{x_3}.. \binom{x_{k-1}+
+x_{k}}{x_{k-1}}\binom{x_k}{x_k}{\alpha_1}^{x_1}..{\alpha_k}^{x_k}
+
+\)
+\( \binom{n}{x_1}\binom{n-x_1}{x_2}\binom{n-x_1-x_2}{x_3}.. \binom{x_{k-1}+
+x_{k}}{x_{k-1}}\binom{x_k}{x_k}\)  is called multimonial coefficient
+and is denoted by \(\binom{n}{x_1,..,x_k} \) and we have: \(\binom{n}{x_1,..,x_k}={n! \over {x_1!..x_k! }} \)
+ 		Proof:
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <img src="/img/figure73.png"  style="float: right; width: 45%; height: 65%;">
+    <br>1. We are trying to compose a word out of the letters "a","b","c","d","e","f", 
+    what is N' the number of all possible outcomes ? 
+   
+    <br>2.  What is N the number of all possibilities we obtain by changing the order of letters
+    in the word "acfdff" (ex:"caffdf","fdaffc",..) ?
+    <br> 1. N' is the number of permutations with 6 different elements, so 
+    \(N'=P_{6}^{6}=720 \)
+   <br> Let \( S_1\) , be the set af all possible outcomes, this set will contain elements 
+   such as:    \(S_1=\left\{ "cabfed","defcab","befacd",..\right\}\)
+    <br> 2. Let \(  S_2\) be the set of all possible outcomes,
+     \(S_2=\left\{ "caffdf","fdaffc","dafffc"..\right\} \)
+clearly N' is much greater than N, as you can see in figure 73 by taking every element 
+in \( S_2\), 
+we can make of it 3! (6) possible outcomes in set \( S_2\), so N'=3!.N, the same 
+reasoning goes through if we have more than one repeating letters for example for 
+the word 'ffghtaaa', the letter "a" is repeated 3 times, "f" is repeated two times so the 
+number of all possible words by changing order of letters in the word "ffghtaaa" is
+ \( 8! \over {2!.3!} \)
+  </span>
+ 
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+    <h3 id="4_4_5">4.4.5 Order statistics</h3>
+    Let \(X_1,..,X_n \) be n i.i.d RVs, the "Order statistics" is obtained by ordering those RVs from 
+    smallest to largest, it's denoted by  \( X_{(1)},..,X_{(n)}\), we have \(X_{(n)}=max(X_1,..,X_n ) \)
+    and  \(X_{(1)}=min(X_1,..,X_n ) \).
+     <h4 id="4_4_5_1">4.4.5.1 Distribution of min and max Order statistics</h4>
+     1.\(F_{X_{(n)}}(x)={(F_{X_1}(x))}^n\)
+     <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    We have \(F_{X_{(n)}}(x)=P(X_{(n)} \leqslant x)=P( X_1 \leqslant x,.., X_n \leqslant x )\)
+    , since \(X_1,..,X_n \) are  i.i.d, we have:\( P(X_i \leqslant x, X_j \leqslant x)=P(X_i \leqslant x).
+    P(X_j \leqslant x) \) and \(F_{X_i}=F_{X_j} \) for every i and j \( \leqslant n\), so
+     \(F_{X_{(n)}}(x)=P(X_{(n)} \leqslant x)=
+    P( X_1 \leqslant x)*..*P( X_n \leqslant x )= F_{X_1}(x)*...*F_{X_n}(x)=F_{X_1}(x)*...*F_{X_1}(x)={(F_{X_1}(x))}^n\)
+    
+  </span>
+     <br>2.  \( F_{X_{(1)}}(x)= 1-(1-F_{X_1}(x))^n\)
+     <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+      We have:
+    \( F_{X_{(1)}}(x)=P( X_{(1)} \leqslant x)=1- P( X_{(1)} &gt; x)=1- P( X_1 &gt; x,.., X_n &gt; x)=
+    1-P( X_1 &gt; x)*..*P( X_n &gt; x)=\\
+    1-(1-P( X_1 \leqslant x))*..*(1-P( X_1 \leqslant x))= 1-(1-F_{X_1}(x))^n
+     \)
+  </span>
+  
+  <h2 id="4_5">4.5 Multidimensional change of variable</h2>
+  
+    Let X and Y be two  RVs with known joint distribution, let also Z and W be two other
+     RVs such   as     \( Z=h_1(X,Y) \) and \(W=h_2(X,Y) \), where \(h_1 \) and \(h_2 \) are 
+     two functions,  we want to find the joint distribution of W and Z.
+     <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    we denote by h the function defined as \(h(x,y)=(h_1(x,y),h_2(x,y) ) \)
+  </span>
+  <h3 id="4_5_1">4.5.1 Discret case</h3>
+   &#9755; \( p_{ZW}(z,w)=\sum\limits_{h_1(x,y)=z,h_2(x,y)=w }p_{XY}(x,y)\)
+      <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     \( p_{ZW}(z,w)=p_{ZW}(Z=z,W=w)=p_{ZW}(h_1(X,Y)=z,h_2(X,Y)=w)\)=
+     \(p_{ZW}((X=x,Y=y) \;such\;as\; h_1(x,y)=z \;and\;
+     h_2(x,y)=w ) =
+     \sum\limits_{h_1(x,y)=z , h_2(x,y)=w}p_{XY}(x,y)\)
+     <br> If \(h=(h_1,h_2) \) is one to one function, then
+      \( p_{ZW}(z,w)=p_{ZW}(h^{-1}(w,z )) \)
+  </span>
+ 
+   <h3 id="4_5_2">4.5.2 Absolutely continuous case</h3>
+ &#9755;  \(f_{Z,W}(z,w)=\frac{f_{X,Y}(h^{-1}(z,w))}{|J(h^{-1}(z,w)) |} \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br>Where Z and W are two RVs such as  \((Z,W)= h(X,Y)=(h_1(X,Y),h_2(X,Y) ) \), suppose that h is 
+ a one-to-one
+ <span class="tooltip">&#128216;</span>
+ <span class="tooltiptext">
+    that is \(h(x_1,y_1)=h(x_2,y_2) \Leftrightarrow (x_1,y_1)=(x_2,y_2) \Leftrightarrow (x_1=x_2 \; and \;
+    y_1=y_2)
+    \)
+ </span>
+ 
+  function at least at region:
+   \(\left\{ (x,y)\; where \; f(x,y) &gt; 0 \right\} \), and \(h_1 \) and \(h_1 \) are differentiable functions.
+   
+   <br> In general to prove that a two variables function g is the joint probability density 
+  function of two RVs X and Y, we must prove that for any real numbers a,b,c and such 
+  that a &le;b and c &le;d we have:
+  <br> P(a &le; X &le; b, c &le; Y &le; d) =\( \int_a^b \int_c^d g(v,u).du.dv  \), using 
+  regions  we can write P((X,Y) &isin; S)= \( \int \int_S g(v,u).du.dv  \), with
+   \( S=\left\{(x,y) \;such\;as\;  a &le; x &le; b, c &le; y &le; d \right\} \)
+  <br> So we must prove that: 
+  \( \int \int_S \frac{f_{X,Y}(h^{-1}(z,w))}{|J(h^{-1}(z,w)) |}.dz.dw=P((Z,W) &isin; S)  \) 
+   
+   <br>We have \( (Z,W)=(h_1(X,Y),h_2(X,Y))=h(X,Y)\), so
+    <br>\( P((Z,W) &isin; S)  = P((X,Y) &isin; h^{-1}(S))=\int \int_{h^{-1}(S) } f_{XY}(x,y).
+    dx.dy\)
+    \( =\int \int_{h^{-1}(S) } \frac{f_{XY}(x,y)}{J(x,y)}.J(x,y).dx.dy=
+    \int \int_{h(h^{-1}(S)) } \frac{f_{XY}(h^{-1}(z,w))}{J(h^{-1}(z,w))}.dz.dw=
+     \int \int_S \frac{f_{XY}(h^{-1}(z,w))}{J(h^{-1}(z,w))}.dz.dw
+    \), 
+    <br>so \( f_{ZW}(z,w)=\frac{f_{XY}(h^{-1}(z,w))}{J(h^{-1}(z,w))}\)
+  </span>
+ 
+      <h3 id="4_5_3">4.5.3 Convolution </h3>
+      Let X and Y be two independent RVs, the convolution of  the distribution of X and 
+      Y is the RV Z defined as Z=X+Y.
+    <br>  &#9755; If X and Y are both discret then Z is discret and: 
+      \(  P_Z(z)=\sum\limits_{y} P_X(z-y).P_Y(y)\)
+      <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     \(P_Z(z)=P_{XY}((x,y) | x+y=z)=\sum\limits_{x+y=z }  P_{XY}(x,y)=
+\sum\limits_{x+y=z } P_X(x).P_Y(y)=\sum\limits_{y} P_X(z-y).P_Y(y)
+ \)
+  </span>
+    <br>  &#9755;  If X and Y are jointly absolutely continuous, then Z is absolutely 
+    continuous and \(f_Z(z)=\int_{-\infty}^{+\infty} f_X(z-w).f_Y(w).dw\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+
+ 
+ <br>Let's do this by variable change \((Z,W)=h(X,Y)=(X+Y,Y) \), that is \((z,w)=h(x,y)=(x+y,y) \) 
+ we know that in this case
+   \(f_{Z,W}(z,w)=\frac{f_{X,Y}(h^{-1}(z,w))}{|J(h^{-1}(z,w)) |}=
+    \frac{f_{X,Y}(z-w,w)}{|J(z-w,w) |}\), because \((z,w)=(x+y,y) \) means \((x,y)=h^{-1}(z,w)=(z-w,w) \), 
+    on the other     hand, 
+   <br> 
+    \( J(x,y)=(\frac{\partial z}{\partial x}.
+ \frac{\partial w}{\partial y}-\frac{\partial w}{\partial x}.\frac{\partial z}{\partial y} )=\) 
+\(\frac{\partial (x+y)}{\partial x}.
+ \frac{\partial y}{\partial y}-\frac{\partial y}{\partial x}.\frac{\partial (x+y)}{\partial y}=1.1-0.1=1 \), so
+   \(f_{Z,W}(z,w)=\frac{f_{X,Y}(h^{-1}(z,w))}{|J(h^{-1}(z,w)) |}= f_{X,Y}(z-w,w)\), 
+   we know from marginal cumulative that \(f_Z(z)=\int_{-\infty}^{+\infty} f_{Z,W}(z,t).dt\), that is 
+ \(f_Z(z)=\int_{-\infty}^{+\infty} f_{X,Y}(z-t,t).dt\), since X and Y are independent, we have 
+  \(f_Z(z)=\int_{-\infty}^{+\infty} f_{X}(z-t).f_{Y}(t).dt\),
+  </span>
+  
+    
+ <h2 id="4_6">4.6 Simulating Random variables and probabilities</h2>
+      Computer programs can be used to simulate RVs and their distributions numerically,
+      this simultion has many applications, for example:
+       <br>&#9755;  To draw samples from large data sets
+       <br>&#9755;  To give an approximation of complicated mathematical quantitites
+        <br>&#9755; To encrypte data
+    <br>Actually the vast majority of programming languages come with features to 
+    generate random values \( U_1, U_2,..\)  that follow independent and uniform distributions, those
+     values can be used to simulate some RVs.
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+    Those generated values doesn't really follow independent and uniform distribution,
+    instead they approximately satisfy this condition (pseudo independentely uniformly 
+       distributed),  in all the following we suppose that \( U_1, U_2,..\) are 
+       independentely uniformly  distributed, that is \( U_1, U_2,..\sim Uniform[0,1]\)
+</span>
+<br>For example we saw earlier in the chapter about random variables, 
+that if X is a RV where \(X=(R-L).U_1+L \), then X ~Uniform [L,R], so to generate a RV
+ with Uniform[L,R] distribution we simply take the RV \((R-L).U_1+L \)
+ <h3 id="4_6_1">4.6.1 Simulating discrete RV</h3>
+ &#9755; <b>Simulating a Bernoulli RV: </b> The RV  X:		
+		  \(\left\{\begin{matrix}
+1    &  for \; U_1 &le; \theta  \\
+ 0    &  for \; U_1  &gt; \theta  \\
+
+\end{matrix}\right.\) has a \(benoulli(\theta) \) distrbution
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+Actually :
+<br>\( P(X=1)=P(U_1 &le; \theta  )=\theta\) and \( P(X=0)=P(U_1 &gt; \theta  )=
+1-\theta\)
+  </span>
+<br>&#9755; <b>Simulating a Binomial RV: </b>The RV  
+\( Y=min \left\{j: \sum\limits_{k=0 }^j 
+\begin{pmatrix}
+n \\
+k \\
+\end{pmatrix}
+ \theta^k(1-\theta)^{n-k} &ge; U_1 \right\} \) has a \(binomial(n,\theta) \) distribution
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(P(Y=y)=P(y \;| \;
+    \sum\limits_{k=0 }^{y-1}
+\begin{pmatrix}
+n \\
+k \\
+\end{pmatrix}
+ \theta^k(1-\theta)^{n-k}
+    ) &lt; U_1 \;and \;
+    
+     \sum\limits_{k=0 }^y
+\begin{pmatrix}
+n \\
+k \\
+\end{pmatrix}
+ \theta^k(1-\theta)^{n-k}
+    ) &ge; U_1)
+     \)=
+         \(P(Y=y)=P(y \;| \;
+    \sum\limits_{k=0 }^{y-1}
+\begin{pmatrix}
+n \\
+k \\
+\end{pmatrix}
+ \theta^k(1-\theta)^{n-k}
+    ) &lt; U_1 &le;
+    
+     \sum\limits_{k=0 }^y
+\begin{pmatrix}
+n \\
+k \\
+\end{pmatrix}
+ \theta^k(1-\theta)^{n-k}
+    ) )
+     \)=         \(P(Y=y)=P(
+    \sum\limits_{k=0 }^{y-1}
+\begin{pmatrix}
+n \\
+k \\
+\end{pmatrix}
+ \theta^k(1-\theta)^{n-k}
+    ) &lt; U_1 &le;
+    
+     \sum\limits_{k=0 }^y
+\begin{pmatrix}
+n \\
+k \\
+\end{pmatrix}
+ \theta^k(1-\theta)^{n-k}
+    ) )
+     \)=         \(P(Y=y)=P(
+    \sum\limits_{k=0 }^{y-1}
+\begin{pmatrix}
+n \\
+k \\
+\end{pmatrix}
+ \theta^k(1-\theta)^{n-k}
+    ) &le; U_1 &le;
+    
+     \sum\limits_{k=0 }^y
+\begin{pmatrix}
+n \\
+k \\
+\end{pmatrix}
+ \theta^k(1-\theta)^{n-k}
+    ) )
+     \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    because \( U_1 \) is continuous.
+  </span>
+      =\(      \sum\limits_{k=0 }^y
+\begin{pmatrix}
+n \\
+k \\
+\end{pmatrix}
+ \theta^k(1-\theta)^{n-k}- 
+    \sum\limits_{k=0 }^{y-1}
+\begin{pmatrix}
+n \\
+k \\
+\end{pmatrix}
+ \theta^k(1-\theta)^{n-k}
+ \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    because \( U_1 \) is uniform.
+  </span>=
+  \(
+  \begin{pmatrix}
+n \\
+y \\
+\end{pmatrix}
+ \theta^y(1-\theta)^{n-y}
+  \), so \( P(Y=y)=
+    \begin{pmatrix}
+n \\
+y \\
+\end{pmatrix}
+ \theta^y(1-\theta)^{n-y}
+  
+  \)
+  <br> Alternatively we know that if \( X_1,X_2,..,X_n \) are n \(bernoulli(\theta)\)
+   RV then, \(X=X_1+X_2+..+X_n \) is a \(binomial(n,\theta)\) RV, so to generate a 
+   \(binomial(n,\theta)\) we take the sum of n uniform [0,1] RVs.
+  </span>
+ <br><b>Theorem:</b> 
+ 	<div class="box1">
+ 	The function Y defined as:
+ 	 \(Y=min \left\{x_j : \sum\limits_{k=1}^j p(x_k) &ge;U_1 \right\}\) is a discrete RV
+ 	  having probability function p, where p is the probability mass function of the 
+ 	  RV X taking values	 \(x_1, x_2,.. \) where \( x_1 &le; x_2 &le; x_3..\) and
+ 	   \( p(x_1) &gt;0,\; p(x_2) &gt;0,..  \)
+ <span class="tooltip">&#128216;</span>
+
+ <span class="tooltiptext">
+  <br>   Actually Y  take the values \(x_1,x_2,..,   \)
+  so: \(Y=x_i \Leftrightarrow  ( \sum\limits_{k=1}^i p(x_k) &ge;U_1 \;and \;
+  \sum\limits_{k=1}^{i-1} p(x_k) &lt;U_1) \Leftrightarrow
+  
+    \sum\limits_{k=1}^{i-1} p(x_k) &lt;U_1 &le; \sum\limits_{k=1}^i p(x_k) 
+   \), so \(P(Y=x_i)=P(\sum\limits_{k=1}^{i-1} p(x_k) &lt;U_1 &le; \sum\limits_{k=1}^i p(x_k)  ) \)
+   =\( \sum\limits_{k=1}^i p(x_k) - \sum\limits_{k=1}^{i-1} p(x_k)=p(x_i)\)
+ </span>
+ 	 
+</div>
+&#9755; <b>Simulating a Geometric RV:</b>The RV 
+\(Y=\left \lfloor \frac{log(1-U_1 )}{log(1-\theta )} \right \rfloor \) has a Geometric distribution
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br>   where \( \left \lfloor x \right \rfloor \) is the floor of x, that is the largest integer less 
+    than x.
+    <br>
+    Using theorem above we can conclude that:
+  \(Y=min \left\{j : \sum\limits_{k=1}^j .\theta.(1-\theta )^k &ge;U_1 \right\}\) is a 
+  geometric distribution \((x_j=j  \;and\; p(k)=\theta.(1-\theta)^k)\), that is 
+\(Y=min \left\{j : 1-(1-\theta)^{j+1} &ge;U_1 \right\}\), that is 
+\(Y=min \left\{j : 1-U_1 &ge;(1-\theta)^{j+1} \right\}\), hence 
+\(Y=min \left\{j : log(1-U_1) &ge;(j+1).log(1-\theta) \right\}\), that is
+\(Y=min \left\{j : j &ge; \frac{log(1-U_1) }{log(1-\theta) }-1\right\}\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    The inequality sign "&ge;" turns to "&le;", because \(log(1-\theta) \) is negative
+  </span>
+  
+  , finally we get \(Y=\left \lfloor \frac{log(1-U_1 )}{log(1-\theta )} \right \rfloor \) 
+  <br> A more straitforward method comes froms the very definition of a Geometric
+  distribution, which is the number of trials before observing a success.
+  <br>We can see the Goemetric distribution another way, we throw indifinitely a coin 
+  and we record the number of throws corresponding to a head, each throw is 
+  coresponding to a bernoulli RV, each of those bernoulli has an index which is the index
+  of the throw, for example if the outcome is TTTTHHTHHTHH..., the outcomes (of throwing)
+  the coin)  that  correspond to a head are 5,6 8,9,11,12,...the smallest is 5 so 5 is the 
+  outcome of the random experiment relating to Geometric RV let's call it Y, that is  
+  \(Y=min(j, X_j=1 \), we know how to simulate a \(bernoulli(\theta)\)
+  so \(Y=min(j , X_j=1)\) where 		
+    \(X_j=\left\{\begin{matrix}
+1    &  for \; U_1 &le; \theta  \\
+ 0    &  for \; U_1  &gt; \theta  \\
+
+\end{matrix}\right.\)
+  </span>
+  <h3 id="4_6_2">4.6.2 Simulating Continuous RV</h3>
+  &#9755; <b>Simulating Exponential RV</b>:The RV \(Y=Ln(\frac{1}{U_1})\) has an 
+  exponential distribution 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Actually \(f_Y(y)={f_X(g^{-1}(y)) \over |g'(g^{-1}(y)) | } \), where \(g(x)=ln(\frac{1}{x})\)
+      that is,  \(g^{-1}(x)=e^{-x} \) and \(g'(x)=\frac{-1}{x} \) that is,
+    \(f_Y(y)={f_X(g^{-1}(y)) \over |\frac{-1}{g^{-1}(y)} | } \), ( \(f_X(x)=1\) because X has a 
+    uniform distribution), so
+    \(f_Y(y)={1\over |\frac{-1}{e^{-y}} | }=e^{-y} \), that is Y~Exponential(1).
+    <br>We know also that if \(X \sim Exponential(\lambda) \) and \(Y=cX\) then 
+    \(Y \sim Expenential(\frac{\lambda}{C})\), so if \(Y=\frac{1}{\lambda} ln(\frac{1}{U_1})\), 
+    then \(Y \sim Exponential(\lambda) \)
+    
+  </span>
+  <br>&#9755;<b> Simulating Normal RV </b>: The RVs X and Y defined as 
+   \( X=\sqrt{2.ln(\frac{1}{U_1}) } .cos(2.\pi.U_2 )\) and
+    \(Y=\sqrt{2.ln(\frac{1}{U_1}) }.sin(2.\pi.U_2) \) are i.i.d N(0,1) provided 
+   \(U_1\) and \(U_2\) are i.i.d U[0,1].
+  
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>
+  \(
+ f_{U_1,U_2}(u_1,u_2)= 
+    \left\{\begin{matrix}
+1 &  \;for \;0 &le;u_1, u_2 &le; 1 \\
+0 & \;elsewhere \\
+\end{matrix}\right.
+\)
+<br>X and Y can be written \( X=h_1(U_1,U_2) \) and \( Y=h_2(U_1,U_2) \) or 
+\((X,Y)=h(U_1,U_2) \) with \((X,Y)=h(U_1,U_2)=(h_1(U_1,U_2),h_2(U_1,U_2)) \), in this case
+\( h_1(a,b)=\sqrt{2.ln(\frac{1}{a}) } .cos(2.\pi.b )\) (to make the writing easier we use
+a,b instead \(U_1\) and \(U_2\) )
+\( h_2(a,b)=\sqrt{2.ln(\frac{1}{a}) } .sin(2.\pi.b )\), so
+ \( \frac{\partial h_1}{\partial a}(a,b)=\frac{1}{2}.(2.ln(\frac{1}{a}) )^{-\frac{1}{2}}.
+ ( 2.a.(\frac{-1}{a^2})).cos(2.\pi.b )  \)=
+ \(
+\frac{-1}{a}.(2.ln(\frac{1}{a}) )^{-\frac{1}{2}}).cos(2.\pi.b )
+  \) and \( \frac{\partial h_2}{\partial a}(a,b)=\frac{-1}{a}.(2.ln(\frac{1}{a}) )^{-\frac{1}{2}}.
+  sin(2.\pi.b ) \), on the other hand we have \( \frac{\partial h_1}{\partial b}(a,b)=
+  -2.\pi.\sqrt{2.ln(\frac{1}{a}) }.sin(2.\pi.b) \) and \( \frac{\partial h_2}{\partial b}(a,b)=
+  2.\pi.\sqrt{2.ln(\frac{1}{a}) }.cos(2.\pi.b) \).
+  <br> So \(J(a,b)=\frac{\partial h_1}{\partial a} . \frac{\partial h_2}{\partial b}-
+  \frac{\partial h_2}{\partial a} . \frac{\partial h_1}{\partial b}=-\frac{2.\pi}{a}.
+  (cos^2(2.\pi.b)+sin^2(2.\pi.b) )=-\frac{2.\pi}{a}\)
+  to find the joint density function for X and Y we use multidimensional change of RV, 
+  that is \(f_{X,Y}(x,y)=\frac{f_{U_1,U_2}(h^{-1}(x,y))}{|J(h^{-1}(x,y)) |} \), but first we must 
+  find \( h^{-1}\), that is we must write \(U_1 \) and \( U_2 \) using X and Y, 
+  for this we have: \(X^2+Y^2=2.ln(\frac{1}{U_1}) \), that is 
+  \(ln(\frac{1}{U_1})=\frac{X^2+Y^2}{2} \), that is \(U_1=e^{-\frac{X^2+Y^2}{2}}  \)
+  , on the other hand \(\frac{Y}{X}=tan(2.\pi.U_2) \), that is
+   \(U_2=\frac{1}{2.\pi}.arctan(\frac{Y}{X}) \), so we have 
+   \( (U_1,U_2)=h^{-1}(X,Y)=(h_1^{-1}(X,Y),h_2^{-1}(X,Y)))=(e^{-\frac{X^2+Y^2}{2}},
+   \frac{1}{2.\pi}.arctan(\frac{Y}{X})  )\), so  
+   \(f_{X,Y}(x,y)=\frac{f_{U_1,U_2}(h^{-1}(x,y))}{|J(h^{-1}(x,y)) |}=
+   \frac{f_{U_1,U_2}(e^{-\frac{x^2+y^2}{2}},
+   \frac{1}{2.\pi}.arctan(\frac{y}{x}))}{|J(e^{-\frac{x^2+y^2}{2}},
+   \frac{1}{2.\pi}.arctan(\frac{y}{x})) |}=
+   \frac{1}{\frac{2.\pi}{e^{-\frac{x^2+y^2}{2}}} }=\frac{e^{\frac{x^2+y^2}{2}}}{2.\pi}
+   =\frac{1}{2.\pi}. e^{-\frac{x^2+y^2}{2}}\) ( note that 
+ \(  f_{U_1,U_2}(e^{-\frac{x^2+y^2}{2}},
+   \frac{1}{2.\pi}.arctan(\frac{y}{x}))=1 \), 
+   because \(0 &le; e^{-\frac{x^2+y^2}{2}} &le; 1 \) and 
+   \(0 &le;  \frac{1}{2.\pi}.arctan(\frac{y}{x})  &le; 1 \), so for all x and y we have 
+   \(f_{X,Y}(x,y)=(\frac{1}{\sqrt{2.\pi}}.e^{-\frac{x^2}{2}}) . 
+   (\frac{1}{\sqrt{2.\pi}}.e^{-\frac{y^2}{2}}) \)  , so X and Y are i.i.d normally distributed.
+  </span>
+    <h3 id="4_6_3">4.6.3 Sampling from a distribution </h3>
+    <b>Theorem</b>
+    	<div class="box1">
+    Let \(F_X \) be the cumulative distribution function of a RV X and U~[0,1], the 
+    cumulative distribution  function of the RV Y defined as \(Y= F_X^{-1}(U) \) is \(F_X\).
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+    <br>Let's first define the inverse cumulative distribution function 
+    (or quantile function) of a RV X whose CDF is \(F_X\).
+    <br>The inverse CDF of X is the function \(F_X^{-1} \) defined by: 
+    \( F_X^{-1}(t)=min\left\{x:F_X(x) &ge; t \right\} \), for \(0 &lt; t &lt;   1\)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <img src="/img/figure122.png"  style="float: right; width: 40%; height: 60%;" class="image1">
+    \(F_X^{-1}((F_X(t))=min\left\{x:F_X(x) &ge; F_X(t) \right\} \), for \(0 &lt; t &lt;   1 \), 
+    we know that \(F_X \) is  increasing, if we suppose that \(F_X\) is also strictly increasing 
+    and continuous  then 
+    \(min\left\{x:F_X(x) &ge; F_X(t) \right\}=t \), that is \(F_X^{-1}(F_X(t))=t\), in this special case 
+     \(F_X^{-1} \) is nothing but the inverse function of  \(F_X\). (in general it's not true,
+      because the inverse function of \(F_X\) doesn't exist, take the case of a discrete RV)
+    <br>Now let's prove that the CDF of the RV defined as \(Y= F_X^{-1}(U) \) is \(F_X\).
+  <br>We have \(F_Y(y)=P(Y &le; y) =P(F_X^{-1}(U) &le; y) \), 
+  \(F_X^{-1}(U) \) is the smallest value x such that F(x) &ge; U, so   
+  \(F_X^{-1}(U) &le;y \Leftrightarrow U &le; F(y) \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Let's prove first that   \(F_X^{-1}(U) &le;y \Rightarrow U &le; F_X(y) \), this is 
+    straightforward  since \(F_X^{-1}(U) \) is the smallest value x such that \(F_X(x)\) &ge; U
+    so if \(F_X^{-1}(U) &le;y  \) then y satisfies also the condition \(F_X(x) &ge; U \), that 
+    is  \(F_X(y) &ge; U \), now let's prove \(U &le; F_X(y) \Rightarrow F_X^{-1}(U) &le;y \)
+  this is also straithforward since \(F_X^{-1}(U) \) is the smallest value x such that 
+  \(F_X(x)\) &ge; U.
+  </span>
+  </span>
+</span>
+    	 </div>
+    	 
+    <br>
+    <br>   
+    <br>
+    <br>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="utf-8">
+<title>Set theory,latex.codecogs.com</title>
+</head>
+<script>
+
+  </script>
+  
+
+<body>
+
+	<div layout:fragment="content">
+	
+  
+	<h1 id="B">B. Linear Algebra </h1>
+	<h2 id="B_1">B.1 Fields and Vector spaces </h2>
+	<h3 id="B_1_1">B.1.1 Fields </h3>
+&#9312;. <b>Definitions:</b> A field is a set F together with two binary operations that satisfies the 
+field axioms.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> A binary operation on F is a mapping that associates to each ordered pair on F a unique 
+   element on F, field axioms are the following.
+   <br>The two operations are called addition and multiplication.
+   <br> 1. Addition is commutative \(a+c=c+a \) 
+   <br>2. Multiplication is commutative \(a.c=c.a\)
+<br>3. Addition is associative \(a+(c+d)=(a+c)+d \) 
+<br>4. Multiplication is associative \((a.c).d=a.(c.d) \) 
+<br>5. Additive identity: There is a unique element noted by 0 such that for every \(x \in F, x+0=x\) 
+<br>6. Multiplication identity: There is a unique  element in F noted by 1 such that for every 
+\(x \neq 0, x.1=x\).
+<br>7. Additive inverse: For every \(x \in F\) there is a unique elements \(y \in F\) such as \(x+y=0\), 
+we write \(y=-x\), additive inverse is called subtraction.
+<br>8. Multiplicative inverse: For every \(x \in F\) such that \(x \neq 0\) there is unique \(y \in F\) such 
+that \(y \neq 0\) and \(x.y=1\), we write \(y=x^{-1} or \;y=1/x\), multiplication inverse is called division.
+<br>9. Multiplication is distributive over addition: for every x,y and z \( \in F \) we have 
+\(x.(y+z)=x.y+x.z \).
+<br>An element of F is called a scalar.
+  </span>
+ <br> &#9313;. <b>Subfield:</b> A subset F' of F is called a subfield of F if it is itself a field.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> this means that F' contains 0 and 1, and if \(x \in F'\) and \(y \in F'\) such that \(x \neq 0\) then
+    \(x.y, x+y, -x ,x^{-1} \in F'\) .
+  </span>
+  <br>&#9314;. <b>Examples:</b>
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  
+     <br>- \(\mathbb{C}\) the set of complex number is a field under usual operations of addition and multiplication.
+  <br>- \(\mathbb{R}\) the set of real numbers is a subfield of \(\mathbb{C}\).
+  <br>- The set of integers is not a subfield of \(\mathbb{R}\). (there is no multiplicative inverse)
+  <br>- The set of rational numbers (p/q) is a subfield of \(\mathbb{R}\).
+  </span>
+  	<h3 id="B_1_1">B.1.1 Vector spaces (or linear spaces) </h3>
+ &#9312;. <b>Definition of vector space:</b> 
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> A vector space consists of:
+   <br>1. A field F of scalars.
+   <br>2. A set V of objects called vectors.
+   <br>3. A commutative and associative rule 
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   or operation.
+  </span>
+  under which V is closed
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> For every two vectors u and v of V \(u+v \in V\)
+  </span>
+ and  having the additive identity 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> there exists a unique vector 0 in V such that for every \(u \in V\) \(u+0=u\) 
+  </span>
+  and additive inverse.
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> for every vector \(u \in V\)  there is a unique vector v such that \(u+v=0\) and denoted by -u
+  </span>
+ 
+   <br>4. A rule  called scalar multiplication which associates to every scalar \(a\) in F 
+   and vector u in V  a vector  v in V called product of a and u and denoted by \(a.u\)  and having the 
+   following properties.
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br> for every vectors u and v in V.
+   <br> a) 1.u=u  (1 is the identity multiplication element of F)
+   <br>b) \((a_1.a_2).u=a_1.(a_2.u)\)
+  <br>c) \(a.(u+v)=a.u+a.v\)
+  <br>d) \((a+b).u=a.u+b.u\)
+  </span>
+   
+  </span>
+<br>&#9313;. Example of vector space: \(F^n\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> <br>&#9315;. <b>Lists:</b> A list is a collection of ordered elements and denoted by \((x_1,..,x_n)\), 
+n is called the length of the list.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br>-  A list must be necessarily finite (\(x_1,x_2,..\) is not a list.
+   <br>- Two lists \((x_1,..,x_n)\) and \((x'_1,..,x'_n)\) are equal iff \(x_1=x'_1\) and  \(x_2=x'_2\) 
+   and..\(x_n=x'_n\).
+   <br>- Lists are different from sets in the sense that in sets order and repetition don't matter.
+   <br>- the lists \((1,2)\) and \((2,1)\) are not equal but the sets \(\left\{1,2 \right\} \) and 
+   \(\left\{2,1 \right\} \) are equal.
+   <br>- the lists \((1,2,2)\) and \((1,2)\) are not equal but the sets \(\left\{1,2,2 \right\} \) and 
+   \(\left\{1,2 \right\} \) are equal.
+  </span>
+  <br>&#9316;. <b>\(F^n\):</b> is the set of lists \((x_1,..,x_n)\) where \(x_i \in F\) and i=1..n 
+    <br>&#9316;. <b>Addition in \(F^n\):</b> \((x_1,..,x_n)+(y_1+..+y_n)=(x_1+y_1+..+x_n+y_n)\)
+  </span>
+ 
+ 
+	<h3 id="1_1_2">1.1.2 System of linear equations </h3>
+&#9312;. The objective is to find a solution to the system \(A.X=y\) .
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br>where 
+\(Y=
+   \begin{pmatrix}
+   y_1 &\\
+   y_2 & \\
+   &#8942;\\
+   y_n & 
+   \end{pmatrix}
+   \) , \(A=
+   \begin{pmatrix}
+ a_{11} & a_{12}  & ... & a_{1n} \\ 
+ a_{21} & x_{22}  & ... & x_{2n} \\ 
+  &#8942;& &#8942; & &#8942; & &#8942;\\ 
+ a_{m1} & a_{m2}  & ... & a_{mn}  
+\end{pmatrix}
+   
+   \), 
+    \(    X=
+
+    \begin{pmatrix}
+   x_1 &\\
+    x_2 & \\
+   &#8942; \\
+    x_n & 
+   \end{pmatrix}
+   \)  , that is to find \(x_1,..,x_n\) such that:
+   <br>- \(a_{11}.x_1+a_{12}.x_2+..+a_{1n}.x_n=y_1\)
+   <br>- \(a_{21}.x_1+a_{22}.x_2+..+a_{2n}.x_n=y_2\)
+   <br>-&emsp; &#8942;  &emsp;&emsp;  &emsp;     &#8942; &emsp;&emsp;  &emsp;    &#8942;
+    <br>- \(a_{m1}.x_1+a_{m2}.x_2+..+a_{mn}.x_n=y_m\)
+   <br> - n is the number of unknown scalars \(x_i\) and m is the number of equations.
+   <br>- If Y=0 that is \(y_1=y_2=..=y_n\) the system is called homogeneous system.
+  </span>
+<br>&#9313;. Two dimensions Example: 
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br>  Consider the following two equations:
+   <br>&#9755; \(3.x_1-2.x_2=2\),  \(x_1+x_2=4\)
+   <br>- With geometry analogy we can say that the first equation is the equation of a line passing 
+   through points (4,5) and (2,2), the second   is the equation of a line passing (4,0), (0,4), those two 
+   line are not parallel because the vector u=(4-2,5-2)=(2,3) and the vector v=(4-0,0-4)=(4,-4) are not
+    linear that there is no scalar a such that u=a.v, so there is a unique point such that those two line 
+    passe through, this point is (2,2) (see figure B1)
+   <img src="/img/AppendixB/FB1.png"  style="float: right; width: 62%; height: 85%;" class="image1">	
+    conversely the system of equations:
+       <br>&#9755; \(3.x_1-2.x_2=2\), \(x_1-\frac{2}{3}.x_2=\frac{2}{3}\), has infinitely many solutions 
+       because the  two line are identical (take any point \((x_1,x_2)\) that belongs to a line and check that 
+       it belongs also to other line) so the set of all solutions is
+        \(S=  \left\{(x_1,x_2) | x_1=\frac{2}{3}+\frac{2}{3}.x_2 \right\} \)
+       <br>&#9755; The system  \(3.x_1-2.x_2=2\) and  \((3.x_1-2.x_2=1  \) has no solution because it 
+       represents two distinct parallel lines.
+  </span> 
+  <br>&#9314;. <b>Gaussian elimination: </b> Example in three dimensions.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Consider the system of equations:
+  <br>-  &#x24D0;: \(2.x+3.y-z=1\)
+  <br>-  &#x24D1;:\( x+y+z=10 \)
+  <br>- &#x24D2;: \(x-y+z=6\)
+  <br> The system above can be easily transformed by Gaussian elimination to the following system:
+    <br>-  &#x24D0;: \(2.x+3.y-z=1\)
+<br>-  &#x24D1;:  \(y-3.z=-19\)
+<br>-  &#x24D2;: \(z=7\)
+so this elimination transformed a complicated system to a less complicated one, that is :
+A.X=B  to A'.X=B' where
+
+ \(
+ \begin{pmatrix}
+ 2& 3 & -1\\ 
+ 1&  1& 1\\ 
+ 1& -1 & 1 
+\end{pmatrix}.
+\begin{pmatrix}
+ x& \\ 
+ y&  \\ 
+ z&  
+\end{pmatrix}=
+\begin{pmatrix}
+ 1& \\ 
+ 10&  \\ 
+ 6& 
+\end{pmatrix}
+\rightarrow
+ \begin{pmatrix}
+ 2& 3 & -1\\ 
+ 0&  1& -3\\ 
+ 0& 0 & 1 
+\end{pmatrix}.
+\begin{pmatrix}
+ x& \\ 
+ y&  \\ 
+ z&  
+\end{pmatrix}=
+\begin{pmatrix}
+ 1& \\ 
+-19&  \\ 
+ 7& 
+\end{pmatrix}
+
+ \)
+  </span>
+  <br>&#9315;. <b>Transforming the matrix: </b> 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br>  The objective in general when the number of unknown parameters is equal to the number 
+   of equation is to transform the system \(A.X=b\) to a system \(A'X=d\) where A' is an upper 
+   diagonal  matrix, that is 
+  <br> \(   \begin{pmatrix}
+ a_{11} & a_{12}  & ... & a_{1n} \\ 
+ a_{21} & a_{22}  & ... & a_{2n} \\ 
+  &#8942;& &#8942; & &#8942; & &#8942;\\ 
+  a_{(n-1)1} & a_{(n-1)2}  & ... & a_{(n-1)n}  \\
+ a_{n1} & a_{n2}  & ... & a_{nn}  
+\end{pmatrix}. 
+
+\begin{pmatrix}
+ x_1  \\ 
+ x_2  \\ 
+  &#8942;\\ 
+  x_{n-1}\\
+x_n 
+\end{pmatrix}=
+\begin{pmatrix}
+ b_1  \\ 
+ b_2\\ 
+  &#8942;\\ 
+  b_{n-1}\\
+b_n 
+\end{pmatrix}
+ \rightarrow 
+ \begin{pmatrix}
+ c_{11} & c_{12}  & ... & c_{1n} \\ 
+           & c_{22}  & ... & c_{2n} \\ 
+           &            & &#8942; & &#8942;\\ 
+           &            & ...  c_{(n-1)(n-1)}           & c_{(n-1)n}  \\
+           &            & ...                                 & c_{nn}  
+\end{pmatrix}. 
+
+\begin{pmatrix}
+ x_1  \\ 
+ x_2  \\ 
+  &#8942;\\ 
+  x_{n-1}\\
+x_n 
+\end{pmatrix}=
+\begin{pmatrix}
+ d_1  \\ 
+ d_2\\ 
+  &#8942;\\ 
+  d_{n-1}\\
+d_n 
+\end{pmatrix}
+ 
+ \) this equivalent to transforming 
+ \( 
+ a_{11}.x_1+a_{12}.x_2+..+a_{1(n-1)}.x_{n-1}+a_{1n}.x_n=b_1 \\
+  a_{21}.x_1+a_{22}.x_2+..+a_{2(n-1)}.x_{n-1}+a_{2n}.x_n=b_2\\
+   &#8942;\\
+   a_{n1}.x_1+a_{n2}.x_2+..+a_{n(n-1)}.x_{n-1}+a_{nn}.x_n=b_n\) to 
+\( c_{11}.x_1+c_{12}.x_2+..+c_{1(n-1)}.x_{n-1}+c_{1n}.x_n=d_1 \\
+&emsp;&emsp;&emsp;&ensp;c_{22}.x_2+..+c_{2(n-1)}.x_{n-1}+c_{2n}.x_n=d_2\\
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &#8942;\\
+ &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; c_{(n-1)(n-1)}.x_n+c_{nn}.x_n=d_{n-1}\\
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+c_{nn}.x_n=d_n
+\), so to find the vector \(X=(x_1,..,x_n)'\) we have \(x_n=\frac{d_n}{c_{nn}} \) (we suppose \(c_{nn} \neq 0\))
+ then we find \(x_{n-1}\) then \(x_{n-2}\), etc..
+  </span>
+   <br>&#9314;. <b>Elementary Row Operations: </b>
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> - \(1^{st}\)  operation \(e_1\): Multiply a row by a non-zero constant (call it \(\alpha\)):
+     <br> - \(2^{nd}\) operation \(e_2\): Replace the \(r^{th}\) row by \(r^{th} row+\alpha.q^{th} row \) 
+     <br>- \(3^{rd}\) operation \(e_3\):  Interchange any two rows (let them be r and q).
+   
+  </span>
+     <br>&#9315;. <b>Function of row operations: </b> is a function
+      \(e: \mathbb{R}^{m \times n}\rightarrow \mathbb{R}^{m \times n}\) which applies one of the 
+      elementary operations.
+      <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br>- \(e_1([a_{ij}]_m^n)=\left\{\begin{matrix}
+a_{ij} & \;if\; i \neq s\\
+\alpha.a_{sj}&  
+\end{matrix}\right.\), where \([a_{ij}]_m^n\) is a matrix of m rows and n columns and whose elements
+ are \(a_{ij}\).
+ <br>- \(e_2([a_{ij}]_m^n)=\left\{\begin{matrix}
+a_{ij} & \;if\; i \neq r\\
+a_{rj}+\alpha.a_{qj}&  
+\end{matrix}\right.\)
+<br>- \(e_3([a_{ij}]_m^n)=\left\{\begin{matrix}
+a_{qj} & \;if\; i = r\\
+a_{rj} & \;if\; i = q\\
+a_{ij} &   \;if\; i \neq q \;and\; j \neq q\\
+\end{matrix}\right.\)
+  </span>
+       <br>&#9316;.If a system S' is obtained by linear combination of 
+       system a system S then any solution of S is also a solution of S'.
+       <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Let S be the following system:
+   \( 
+ a_{11}.x_1+a_{12}.x_2+..+a_{1(n-1)}.x_{n-1}+a_{1n}.x_n=b_1 \\
+  a_{21}.x_1+a_{22}.x_2+..+a_{2(n-1)}.x_{n-1}+a_{2n}.x_n=b_2\\
+   &#8942;\\
+   a_{m1}.x_1+a_{m2}.x_2+..+a_{m(n-1)}.x_{n-1}+a_{mn}.x_n=b_m\)
+   <br>- An equation obtained by a linear combination of k equations of system S is 
+   \(\alpha_1.(a_{11}.x_1+a_{12}.x_2+..+a_{1(n-1)}.x_{n-1}+a_{1n}.x_n)+
+   \alpha_2.(a_{21}.x_1+a_{22}.x_2+..+a_{2(n-1)}.x_{n-1}+a_{2n}.x_n)+\)\(
+   ..
+    +\alpha_k.(a_{k1}.x_1+a_{k2}.x_2+..+a_{k(n-1)}.x_{n-1}+a_{kn}.x_n)=\alpha_1.b_1+..+\alpha_k.b_k
+   \), that is 
+   \((\alpha_1.a_{11}+\alpha_2.a_{21}+..+\alpha_k.a_{k1}).x_1+
+   (\alpha_1.a_{12}+\alpha_2.a_{22}+..+\alpha_k.a_{k2}).x_2+..+
+    (\alpha_1.a_{1k}+\alpha_2.a_{2k}+..+\alpha_k.a_{kn}).x_n\)\(
+   =  \alpha_1.b_1+..+ \alpha_k.b_k   \), that is 
+      \( a'_{11}.x_1+a'_{12}.x_2+..+a'_{1(n-1)}.x_{n-1}+a'_{1n}.x_n=b'_1 \\
+  a'_{21}.x_1+a'_{22}.x_2+..+a'_{2(n-1)}.x_{n-1}+a'_{2n}.x_n=b'_2\\
+   &#8942;\\
+   a'_{k1}.x_1+a'_{k2}.x_2+..+a'_{k(n-1)}.x_{n-1}+a'_{kn}.x_n=b'_k\)
+  </span>
+	  <br><br>
+  <br><br>
+  <br><br>
+</div>
+
+</body>
+</html>

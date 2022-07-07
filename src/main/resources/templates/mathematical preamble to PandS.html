@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="utf-8">
+<title>Set theory,latex.codecogs.com</title>
+</head>
+    <script>
+
+    </script>
+  
+<body>
+
+	<div layout:fragment="content">
+	<h2 id="1">1. Some important properties</h2>
+<b>	1.Taylor Series</b>:  \( f(x)=\sum\limits_{k=0}^{+\infty}c_k (x-a)^k\), where  
+\(c_k={f^k(a) \over k!} \)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  And f is an infinitely differentiable function  at point a, \(f^k(a)  \) is the \(k^{th}\) 
+  derivative of f at a.
+ <br>    that is: \( f(x)=c_0+c_1(x-a)+c_2(x-a)^2+c_3(x-a)^3+c_4(x-a)^4+c_5(x-a)^5+c_6(x-a)^6+c_7(x-a)^7..\)
+  Let's remember the general formula for taylor series by making the 
+  n<sup>th</sup> derivative, , we have:
+
+
+
+<br>- 1<sup>st</sup> derivative: \( f^1(x)=c_1+2c_2(x-a)+3c_3(x-a)^2+4c_4(x-a)^3+5c_5(x-a)^4+6c_6(x-a)^5.+7.c_7(x-a)^6+.. \)
+<br>- 2<sup>nd</sup> derivative: \(f^2(x)=2.c_2+3.2.c_3(x-a)+4.3.c_4(x-a)^2+5.4.c_5(x-a)^3+6.5.c_6(x-a)^4+7.6.c_7(x-a)^5+..\) 
+<br>- 3<sup>rd</sup> derivative: \(f^3(x)=3.2.c_3+4.3.2.c_4(x-a)+5.4.3.c_5(x-a)^2+6.5.4.c_6(x-a)^3+7.6.5.c_7(x-a)^4+..\) 
+<br>- 4<sup>th</sup> derivative: \(f^4(x)=4.3.2.1.c_4+5.4.3.2.c_5(x-a)+6.5.4.3.c_6(x-a)^2+7.6.5.4.c_7(x-a)^3+..\) 
+
+<br>By taking x=a, we can see that:  \(c_n={f^n(a) \over n!} \), we can prove this by recursion (\( f^0(x)=f(x)\)), so the general formula for taylor series is:
+
+\( f(x)=\sum\limits_{k=0}^{+\infty}{f^k(a) \over k!} (x-a)^k \)
+  </span>.
+ 
+<br><b>2. Binomial expansion</b>: \((1+x)^\alpha=\sum\limits_{k=0}^{+\infty}\binom{\alpha}{k} x^k \)
+  for any real numbers x and &alpha; , particularly if &alpha; is a natural number then 
+  \((1+x)^\alpha=\sum\limits_{k=0}^{\alpha}\binom{\alpha}{k} x^k \)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Let'  apply  Taylor series for \(f(x)=(1+x)^\alpha \)
+<br>In this case \(c_k={f^k(a) \over k!} ={\alpha.(\alpha-1)..(\alpha-k+1) \over k!}{(1+a)^{(\alpha-k)}}={\alpha! \over {k!(\alpha-k)!}}{(1+a)^{(\alpha-k)}}\) 
+  for a=0 we have \(c_k={\alpha! \over {k!(\alpha-k)!}}.1=\binom{\alpha}{k} \) 
+  <br> \( \binom{\alpha}{k} \) is called   binomial coefficient.
+  <br>If &alpha; is a natural number then all the terms where k &ge; &alpha;+1 cancel out.
+  <br> The proof of the 
+  </span>
+<br><b>3.Binomial theorem: </b> 
+  \((a+b)^m=\sum\limits_{k=0}^m \binom{m}{k}a^k.b^{m-k}\), where m is a natural number
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    The proof of this use Pascal's identity  \(\binom{n}{k-1}+\binom{n}{k}=\binom{n+1}{k} \)
+  </span>
+<br><b>4. L'Hopital's rule</b>: \( \displaystyle \lim_{x \to c} {f(x) \over g(x)}=\displaystyle \lim_{x \to c} {f'(x) \over g'(x)}\) 
+ , f and g are two functions  such that: \( \displaystyle \lim_{x \to c} {f'(x) \over g'(x)}\) exists,
+  c can be \( \infty\)
+  
+ <h1 id="2">2. Functions </h1>
+ <h2 id="2_1">2.1 Functions of one variable </h2>
+ 
+1.\(\displaystyle \lim_{x \to c} f(x)=a \Leftrightarrow \forall \epsilon &gt;0, \;\exists
+\; \delta &gt;0 \;such \; that: \; \; |x-a| &lt; \delta  \Rightarrow |f(x)-a| &lt;\epsilon\)
+
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    The limit of f at c is a
+  </span>
+
+ <br>2. f is <b>Right continuous </b>at "a"  \(\Leftrightarrow   \displaystyle \lim_{x \to a^+}f(x)=f(a) \)
+<br> 3.  f is <b>Left continuous </b>at "a" \(\Leftrightarrow  \displaystyle \lim_{x \to a^+}f(x)=f(a) \)
+<br>4. f is <b>Continuous </b> at "a"  \(\Leftrightarrow  \displaystyle \lim_{x \to a}f(x)=f(a) \)
+<br>5. f is <b>Right differentiable </b>at "a"  \(\Leftrightarrow  \displaystyle \lim_{x \to a^+}{{f(x)-f(a)} \over {x-a}}=f'(a^+) \) exists
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     <img src="/img/figure35.png"  style="float: right; width: 45%; height: 65%;" class="image1">
+<br>Let f be a function and "a" a number in its domain, consider the line \(D_{\alpha-a} \) passing through two points 
+(a, f(a)) and (&alpha;,f(&alpha;)), the general formula for line equation can be written in the 
+form:\(y=\gamma x+\zeta \).
+<br> Pluging the coordinates of the two points in this equation gives:
+\( y={{f(\alpha)-f(a)} \over {\alpha-a}}x+{  { af(\alpha)-\alpha f(a) } \over {a-\alpha  }  }=\)
+\({\Delta_{y} \over \Delta_{x}}x+{  { af(\alpha)-\alpha f(a) } \over {a-\alpha  }  }=\)
+\({\Delta_{y} \over \Delta_{x}}x+{  { af(\alpha)-af(a)+af(a)-\alpha f(a) } \over {a-\alpha  }  }\)
+
+that is \( y={\Delta_{y} \over \Delta_{x}}x+{  a{ f(\alpha)-af(a) } \over {a-\alpha  }  }+
+{  a{ f(a)-\alpha f(a) } \over {a-\alpha  }  }\) finally we get:
+\( y=tan(\theta).x+(f(a)-a. tan(\theta))\) or \(y=tan(\theta).(x-a)+f(a) \)
+<br>f is differentiable at the right of a means there exists a unique angle  \( \theta_{a} \)
+ 
+ <br> such as: \(\alpha \rightarrow  a^+ \Rightarrow \theta \rightarrow  \theta_{a} \)
+<br> that is \( 
+
+\displaystyle \lim_{\alpha\to a^+}tan(\theta)=tan(\theta_{a})=\displaystyle \lim_{\alpha\to a^+}{{f(x)-f(a)} \over {x-a}}=f'(a^+)
+ \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+<br>  figure 35 illustrates the concept of right differentiability, &alpha; starts at a position where &theta;  is positive,  as &alpha; gets closer to a, &theta; 
+shrinks in size but stays positive until it is 0, then starts to grow but in the opposite direction (negative) until it 
+reachs a size where &alpha; can not get any closer to a.
+ </span>
+   <img src="/img/figure36.png"  style="float: right; width: 45%; height: 65%;" class="image1">
+ <br>A vector in the direction of the line \(D_{\alpha-a} \) is \(u=\delta x .i+\delta y. j\)
+ , where (O,i,j) is the orthonormal system for cartesian coordinates, u becomes the 
+ tangent to f when \( \alpha approaches a\) that is \(u=dx .i+dy. j\), if we divide by a very
+ small variation in time dt (or a parameter t) we obtain, :
+  \( \frac {u}{dt}=\frac{dx}{dt}.i+\frac{dy}{dt}.j \), that is \( u'=x'(t_0).i+y'(t_0).j\), 
+  where \(x(t_0)=a \) and \(y(t_0)=f(a) \) ( u' is a vector with the same direction as u).
+ 
+  </span>
+   <br>6. f is <b>Left differentiable </b>at "a" \(\Leftrightarrow  \displaystyle \lim_{x \to a^-}{{f(x)-f(a)} \over {x-a}}=f'(a^-) \) exists
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Figure 36 illustrates the concept of left differentiability, the equations above are still valid, providing we replace (+) by (-).
+   Our f curve is smooth enough that \( f'(a^-)=f'(a^+)\), in this case we say f is simply differentiable at a and f'(a) is the slope of the curve at a.
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  figure 37 gives a case where a function is differentiable at either side of "a"  but not at "a".
+    <img src="/img/figure37.png"  style="float: right; width: 45%; height: 65%;" class="image1">
+    </span>
+   
+  </span>
+ <br>7. f is <b>Differentiable </b>at "a" 
+ \(\Leftrightarrow \displaystyle \lim_{\delta x \to 0} \frac{f(a+\delta x)-f(a)}{\delta x}=
+ \displaystyle \lim_{ x \to a} \frac{f( x)-f(a)}{ x-a}= \frac{df}{dx}(a)=f'(a) \) exists
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Another definition is: f is Differentiable at a  \(\Leftrightarrow f'(a^-) \;and\; f'(a^+) \)
+    exists and are equal
+
+  </span>
+ <br><b>8. Product derivative</b>:  \( d(uv)=v.du+u.dv\)
+
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+<br>In all the following we write interchangeably u and u(x), (uv)(x) and u(x).v(x) and uv, du and du(x) 
+
+ \(du=u(x+dx)-u(x) \;and \; dv=v(x+dx)-v(x) \) and
+\( d(uv)=(uv)(x+dx)-(uv)(x)\) so \( d(uv) =u(x+dx).v(x+dx)-u(x).v(x)=(du+u)(dv+v)-uv=\)
+\(du.dv+v.du+u.dv+uv-uv=v.du+u.dv \), the term \(du.dv \) is negligible.
+  If we devide by dx we obtain In Lagrange notation  (uv)'=u'v+uv'.
+  </span>
+   <br><b> 9.Chain rule</b>: \( (g o f)'(x)=g(f(x))'=f'(x).g'(f(x))\) , or \(d(f o g)=f' o g.dg \),
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+      or 
+   \(df(g(x))=\frac{df}{dz}(z).dg(x)\), or \(\frac{df}{dx}(z)=\frac{df}{dz}(z).\frac{dg}{dx} (x) \), or \(df=\frac{df}{dz}.dg \)
+ where z=g(x)
+  </span>
+  
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+       <br>Knowing the derivative of g and f at a point x we want to find the derivative of the composite 
+   function fog(x),    which is f(g(x))
+  \(A= \displaystyle \lim_{dx \to 0}{{(fog)(x+dx)-(fog)(x)} \over {dx} }=  
+  \displaystyle \lim_{dx \to 0}{{(f(g(x+dx))-f(g(x)).(g(x+dx)-g(x))} \over {dx.{(g(x+dx)-g(x))}} }
+  \\= \displaystyle \lim_{dx \to 0}{{f(g(x+dx))-f(g(x))} \over {{g(x+dx)-g(x)}} }
+ .\displaystyle \lim_{dx \to 0}{{g(x+dx)-g(x)} \over {dx} }
+  \)
+<br>For the first limit let \(z=g(x)\), then \(dz=g(x+dx)-g(x)\), so \(g(x+dx)=dz+g(x)\) also we have
+ \( dx \rightarrow 0 \Rightarrow  dz \rightarrow 0 \), so
+\(A=
+  \displaystyle \lim_{dz \to 0}{{f(g(x+dx))-f(g(x))} \over {{dz}} }.g'(x)=
+  \displaystyle \lim_{dz \to 0}{{f(z+dz)-f(z)} \over {{dz}} }.g'(x)=f'(z).g'(x)=g'(x).f'(g(x))   \)
+  <br> using differentials we have \(d(f(g(x)))=f(g(x+dx))-f(g(x))=\frac{f(g(x+dx))-f(g(x))}{g(x+dx)-g(x)} \) 
+ \((g(x+dx)-g(x))\) if we put z=g(x), we will get: \(d(f(g(x)))=\frac{f(z+dz)-f(z)}{dz}(g(x+dx)-g(x))=\)
+ \(\frac{df}{dz}(z).dg(x)=\frac{df}{dz}(g(x)).dg(x)=f'(g(x)).dg(x) \), so \(d(f o g)=f' o g.dg) \)
+  </span>
+
+   <br><b> 10.Inverse derivative</b>:\( (g^{-1}(x))'={1 \over g'(g^{-1}(x))  }\), where
+   g is a function that is both differentiable and invertible.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>We have:\( g(g^{-1}(x)) =x\), so \( (g(g^{-1}(x)))' =1\), that is \( (g^{-1})'(x).g'( g^{-1}(x))=1\), so
+  \(  (g^{-1})'(x)={1 \over g'( g^{-1}(x))} \)
+  </span>
+  <br><b>11. Approximation of a function f near a point (a,f(a)):</b>\( f(x)=f'(a)(x-a)+f(a) \)
+<br><b>12.Tangent line to a function at a point (a,f(a)):</b> \(y=f'(a)(x-a)+f(a) \)
+  <br><b>13.Tangent vector to a function at a point (a,f(a)):</b> \(&lt;1,f'(a)&gt;\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <img src="/img/figure35.png"  style="float: right; width: 22%; height: 45%;" class="image1">		
+ <br> Let's consider a function f of one variable and A(a,f(a)) a point on the curve of f, let M(x,f(x))
+  any point on the curve of f, we have \(AM=OM-OA=(x-a) i+(f(x)-f(a))\) j, that is :
+  \(\frac{AM}{x-a}=i+\frac{f(x)-f(a)}{x-a}j\), the tangent vector v is the same direction as
+   AM when M  approaches A, that is \(v= \displaystyle \lim_{x \to a} AM=i+  f'(a)j\)
+
+  <br><br> <br><br>
+  </span>
+     <br>14.  f is <b>convex</b> at interval I \(\Leftrightarrow \forall (x,y) \in I^2 | x &lt; y  \) 
+   the line \(((x,f(x)), (y,f(y))\) lies entirely above the graph of f.
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  as you can see in figure 132 the line \( D_{xy} \) lies entirely above the graph of f
+    <img src="/img/figure132.png"  style="float: right; width: 22%; height: 45%;" class="image1">	
+  </span>
+ <br><b>15. Mean value theorem</b>
+ Let \(g\) be a continuous function on a closed interval [a,b] and differentiable on the open interval 
+]a,b[, then there exists a point \(\alpha\) in ]a,b[ such that \(g'(\alpha)=\frac{g(b)-g(a) }{b-a }\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>As you can see in the picture there must be a real number in the interval ]a,b[ such as the tangent 
+  to the curve of g and the line \( D_{a-b}\) have the same slope. 
+    <img src="/img/figure134.png"  style="float: right; width: 32%; height: 45%;" class="image1">	
+   <br>There is another version for this theorem using integrals, actually let's apply this theorem 
+   for G the primitive function of g, so there exists a real number \(\alpha \)  
+   \(G'(\alpha)=\frac{G(b)-G(a) }{b-a }\), that is \(\int_{a }^{b }g(x).dx=(b-a).g(\alpha)\)
+    <br><br><br><br>
+  </span>
+   <br><b>16. Generalized functions-Impulse function-</b>
+   \(\int_{-\infty}^{+\infty}h(x).\delta(x-x_0).dx=h(x_0) \) provided h is continuous at \(x_0 \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br> In probability distributions we have to use PMF for discrete RV and PDF for continuous 
+  function, it would be much easier if we can handle discrete RV as if they were continuous that is 
+  to find a cumulative probability function that has no jump, Dirac or Delta function which are 
+  generalized functions can answer this problem.  
+    <br>Let's fist define the delta Dirac function or impulse function:
+    <img src="/img/figure135-1.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+    <br>Consider the unit step function u defined as 
+      \(u(x)=\left\{\begin{matrix}
+1  &  &  \; x &ge; 0  \\
+ 0  &  &  otherwise  \\
+\end{matrix}\right.\), this function has a jump at 0, we want to come up with a function that 
+approaches this function but with no jumps (continuous).
+ <br><br>
+  <br> Let's define the function \(u_\alpha\) as follows:
+  <br> \(u_\alpha(x)=\left\{\begin{matrix}
+1  &  &  \;x &ge; \frac{\alpha}{2}  \\
+ \frac{1}{\alpha}.(x+ \frac{\alpha}{2} )  &  &  x &le; |\frac{\alpha}{2}|   \\
+ 0  &  &  x &le; -\frac{\alpha}{2}  \\
+\end{matrix}\right.\)
+<img src="/img/figure135-2.png"  style="float: right; width: 42%; height: 45%;" class="image1">
+, let \( \delta_\alpha \) be the derivative of \(u_\alpha\), 
+we have \(\delta_\alpha(x)=\frac{du_\alpha}{dx}(x) \) (1) that is 
+ \(\delta_\alpha(x)=\left\{\begin{matrix}
+ \frac{1}{\alpha}  &  &  x &lt; |\frac{\alpha}{2}|   \\
+0 &  &  x &gt; |\frac{\alpha}{2}|   \\
+\end{matrix}\right.\), note that \(\delta_\alpha\) is not defined at \(\frac{\alpha}{2}\) and 
+\(-\frac{\alpha}{2}\), we can see that \(u(x)=\displaystyle \lim_{\alpha \to 0} u_\alpha(x) \) (2).
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    for 0 both functions are not defined, note that 
+ \(\displaystyle \lim_{\alpha \to 0} u_\alpha(0) \neq 1/2 \), actually 
+ \(\displaystyle \lim_{\alpha \to 0} u_\alpha(x)=\)
+ \(\displaystyle \lim_{\alpha \to 0}  \frac{1}{\alpha}.(x+ \frac{\alpha}{2} )\), this limit doesn't exist
+  </span>
+  <br>The delta or Dirac function is defined as \(\delta(x)=\displaystyle \lim_{\alpha \to 0}\delta_\alpha(x)
+    \) (3), so  \(\delta(x)=\left\{\begin{matrix}
++\infty  &  &  x=0 \\
+0 &  &  elsewhere  \\
+\end{matrix}\right.\)
+
+<br>Combining (1),(2) and (3) we can write, \(\delta(x)=\frac{du}{dx}(x) \)
+<br>With this set up let's prove the identity we put at the beginning of this paragraph, that is,
+\(\int_{-\infty}^{+\infty}h(x).\delta(x-x_0).dx=h(x_0) \), actually, 
+\(\int_{-\infty}^{+\infty}h(x).\delta(x-x_0).dx=\int_{-\infty}^{+\infty}h(x).(\displaystyle \lim_{\alpha \to 0}\delta_\alpha(x-x_0)).dx=\)
+\(\displaystyle \lim_{\alpha \to 0}\int_{-\infty}^{+\infty}h(x).\delta_\alpha(x-x_0).dx=\)
+\(\displaystyle \lim_{\alpha \to 0}\int_{x_0-\frac{\alpha}{2} }^{x_0+\frac{\alpha}{2}}\frac{h(x)}{\alpha}.dx\)
+
+<br>By the mean value theorem we know that it exists an \(x_\alpha\) inside the interval 
+\(]x_0-\frac{\alpha}{2}, x_0+\frac{\alpha}{2} [ \), such as 
+\(\int_{x_0-\frac{\alpha}{2} }^{x_0+\frac{\alpha}{2}}h(x).dx=h(x_\alpha).
+(x_0+\frac{\alpha}{2}-(x_0-\frac{\alpha}{2}) )=\alpha.h(x_\alpha)\), that is 
+\(\int_{-\infty}^{+\infty}h(x).\delta(x-x_0).dx= \displaystyle \lim_{\alpha \to 0}h(x_\alpha) \), since
+\(x_\alpha \in ]x_0-\frac{\alpha}{2}, x_0+\frac{\alpha}{2} [ \), we have  
+\( \displaystyle \lim_{\alpha \to 0}h(x_\alpha) =h(x_0)\), this is the result we've been looking for. 
+<br>If we take \( h(x)=1 \), we have \(\int_{-\infty}^{+\infty}1.\delta(x-x_0).dx=1 \), by a variable 
+change we have \(\int_{-\infty}^{+\infty}\delta(x).dx=1 \),
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     intuitively we see that the area inside the 
+curve of \(\delta_\alpha \) is 1 whatever the value of \(\alpha \) may be.
+<img src="/img/figure136.png"  style="float: right; width: 52%; height: 45%;" class="image1">
+  </span>
+
+<br>more generally we have 
+\(\int_{-\epsilon}^{+\epsilon}\delta(x).dx=1 \) and for any \(\epsilon\) and any function continuous 
+over \(]x_0-\epsilon, x_0+\epsilon[ \) we have \(\int_{-\infty}^{+\infty}h(x).\delta(x-x_0).dx= \)
+\(\int_{x_0-\epsilon}^{x_0+\epsilon}h(x).\delta(x-x_0).dx=h(x_0) \), so the Dirac function has the
+ following properties:
+ <br>Let \(\epsilon \) be a real number such as \( \epsilon &gt;0 \)
+ <br>1.\(\delta(x)=\left\{\begin{matrix}
++\infty  &  &  x=0 \\
+0 &  &  elsewhere  \\
+\end{matrix}\right.\)
+<br>2. \(\delta(x)=\frac{du}{dx}(x) \)
+<br>3. \(\int_{-\infty}^{+\infty}h(x).\delta(x-x_0).dx=
+\int_{x_0-\epsilon}^{x_0+\epsilon}h(x).\delta(x-x_0).dx=h(x_0) \)
+<br>4. \(\int_{-\infty}^{+\infty}\delta(x).dx=1 \)
+<br>5. \(\int_{-\epsilon}^{+\epsilon}\delta(x).dx=1 \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  We can also conclude the following properties
+    <br>6. \(\int_{-\infty}^{+\epsilon}\delta(x).dx=1 \)
+<br>7. \(\int_{-\infty}^{-\epsilon}\delta(x).dx=0 \)
+  </span>
+
+<br><br><br><br><br><br>
+  </span>
+  <br><b>17. Fundamental theorem of calculus and corollaries:</b>
+   <br>&#9755;
+Let f be a continuous function over [a,b] and F be a function defined over [a,b] as 
+\(F(x)=\int_a^x f(t).dt\) then for all \(x \in ]a,b[\) we have \(F'(x)=f(x)\).
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    
+  </span>
+ <br>&#9755;  
+ 
+    \(\int_{\alpha}^{\beta} f(t).dt=G(\beta)-G(\alpha)\), where G is an antiderivative of f.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    for every \(\alpha \) and \(\beta\) in [a,b] 
+    <br>Actually, let G be an antiderivative of f we have G'(x)=f(x) over ]a,b[, that is 
+    G(x)=F(x)+c where c is constant, hence we have \(G(x)-c=\int_a^x f(t).dt\), that is 
+      \(\int_{\alpha}^{\beta} f(t).dt=\int_{\alpha}^{a} f(t).dt+\int_{a}^{\beta} f(t).dt=
+      \int_{a}^{\beta} f(t).dt-\int_{a}^{\alpha} f(t).dt=F(\beta)-F(\alpha)=  \)
+      \( G(\beta)+c-G(\alpha)-c=G(\beta)-G(\alpha) \)
+    
+  </span>
+    <br><b>18. Fubini's Theorem :</b>f is continuous on A=[a,b] x [c,d] 
+    \( \Rightarrow \int\int_A f(x,y).dA=\int_a^b(\int_c^d f(x,y).dy).dx= 
+    \int_c^d(\int_a^b f(x,y).dx).dy\)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(\int_a^b(\int_c^d f(x,y).dy).dx\) and \(\int_c^d(\int_a^b f(x,y).dx).dy\) are called the iterated
+     integral
+  </span>
+    
+  <h2 id="2_2">2.2 Functions of more than one variable</h2>
+  
+  <h3 id="2_2_1">2.2.1 Graphical representation of two variables function </h3>
+  
+   <div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	 <b>Example:Graphical representation of the two variables function </b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    Graphical representation of the function  \( z=f(x,y)=1-x^2-y^2\) ?
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+		 <img src="/img/figure105.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+    It's hard to figure out what the graphical representation of this function will look like,
+    but if we adopt a "divide and conquer strategy" we will succeed.
+    <br>Let's represent for example the intersection of the graph of f with the plane z=2, 
+    \( z=2 \Leftrightarrow x^2+y^2=-1\), it is impossible since  \( x^2+y^2  &ge; 0\), so
+    this is also true for bigger values of z, so z must have a maximum value that we must find.
+     \( x^2+y^2  &ge; 0 \Leftrightarrow 1-x^2-y^2  &le; 1\), so the maximum value of f is 1 and
+     this value is attained when x=y=0, so the maximum value is (0,0,1), so we know that the graph
+     is below this point, now let's try to draw the intersection of this graph with z=0,
+     
+     for z=0 we have: \( x^2+y^2 = 1\), this a circle of radius 1 it's the same for every z below 0,
+     the radius gets bigger and bigger. 
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+<b> Contour plot </b>:	What is a contour plot ?
+	
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <img src="/img/figure106.png"  style="float: right; width: 22%; height: 45%;" class="image1">	
+    Contour plot is a way to give an idea of what the graph of two variables function will look like
+	in a plane, actually it's the projection on the plane (x,y) of the intersection of the graphical representation
+	of the two variables function with a plane \(z=z_0\) where \(z_0 \) is a real number.
+  </span>
+  <h3 id="2_2_2">2.2.2 Limit of a function of two variables</h3>
+\(\displaystyle \lim_{(x_1,..,x_n) \to (a_1,..,a_n)} f(x_1,..,x_n)=l \Leftrightarrow \forall \epsilon &gt;0, \;\exists
+\; \delta &gt;0 \)
+such  that: \( \sqrt{(x_1-a_1)^2+..+(x_n-a_n)^2} &lt; \delta  \Rightarrow |f(x_1,..,x_n)-l| &lt;\epsilon\)
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+  a point  M(x,y) in the plane (O,x,y) approaches the point P(a,b) means that the radius of the disk
+   of center  (a,b) and containing (x,y) approaches 0 that is x approaches a and y approaches b, 
+  </span>
+	
+	<h3 id="2_2_3">2.2.3 Partial derivative</h3>
+ 1. \( {\partial f \over { \partial x_i}}(x_1,..,x_n)=
+   \displaystyle \lim_{h \to 0}\frac{f(x_1,..,x_i+h,x_{i+1},..,x_n)-f(x_1,..,x_n)}{h}.  \)
+   
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Let f be a function of n variables:\(x_1,..,x_n \), the partial derivative of f with regard to \(x_i\)
+ at the point \(P(x_{0_1},..,x_{0_n} ) \) is the derivative of f considering \(x_j\) constant where \(j \neq i \) we denote by 
+  \( \partial f \over { \partial x_i}\) this partial derivative, so:
+   \( {\partial f \over { \partial x_i}}(x_{0_1},..,x_{0_n} )=\frac{df}{dx_i}(x_{0_1},..,x_{0_n} )\) with \(x_j \) are constant 
+   for every    \(j \neq i \).
+  
+ <br>We denote by \(f_{x_i}\) this partial derivative.
+ <br>Sometimes we can write \( \frac{\partial f}{\partial x}(x,y)\) or \( \frac{\partial f}{\partial y}(x,y)\)
+ in this notation the variable x in (x,y) has nothing to do with the x at the denominator of
+ \( \frac{\partial f}{\partial x}\), this x is just a notation to say that we drive per the first variable of
+ two variable function f(x,y)
+  </span>
+  <br>2.1 Interpretation 1: \( \frac{\partial f}{\partial x}(a,b)\) is the slope of the tangente line of the 
+  function of one variable f(x,b) at a. 
+  <br>2.2 Interpretation 2: \( \frac{\partial f}{\partial x}(a,b)\) is the slope of the tangente line of the 
+  function of two variable f(x,y) at (a,b) belonging to the plan y=b. 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     <img src="/img/figure109.png"  style="float: right; width: 22%; height: 45%;" class="image1">		
+<img src="/img/figure110.png"  style="float: right; width: 25%; height: 45%;" class="image1">
+<img src="/img/figure111.png"  style="float: right; width: 25%; height: 45%;" class="image1">
+Let f be a function whose curve is the half sphere in figure 109, defined by the radius r,  
+
+<br>Let \(M(x_0,y_0)\) be a point in the plane (O,i,j), let \(M'(x_0,y_0,z_0) \) be the image of 
+the point M' by the function f that is \(f(x_0,y_0)=z_0\), we have: \(z_0=f(x_0,y_0)=\sqrt{r^2-{x_0}^2-{y_0}^2} \)
+<br>Let \( y=y_0\) the plane through M' and perpendicular to the y axis (it follows that M belongs to this plane two)
+, the intersection of this plane with the curve of f is the half circle C of radius r' (see figure 10) , so we obtain a 
+new function of one variable which is \(f(x,y_0) \), whose curve is the half circle C 
+contained in the plane \(y=y_0 \)
+and whose radius is r' (\( r'=\sqrt{r^2-y_0^2}\)) and whose center belongs to the y axis
+and \(y_0\) away from the center of the half sphere 0 (see figure 110), 
+so the partial derivative of f related to x is at the point M' is the slope of the tangent to 
+this circle (infinite at \(x=r'\) and null at x=0)
+<img src="/img/figure112.png"  style="float: right; width: 25%; height: 45%;" class="image1">
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    , because in this case \(z=f(x)=(r'^2-x^2)^{\frac{1}{2}}\),
+that is \(f'(x)=\frac{1}{2}(-2x)(r'^2-x^2)^{\frac{-1}{2}} =\frac{-x}{\sqrt{r'^2-x^2}}\)
+  </span>
+<br> Now let's take the plane P passing through M' and perpendicular to the unit vector u
+ (see figure 112), the unit vector u belongs to the plane (O,y,z) and make and angle \(\theta\)
+ with the y axis.
+ <br>If \( \theta =0\) we fall back into the case where the plane P is the plane \( y=y_0\),
+ as \(\theta \) increases, the change in f (or z) around M' (that is x approaches \(x_0\) 
+ and y approaches \( y_0\)) becomes slower, until \( \theta =\frac{\pi}{2}\) where there 
+ is literally no change around M', that is df=0, the change in f is maximal when \( \theta=0\)
+<br>For \(\theta=0 \), we have y is constant and  \( y=y_0\), so \( \frac{\partial f}{\partial y}=0\) 
+, that is \(\nabla f= \frac{\partial f}{\partial x}.i\) (see definition of \(\nabla f \) in subsequent paragraphs)
+
+<br>This is also called the directional derivative of f at the point \((x_0,y_0,z_0)\) in the direction of the 
+vector j where (O,i,j,k) is the orthonormal basis.  
+
+<br>Notice
+<br>By this method we can interpret any directional derivative
+  </span>
+<br>2. <b>Example:</b>:
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br> for example if \(f(x,y,z)=xcos(y)+ysin(xy)+z^2\), we have: \( {\partial f \over { \partial x}}(x,y,z)=cos(y)+y^2cos(xy)\)
+  </span>
+
+<br>3. <b>Gradient of f at a point P</b>:
+ \(\nabla f(P)=&lt;\frac{\partial f}{\partial x_1}(P),..,\frac{\partial f}{\partial x_n}(P) &gt;\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    The gradient of a function f at a point \(P(p_{1},..,p_{n}) \) is the vector 
+    \(\nabla f(p_{1},..,p_{n})=&lt;\frac{\partial f}{\partial x_1}(p_{1},..,p_{n}),..,\frac{\partial f}{\partial x_n}(p_{1},..,p_{n}) &gt;\)
+  </span>
+  <h3 id="2_2_4">2.2.4 Second partial derivative</h3>
+  We can define also \( {\partial  \over { \partial x} } ({\partial f \over { \partial x}})\), 
+   \( {\partial  \over { \partial y} } ({\partial f \over { \partial y}})\), 
+    \( {\partial  \over { \partial x} } ({\partial f \over { \partial y}})\) and  
+    \( {\partial  \over { \partial y} } ({\partial f \over { \partial x}})\) as second derivatives,
+    using a more compact notation we can write:
+      \(f_{yy}= {\partial^2 f  \over { \partial y^2} }, \)    \(f_{xx}= {\partial^2 f  \over { \partial x^2} }, \)
+    \(f_{xy}= {\partial^2 f \over { \partial xy} } \) and  \(f_{yx}= {\partial^2 f \over { \partial yx} } \)
+ <h3 id="2_2_5">2.2.5 Mixed partials derivative theorem </h3>
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     This is also called Theorem of Schwarz, or Clairaut
+     <br>
+  </span>
+
+ Let \(f: \Omega \rightarrow \mathbb{R}\) be a function of n random variables 
+ \(x_1,..,x_n\), 
+ , where \(\Omega \subset \mathbb{R}^n\), let 
+ p be a point in \(\Omega\) such as some neighborhood of p is contained in \(\Omega\)
+if f has continuous second partial derivatives at p, then \(f_{x_ix_j}=f_{x_jx_i}\)
+ \(\forall i,j \in \left\{1,2,..,n \right\} \)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Actually, let's prove this for a function f of two variables x and y, that is 
+    \(f_{xy}=f_{yx}\).
+    <br>Let \([a,b] \times [c,d] \subset \Omega \) , we have 
+ \(  \int_{ a}^{b}\int_{c}^{d} f_{xy}(x,y).dx.dy=\int_{ a}^{b}(\int_{c}^{d} f_{xy}(x,y).dy).dx=
+    \int_{ a}^{b}(f_x(x,d)-f_x(x,c)).dx=\int_{ a}^{b}f_x(x,d).dx-\int_{ a}^{b}f_x(x,c).dx
+\\=f(b,d)-f(a,d)-(f(b,c)-f(a,c))=f(b,d)+f(a,c)-f(a,d)-f(b,c)
+         \) on the other hand 
+    \(  \int_{ a}^{b}\int_{c}^{d} f_{yx}(x,y).dx.dy=\int_{c}^{d}  (\int_{ a}^{b}f_{yx}(x,y).dx).dy
+    =\\\int_{c}^{d}(f_y(b,y)-f_y(a,y))=f(b,d)-f(b,c)-(f(a,d)-f(a,c))=f(b,d)+f(a,c)-
+    \)
+  </span>
+ <br>&#9755; It follows from above that the mixed partials theorem applies also to 
+ higher order derivatives, for example 
+ for the function f(x,y,z,t) we have \(f_{xyytz}= f_{zxyty}=f_{yxyzt}=..\), if 
+ \(f_{xyytz}, f_{zxyty} \;and\; f_{yxyzt}..\) exist and continuous
+    <h3 id="2_2_6">2.2.6 Approximation, differentiability and tangent plane </h3>
+1) \(z=f(x_0,y_0)+f_x(x_0,y_0).(x-x_0)+f_y(x_0,y_0).(y-y_0) \) is  the plane 
+tangent to f at the point \( P(x_0,y_0,z_0) \)
+
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  where \(z_0=f(x_0,y_0) \)
+    <br>Let \(C_{x_0}\) the curve defined by the intersection of S and the plane \(x=x_0 \), and
+ \(C_{y_0}\) the curve defined by the intersection of S and the plane \(y=y_0 \), 
+<br>    the equation of the tangent to \( C_{x_0}\) through P is:
+ \(   \left\{\begin{matrix}
+x=x_0
+\\
+ \\
+ z=f_{y}(x_0,y_0).(y-y_0)+f(x_0,y_0), 
+\end{matrix}\right.\)
+    
+    
+  <br>  similarly the equation of the tangent to  \( C_{y_0}\)   through P is:
+  \(   \left\{\begin{matrix}
+y=y_0
+\\
+ \\
+ z=f_{x}(x_0,y_0).(x-x_0)+f(x_0,y_0), 
+\end{matrix}\right.\)
+        
+        <br>The equation of the plane formed by the two lines is \( z=f_{x}(x_0,y_0).(x-x_0)+f_{y}(x_0,y_0).(y-y_0)+
+        f(x_0,y_0)\)
+  </span>
+
+  <br>2)  A function f of n variables \(x_1,..,x_n\)  is diffrentiable at a point 
+  \(P(x_{1_0},..,x_{n_0}) \) if it exists   a disk \(\delta \) around P where we can write:
+  \(f(x_1,..,x_n)=f(x_{1_0},..,x_{n_0})+f_{x_1}(x_{1_0},..,x_{n_0}).(x_1-x_{1_0})+..+f_{x_n}(x_{1_0},..,x_{n_0}).(x_n-x_{n_0})+E(x_1,..,x_n)\), where 
+   \( \displaystyle \lim_{ (x_1,..,x_n)\to (x_{1_0},..,x_{n_0})}\frac{E(x_1,..,x_n)}{\sqrt{((x_1-x_{1_0})^2+..+(x_n-x_{n_0})^2}}=0\)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    you can verify that this definition is relevant for one variable
+  </span>
+   <br>3) Approximation means that the term E can be neglected near \((x_{1_0},..,x_{n_0})\)
+    <br>4) Existence and continuity of first partial derivatives implies differentiability
+ <br>5) Differentiability implies continuity
+ <br>6) Differentiability implies existence of first partial derivatives
+ <br>7) 
+  <br>6) The total derivative is defined as:\(df=f_{x_1}.d{x_1}+..+f_{x_n}.d{x_n}  \)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    The graphical interpretation goes like this: near \(x_0,y_0\) we have:
+    \( f(x,y)-f(x_0,y_0)=a.(x-x_0)+b.(y-y_0) \), where \(a=\frac{\partial f}{\partial x}(x_0,y_0)  \), 
+    and \(b=\frac{\partial f}{\partial y}(x_0,y_0)  \), that is :\(z=f(x_0,y_0)+a.(x-x_0)+b.(y-y_0) \), 
+    so the tangent of the graph in \((x_0,y_0)(x_0,y_0) \) is the plane:\(z=f(x_0,y_0)+a.(x-x_0)+b.(y-y_0) \),
+  </span>
+    <h3 id="2_2_7">2.2.7 Chain rule</h3>
+     &#9755;<b>One independent variable:</b>
+     <br>If x=x(t) and y=y(t) are differentiable functions at \(t_0\) and z=f(x,y)  a differentiable 
+     function at \(P(x_0,y_0) \) where \(x_0=x(t_0) \;and\; y_0=y(t_0)\), then z is differentiable at \(t_0 \)
+     and \(\frac{dz}{dt}=\frac{\partial z}{\partial x}.\frac{dx}{dt}+ \frac{\partial z}{\partial y}.\frac{dy}{dt}\)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(\frac{dz}{dt}|_{t_0}=\frac{\partial z}{\partial x}|_{(x_0,y_0)}.\frac{dx}{dt}|_{t_0}+
+     \frac{\partial z}{\partial y}|_{(x_0,y_0)}.\frac{dy}{dt}|_{t_0}\)
+  </span>
+   <br>Proof:<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    f(x,y) is differentiable at \(P(x_0,y_0) \) means that:
+    \(z(t)=f(x(t),y(t))=f(x,y)=f(x_0,y_0)+f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0)+E(x,y) \), where:
+    \(\displaystyle \lim_{(x,y) \to (x_0,y_0)} \frac{E(x,y)}{\sqrt{(x-x_0)^2+(y-y_0)^2 }}=0\)
+ <br> so \( \frac{z(t)-z(t_0)}{t-t_0}=f_x(x_0,y_0)\frac{x-x_0}{t-t_0}+f_y(x_0,y_0)\frac{y-y_0}{t-t_0}+
+ \frac{E(x,y)}{\sqrt{(x-x_0)^2+(y-y_0)^2 }}.\frac{\sqrt{(x-x_0)^2+(y-y_0)^2 }}{t-t_0}
+ \)= \( f_x(x_0,y_0)\frac{x-x_0}{t-t_0}+f_y(x_0,y_0)\frac{y-y_0}{t-t_0}+
+ \frac{E(x,y)}{\sqrt{(x-x_0)^2+(y-y_0)^2 }}.\sqrt{(\frac{x-x_0}{t-t_0})^2+(\frac{y-y_0}{t-t_0})^2 }
+ \), so:\(\displaystyle \lim_{t \to t_0}\frac{z(t)-z(t_0)}{t-t_0}= f_x(x_0,y_0)\displaystyle \lim_{t \to t_0}\frac{x-x_0}{t-t_0}+
+ f_y(x_0,y_0)\displaystyle \lim_{t \to t_0}\frac{y-y_0}{t-t_0}+
+\displaystyle \lim_{t \to t_0} \frac{E(x,y)}{\sqrt{(x-x_0)^2+(y-y_0)^2 }}.\sqrt{(\displaystyle \lim_{t \to t_0}\frac{x-x_0}{t-t_0})^2+(\displaystyle \lim_{t \to t_0}\frac{y-y_0}{t-t_0})^2 }
+ \), that is:\(\frac{dz}{dy}|_{t_0} =f_x(x_0,y_0). \)
+ <br>\( \)
+  </span>
+    <br> &#9755;<b>Two independent variables:</b>
+     <br>Suppose x=x(u,v) and y=y(u,v) are differentiable functions of u and v, and z=z(x,y)
+     is a differentiable function of x and y. Then z is a differentiable function of u and v, and
+   \(   \frac{\partial z}{\partial u}=\frac{\partial z}{\partial x}.\frac{\partial x}{\partial u}
+     +\frac{\partial z}{\partial y}.\frac{\partial y}{\partial u}
+      \) and   \(   \frac{\partial z}{\partial v}=\frac{\partial z}{\partial x}.\frac{\partial x}{\partial v}
+     +\frac{\partial z}{\partial y}.\frac{\partial y}{\partial v}
+      \)
+          <br> &#9755;<b>Generalized chain rule:</b>
+     <br> Let \( w=w(x_1,..,x_n) \) a differentiable function of n independent variables and each
+      \( x_i=x_i(t_1,..,t_m) \) is a differentiable function of m independent variables, then: 
+      \(   \frac{\partial w}{\partial t_i}=\frac{\partial w}{\partial x_1}.\frac{\partial x_1}{\partial t_i}+..+
+     \frac{\partial w}{\partial x_n}.\frac{\partial x_n}{\partial t_i}  \) for each i
+          <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    This is a generalization of the chain rule of two independent variables, take:
+     \(z=w, x=x_1, y=y_1,  u=t_1 and v=t_2 \)
+  </span>
+  <br>  &#9755;<b>Examples:</b>
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br>  Example:1 
+   <br>Let f be a function of more than one variable for example f(x,y,z,t), suppose that x,y and z 
+    depend only on t, then we have:
+     \( \frac{df}{dt}=\frac{\partial f}{\partial x}.\frac{dx}{dt}+\frac{\partial f}{\partial y}.\frac{dy}{dt}
+     +\frac{\partial f}{\partial z}.\frac{dz}{dt}+\frac{\partial f}{\partial t}.\frac{dt}{dt}=
+     \frac{\partial f}{\partial x}.\frac{dx}{dt}+\frac{\partial f}{\partial y}.\frac{dy}{dt}
+     +\frac{\partial f}{\partial z}.\frac{dz}{dt}+\frac{\partial f}{\partial t}
+     \)
+     <br>Example 2:
+     <br>Suppose w=w(z), z=z(x,y), x=x(t) and y=y(t), so:
+     \(\frac{dw}{dt}=\frac{dw}{dz}.\frac{dz}{dt}= \frac{dw}{dz}.(\frac{\partial z}{\partial x}.\frac{dx}{dt}+
+     \frac{\partial z}{\partial y}.\frac{dy}{dt})
+     \)
+     <br>Example 3:
+     <br>Suppose f=f(a,b,c,d) and a,b,c,d are functions of x and y, so f is also a function of x, y
+     <br>\(\frac{\partial f}{\partial x}=\frac{\partial f}{\partial a}.\frac{\partial a}{\partial x}+
+     \frac{\partial f}{\partial b}.\frac{\partial b}{\partial x}+\frac{\partial f}{\partial c}.\frac{\partial c}{\partial x}+
+     \frac{\partial f}{\partial d}.\frac{\partial d}{\partial x} \)
+  </span>
+ 
+     <h3 id="2_2_8">2.2.8 Directional derivative and Gradient</h3>
+       1.          \(D_uf(P)=\displaystyle \lim_{\delta t \to 0}\frac{f(P+\delta t.V)-f(P)}{\delta  t}\)
+     
+is the <b>Directional derivative of f at point P with respect to vector u </b>
+ <span class="tooltip">&#128216;</span>
+
+  <span class="tooltiptext">
+  <br> We have also
+ \(D_uf(P)   =\displaystyle \lim_{\delta t \to 0}\frac{f(a_1+\delta t.u_1,..,a_n+\delta t.u_n)-f(a_1,..,a_n)}{\delta  t}=
+       \frac{d}{dt} f(a_1+t.u_1,..,a_n+t.u_n)|_{t=0}\)
+     for two variables we have:\(D_uf(a,b)=\frac{d}{dt} f(a+tu_1,b+tu_2)|_{t=0}\).
+  <br>  Let f be a function of x and y, and  a vector \(u=&lt;u_1,u_2&gt;  \), the directional derivative 
+ of f at point (a,b) in the direction of u is given by: \(D_uf(a,b)=\frac{d}{dt} f(a+tu_1,b+tu_2)|_{t=0}\).
+  </span>
+  
+<br> 2. \(D_if(a,b)=\frac{\partial f}{\partial x}(a,b)\) and \(D_jf(a,b)=\frac{\partial f}{\partial y}(a,b)\)
+
+     <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  where (O,i,j) is the orthonormal basis for cartesian coordinates.
+  <br>  If we take \(g(t)=f(a+tu_1,b+tu_2)\), we have:\(D_uf(a,b)=\frac{d}{dt} g(t)|_{t=0}=
+  \displaystyle \lim_{\delta t \to 0}  \frac{g(t+\delta t)-g(t)}{\delta t}|_{t=0}=
+  \displaystyle \lim_{\delta t \to 0}  \frac{g(0+\delta t)-g(0)}{\delta t}=
+  \displaystyle \lim_{\delta t \to 0}  \frac{g(\delta t)-g(0)}{\delta t}=\)
+ \( \displaystyle \lim_{\delta t \to 0}  \frac{f(a+\delta t.u_1,b+\delta t .u_2)-f(a,b)}{\delta t}
+   =
+  \displaystyle \lim_{\delta t' \to 0} ||u|| \frac{f(a+\delta t'.\frac{u_1}{||u||},b+\delta t' .\frac{u_2}{||u||})-f(a,b)}{\delta t'}
+  \) (putting \(\delta t=\frac{\delta t'}{||u||} \)), where ||u|| is the magnitude of vector &lt;\(u_1,u_2\)&gt;
+ , since we are interested in the change of in a specified direction we have to take ||u||=1.
+ <br> For \(u=&lt; 1,0 &gt; \) that is u=i,   we have: \(D_if(a,b)= \displaystyle \lim_{\delta t \to 0}  \frac{f(a+\delta t,b)-f(a,b)}{\delta t}
+ =   \frac{\partial f}{\partial x}(a,b)  \)
+  </span>
+   <br>3. \(D_uf(a,b)=\frac{d}{dt} f(a+cos(\theta).t,b+sin(\theta).t)|_{t=0}\), where u is a unit vector
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     If we take u a unit vector, we can write \(u=&lt; cos(\theta),sin(\theta) &gt; \), that is:
+   \(D_uf(a,b)=\frac{d}{dt} f(a+cos(\theta).t,b+sin(\theta).t)|_{t=0}\)
+  </span>
+  <br>4. \(D_uf(a,b)=f_x(a,b).cos(\theta)+f_y(a,b).sin(\theta)\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    If we consider the function f of x and y, where \(x(t)=a+cos(\theta).t \) and \(y(t)=b+sin(\theta).t \), 
+    and the function g(t)=f(x(t),y(t)), we have \( g'(t)=f_x(x,y).\frac{dx}{dt}(t)+
+    f_y(x,y).\frac{dy}{dt}(t)=f_x(x,y).cos(\theta)+     f_y(x,y).sin(\theta) \), 
+    so \(g'(0)=f_x(a,b).cos(\theta)+     f_y(a,b).sin(\theta)  \), because \(x(0)=a\) and \(y(0)=b\)
+  </span>
+ Interpretation:
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Directional derivative depends on partial derivatives (derivative according one variable 
+    change at a time), but also on direction of u (which is determined by \(\theta\)), we can not speak about the 
+    rate of change of f if we don't specify a direction.
+
+  </span>
+  <br>5 .\(D_uf(a,b)=u.\nabla f(a,b)=||\nabla f(a,b)||.cos(\varphi)\) where \(\varphi \)
+  is the angle between unit vector u and \(\nabla f(a,b) \).
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>&#9755; \(\nabla f(a,b)=0 \) means  \( D_uf(a,b)=0\) for any vector u.
+     <br>&#9755;  if \(\nabla f(a,b)  \neq 0 \), \(D_uf(a,b) \) is maximized if u and
+      \(\nabla f(a,b)=0 \) are the same direction,    the maximum is \( ||\nabla f(a,b)||\)
+     <br>&#9755;  if \(\nabla f(a,b)  \neq 0 \), \(D_uf(a,b) \) is minimized if u and \( ||\nabla f(a,b)||\)
+     are opposite directions.
+  </span>
+  <br>6. Gradient is normal to level curve:
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ Let's take a function f of two variables x and y, with a point \((x_0,y_0) \) in its domain,
+ we know that every point (x,y) can be expressed in term of a variable t (or a parameter)
+ that is x=x(t) and y=y(t) (parametric equation of a plane), let's take \( x(t_0)=x_0\)
+ and \( y(t_0)=y_0\), let's take z=f(x,y) =k a level curve in the curve of f  (k is constant)
+ we have z=f(x,y)=f(x(t),y(t)), that is z is a function of t, so we have:
+ \(\frac{dz}{dt}=\frac{\partial z}{\partial x}.\frac{dx}{dt}+ \frac{\partial z}{\partial y}.\frac{dy}{dt}\)
+  , that is \(z'(t)=f_x(x,y).x'(t)+f_y(x,y).y'(t)\), since we are in the level curve z=k we have:
+  z'(t)=0, that is \(f_x(x(t),y(t)).x'(t)+f_y(x(t),y(t)).y'(t)=0\), hence:
+   \(\nabla f(x(t),y(t)).&lt;x'(t),y'(t)&gt; =0\)
+  We use this  to find tangent and normal vectors to level curves of a   function:
+  </span>
+  <h3 id="2_2_9">2.2.9 Relative-absolute extrema, critical points and least square fitting   </h3>
+  1) P is a <b>relative maximum</b> \(\Leftrightarrow\)  \(f(M) &le; f(P)\) for every point M in some region around P
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>the maxima and minima are the respective plurals of maximum and minimum.
+  <br>
+  A point \(P(p_1,..,p_n) \) is a relative maximum for the function f of n variables if there is a 
+  region r  where for every point \(M(x_1,..,x_n) \)in this region we have:\(f(M)=f(x_1,..,x_n) &le; f(P)=f(p_1,..,p_n)\)
+  </span>
+
+<br>2) P is a <b>relative minimum</b> \(\Leftrightarrow\)  \(f(M) &ge; f(P)\) for every point M in some region around P
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    A point \(P(p_1,..,p_n) \) is a relative minimum for the function f of n variables if there is a 
+  region r  where for every point \(M(x_1,..,x_n) \)in this region we have:\(f(M)=f(x_1,..,x_n) &ge; f(P)=f(p_1,..,p_n)\)
+  </span>
+   <br>3) P is an <b>absolute minimum</b>  if for all M we have f(M) &ge; f(P) 
+     <br>4) P is an <b>absolute maximum </b> if for all M we have f(M) &le; f(P) 
+     <br>5)   P is a <b>Critical point </b>\(\Leftrightarrow \nabla f(P)=0 \;or\; \nabla f(P) \) doesn't exist
+     <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ \(   \nabla f(P)=0 \Leftrightarrow \frac{\partial f}{\partial x_i}=0 \) for every i 
+ <br> \(   \nabla f(P)\) doesn't exist \( \Leftrightarrow\) there exist at least i for which
+ \( \frac{\partial f}{\partial x_i} \) doesn't exist
+ 
+  </span>
+  <br>5-1) P is a stationary point \(\Leftrightarrow \nabla f(P)=0  \)
+       <br>6) P is a <b>relative extrema </b>and \( \nabla f(P)\) exists \(\Rightarrow \) P is a critical 
+       point and \(\nabla f(P)=0 \)
+       <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"><br>NB: extrema= minimum or maximum.
+  <br>   If we take the function \( f(k_1,..,k_{(i-1)},x_i,k_{(i+1)},..,k_n)  \) so \( f'(k_1,..,k_{(i-1)},x_i,k_{(i+1)},..,k_n)=0=\frac{\partial f}{\partial x_i}=0  \)
+  
+   of one variable \( x_i \), this function 
+   has also P as a relative extrema
+  </span>
+   <br>7)   P is a <b>saddle point </b> if \(\nabla f(P)=0\) and P is not a relative extrema
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     <img src="/img/figure108.png"  style="float: right; width: 22%; height: 45%;" class="image1">		
+  </span>
+  <br>7-1) Fermat's theorem: If P is a relative extrema then P is a critical point.
+     <br>8)  The "fittest" line through n points \(P_i(x_i,y_i) | i=1,..,n\) is y=a.x+b where 
+     \(a=\frac{\overline{xy}-\overline{x}.\overline{y}}{\overline{s}-\overline{x}^2}\) and
+      \( b=\frac{\overline{xy}.\overline{x}-\overline{s}.\overline{y}}{\overline{x}^2-\overline{s}}\)
+  
+    
+     <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure107.png"  style="float: right; width: 32%; height: 55%;" class="image1">
+   <br><b>Example:</b>
+   <br> Suppose that weight is a linear function of height in children of 10 years old.
+  <br>We want to know this function, let \((x_1,y_1),..,(x_n,y_n)\) be n measures related to 
+ height  and weight of n 10 years old children, we want to find the line y=ax+b that fits the best 
+ those measures, that means the  distances  \( a.x_i+b-y_i \) are minimal.
+   <br>One way to express this condition is to find a and b such that the function f is minimal, where
+   :\( f(\alpha,\beta)=\sum\limits_{i=1}^n(\alpha.x_i+\beta-y_i)^2\), (a,b) is a critical point means that
+
+\(  \left\{\begin{matrix}
+ \frac{\partial f}{\partial \alpha}(a,b)=0
+ \\
+ \\
+\frac{\partial f}{\partial \beta}(a,b)=0
+\end{matrix}\right.
+\) that is:
+\(  \left\{\begin{matrix}
+ \sum\limits_{i=1}^n2.(a.x_i+b-y_i).x_i=0
+ \\
+ \\
+\sum\limits_{i=1}^n2.(a.x_i+b-y_i)=0
+\end{matrix}\right.
+\), that is:
+\(  \left\{\begin{matrix}
+ a\sum\limits_{i=1}^nx_i^2+b.\sum\limits_{i=1}^nx_i-\sum\limits_{i=1}^ny_i.x_i=0
+ \\
+ \\
+ a\sum\limits_{i=1}^nx_i+n.b-\sum\limits_{i=1}^ny_i=0
+\end{matrix}\right.
+\) 
+<br>If we use the notations of means :\( \sum\limits_{i=1}^nx_i=n.\overline{x}\), 
+\( \sum\limits_{i=1}^ny_i=n.\overline{y}\),
+\( \sum\limits_{i=1}^ny_i.x_i=n.\overline{xy}\) and the standard deviation of \(x_i\) related to 0
+, that is \(n.\overline{s}= \sum\limits_{i=1}^nx_i^2\), we will have:
+\(  \left\{\begin{matrix}
+ a.n.\overline{s}+b.n.\overline{x}-n.\overline{xy}=0
+ \\
+ \\
+ a.n.\overline{x}+n.b-n.\overline{y}=0
+\end{matrix}\right.
+\), that is:
+\(  \left\{\begin{matrix}
+ a.\overline{s}+b.\overline{x}-\overline{xy}=0
+ \\
+ \\
+ a.\overline{x}+b-\overline{y}=0
+\end{matrix}\right.
+\), <br>so \(  \left\{\begin{matrix}
+ a.\overline{s}+b.\overline{x}-\overline{xy}=0
+ \\
+ \\
+ -a.\overline{x}^2-b.\overline{x}+\overline{x}.\overline{y}=0
+\end{matrix}\right.
+\), that is: \(a.(\overline{s}-\overline{x}^2)+\overline{x}.\overline{y}-\overline{xy}=0\), that is:
+\(a=\frac{\overline{xy}-\overline{x}.\overline{y}}{\overline{s}-\overline{x}^2}\)
+, we proceed by the same way to find b, we get:
+ \( b=\frac{\overline{xy}.\overline{x}-\overline{s}.\overline{y}}{\overline{x}^2-\overline{s}}\)
+  </span>
+  
+ <br>9) Absolute value theorem: if f is continuous on [a,b] then it has an absolute 
+   minimum and an absolute maximum in [a,b].
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    absolute extrema can occur at endpoints or at relative extrema
+  </span>
+  <br>10) First derivative test: If c is critical point and f change monotocity at c then 
+  c is relative extremum.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br> - if f' changes from positive to negative at c then c is a relative maximum.
+    <br> - If f' changes from negative to positive at c then c is a relative  minimum.
+      <br> - If f' doesn't change sign at c then f doesn't have a relative extremum at c.
+  </span>
+  <br>11) Second derivative test: If c is a critical point and \(f''(c) \neq 0\), then c is
+   relative extremum.
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     <br> - If \(f''(c) &lt; 0 \), then f has a relative maximum.
+     <br> - If \(f''(c) &gt; 0 \), then f has a relative minimum.
+     <br> - if \(f''(c)=0\), the the test is inconclusive.
+     <br>Actually, if \(f''(c) &lt; 0 \), then 
+     \(f''(c)=\displaystyle \lim_{h \to 0} \frac{f'(c+h)}{h}\), that is for 
+     h sufficiently small we get \(\frac{f'(c+h)}{h} &lt; 0\), 
+     that is \(f'(c+) &lt; 0\) and \(f'(c-) &gt; 0\) (c+ means near the right of c and c- means 
+     at the left of c), so f' changes sign from positive to negative.
+     <br>If the second order derivative at c is equal to zero we look for the first higher order non 
+     zero derivative, suppose this order is n, if n is even we apply the same rule as the second order 
+     derivative, if n is uneven then P is a saddle point (neither a minimum nor a maximum).
+  </span>
+  <br>12) Eigen value \(\lambda\) and eigen vector \(v\) for a square matrix A is defined as 
+  \(A.v=\lambda.v\).
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   \(\lambda\) and v are fined by solving the equation \(det(A-\lambda.I)=0\) where I 
+  is the identity matrix.
+  </span>
+ 
+  <br>13) A square matrix is positive definite if all eigen values are positive and is negative definite 
+  if all eigen values are negative.
+  <br>14) The Hessian matrix of a function f of n variables \(X=(x_1,..,x_n)\) is defined as 
+  \(H(f(X))=(f_{ij})_{n}^{n}\) where  \(f_{ij}=\frac{\partial f(X)}{\partial x_i \partial x_j}\).
+  <br> 15) \(X_0 \) is a relative extrema \(\Leftrightarrow \nabla(f(X_0)=0\) and 
+   H(f(X)) is positive definite or negative definite at \(X=X_0\).
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> - H(f(X)) is positive definite \(\Rightarrow X_0\) is a relative minimum.
+   <br> - H(f(X)) is negative definite \(\Rightarrow X_0\) is a relative maximum.
+  </span>
+
+ <h1 id="3">3 Integration</h1>
+<b>1.Reimann sum</b>: \( S=\sum_\limits{i=0}^{n}f(x_i)*\Delta x_i \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Where f is a function defined on a closed interval [a,b], and \( [x_0,x_1],..,[x_n-1,x_n] \)
+ is a partition over [a,b] 
+
+
+ </span>
+ <br> 2. A function is <b>Reimann integrable </b>aver [a,b]  if the all 
+ Reimann sums converges as the partitions get smaller.  
+ <br><b>3.  \(  \int_{a}^{b}f(x).dx=\displaystyle \lim_{ \Delta x_i \to 0}\sum_\limits{i=0}^{n}f(x_i)*\Delta x_i=\displaystyle \lim_{ n \to +\infty}\sum_\limits{i=0}^{n}f(a+i {{a-b } \over n })({{a-b}\over n })\)
+</b>: 
+ 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     <img src="/img/figure44.png"  style="float: right; width: 45%; height: 65%;" class="image1">
+ <br>  This is the  Integration over an interval [a,b].
+ <br>Let f be a function and \( C_f \) the curve of f, we want to calculate the area A delimited by 
+ the x-axis, the curve and the axis with equation respectively y=a and y=b.
+ 
+  One way to calculate this is by using a Reimann sum, which consists of deviding the interval 
+  [a,b] to infinitely small intervals such as f(x) is approximately constant, let's suppose we divide to n interval, so \(dx={{b-a} \over n} \)
+ <br> f is said to be Reimann integrable on [a,b] if the sum \( \sum_\limits{a}^{b}dA =\sum_\limits{a}^{b}f(x_i^*)dx\) 
+ where  \( x_i^*\) is an element of the intevall [a+i.dx,a+(i+1).dx] has a value when
+  \( n \rightarrow  +\infty \), and this value is the area A and we denote by \(  \int_{a}^{b}f(x).dx\) this area.
+    if we take \( x_i=a+i.dx=a+i {{a-b } \over n }\) we have:
+     \(  \int_{a}^{b}dA=\int_{a}^{b}f(x).dx=\displaystyle \lim_{ n \to +\infty}\sum_\limits{0}^{n}f(a+i {{a-b } \over n })({{a-b}\over n })\)
+  </span>
+  
+    <br>3.1 Variable change  in single integrals 
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Or substitution rule
+  </span>
+    :
+    \(\int_{a}^{b}f(x).dx= \int_{h{-1}(a)}^{h^{-1}(b)}f(h(u)).h'(u).du \), where h is a one-to-one
+    function such as x=h(u). 
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>We did nothing but replaced x by h(u), actually we know by chain rule that :
+    dx=h'(u).du.
+    <br>The integrands have changed to \( h^{-1}(a) \) and \( h^{-1}(b) \), because:
+x varies from a  to b
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    this doesn't mean a &le; x &le; b
+  </span>
+
+ \(\Leftrightarrow\) u varies from \(h^{-1}(a) \;to\; h^{-1}(b) \) 
+
+ The substitution rule can be written in the following form:
+ \(\int_{h(a)}^{h(b)}f(x).dx= \int_a^b f(h(u)).h'(u).du \).
+ <br>There is another form for variable substitution in simple integrals, if we know u=g(x), 
+we have:  \(\int_{a}^{b}f(x).dx=\int_{g(a)}^{g(b)}f(g^{-1}(u)).dx \), u=g(x) means 
+\(x=g^{-1}(u) \), that is \(dx=\frac{du}{g'(g^{-1}(u))} \), that is:
+\(\int_{a}^{b}f(x).dx=\int_{g(a)}^{g(b)}f(g^{-1}(u)).\frac{du}{g'(g^{-1}(u))} \)=
+\( \int_{g(a)}^{g(b)}\frac{f(g^{-1}(u))}{g'(g^{-1}(u))} . du\)
+  </span>
+    
+  
+    <br><b>4. Rectangle area of sides a and b</b> : Area=a.b
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     <img src="/img/figure44-7.png"  style="float: right; width: 30%; height: 50%;" class="image1">
+  We know that the area of a rectangle of sides a and b is a.b, but to understand the idea of 
+  calculating areas using integrals let's calculate the area of a rectangle of sides a and b as described in figure 44-7, we consider 
+    that this rectangle is the sum of extremely small rectangles of sides \( dx \;and\; dy \),
+    so the area A of the rectangle is:
+     \(A=\int_{c}^{c+a}\int_{d}^{d+b}dx.dy=\int_{c}^{c+a}\int_{d}^{d+b}dy.dx=
+     \int_{c}^{c+a}(\int_{d}^{d+b}dy).dx\)
+    \( =    \int_{c}^{c+a}(y|_{d}^{d+b}).dx=\int_{c}^{c+a}((d+b-d)).dx=\)
+    \(b.\int_{c}^{c+a}dx=b.x|_{c}^{c+a}=b.(c+a-c)=b.a\), we could've done this the other way around, 
+    by integrating over [c,c+a] first.
+  </span>
+   
+   Other areas:
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br><b>5 Right angled Triangle area</b>: A=
+    <img src="/img/figure44-10.png"  style="float: right; width: 30%; height: 50%;" class="image1"> 
+    Let's calculate the area A of the triangle in figure 44-10, we can consider this triangle as the sum
+    of a set of extremely small rectangles dA of sides \( dx \;and\; dy \), as one can argue those rectangles
+    doesn't fit perfectly the rectangle as the side c of the triangle is not vertical so a rectangle 
+    doesn't fit side by side to the side c of the triangle, but since the rectangles dA are extremely
+    small (they can be taught of as pixels in a screen) this approximation is pretty accurate.
+    <br> But we must describe precisely how x and y vary inside this triangle, for this we have to 
+    figure out how x and y vary along the line L holding the side c, this equation is 
+    \(\alpha. x+\beta.y+\gamma=0\), as we can see in figure 44-10, \(M\binom{e}{f}\) and 
+    \(M'\binom{e+b}{f+a}\) belong to L, we have:
+    \( \alpha. e+\beta.f+\gamma=0 \) and     \( \alpha. (e+b)+\beta.(f+a)+\gamma=0 \)
+  </span>
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   5.1.1.4 Parallelogram area
+    <img src="/img/figure44-5.png"  style="float: right; width: 50%; height: 50%;" class="image1"> 
+   Consider the parallelogram P in figure 44-5, we want to calculate the area of P, one way to do 
+   this  is by transforming P to a rectangle, 
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure44-1.png"  style="float: right; width: 50%; height: 60%;" class="image1"> 
+   We want to calculate the area of the parallelogram P (figure 44-2) with sides a and b and angle 
+   \( \theta\), to understand how it differs  from the area of a rectangle, we take a rectangle R
+   with sides a and b (figure 44-1), figure 44-3 and 44-4 shows how these two areas differ, if we 
+   take off   the triangle  stripped in blue (figure 44-3) from the right side of P and  add it to the left
+   side of P we obtain a rectangle of sides a and h=cos(&theta;).b   , so the area of P is 
+   Area=a.h=a.b.cos(&theta;)
+  </span>
+      <img src="/img/figure44-6.png"  style="float: right; width: 50%; height: 60%;" class="image1"> 
+   but this method is not always practical, a more general way is to use integrals, by considering 
+   P as a set of extremely small rectangles, of sides \(dx \;and\; dy \) and area \( dA=dx.dy\) (figure 44-6)
+   so the area A of P is \(A=\int_{c}^{c+a+b.sin(\theta)}  \int_{d}^{d+b.cos(\theta)}dx.dy=\)
+        
+
+  </span>
+    
+     
+
+<br><b>5. Half Sphere volume using cartesian coordinates</b>: 
+V= \( V_s=\int_{-r}^{r}\int_{-\sqrt{r^2-x^2 }}^{\sqrt{r^2-x^2 }}\int_{0}^{\sqrt{r^2-x^2-y^2 }}dx.dy.dz \)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure56.png"  style="float: right; width: 80%; height: 60%;" class="image1">
+ <br>We want to calculate the volume of half sphere of radius r, let Disk 0 the base of this half sphere (figure 56-1 and 56-2 ), 
+ one way to do this is by taking all  extremely small cylinder (figure 56-4), of base dA 
+  (which is an extremely small rectangle belonging to the disk 0 and with dimensions dx 
+ and dy) and height f(x,y) or M'M, where M' is the center of rectangle dA and M is the intersection
+  between the sphere and the line passing through M' and perpendicular to the plan (O,x,y)   (56-2 and 56-1)
+  so:
+  <br>\(V_s=\sum_\limits{dA \in Disk 0}dA.MM'\), as the distance M'M (which is nothing but the 
+  coordinate z) depends solely on where 
+  M' is situated in the disk 0, that is on the coordinates of M' which are x and y, there is a function
+   f  such as MM'=z=f(x,y) for every M'(x,y) in the disk 0,
+  that is  \(V_s=\sum_\limits{dA \in Disk 0}dA.f(x,y)=\sum_\limits{dA \in Disk 0}dx.dy.f(x,y) \), now we must find f(x,y).
+  When summing on extremely small quantities and as seen in 5.1.1 we use integrals.
+  So   \(V_s=\iint_{dA \in Disk 0}dx.dy.f(x,y) \)
+  <br>We know that M belong to the surface of the sphere, so OM=r, but M is not any point in the surface of the 
+  sphere, M is such that the projection of M on the plane (O,x,y) is a point M' with the coordinate (x,y),
+  so \( OM'^2+M'M^2=OM^2\), that is \((x^2+y^2)+z^2=r^2 \), so \(f(x,y)=\sqrt{r^2-x^2-y^2 } \), so
+  \( V_s=\iint_{dA \in Disk 0}dx.dy. \sqrt{r^2-x^2-y^2 }=\iint_{dA \in Disk 0}\sqrt{r^2-x^2-y^2 }.dx.dy\), 
+  \(dA \in Disk 0 \Leftrightarrow M' \in Disk 0 \Leftrightarrow x^2+y^2 \leqslant r^2  \Leftrightarrow  (-r \leqslant x \leqslant r \;and\; -\sqrt{r^2-x^2 }\leqslant y \leqslant \sqrt{r^2-x^2 })\)
+ so  \( V_s=\int_{x=-r}^{x=+r}\int_{y=-\sqrt{r^2-x^2 }}^{y=+\sqrt{r^2-x^2 }}\sqrt{r^2-x^2-y^2 } dx.dy\), as a convention and since the quantity dx.dy is written such as dx is
+  written first, we know that the first integral is meant for x and the second is for y, so we don't have to write x=..and y=.. in the bonds of the integral, so
+  <br>\( V_s=\int_{-r}^{r}\int_{-\sqrt{r^2-x^2 }}^{\sqrt{r^2-x^2 }}\sqrt{r^2-x^2-y^2 }dx.dy \), we 
+  can write this in the form of a triple integral because:
+   \( \sqrt{r^2-x^2-y^2 }= \int_{0}^{\sqrt{r^2-x^2-y^2 }}dz \) so,
+  \( V_s=\int_{-r}^{r}\int_{-\sqrt{r^2-x^2 }}^{\sqrt{r^2-x^2 }}\int_{0}^{\sqrt{r^2-x^2-y^2 }}dx.dy.dz \)
+  </span>
+ 
+<br><b>6. Cone volume in Cartesian coordinates</b>: \( V_c
+     = \int_{-r}^{r}\int_{-\sqrt{(r^2-x^2)}}^{\sqrt{(r^2-x^2)}}\int_{0}^{(h-{ h \over r}.\sqrt{x^2+y^2}) }dxdydz\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     <img src="/img/figure50-51.png"  style="float: right; width: 55%; height: 65%;" class="image1">
+ <img src="/img/figure49.png"  style="float: right; width: 15%; height: 65%;" class="image1">
+    
+  <br> We want to calculate the volume of the cone in figure 49, let disk B be the base of this 
+  cone which is  a disk of radius r and let h be the height of this cone.
+   <br>Using cartesian  coordinates, the volume of the cone is the sum of all the orange boxes 
+   (figure 52) which are constituted by summing the product f(x,y).dA  for all areas dA constituting
+    the disk  B  (base of the cone), see figure 50 and 51, f(x,y) can be considered uniform in the 
+    area dA if this area is extremely small (f(x,y) doesn't enough space to change), so we can 
+    calculate the volume of the cone  \(V_c \) by the following formulae:
+  
+    <img src="/img/figure52.png"  style="float: right; width: 85%; height: 85%;" class="image1">
+  
+   <br>
+   \( V_c=\int_{dA \in B}f(x,y).dx.dy= \int_{-r}^{r}\int_{-\sqrt{(r^2-x^2)}}^{\sqrt{(r^2-x^2)}}f(x,y)dxdy\), where f(x,y)=M'M=z and 
+   M is the intersection with the cone of a line  passing through the point M' (center of the
+    rectangle dA) and perpendicular with the plane (O,x,y), since M belongs to the surface of the 
+    cone, we have \(tan(\theta')={r \over h}={M''M \over CM''}={OM' \over CM''}={{ \sqrt{x^2+y^2}} 
+    \over {CO-OM''} }={{ \sqrt{x^2+y^2}} \over {h-z}}\),
+     that is:\(z=h-{{ \sqrt{x^2+y^2}} \over tan(\theta')}  \), thus \(f(x,y)=h-{{ \sqrt{x^2+y^2}} \over 
+     tan(\theta')}  \), finally we get the volume of the cone in cartesian coordinates:
+     <br>  \( V_c=\int_{dA \in B}f(x,y).dx.dy= \int_{-r}^{r}\int_{-\sqrt{(r^2-x^2)}}^{\sqrt{(r^2-x^2)}}(h-{ h \over r}.\sqrt{x^2+y^2}) dxdy
+     = \int_{-r}^{r}\int_{-\sqrt{(r^2-x^2)}}^{\sqrt{(r^2-x^2)}}\int_{0}^{(h-{ h \over r}.\sqrt{x^2+y^2}) }dxdydz\)
+  
+  </span>
+ 
+ <br><b>7. Cartesian to polar coordinates transformation</b>:
+ <br><b>7.1 Half Disc area using slice integration</b> : \(A= \int_{0}^{\pi}dA=
+ \int_{0}^{\pi}r^2.{d\theta \over 2}={{\pi.r^2} \over 2}\) 
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    
+   <img src="/img/figure45-1-2.png"  style="float: right; width: 55%; height: 45%;" class="image1">
+ <br>Using Cartesian coordinates to calculate integrals (triple integrals for volumes, double integrals 
+ for areas, simple integrals for lengths) may seem tedious and very complex, by doing the right 
+ transformation or variable change we can get things simpler, let's take an example.
+   
+  <br>We want  to calculate the area A of half disk of radius r (figure 45), this area is 
+  the sum of all infinitely small areas dA, that is \(A=\int_A dA \) 
+  <br>\(A=  \int_{-r}^{r}f(x).dx=\int_{-r}^{r}\sqrt{r^2-x^2}.dx\) this integral is not easy to deal 
+  with, as Cartesian coordinate are not intuitive when dealing with shapes likes disks and circles, 
+  let's try something different, we divide the disk into very small sectors dA of angle d&theta; (figure 46),
+  since d&theta; is very small we can make the approximation in figure 48, so dA is the area of the triangle given by figure 46, let's find dA
+    <br>    <br>
+      <img src="/img/figure47.png"  style="float: right; width: 22%; height: 46%;" class="image1">
+    <img src="/img/figure48.png"  style="float: right; width: 42%; height: 46%;" class="image1">
+    <img src="/img/figure46.png"  style="float: right; width: 23%; height: 46%;" class="image1">
+  
+       <br>    <br> <br>    <br>    
+         <br>As we can see in figure 47, \(dA=h.{h' \over 2}=
+      cos({d\theta \over 2}) .r.sin({d\theta \over 2}).r\) since &theta; is very small (use Taylor series) 
+      we can write \(sin({d\theta \over 2})= {d\theta \over 2}\) and \(cos({d\theta \over 2})=1\), so \(dA=r^2.{d\theta \over 2}\).
+      <br>  So the area of the half disk of radius r is
+       \(A= \int_{0}^{\pi}dA=\int_{0}^{\pi}r^2.{d\theta \over 2}={r^2 \over 2}.\int_{0}^{\pi}d\theta={r^2 \over 2}.\pi={{\pi.r^2} \over 2}\) 
+      		 <br>The same formulae holds true if r was some function of &theta; that is:\(A= \int_{0}^{\pi}dA=\int_{\alpha}^{\beta}r^2.{d\theta \over 2}=\int_{\alpha}^{\beta}f^2(\theta).{d\theta \over 2}\) 
+  where r=f(&theta;)
+  </span>
+  <br><b>7.2 Area element in polar coordinates</b> :\(dA=dx.dy=l.dl.d\theta \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure58.png"  style="float: right; width: 48%; height: 50%;" class="image1">
+           <br> We coud have used integral to calculate dA, actually:
+            The area dA is the sum of all areas dB, as you can see in figure 59 the area dA depends 
+    on d&theta; and l which the distance between the origin O (0,0,0)  and the area dB, as d&theta;
+    is extremely small the arcs of the area dB can be simulated as segment of lines, so 
+ 
+    \(dB= 2.R+2.{B \over 2}= 2.R+B\)
+       \(=2(l.sin({d\theta \over 2}).dl.cos({d\theta \over 2}))+\)
+      \( dl.cos({d\theta \over 2}).dl.sin({d\theta \over 2})=2.l.dl.sin({d\theta \over 2} )=2l.dl.{d\theta \over 2}\), 
+       the term with \(dl.dl \) is negligible so \( dB=2l.dl.{d\theta \over 2}=l.dl.d\theta\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    We could've figure this out by calculating directly dB by using disk sector areas, actually
+    \(dB=(l+dl)^2 \frac{d\theta}{2}-l^2.\frac{d \theta}{2}=(l^2+2.l.dl+dl^2).\frac{d\theta}{2}
+ - l^2.\frac{d \theta}{2} =l.dl.d\theta+dl^2.\frac{d\theta}{2} =l.dl.d\theta\), the term 
+ \( dl^2.\frac{d\theta}{2}\) is negligeable compared to \( l.dl.d\theta\)
+  </span>
+       
+       
+          <img src="/img/figure59.png"  style="float: right; width: 48%; height: 50%;" class="image1">
+   <br> so \( dA=\int_{0}^{r} 2l.dl.{d\theta \over 2}={d\theta \over 2}.\int_{0}^{r} 2l.dl=
+       {d\theta \over 2} [l^2]_{0}^{r}=r^2 .{d\theta \over 2}\)
+       <br> So the general way to calculate the double integral or the area of the disk in polar coordinates is:
+       \( A=\int_{0}^{\pi}\int_{0}^{r}l.dl.d\theta\).
+       <br>This result is difficult to proof by calculus.
+       <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+       <br>We could've tried a more straightforward way to find the element area in 
+       polar coordinates  but it's really difficult to calculate, actually:
+        \((l, \theta )\) and \( (x, y) \),  we have \(x=l.cos(\theta) \)
+       and \(y=l.sin(\theta)\), so \(dx.dy=(dl.cos(\theta)-l.d\theta.sin(\theta)).
+        (dl.sin(\theta)+l.d\theta.cos(\theta))\)
+        \(=dl^2.cos(\theta).sin(\theta)+l.d\theta.dl.cos^2(\theta)
+        -l.dl.d\theta.sin^2(\theta)-l^2d\theta^2.sin(\theta).cos(\theta) \)
+  </span>
+    
+         <br><br><br><br><br>
+      <img src="/img/figure57.png"  style="float: right; width: 35%; height: 75%;" class="image1">
+     <br><br><br><br><br><br><br><br><br><br><br>
+    
+  </span>
+  
+  
+   <br><b>7.3 Cone volume using integration by slice </b>:\(V=\pi.b^2. {h \over 3}    \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure62.png"  style="float: right; width: 35%; height: 75%;" class="image1">
+  <br> Let's calculate the volume of a cone of radius r and height h, one way to do this is by summing up all the the extremely small parts 
+   of the cone (the red stripped part in figure 62), this part can be approximated by a cylinder of radius \( l \) and height \(dz \) since \(dz \)
+    is extremely small, so \(V_c=\int_{0}^{h} \pi.l^2.dz=\int_{0}^{h} \pi.{(CM''.tan(\theta'))}^2.dz\)
+    \(=\int_{0}^{h} \pi.{CM''}^2.{tan}^2(\theta').dz=\pi.{tan}^2(\theta')\int_{0}^{h} {(h-z)}^2.dz\)
+    \(=\pi.{tan}^2(\theta')\int_{0}^{h} (h^2-2.h.z+z^2).dz\)
+  \(=\pi.{tan}^2(\theta')(\int_{0}^{h} h^2.dz-2.h\int_{0}^{h}z.dz+\int_{0}^{h}z^2.dz) \)
+    \(=\pi.({b \over h})^2( h^3-2.h{h^2 \over 2}+{h^3 \over 3})=\pi.b^2. {h \over 3}    \)
+  </span>
+   
+<br><b>7.4 Half Sphere volume using slice integration</b>: \(V_s=2 \pi {{r^3} \over 3  }\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure60.png"  style="float: right; width: 35%; height: 75%;" class="image1">
+<img src="/img/figure61.png"  style="float: right; width: 35%; height: 75%;" class="image1">
+ <br>Let's calculate the volume of half sphere of radius r in polar coordinates, a way to calculate this 
+ volume is to sum all extremely thin cylinders of radius \( l \) and height \( dz \) see figure 60, 
+ varying \(l \) from r to 0, if we begin from the bottom (base of half sphere), so the volume of the 
+ sphere can be calculated as \(V_s=\int_{0}^{r}\pi.l^2.dz\), since \( sin(\theta)={l \over r } \) and \(cos(\theta)={z \over r } \), we have \(dz=-r.d\theta.sin(\theta) \)
+and \(V_s=-\pi.r^3.\int_{{\pi \over 2}}^{0} sin^3(\theta).d\theta \), we note that:
+ \( sin^3(x)=(1-cos^2(x))sin(x)=sin(x)-sin(x).cos^2(x)\), that is \( \int_{{\pi \over 2}}^{0} sin^3(x)dx=
+ \int_{{\pi \over 2}}^{0} sin(x)dx-\int_{{\pi \over 2}}^{0}sin(x).cos^2(x)dx=
+ [-cos(x) ]_{{\pi \over 2}}^0+[{cos^3(x) \over 3 }]_{{\pi \over 2}}^0=[-1-0]+[{1 \over 3} -0 ]={-2 \over 3 }\), 
+ finally we get \(V_s={2 \over 3  }.\pi.r^3 \), so the volume of the sphere is the double of this number that is \( {4 \over 3  }.\pi.r^3 \)
+  
+  </span>
+
+   <br><b>7.5 Sphere slice volume using slice integration</b>: \(V= \frac{\pi.r^3}{3}( cos^3(\alpha)-cos^3(\beta)-3(cos(\alpha)-cos(\beta)))\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure61-1.png"  style="float: right; width: 35%; height: 75%;" class="image1">
+   <br>We take a slice at a distance a from the center from a sphere of radius r, red stripped volume 
+   in figure 61-1, using spherical coordinates we write:
+   \(V_{ss}=-\pi.r^3.\int_{{\alpha}}^{\beta} sin^3(\theta).d\theta=-\pi.r^3.\int_{{\alpha}}^{\beta} 
+   (sin(\theta)-sin(\theta).cos^2(\theta)).d\theta=\)
+   \(\pi.r^3.\int_{{\alpha}}^{\beta}    (sin(\theta).cos^2(\theta)-sin(\theta)).d\theta= \)
+ \( \pi.r^3( [\frac{-cos^3(\theta)}{3}]_\alpha^\beta+[cos(\theta)]_\alpha^\beta )= \)
+  \( \pi.r^3( (\frac{cos^3(\alpha)-cos^3(\beta)}{3})+(cos(\beta)-cos(\alpha)) )= \)
+  \( \frac{\pi.r^3}{3}( cos^3(\alpha)-cos^3(\beta)+3cos(\beta)-3cos(\alpha))\)
+  <br>Example 1: If we take \( \beta=0 \) we find the volume of the sphere cap, defined
+  by an angle \(\alpha \) which is \( V_{cap}=  \frac{\pi.r^3}{3}( cos^3(\alpha)-1+3-3cos(\alpha))=\)
+  so \(V_{cap}= \frac{\pi.r^3}{3}( cos^3(\alpha)+2-3cos(\alpha))\)
+  <br>Example 2: If we take \( \beta=0 \; and \; \alpha=\frac{\pi}{3}\), we will have:
+  \( V_{ss}=\frac{\pi.r^3}{3}(\frac{1}{8}-1+3- \frac{3}{2} )=5\frac{\pi.r^3}{24}\)
+ 
+  </span>
+  
+<br><b> 7.6 Volume element in polar coordinate</b>: \(dV=dx.dy.dz=
+\rho^2.d\rho.sin(\theta).d\theta.d\alpha\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure63.png"  style="float: right; width: 35%; height: 75%;" class="image1">
+  
+ <br>To calculate the volume, we've been trying to find some intermediate extremely "sub-small" 
+ volumes and to integrate over them, there is a more direct way to find volumes or to integrate 
+ over three variables varying within a defined domain.
+ Returning to the example of sphere of radius r, to find its volume, we simply add up all  extremely
+  small  volumes within this sphere, that is: \( \int_{dV \in Sphere } dV\), let's find dV, dV relates 
+  the volume created by the an extremely small change in position of a point M inside the sphere, 
+  that is \( dV=dx.dy.dz\) in Cartesian coordinates, we saw earlier that Cartesian coordinates are 
+  not easy to handle when dealing with shapes like spheres and that polar coordinates are well 
+  suited for such cases,  so let's find \( dV \) in polar coordinates.
+    \( dV\) is the extremely small volume produced by an extremely small change in polar 
+   coordinates, that is \( d\theta, \; d\rho,\; and \; d\alpha\), varying \(\rho \; and \; \theta  \) will produce 
+   as we saw earlier for calculating areas in polar coordinates a shape which can be approximated 
+  <img src="/img/figure64.png"  style="float: right; width: 35%; height: 75%;" class="image1">
+ 
+   by a rectangle A (since the changes are extremely small), whose sides are 
+   \( d\rho \;and\ \; \rho.d\theta \), see figure 64-1
+   now let's find the rectangle created by \(d\alpha \), this rectangle will share the side \( d\rho\) 
+   of the  rectangle A  and the other side is given by \(\rho.sin(\theta).d\alpha \), so 
+   \( dV=\rho^2.d\rho.sin(\theta).d\theta.d\alpha\)
+  </span>
+ 
+ <br><b>7.7 Half Sphere volume using spherical coordinates</b>:\( V=2\pi.{ r^3 \over 3} \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Let's calculate the volume of a sphere of radius r, we have:
+   <br>\(V=\int_{0 }^{r} \int_{ 0}^{\pi } \int_{ 0}^{2\pi} \rho^2.d\rho.sin(\theta).d\theta.d\alpha
+   =\pi.2.{ r^3 \over 3}=2\pi{ r^3 \over 3}\)
+  </span>
+  
+  <br><b>7.8 Cone volume using spherical coordinates</b>: \(V= 2.\pi.[1-cos(\theta_{0})].[{\rho^3 \over 3}]_{0 }^{cos(\theta_{0}).h}\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+      <img src="/img/figure62-1.png"  style="float: right; width: 35%; height: 75%;" class="image1">
+
+Now let's go back to the calculus of volume of cone and sphere.
+ \( V_l=\int_{0 }^{cos(\theta_{f}).h}\int_{0 }^{\theta_{f}}\int_{0 }^{2.\pi}\rho^2.d\rho.sin(\theta).d\theta.d\alpha\), 
+ 
+
+ \(=2.\pi\int_{0 }^{r}\int_{0 }^{\theta_{f}}\rho^2.d\rho.sin(\theta).d\theta=\)
+ \(2.\pi\int_{0 }^{r}\rho^2.d\rho.\int_{0 }^{\theta_{f}}sin(\theta).d\theta\)
+ \(=2.\pi\int_{0 }^{r}\rho^2.d\rho.[1-cos(\theta_{f})]=\)
+ \(\frac{2.\pi}{3}.[1-cos(\theta_{f})].{r^3 } \)
+ <br>This volume isn't exactly the volume of a cone because \( \rho\) is varying from \( 0\) to \( r \)
+ , this gives the volume of the shape in figure 62-2, which is the cone plus the cap of  a sphere, 
+ this cap is defined by the angle \( \theta_f\) (as we saw in calculating the volume of a sphere slice).
+ so the volume of the cone is \(V_c=V_l- \frac{\pi.r^3}{3}( cos^3(\theta_f)+2-3cos(\theta_f))= \)
+ \(V_c=\frac{2.\pi}{3}.[1-cos(\theta_{f})].{r^3 }- \frac{\pi.r^3}{3}( cos^3(\theta_f)+2-3cos(\theta_f))= \)
+ \(=\frac{\pi r^3}{3} ( 2-2 cos(\theta)-cos^3(\theta) -2+3 cos(\theta) )=\)
+ \( \frac{\pi r^3}{3}( cos(\theta) - cos^3(\theta))=\frac{\pi r^3}{3} cos(\theta) sin^2(\theta)=\)
+ \( \frac{\pi r^3}{3} \frac{h}{r} (\frac{b}{r})^2=\pi. b^2.\frac{h }{3}\)
+     
+   </span> 
+<br><b>7.9 Spherical wedge</b>:\(V=\frac{2 \beta}{3} . r^3 \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <img src="/img/water melon.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+    <img src="/img/figure62-3.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+ Let's calculate the wedge of sphere (piece of water melon), the wedge starts at \(\beta_0\) and
+ ends at \( \beta_0+\alpha \)
+ \( V= \int_{0 }^{r} \int_{ 0}^{\pi } \int_{ \beta_0}^{\beta_0+\alpha} .sin(\theta).d\theta.d\alpha 
+ =\int_{0 }^{r}.\rho^2.d\rho.\int_{ 0}^{\pi }sin(\theta).d\theta.\int_{ \beta_0}^{\beta_0+\alpha}d\alpha \)
+ \(=\frac{ r^3}{3}.2. \alpha  \)
+  
+  <br><br><br><br><br><br><br>
+  
+  </span>
+
+     
+  <br> 7.10 Transformations:
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure75.png"  style="float: right; width: 22%; height: 65%;" class="image1">
+       <img src="/img/figure74.png"  style="float: right; width: 22%; height: 65%;" class="image1">
+  
+  Example: What is the transformation of the shape in figure 74, by the variable change 
+  \(u=2x-y ,v=2x+y   \).
+  <br>We have \(M(x,y) \in A \Leftrightarrow 
+  
+  \left\{\begin{matrix}
+2x-y \leqslant    0   \\
+2x+y  \leqslant 2  \\
+ x \geqslant  0   \\
+
+\end{matrix}\right.
+    
+ \Leftrightarrow 
+   \left\{\begin{matrix}
+u \leqslant    0   \\
+v  \leqslant 2  \\
+{{u+v} \over 4} \geqslant  0   \\
+
+\end{matrix}\right.
+
+ \Leftrightarrow 
+   \left\{\begin{matrix}
+u \leqslant  0   \\
+v  \leqslant 2  \\
+u+v \geqslant  0   \\
+
+\end{matrix}\right.
+\\
+ \Leftrightarrow  M'(u,v) \in A'  
+  \)
+</span>
+<br><b>8. Variable change, planar transformation, Jacobian: </b>
+ <br> 8.1 Planar transformation
+ <br>Example 1:
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> A planar transormation is a transformation that transforms 
+a region G in one plane into a region K in another plane, figure 113 shows this transformation
+ <br>T is said to be one-to-one transformation if no two points in G have the same image
+ in K.
+ <br><b> Example:</b>
+ <img src="/img/figure113.png"  style="float: right; width: 52%; height: 45%;" class="image1">		
+ Find the image of the region G (figur 115) defined as \(G= \left\{M(u,v) | 
+ u_i &lt; u  &lt; u_f  \;and\;  v_i &lt; v  &lt; v_f\right\}\)
+
+by the transformation T defined as:
+<br>\(T(M)=M'  \Leftrightarrow x_0=u_0. cos(v_0) \) and \(y_0=u_0.sin(v_0)\)
+<br>Figure 114 gives a graphical representation of the relationship between the coordinates \((u_0,v_0) \)
+and their image \( (x_0,y_0) \), which are nothing but polar coordinates.
+<br>Now let's find the region K (in coordinates x and y), the image of the region G ( in
+the (u,v) coordinates).
+<br>Let's take a point \(M(u_0,v_0)\) in the region G and \( M'(x_0,y_0) \) its image by T
+, we have  \(M \in G \Leftrightarrow  u_i &lt; u_0  &lt; u_f  \;and\;  v_i &lt; v_0  &lt; v_f\)
+, and  \(T(M)=M'  \Leftrightarrow x_0=u_0. cos(v_0) \) and \(y_0=u_0.sin(v_0)\)
+<br><br><br>
+<img src="/img/figure115.png"  style="float: right; width: 30%; height: 45%;" class="image1">		
+<img src="/img/figure114.png"  style="float: right; width: 30%; height: 45%;" class="image1">		
+<img src="/img/figure116.png"  style="float: right; width: 30%; height: 45%;" class="image1">		
+
+  
+<br><br><br><br><br><br><br><br>
+    <br> A better way to represent a coordinate transformation is to write for a point M
+   \(T(M(u,v))=M(w,z)\), where (u,v) and (w,z) are the coordinates of M in the two coordinates systems
+ , let's call them respectively \(C_1\) and \(C_2\), so T transforms the coorinates system 
+ from \(C_1\) to \(C_2\), 
+    actually the point doesn't change it is the same, all we do is to represent 
+   it in a different way, let's take an example.
+  </span>
+ 
+  <br>Example 2: Transformation from cartesian coordinates to polar coordinates:
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  
+   <br> Let M be a point and x and y its cartesian coordinates, the polar
+     coordinates transformation P transforms the coordinates x and y to \(\rho\) and 
+     \(\varphi\)
+     that is \(P(M(x,y))=M(\rho,\varphi) \Leftrightarrow x=x(\rho,\varphi) \;and\; y=y(\rho,\varphi)\) 
+     that is \(x=\rho.cos(\varphi)\) and 
+     \(y=\rho.sin(\varphi)\), let's take an example,
+      in figure 143-1 the equation of the sector stripped in red (which is the area comprised 
+      between two circles and delimited by two angles) in polar coordinates is 
+       \(b &le; \rho &le; a\) and \( \varphi_0 &le; \varphi &le; \varphi_1\), but in 
+      cartesian coordinates it's somewhat difficult.
+      <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    actually it's the equation in polar coordinates, transformed back in cartesian
+     coordinates.
+  </span>, on the othe hand the image of the arc (BA) is \(P((BA))=(B_sA_s)\).
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    don't be confused, (AB) is actually an arc but in polar coordinates physical shapes 
+    doesn't mean anything.
+  </span>
+ <br> We take as a convention  \(0 &le; \varphi &le;  2.\pi  \) 
+  <img src="/img/figure143.png"  style="float: right; width: 50%; height: 45%;" class="image1">
+   	<br> One important question will arise, will this transformation help us to make 
+   	things easier like calculating areas, for example what is the relationship between the 
+   	red stripped area in figure 143-1, which is the conventional area or the actual area 
+   	and the theoritical area in figure 143-2 (which is \((b-a).(\varphi_2-\varphi_1) \), obviously
+   	 they are different, but how can we use the polar coordinates to calculate the red area.
+   	 <br> Actually we know how infinitely small areas (or volume for three variables) are 
+   	 transformed, for example for cartesian and polar coordinates transformation we 
+   	 have : \(dx.dy=J(\rho,\varphi).d\rho.d\varphi\) (see § on jacobians), that is 
+   	 the area of the sector S is \(\int\int_Sdx.dy=\int_{b}^{a}\int_{\phi_1}^{\phi_2}J(\rho,\varphi).d\rho.d\varphi \), 
+   	 \(=\int_{b}^{a}\int_{\phi_1}^{\phi_2}\rho. d\rho.d\varphi \).
+   
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(J(\rho,\varphi)=(\frac{\partial x}{\partial \rho}.
+ \frac{\partial y}{\partial \varphi}-\frac{\partial x}{\partial \varphi}.\frac{\partial y}{\partial \rho})=
+ cos(\varphi).\rho.cos(\theta)-sin(\varphi).(-\rho.sin(\varphi)=\rho\)
+  </span>=\([\frac{\rho^2 }{2 } ]_b^a.(\varphi_1-\varphi_0)=\frac{a^2-b^2 }{2 }(\varphi_1-\varphi_0)\), 
+  particularly if b=0, \(\varphi_0=0\) and \(\varphi_1=2.\pi\) we find the are of disk which 
+  is \(\pi.a^2\)
+  </span>
+  	 
+   <br>Example 3:Half sphere volume using polar coordinates
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Now let's calculate the volume of half sphere (S/2) of raduis r, 
+   	 we have \(V=\int\int\int_{S/2}dV\) where \(dV=dz.dA=dz.dx.dy\), where dA is the 
+   	 area element 
+   	 "moving" freely at the base of the half sphere which is the disk A on the plane (O,x,y) 
+   	 of raduis r and whose center is O.
+   	 so \(V=\int\int\int_V dz.dx.dy=\int\int_A(\int_0^{\sqrt{r^2-\rho^2 }}dz).dx.dy\)
+   	with \(\rho^2=x^2+y^2\), hence 
+   	\(V=\int\int_A\sqrt{r^2-\rho^2 }.dx.dy=\int\int_Af(x,y).dx.dy=
+   	\int\int_Af(x(\rho,\varphi),y(\rho,\varphi)).dx.dy=
+   	\int\int_Af(\rho,\varphi).\rho.d\rho.d\varphi= 
+   \\\int_0^{2.\pi}\int_0^{r}\sqrt{r^2-\rho^2 }.\rho.d\rho.d\varphi=
+  ( \int_0^{2.\pi}d\varphi).( \int_0^{r}\sqrt{r^2-\rho^2 }.\rho.d\rho)=
+  2.\pi.[- \frac{1}{3}(r^2-\rho^2)^{3/2}]_0^r=\frac{2}{3}.\pi.r^3
+   \)
+  </span>
+  <br>Example 4:Transformation of a line from cartesian (x,y) to cartesian polar plane
+   \(\rho,\varphi \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ Conversly figure 140 and 141 give transformation of a line from cartesian coordinates 
+ to polar coordinates. 
+ <img src="/img/figure140.png"  style="float: right; width: 50%; height: 45%;" class="image1">		
+ <img src="/img/figure141.png"  style="float: right; width: 50%; height: 45%;" class="image1">	
+  </span>
+ <br> 8.2 <b> Jacobian:</b> 
+ <br>&#9755; Two Variables:\( dA=dx.dy= J(u,v).du.dv=\frac{\partial(x,y)}{\partial(u,v)}.du.dv=
+ \begin{vmatrix}
+\frac{\partial x }{\partial u} & \frac{\partial x}{\partial v} \\
+ \frac{\partial y }{\partial u} &  \frac{\partial y }{\partial v} \\
+\end{vmatrix}.du.dv=(\frac{\partial x}{\partial u}.
+ \frac{\partial y}{\partial v}-\frac{\partial x}{\partial v}.\frac{\partial y}{\partial u} ).du.dv\) 
+, example:
+
+  <br>&#9755; Three Variables: 
+  \( dv'=dx.dy.dz=J(u,v,w).du.dv.dw=\frac{\partial(x,y,z)}{\partial(u,v,w)}.du.dv.dw=
+  \begin{vmatrix}
+\frac{\partial x }{\partial u} & \frac{\partial x}{\partial v} & \frac{\partial x}{\partial w}\\
+ \frac{\partial y }{\partial u} &  \frac{\partial y }{\partial v} & \frac{\partial y }{\partial w}\\
+  \frac{\partial z }{\partial u} &  \frac{\partial z }{\partial v} & \frac{\partial z }{\partial w}
+\end{vmatrix}.du.dv.dw \) 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \((\frac{\partial x }{\partial u}.\begin{vmatrix}
+\frac{\partial y }{\partial v} & \frac{\partial y}{\partial w} \\
+ \frac{\partial z }{\partial v} &  \frac{\partial z }{\partial w} \\
+\end{vmatrix}-\frac{\partial x }{\partial v}.
+\begin{vmatrix}
+\frac{\partial y }{\partial u} & \frac{\partial y}{\partial w} \\
+ \frac{\partial z }{\partial u} &  \frac{\partial z }{\partial w} \\
+\end{vmatrix}+\frac{\partial x }{\partial w}.
+\begin{vmatrix}
+\frac{\partial y }{\partial u} & \frac{\partial y}{\partial v} \\
+ \frac{\partial z }{\partial u} &  \frac{\partial z }{\partial v} \\
+\end{vmatrix})\)=\(\frac{\partial x }{\partial u}.
+(\frac{\partial y }{\partial v}.\frac{\partial z }{\partial w}-\frac{\partial z }{\partial v}.
+\frac{\partial y}{\partial w})-\frac{\partial x }{\partial v}.(\frac{\partial y }{\partial u}.\frac{\partial z }{\partial w}-\frac{\partial z }{\partial u}.
+\frac{\partial y}{\partial w})+
+\frac{\partial x }{\partial w}.
+(\frac{\partial y }{\partial u}.\frac{\partial z }{\partial v}-\frac{\partial z }{\partial u}.
+\frac{\partial y}{\partial v})\)
+
+  </span>
+  <br>&#9755; Proof for two variables transformations
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure117.png"  style="float: right; width: 50%; height: 45%;" class="image1">		
+ <br><b> Why Jacobians are so important:</b>
+ <br>They are used to make calculation of some integrals easier, for example, recall 
+ that to calculate the area of a disk we had to use polar coordinates (because they make
+ the calculation easier) but for this, we had to figure out what is dx.dy in polar coordinates
+ , that is to calculate the elements dA=dx.dy using \(r, and\; \theta \), 
+ that is the area of dA' the image of dA by the polar transformation.
+ <br><b>Jacobian formula</b>:
+ <br> Let T be a planar transformation that transforms a point A represented by its 
+ coordinates (u,v) to a point A' represented in other coordinates let's say (x,y), so
+ T(A)=A' or T(u,v)=(x,y), T is known when the functions x=h(u,v) and y=g(u,v) are 
+ known.
+ <br>Let's consider an infinitely small rectangle G as showed by figure 117, \( C_1C_2,C_2C_3,C_3C_4 \;and\;C_4C_1 \)
+ are the sides of that rectangle, we can use equations to define any side of G,
+  for example \(C_1C_2=\left\{M(u,v) | u_0&le;u&le;  u_f    \;and\;v=v_0 \right\} \),
+ we have \(T(C_1C_2)=\left\{M'(x,y) | u_0&le;u&le;  u_f    \;and\;v=v_0  \;where\;
+ x=h(u,v)\; and\; y=g(u,v) \right\}\), let M'(x,y) be a point on \(T(C_1C_2) \), 
+ so \( x=g(u,v_0) \;and \; y=h(u,v_0) \), we suppose that K=T(G) the image of the rectangle G
+ can be approximated as a parallelogram (the proof of this goes byond the scope of this
+ preamble), so the sides of the parallelogram are \(T(C_1C_2)=T(C_1)T(C_2)\) the same goes
+ for the other sides.
+ <br>The position vector is:  \( OM'=p=x.i+y.j \), that is a tangent vector 
+ at any point B(a,b) is :  \(dp(a,b)=dx(a,b).i+dy(a,b).j\),  or in terms of u, v :
+  \( dp(u_B,v_B)=dx(u_B,v_B).i+dy(u_B,v_B).j\), where \(a=g(u_B,v_B) \;and\; b=h(u_B,v_B)\)
+ , to get the tangent vector at \((x_0,y_0) \) we have to replace \((u_B,v_B) \;by\;(u_0,v_0)\)
+ that is :\( dp(u_0,v_0)=dx(u_0,v_0).i+dy(u_0,v_0).j\), recall from the chain rule that:
+  \(dp=(\frac{\partial x}{\partial u}.du+\frac{\partial x}{\partial v}.dv).i+
+(\frac{\partial y}{\partial u}.du+\frac{\partial y}{\partial v}.dv).j\), since we're calculating 
+the tangent vector on \(T(S_1)\),  v is constant,  that is dv=0, that is a tangeant vector
+ on \(T(C_1C_2)\) is:
+ \(dp=\frac{\partial x}{\partial u}.du.i+\frac{\partial y}{\partial u}.du.j\), 
+ hence: \(\frac{dp}{d u}=\frac{\partial x}{\partial u}.i+\frac{\partial y}{\partial u}.j\),
+ that is the tangent vector on \(T(C_1C_2)\) at \((x_0,y_0)\) is :
+ \(\frac{dp}{d u}(u_0,v_0)=\frac{\partial x}{\partial u}(u_0,v_0).i+\frac{\partial y}{\partial u}(u_0,v_0).j\)
+  <br>The same reasoning above gives us the tangent vector to \( T(C_4C_3)\) at (\(x_0,y_0)\)
+  is: \(\frac{dp}{d v}(u_0,v_0)=\frac{\partial x}{\partial v}(u_0,v_0).i+\frac{\partial y}{\partial v}(u_0,v_0).j\)
+  <br>So far we know the directions of two vectors defining K, now we must calculate
+   the sides of K.
+   <br>\(\frac{dp}{d u}(u_0,v_0)=\displaystyle \lim_{\delta u \to 0}\frac{p(u_0+\delta u,v_0)-p(u_0,v_0)}{\delta u}\)
+  since du is extremely small we can put it in this equation without bothring ourselves 
+  about the limit, 
+  that is:\(\frac{dp}{d u}(u_0,v_0)=\frac{p(u_0+du,v_0)-p(u_0,v_0)}{du}\), that is:
+  \( p(u_0+du,v_0)-p(u_0,v_0)=\frac{dp}{d u}(u_0,v_0).du\), 
+  \( p(u_0+du,v_0)-p(u_0,v_0)\) is nothing but the vector which is defined by 
+  two points  \( T(C_1)\) and  \( T(C_2)\), that is the vector \( T(C_1)T(C_2)\), (the vector in
+  purple of  region K, see figure 117), let's call \(W_1 \) this vector, so
+   \(W_1=\frac{dp}{d u}(u_0,v_0).du\), that is: \(W_1=&lt; \frac{\partial x}{\partial u}(u_0,v_0), \frac{\partial y}{\partial u}(u_0,v_0),0 &gt;.du\), 
+   by the same logic we get 
+   \(W_2=T(C_1)T(C_4)=\frac{dp}{d v}(u_0,v_0).dv=&lt; \frac{\partial x}{\partial v}(u_0,v_0), \frac{\partial y}{\partial v}(u_0,v_0),0 &gt;.dv\).
+   <br> Recall from vector calculus that the area of parallelogram is :\(||W_1 \times W_2||\)
+    \(W_1 \times W_2= \begin{vmatrix}
+i & j  & k \\
+\frac{\partial x}{\partial u} & \frac{\partial y}{\partial u} & 0 \\
+\frac{\partial x}{\partial v} & \frac{\partial y}{\partial v} & 0  \\
+\end{vmatrix}.du.dv
+=  (\frac{\partial x}{\partial u}.\frac{\partial y}{\partial v}-\frac{\partial x}{\partial v}.\frac{\partial y}{\partial u} ).k.du.dv \), 
+since ||k||=1, :  \(||W_1 \times W_2||=(\frac{\partial x}{\partial u}.\frac{\partial y}{\partial v}-\frac{\partial x}{\partial v}.\frac{\partial y}{\partial u} ).du.dv\), 
+finally we get dA' the area of K, \(dA'=dx.dy=J(u,v).du.dv=
+frac{\partial x}{\partial u}.\frac{\partial y}{\partial v}-\frac{\partial x}{\partial v}.
+\frac{\partial y}{\partial u} ).du.dv\) 
+  
+  </span>
+ <br> &#9755;    Example:Area element in polar coordinates
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+Let T be the following planar transformation \(T(\rho, \varphi)=(x,y)\), 
+where :\(x=\rho.cos(\varphi) \;and\; y=\rho.sin(\varphi) \), so :
+\(dx.dy=(\frac{\partial x}{\partial \rho}.\frac{\partial y}{\partial \varphi}-
+\frac{\partial x}{\partial \varphi}.\frac{\partial y}{\partial \rho} ).d\rho.d\varphi\)=
+\(cos(\varphi).\rho.d\varphi.cos(\varphi)+\rho.d\varphi.sin(\varphi).sin(\varphi)
+ =\rho.d\rho.d\varphi\)
+  </span>
+ <br>&#9755;  Example: Volume element in spherical coordinates:
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure144.png"  style="float: right; width: 22%; height: 45%;" class="image1">		
+ <br> We have \(x=cos(\varphi).\rho=cos(\varphi).sin(\theta).r\), 
+  \(y=sin(\varphi).sin(\theta).r\) and \(z=cos(\theta).r \)
+  so \(dx.dy.dz=[\frac{\partial x }{\partial r}.
+(\frac{\partial y }{\partial \theta}.\frac{\partial z }{\partial \varphi}-\frac{\partial z }{\partial \theta}.
+\frac{\partial y}{\partial \varphi})-\frac{\partial x }{\partial \theta}.(\frac{\partial y }{\partial r}.\frac{\partial z }{\partial \varphi}-\frac{\partial z }{\partial r}.
+\frac{\partial y}{\partial \varphi})+\)\(
+\frac{\partial x }{\partial \varphi}.
+(\frac{\partial y }{\partial r}.\frac{\partial z }{\partial \theta}-\frac{\partial z }{\partial r}.
+\frac{\partial y}{\partial \theta})].dr.d\theta.d\varphi=\)
+\(  [cos(\varphi).sin(\theta)( 0-(-sin(\theta)).r.cos(\varphi).sin(\theta).r)-\)\(
+cos(\theta).r.cos(\varphi).(0-cos(\theta).cos(\varphi).sin(\theta).r )-\)\(
+sin(\varphi).sin(\theta).r.(-sin(\varphi).sin(\theta).sin(\theta).r-\)\(
+cos(\theta).sin(\varphi).cos(\theta).r)].dr.d\theta.d\varphi=
+\)\(
+[r^2.(sin(\theta))^3
+.(cos(\varphi))^2+r^2.(cos(\theta))^2.(cos(\varphi))^2.sin(\theta)
++r^2.(sin(\varphi))^2.sin(\theta)].dr.d\theta.d\varphi\)\(
+=[r^2.(cos(\varphi))^2.sin(\theta)+r^2.(sin(\varphi))^2.sin(\theta)].dr.d\theta.d\varphi=
+r^2.sin(\theta).dr.d\theta.d\varphi
+\)
+  </span>
+   <br> 8.3 <b> Variable change in double integral:</b>
+    \( \int \int_S f(x,y).dx.dy=\int \int_{h^{-1}(S)} f(h(u,v)).J(u,v).du.dv\) , where h is a one-to-
+    one function and    \( h(u,v)=(x,y)=(h_1(u,v),h_2(u,v)) \)
+<h1 id="6">6 Multivariable calculus</h1>
+<h2 id="6_1">6.1 Definitions related to vectors</h2>
+  <img src="/img/figure80.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+<h3 id="6_1_1">6.1.1 Magnitude and direction</h3>
+A vector is defined by a direction and a magnitude (or length), a vector doesn't have an origin
+all vectors with same magnitude and direction are the same, all vectors in figure 88 are 
+representing the same vector \( \vec{v}\).
+<br>The magnitude of vector \( \vec{v}\) is denoted \( ||\vec{v}||\).
+<br>The direction of vector \( \vec{v}\) is a vector denoted as \( Dir(\vec{v}\)) which magnitude is 1, and
+the directions of \( Dir(\vec{v})\) and \( \vec{v}\) are the same, we write \( Dir(\vec{v})=\frac{\vec{v}}{
+|| \vec{v}||}\)
+
+<h3 id="6_1_2">6.1.2 Operations on vectors</h3>
+<img src="/img/figure81-82.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+<b>1. Addition:</b> The addition of two vectors \( \vec{v}\;and\; \vec{w}\) (figure 81) is a vector
+ \( \vec{r}\) obtained by taking the tail of vector \( \vec{w}\) and the head of vector \( \vec{v}\)
+ as in figure 82.
+ <br><b>2. Multiplication by a scalar :</b> The multiplication of a vector \( \vec{v}\) by a scalar 
+ \( \alpha\) is a vector \( \vec{w}\) such as \( Dir(\vec{w})=Dir(\vec{v})\) and \( ||\vec{w}||=\alpha.||\vec{v}||\)
+<h3 id="6_1_3">6.1.3 Coordinates</h3>
+<img src="/img/figure83.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+ To give a formal definition, vectors are expressed with the help of scalars and other 
+ reference vectors, for example in two dimensions, vectors are expressed with the help of unit 
+ vectors \( \vec{i}\) and  \( \vec{j}\), that is any vector  \( \vec{v}\) in the plane \((O, \vec{i},\vec{j)}\) 
+ can be  defined as \( \vec{v}=x.\vec{i}+y.\vec{j}\), where x and y are real 
+ numbers (scalars).
+ <br> In three dimension a vector \(\vec{v} \) in the space \((O, \vec{i},\vec{j},\vec{k)}\) has three 
+ coordinates x,y and z and we write \( \vec{v}=x.\vec{i}+y.\vec{j}+z.\vec{k}\).
+ 
+ <br>Another notation for a vector \( \vec{v}\) with coordinates x,y,z is \( \vec{v}=&lt;x,y,z&gt;\)
+  <br> Vectors can be expressed in any dimensions, in n dimensions a vector has n coordinates.
+ <br> As we can see in figure 83, \(|| \vec{v} ||=\sqrt{x^2+y^2}\)
+<h3 id="6_1_4">6.1.4 Dot product</h3>
+Let a, b and c be three vectors such as \(a=&lt;a_1,a_2,a_3&gt; \), \(b=&lt;b_1,b_2,b_3&gt; \) and
+\( a=&lt;c_1,c_2,c_3&gt;\), 
+then:
+   <br>1. The dot product a.b is defined as \(a.b=a_1.b_1+a_2.b_2+a_3.b_3 \)
+   <br>2. The magnitude of vector a is \(||a||=\sqrt{a_1^2+a_2^2+a_3^2 } \)
+   <br>3. a.b=b.a		
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+    because \(a_1.b_1=b_1.a_1 \;and\; a_2.b_2=b_2.a_1\)
+</span>
+  <br>4.  \(a.(b+c)=a.b+a.c\)  		
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    because \((b+c)=&lt;b_1+c_1,b_2+c_2,b_3+c_3 &gt;  \)
+  </span>
+  <br>5.  \((\lambda.a).b=\lambda.(a.b)\)  	
+  <br>6. 0.a=0
+  <br>7. a and b are orthogonal \( \Leftrightarrow  \) a.b=0
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     <img src="/img/figure77.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+  let \(a=&lt;a_1,a_2,a_3 &gt; \) and \(b=&lt;b_1,b_2,b_3&gt; \) so, \((a-b)^2=a^2-2a.b+b^2 \)that is
+  \( |a-b|^2=a^2-2a.b+b^2 \), according to figure 77 we have \( |a-b|^2=a^2+b^2 \), so a.b=0
+  </span>
+   <br>8. \(a.b=|a|.|b|.cos\theta \), \( \theta \) is the angle between a and b
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure76.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+   as we can see in figure 76 we have:  \(b=|b|.cos(\theta).i +|b|.sin(\theta).j \), i is a unit vector with 
+   same direction as a, j is unit vector perpendicular to a, so
+     \(b=|b|.cos(\theta).{a \over |a|} +|b|.sin(\theta).j \), so 
+     \(b.a=|b|.cos(\theta).{|a|^2 \over |a|}  \), that is \(b.a=|b|.|a|.cos(\theta)  \)
+  </span>
+   <br>9. \( \theta=cos^{-1}({a.b \over |a|.|b| }) \)
+   <br>10.Let \(\vec{v}=&lt;v_x,v_y&gt; \) a vector in the plane \((O,\vec{i},\vec{j} )\), there is only one 
+   vector with the same magnitude and obtained by rotating the vector \(\vec{v}\) anti-clockwise by 
+   90° degree, and we have \(\vec{w}=&lt;-v_y,v_x&gt; \) see figure 88, 
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+        <img src="/img/figure88.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+  </span>
+   the vector \(\vec{w'}=&lt;v_y,-v_x&gt; \)
+   is also perpendicular to vector \(\vec{v} \) and with the same magnitude 
+   (actually \(\vec{v}. \vec{w}=\vec{v}. \vec{w'}=0\))
+   <br> In the case of three dimensions the set of all vectors perpendicular to a vector is a infinite.
+  <br>11. The area of a parallelogram formed by two vectors  \(\vec{a} =&lt;a_x,a_y&gt;\; and \; \vec{b}=&lt;b_x,b_y&gt; \) 
+  is \(Abs(det(\vec{a} ,\vec{b} ))=Abs(\begin{vmatrix}
+a_x & b_x \\
+a_y & b_y \\
+\end{vmatrix})
+\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+        <img src="/img/figure84..87.png"  style="float: right; width: 50%; height: 45%;" class="image1">
+
+We have two vectors \(\vec{a} \;and \; \vec{b} \), figure 84 and we want to calculate the area 
+of the triangle T formed by these two vectors, figure 85-1, the area of this triangle is the sum of the areas
+of two triangles (the yellow and blue triangles), figure 86, if we take two yellow and two blue 
+triangles we can form a rectangle R as in figure 87-1 which sides are h (figure 85-2) and b, so 
+the area A of this rectangle is:
+ \(A=||\vec{a}|| . ||\vec{b}||.sin(\theta) \).
+ <br>Moreover and as we can see in figure 87-2 the area of the parallelogram P 
+ formed by the two vectors \(\vec{a} \;and \; \vec{b} \) ( \( \vec{b}\) as the diagonal vector in this
+  case),  is twice the  area of the triangle T( figure 85-1), so  \(A=||\vec{a}|| . ||\vec{b}||.sin(\theta) \)
+  is the twice the area of triangle T (figure 85-1) and is equal to the area of the parallelogram in 
+  figure 87-2.
+ 
+<br>Let \(\vec{a}'\) the vector obtained by rotating the vector \(\vec{a}\) anti-clockwise by 90°, 
+the angle \( \theta' \) between vectors \(\vec{b} \;and\; \vec{a}'\) is \( \theta +\frac{\pi}{2} \), so
+\(A=||\vec{a}|| . ||\vec{b}||.sin(\theta)=||\vec{a}|| . ||\vec{b}||.sin(\theta'-\frac{\pi}{2})
+=- ||\vec{a}|| . ||\vec{b}||.cos(\theta')=-||\vec{a}'|| . ||\vec{b}||.cos(\theta')
+\\=-||\vec{a}'|| . ||\vec{b}||.cos(\theta')=-\vec{a}'.\vec{b}=
+-&lt;-a_y,a_x&gt;.&lt;b_x,b_y&gt;=-(-a_y.b_x+a_x.b_y)=(a_y.b_x-a_x.b_y)
+\)
+Another way to find the area  A of the parallelogram is shown by figure 87-3, A is the area of the 
+rectangle of sides \( a_x+b_x\) and \( a_y+b_y\) minus the area of two triangles stripped in blue 
+minus the area of two triangles stripped in green minus the area of two rectangles of sides 
+\(a_x \) and \(b_y \)
+<br>Knowing that the area of the two triangles stripped in blue is the area of a rectangle of sides
+ \(a_x\) and \(a_y\) and the area of the two triangles stripped in green is the area of a rectangle 
+ of sides  \( b_x\) and \( b_y\).
+
+<br> So \(A=(|a_x|+|b_x|).(|a_y|+|b_y|)-|b_x|.|b_y|-|a_x|.|a_y|-2.|a_x|.|b_y|=|a_x|.|a_y|+|a_x|.|b_y|+|b_x|.|a_y|
++|b_x|.|b_y|-|b_x|.|b_y|-|a_x|.|a_y|-2.|a_x|.|b_y|
+\\=|a_x|.|b_y|+|b_x|.|a_y|+|b_x|.|b_y|-|b_x|.|b_y|-2.|a_x|.|b_y|=|b_x|.|a_y|-|a_x|.|b_y| \)
+
+  <img src="/img/figure87-3.png"  style="float: right; width: 40%; height: 70%;" class="image1">
+<br><br><br><br><br><br><br><br><br>
+  </span>
+  
+   
+    <h3 id="6_1_5">6.1.5 Cross product</h3>
+     <img src="/img/figure78.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+    The cross product of two vectors a and b is a vector denoted by a x b and such as:
+    <br>\(||a \times b||=||a||.||b||.sin(\theta) \) and a x b is orthogonal to the plane constituted by a and b
+<h4 id="6_1_5_1">6.1.5.1 Properties</h4>
+ a x b=-b x a,  (a+b) x c=a x c+b x c,  a x 0=0,a x a=0
+ <h4 id="6_1_5_2">6.1.5.2 Determinant formula of cross product</h4>
+Let a and b two vectors such as \(a=&lt;a_1,a_2,a_3&gt; \;and\; b=&lt;b_1,b_2,b_3&gt;\), a x b
+ is given by the formula: 
+\(a \times b=&lt;a_2b_3-a_3b_2,-(a_1b_3-a_3b_1),a_1b_2-a_2b_1&gt;  =
+\begin{vmatrix}
+i & j  & k \\
+a_1 & a_2 & a_3 \\
+b_1 & b_2 & b_3  \\
+\end{vmatrix}
+\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \( a \times b= (a_1i+a_2j+a_3k) \times (b_1i+b_2j+b_3k)\) and i x i=0, i x j=k, i x k=-j, j x k=i
+    
+  </span>
+  <br> We have the following properties of the cross product:
+  <br>1.\( (a \times b).a=(a \times b).b=0\) 
+  <br>2. \( ||a \times b ||^2=||a||^2.||b||^2-(a.b)^2 \) (Lagrange's Identity )
+  <br>3.The area of a parallelogram spanned by two vectors a and b is ||a x b||
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    The area of the parallelogram is \(||a||.||b||.sin(\theta)\), where \(\theta  \) is the angle between a
+    and b.
+  </span>
+  
+<h4 id="6_1_5_3">6.1.5.3 Determinant and triple product</h4>
+1.\(det(a,b,c)=a_1(b_2.c_3-c_2.b_3)-a_2(b_1.c_3-c_1.b_3)+a_3(b_1.c_2-c_1.b_2)\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+<br> let a,b,c be three vectors in the space (O,i,j,k), where \(a=&lt;a_x,a_y,a_z&gt; , 
+  b=&lt;b_x,b_y,b_z&gt; \) and \(c=&lt;c_x,c_y,c_z&gt;\), the determinant of those three vectors is
+ defined as:
+
+
+   
+
+     <img src="/img/figure89.png"  style="float: right; width: 32%; height: 35%;" class="image1">
+ <br>\(det(a,b,c)=
+\begin{vmatrix}
+a_1 & a_2 & a_3 \\
+b_1 & b_2 & b_3 \\
+c_1 & c_2 & c_3  \\
+\end{vmatrix}=a_1.\begin{vmatrix}
+b_2 & b_3 \\
+ c_2 & c_3  \\
+\end{vmatrix}-a_2.\begin{vmatrix}
+b_1 & b_3 \\
+ c_1 & c_3  \\
+\end{vmatrix}+a_3.\begin{vmatrix}
+b_1 & b_2 \\
+ c_1 & c_2  \\
+\end{vmatrix}\)
+<br><br><br>
+  </span>
+
+<br>2. \(c.(a \times b)=a.(b \times c)=b.(c \times a)\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <img src="/img/figure91.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+    
+    <br>We use the cross product and the dot product to write handy formulas of some very known
+values like the volume of a parallelepiped, we know that the volume V of the parallelepiped in 
+figure 91 is the area of the base (the area A of parallelogram spanned by the two vectors a and b) 
+multiplied by the height h, so \(V=A.h=||a \times b||.cos(\theta).||c||=(a \times b).c\), 
+we could've chosen the base spanned by  b and c, or a and c, so :
+<br>\(V=A.h=||a \times b||.cos(\theta).||c||=c.(a \times b)=a.(b \times c)=b.(c \times a)\), this called triple product
+  </span>
+<br>3. \(det(a,b,c)=a.(b \times c) \)
+ <h3 id="6_1_6">6.1.6 Matrices</h3>
+  <h3 id="6_1_6_1">6.1.6.1 Definition</h3>
+ A matrix A is a set of numbers, ordered in a rectangular way, a matrix has n rows and m columns.
+		
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ or other objects for which operations such addition and multiplication can be defined
+ </span>
+ a matrix has n rows and m columns, we  can use the following notation, \( A=[a_{i} ]_{1 &le; i &le;n}\) ,where:
+  \( [a_i ]=&lt;a_{i1},..,a_{im}&gt;\), A is a set of n vectors in a space of dimension m.
+
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <img src="/img/figure92.png"  style="float: right; width: 22%; height: 45%;" class="image1">	
+ </span>
+ Another practical notation is \( A=(a_{ij})_n^m\).
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ 	 It means A is formed by n*m elements  , and that 
+ \( a_{ij}\) is the element or entry in row number i and in column number j.
+ </span>
+  <h3 id="6_1_6_2">6.1.6.2 Operation on matrices</h3>
+  1.Addition:\(A+B=(a_{ij}+b_{ij})_n^m\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ 	&#9827; Two matrices A and be can be added if  they are the same dimension (n*m)
+ </span>
+  <br> 2. Multiplication by a scalar:\(\alpha.A=(\alpha.a_{ij})_n^m \)
+  <br>3. Transposition:\(A^\perp=(a'_{ij})_m^n  \) ,where \(a'_{ij}=a_{ji}  \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure93.png"  style="float: right; width: 22%; height: 45%;" class="image1">		
+  </span>
+  <br> 4. \((\alpha.A)^\perp=\alpha.A^\perp\)
+  <br>5. \( (A+B)^\perp=A^\perp+B^\perp \)
+  <br>6.\( (A^\perp)^\perp=A\)
+  <br>7.If \( A=(a_{ij})_n^m\) and \( B=(b_{ij})_p^q\) , A.B exists iff m=p and we have:
+   \( C=(c_{ij})_n^q=A.B\)
+  means that \(c_{ij}=\sum_\limits{k=1}^{m}a_{ik}.b_{kj} \)
+  <br>8. (A.B).C=A.(B.C) (associativity)
+  <br>9. A.(B+C)=A.B+A.C
+  <br>10. A.B=B.A is generally not true even if A=n*p and B=p*n
+  <h3 id="6_1_6_3">6.1.6.3 Linear equations</h3>
+  The linear equation:
+  \(a_{11}.x_1+a_{12}.x_2+..+a_{1m}.x_m=b_1\\
+  a_{21}.x_1+a_{22}.x_2+..+a_{2m}.x_m=b_2\\
+  \;\;\;\;\;\;\;\vdots\\
+   a_{n1}.x_1+a_{n2}.x_2+..+a_{nm}.x_m=b_n
+   \)
+   can be written using matrix, \(A.X=B\), where \( A= (a_{ij})_n^m\)  ,\( B= (b_{i})_n^1\)
+   and \( X= (x_{i})_1^m\).
+  
+    <h3 id="6_1_6_4">6.1.6.4 Square, identity and inverse matrices </h3>
+    1. A square matrix is a matrix with the same number of row and columns, 
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure95.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+  </span>
+    
+    it can   be diagonal, upper or lower triangular.
+   <br>	 2.  \( A= (a_{ij})_n^n\) is diagonal iff for every \(i \neq j, a_{ij}=0 \)
+    	
+		
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure96.png"  style="float: right; width: 22%; height: 45%;" class="image1">	
+  </span>
+  <br>	 3.  \( A= (a_{ij})_n^n\) is upper triangular iff \(j &lt;i  \Rightarrow  a_{ij}=0 \)
+    	
+		
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure97.png"  style="float: right; width: 22%; height: 45%;" class="image1">	
+  </span>
+  <br>	 4.  \( A= (a_{ij})_n^n\) is lower triangular iff \(i &lt;j  \Rightarrow  a_{ij}=0 \)
+    	
+		
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure98.png"  style="float: right; width: 22%; height: 45%;" class="image1">	
+  </span>
+  <br>	 5.  \( I_n= (a_{ij})_n^n\) is the identity matrix iff \(i \neq j  \Rightarrow  a_{ij}=0 \) and 
+  \(i = j  \Rightarrow  a_{ij}=1 \)
+    	
+		
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure100.png"  style="float: right; width: 22%; height: 45%;" class="image1">	
+  </span>
+  <br>6. A square matrix A of dimension n is invertible if  it exists a  n square matrix B such as
+   \(A.B=B.A=I_n\) ,   we write \(B=A^{-1} \)
+     <br> 7. For any n*m matrix A we have: \(A.I_m=I_n*A=A \)
+     <br>8. A n square matrix A is symmetric iff \(A^\perp=A\), that is iff \(a_{ij}=a_{ji}\) for every 
+     1 &le;i,j &le;n
+     <br>9. If if \(det(A) \neq 0 \) the equation A.X=B has  a unique solution ,  otherwise it 
+     has no solution or infinitely many solutions.
+     <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>1.There is no elaborate method to tell if we have no solution or infinitely many solution,
+    <br>2. In three dimensions A.X=B can be written in the form of three equation involving (x,y,z)
+    which are the equations of a plane, so the three planes can intersect in a single point, 
+    no point or infinitely many points
+  </span>
+  <br>10. If A is a square matrix such that \(A=(a_{ij})_n^n\), then 
+  \(DetA=\sum\limits_{k=1}^{n}(-1)^{k+1}.a_{1k}.Det A_k\), where \(A_k\) is a square
+   matrix obtained by removing the first line and the \(k^{th} \) column from the matrix A.
+     <h3 id="6_1_7">6.1.7 Parametric equations</h3>
+ 1. \(  \left\{\begin{matrix} x=x_0+t.v_1
+ \\y=y_0+t.v_2
+ \\z=z_0+t.v_3
+\end{matrix}\right.\) is the <b>parametric equation of a line</b> through  \( (x_0,y_0,z_0)\) and parallel to
+   \(v=&lt;v_1,v_2, v_3&gt;\)
+
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     <br> Let M(x,y) be a point in the plane (O, i, j), 
+ <br> \(M \in L \Leftrightarrow \overrightarrow{P_0M}=t.v \Leftrightarrow 
+ x-x_0=t.v_1 \;and\; y-y_0=t.v_2
+ \), so the parametric equation of line L is:
+ \(
+ \left\{\begin{matrix} x=x_0+t.v_1
+ \\y=y_0+t.v_2
+\end{matrix}\right.
+\) by the same way the parametric equation of a line through a point M(x,y,z) and parallel to a 
+vector \(v=&lt;v_1,v_2,v_3&gt; \) is :
+\(  \left\{\begin{matrix} x=x_0+t.v_1
+ \\y=y_0+t.v_2
+ \\z=z_0+t.v_3
+\end{matrix}\right.\)
+  </span>
+
+
+<br>2.  \(  \left\{\begin{matrix} 
+ x=d+r.cos(\theta)
+ \\y=r+r.sin(\theta)
+\end{matrix}\right.\)
+is the <b>Parametric equation of a circle</b>
+
+
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+Consider a point M(x,y) on the circumference of circle of radius r, in the plane (O, i, j), see figure 102
+so
+    <img src="/img/figure102.png"  style="float: right; width: 30%; height: 72%;" class="image1">
+</span>
+
+<br>3. \( 
+\left\{\begin{matrix}
+ x=r.(\theta+sin(\theta))\\
+ y=r.(1+cos(\theta)) \\
+\end{matrix}\right.
+\)is the <b>Parametric equation of a cycloid</b>
+
+
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  
+ 
+  <img src="/img/figure101.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+Let's take the example of a cycloid, a cycloid is the trajectory of a point M in the circumference of 
+a rotating circle, with no slips, see figure 101.
+<br>Suppose that the point M is initially on the y axis, so at t=0 x=0 and y=2.r, at an instant t the 
+circle has  rotated by an angle \( \theta \) around the axis through the center C of the circle and 
+perpendicular to the plane (O, i, j), we have, the position vector \(\overrightarrow{OM}=
+\overrightarrow{OC}+\overrightarrow{CM}=\overrightarrow{OC_0}+\overrightarrow{C_0C}+
+\overrightarrow{CM}=r.j+r.\theta.i+sin(\theta).r.i+cos(\theta).r.j\)
+<img src="/img/figure103.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+<br>that is \(\overrightarrow{OM}=r.(\theta+sin(\theta)).i+r.(1+cos(\theta)).j\), 
+finally we get:
+\( 
+\left\{\begin{matrix}
+ x=r.(\theta+sin(\theta))\\
+ y=r.(1+cos(\theta)) \\
+\end{matrix}\right.
+\)
+<br>For \(\theta=0 \) we get the initial position of M which is M(0,2.r)
+ </span>
+<br>4. <b>Distance, Velocity and acceleration</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+  <br>  Velocity \(\overrightarrow{v}\) and acceleration \(\overrightarrow{a}\) are two concepts that are
+ related to  time, we have:\(\overrightarrow{v}=\frac{d\overrightarrow{OM}}{dt}\), and 
+ \(\overrightarrow{a}=\frac{d\overrightarrow{v}}{dt}\)
+<div  class="box1" style="margin-top: 0%;margin-left: 2% ;margin-bottom: 0%;font-size:0.94em;padding:0%">
+
+	  <b>Example 1:Velocity and acceleration of a rotating object</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext">
+ <div  style="margin-top: 0%;margin-left: 2%;margin-bottom: 0%;font-size:1em">
+   A disk is rotating around its fixed axis with a constant angular velocity, what is the velocity 
+   vector of a point M  in the circumference of the disk ?
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+		 <img src="/img/figure104.png"  style="float: right; width: 22%; height: 45%;" class="image1">
+\(\overrightarrow{OM}=r.(cos(\theta).i+sin(\theta).j) \),so 
+\(\overrightarrow{v}=\frac{d\overrightarrow{OM}}{dt}=-r(\frac{d\theta}{dt}.sin(\theta).i+
+\frac{d\theta}{dt}.cos(\theta).j))=r.\frac{d\theta}{dt}(-sin(\theta).i+cos(\theta).j), \)
+<br>so \( ||\overrightarrow{v}||=v=r.\frac{d\theta}{dt} \), \(w=\frac{d\theta}{dt}\) is called the 
+angular velocity and v is the linear velocity, so \(v=r.w \)
+notice that :
+\(\overrightarrow{v}.\overrightarrow{OM}=0
+\) so \(\overrightarrow{v} \;and\; \overrightarrow{OM} \) are perpendicular.
+besides if \(||\overrightarrow{v}||=1\), we have \(\overrightarrow{v}=-sin(\theta).i+cos(\theta).j \)
+  , that is \(\overrightarrow{a}=-\overrightarrow{OM}\)
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+ 
+ <div  class="box1" style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:0.94em;padding:0%">
+	  <b>Example 2: Velocity and acceleration in a cycloid motion</b>
+<span class="tooltip">&#128216;</span>
+  <div class="tooltiptext">
+ <div  style="margin-left: 2%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+    A bicycle is moving with a constant velocity \(v_0 \), what is the vector velocity and acceleration
+    of a point in the circumference of a wheel of this bicycle.
+		<br>	&#9755; <b>Solution</b>
+<div class="tooltip">&#128216;</div>
+  <div class="tooltiptext" >
+		 <div  style="margin-left: 4%;margin-top: 0%;margin-bottom: 0%;font-size:1em">
+   As we saw in the example above of the cycloid trajectory:
+   \(\overrightarrow{OM}=r.(\theta+sin(\theta)).i+r.(1+cos(\theta)) .j\) so,
+   \(\overrightarrow{v}=r.\frac{d\theta}{dt}((1+cos(\theta)).i-sin(\theta).j)\)
+   as we saw earlier \(v_0 =r.\frac{d\theta}{dt}\), so \(\theta=\frac{v_0}{r}.t+\theta_0 \),
+   we take \(\theta_0=0 \), (we start measering \(\theta \) from the initial position of the point).
+  if we denote by \( w=\frac{v_0}{r}\), the angular velocity, we'll have:
+ <br>\(  \left\{\begin{matrix}
+\overrightarrow{v}=v_0((1+cos(wt)).i-sin(wt).j) \\
+\overrightarrow{a}=
+     - v_0.w(sin(wt).i+cos(wt)).j\\
+\end{matrix}\right.
+   \)
+   <br> We have also for magnitudes of the velocity and acceleration vectors:
+   \( \) and 
+   \(  \left\{\begin{matrix}
+||\overrightarrow{v}||=v_0\sqrt{2(1+cos(wt)) }  \\
+ ||\overrightarrow{a}||= v_0.w   \\
+\end{matrix}\right.
+   \), we notice that for \(wt=(2k+1).\pi \), (where k is a an integer), we have :
+   \(||\overrightarrow{v}||=0  \)
+   those values correspond to points where the circle touches the floor.
+   , for those points we have :\(\overrightarrow{a}=  v_0.w.j \)
+  
+  </div>
+</div>
+  </div>
+  </div>
+	</div>
+	The distance S traveled by the point M between two instants \( t_1\) and \(t_2 \) 
+	 can be derived from the velocity,
+   because :\( ||\overrightarrow{v}||=\frac{dS}{dt}\), we have \(S=\int_{t_1}^{t_2}||\overrightarrow{v}||.dt  \)
+
+    
+  </div>
+
+ 
+</div>
+
+</body>
+</html>

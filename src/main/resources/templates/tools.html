@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="utf-8">
+<title>Set theory,latex.codecogs.com</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+	
+		  <script>
+			//console.log("before require myf")
+			requirejs([ 'mathExam' ], function(m) {
+			});
+		</script>
+ 
+				
+<div id="containerGraph">
+
+<div id="graphCanvas">
+<canvas  id="barChartGraph" ></canvas> 
+</div>
+
+ 
+<div  id="enterFunctionsBox">
+
+<input id="enterFunctionInput1" class="enterFunctionInput"  type="text"   value=" x ^ 2">
+
+<span id="settingsByFunctionGraph1"  class="settingsByFunctionGraph">&#9881;</span>
+
+
+<!-- 
+
+<span id="span1Graph" >&#10060;</span>
+<input id="enterFunctionInput2" class="enterFunctionInput"  type="text">
+<span id="settingsByFunctionGraph2"  class="settingsByFunctionGraph">&#9881;</span>
+<span id="cancelByFunctionGraph2" class="cancelSpanGraph">&#10060;</span>
+
+-->
+<img id="graphSettingsImg" src="/img/settings.gif">
+
+
+<div id="selectFunctionSettingsGraph">
+<label for="functionSettingsGraphLabel">Set:</label>
+
+<select name="functionSettingsDropDownMenu" id="functionSettingsDropDownMenuId">
+ <option value="noSelection" selected="selected">Choose a setting:</option>
+  <option value="title">Title</option>
+  <option value="axis">Axis</option>
+  <option value="fontSize">Font-Size</option>
+  <option value="fontColour">Font-Colour</option>
+  <option value="fontType">Font-Type</option>
+ <option value="otherSettings">Other settings</option>
+</select>
+</div>
+
+
+
+<button id="drawGraphButton">Draw Graph </button>
+ 
+</div>
+
+</div>
+
+
+ <div id="functionSettings">
+   <span>&emsp;Type of function:</span>
+     <input type="radio"   id="discretGraphRadio" name="distributionType"  value="Discrete" checked>
+  <label for="discretGraphRadio">Discrete</label>
+   <input type="radio"   id="continuousGraphRadio" name="distributionType" value="Continuous">
+  <label  for="continuousGraphRadio">Continuous</label> <br>
+  &emsp;<span>Set:</span>  &emsp;<button id="insertLabelButtonGraph">Label</button>&emsp;
+ Colour: <input type="color" id="colorPerfunctionGraph" name="favcolor" value="#ff0000">
+ <br>  
+<br><br><br>
+  
+<br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<button id="okButtonFunctionSettings">Ok</button>&emsp;&emsp;&emsp;&emsp;<button id="cancelButtonFunctionSettings">Cancel</button>
+  </div>
+
+
+
+
+
+	 <div id="graphSettings">
+ 
+  &emsp;<span>Set:</span>  <button id="insertTitleButtonGraph">Title</button>&emsp;&emsp;<button id="insertminmaxButtonGraph">Axis</button>
+ <br>  
+<br><br><br>
+  
+<br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<button id="okButtonGraphSettings">Ok</button>&emsp;&emsp;&emsp;&emsp;<button id="cancelButtonGraphSettings">Cancel</button>
+  </div>
+  
+     <div id="setMinMaxGraph" class="insertTextGraph">
+   
+  <span class="spanGrpahSetting" >x <sub>0</sub>=</span><input id="x0GraphInput" class="inputGraphSetting"  type="text"   value=0>
+     <span class="spanGrpahSetting" >x <sub>max</sub>=</span><input id="xmaxGraphInput" class="inputGraphSetting"  type="text"   value=100>
+      <span class="spanGrpahSetting" >Step =</span><input id="stepGraphInput" class="inputGraphSetting"  type="text"   value=100>
+  <br> <span class="spanGrpahSetting" >y <sub>0</sub>=</span><input id="y0GraphInput" class="inputGraphSetting"  type="text"   value=0>
+   <span class="spanGrpahSetting" >y <sub>max</sub>=</span><input id="ymaxGraphInput" class="inputGraphSetting"  type="text"   value=0>
+  <br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<button id="setMinMaxOkButtonGraph">Ok</button>&emsp;&emsp;&emsp;&emsp;<button id="setMinMaxCancelButtonGraph">Cancel</button>
+   </div> 
+  
+  
+  
+   <div id="insertTitleGraph" class="insertTextGraph">
+   <br>
+   <span >&emsp;Title:</span><input id="titleInputGraph" class="graphText"   type="text"   value="">
+  <br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<button id="okButtonGraphTitle">Ok</button>&emsp;&emsp;&emsp;&emsp;<button id="cancelButtonGraphTitle">Cancel</button>
+   </div> 
+   
+    <div id="insertLabelGraph" class="insertTextGraph">
+  <br>
+   <span >&emsp;Label:</span><input  id="labelInputGraph" class="graphText"   type="text"   value="">
+   <br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<button id="okButtonGraphLabel">Ok</button>&emsp;&emsp;&emsp;&emsp;<button id="cancelButtonGraphLabel">Cancel</button>
+   </div>
+   
+</div>
+
+
+</body>
+</html>

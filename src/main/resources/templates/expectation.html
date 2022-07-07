@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="utf-8">
+<title>Set theory,latex.codecogs.com</title>
+</head>
+<script>
+
+    </script>
+
+<body>
+
+	<div layout:fragment="content">
+
+
+		<h1 id="5">5 Expectation of a RV </h1>
+	Expected value is a measure of location of a distribution, the expected value is called also the mean.
+	
+	 	
+		<h2 id="5_1">5.1 Discrete case</h2>
+		<h3 id="5_1_1">5.1.1 Definition</h3>
+	
+
+			\( E(X)=\sum\limits_i x_i.p_i \) is the expected value of the
+			discrete RV X. <span class="tooltip">&#128216;</span> <span
+				class="tooltiptext"> X takes on the values \(x_i\) and
+				\(p_i=P_X( x_i)\) </span>
+
+
+<h3 id="5_1_2">5.1.2 Expected values of some known discrete RV</h3>
+		1. The expected value of \(Bernoulli(\theta)\) is \(\theta \) <span
+			class="tooltip">&#128216;</span> <span class="tooltiptext">
+			
+		
+    
+  
+	<br>		Let \( X \sim Bernoulli(\theta)\) then \(
+			E(X)=1.\theta+0.(1-\theta)=\theta \) </span>
+			 <br> 2. The expected value
+		of \(Binomial(n,\theta)\) is \(n.\theta \) 
+		<span class="tooltip">&#128216;</span>
+		<span class="tooltiptext"> Let \( X \sim Binomial(n,\theta)\)
+			then \( E(X)=\sum\limits_{k=0 }^n
+			k.\binom{n}{k}.\theta^k.(1-\theta)^{n-k} \), \( =\sum\limits_{k=1 }^n
+			k.\frac{n!}{k!(n-k)!}.\theta^k.(1-\theta)^{n-k}=\) \(
+			\sum\limits_{k=1 }^n
+			\frac{k.n}{n}.\frac{n!}{k!(n-k)!}.\theta^k.(1-\theta)^{n-k} = \) \(
+			\sum\limits_{k=1 }^n
+			n.\frac{(n-1)!}{(k-1)!(n-k)!}.\theta^k.(1-\theta)^{n-k} = \) \(
+			\sum\limits_{k=1 }^n n.\binom{n-1}{k-1}.\theta^k.(1-\theta)^{n-k}=
+			n.\theta.\sum\limits_{k=1 }^n \binom{n-1}{k-1}.\theta^{k-1}.(1-\theta)^{n-k}
+			=\)
+			\(n.\theta.\sum\limits_{j=0 }^{n-1} \binom{n-1}{j}.\theta^{j}.(1-\theta)^{n-1-j}=
+			n.\theta.(\theta+1-\theta )^{n-1}=n.\theta
+			 \)
+			 
+			 	
+  </span>
+   <br> 3. The expected value of Geometric(&theta;) is \(\frac{1}{\theta} \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  	<br>Let X~Geometric(&theta;), 
+			so \(E(X)=\sum\limits_{k=1}^{+\infty }k.(1-\theta)^{k-1}.\theta\)
+  \(=\theta.\sum\limits_{k=0}^{+\infty }(k+1).(1-\theta)^{k} \)
+
+, let 
+  \( S=\sum\limits_{k=0}^{+\infty }(k+1).(1-\theta)^{k}\),   we have 
+    \( S=-\sum\limits_{k=0}^{+\infty }\frac {d} {d\theta}.(1-\theta)^{k+1}\)
+    \(=-\frac {d} {d\theta}\sum\limits_{k=0}^{+\infty }.(1-\theta)^{k+1} \)
+    \( =-\frac {d} {d\theta}\frac{1} {1-(1-\theta)     } \)
+    \(= -\frac {d} {d\theta}\frac{1} {\theta }  =-\frac {-1} {\theta^2}=\frac {1} {\theta^2}\)
+    , so \(E(X)=\frac{1}{\theta}\)
+  </span>
+			
+	 <br> 4. The expected value of Poisson(&lambda;) is &lambda;
+	 <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Let X~Poisson(&lambda;), so \(E(X)=\sum\limits_{k=0 }^{+\infty }k.\frac{ \lambda^k .e^{-\lambda }}{k!  } \)
+	 \(= \sum\limits_{k=1 }^{+\infty }k.\frac{ \lambda^k .e^{-\lambda }}{k!  }  \)
+	 \(=\lambda.e^{-\lambda }. \sum\limits_{k=1 }^{+\infty }\frac{ \lambda^{k-1} }{(k-1)!  }  \)
+	 \( =\lambda.e^{-\lambda }. \sum\limits_{k=0 }^{+\infty }\frac{ \lambda^{k} }{k!  }  \)
+	 \(=\lambda.e^{-\lambda }. e^{\lambda }= \lambda \)
+  </span>
+	 <br>&#9755; Expected value can be infinite 
+	 <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Like for the RV X where \(P(X)=\frac{1}{X} \) if \( X=2^k  \) and P(X)=0 elsewhere
+    
+      </span>
+	 or undefined
+	
+
+<h3 id="5_1_3">5.1.3 RV transform and Expectation (discrete case)</h3>
+
+	
+	1.\(E(g(X))=\sum\limits_x g(x).P_X(x) \)
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     Where X is a discrete RV and g is some function  such that E(g(X)) exists.
+     <br> An Error that one can make is to write  \(E(g(X))=\sum\limits_x g(x).P_X(g(x)) \)
+      (simple variable change but it's an erroneous one)
+     
+  </span>
+<br>	2.\(E(h(X,Y))=\sum\limits_{x,y }h(x,y).P_{XY}(x,y) \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   Where X and are two discrete RV and h is some function  such that E(h(X,Y)) exists.
+   <br>Actually let Z~h(X,Y), \(E(Z)=\sum\limits_z z.P(Z=z)=\sum\limits_z z.P(h(X,Y)=z) \)
+   \( =\sum\limits_{z,x,y}.z.P(h(x,z)=z, X=x,Y=y)=\sum\limits_{z,x,y}h(x,z).P(h(x,z)=z, X=x,Y=y)\), 
+
+ since we are summing on all possible values of z, 
+   and since for every value of z there is a couple such that \(h(x,y)=z\), we can omit z from 
+   the formula
+   of E(Z), that is \(E(Z)=\sum\limits_{x,y} h(x,y).P(X=x,Y=y)=
+   \sum\limits_{x,y} h(x,y).P_{XY}(x,y)   \).
+   <br>The first part of the theorem is just a special case of the second part (g(X)=h(X,Y), or take Y=X)
+  </span>
+
+	 
+
+<h3 id="5_1_4">5.1.4 Linearity of Expected value</h3>
+	
+
+	E(a.X+b.Y)=a.E(X)+b.E(Y) 
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Where X and Y are two discrete RVs and a and b are two real numbers.
+    <br>Actually, let Z a RV such as Z=a.X+b.Y, applying the theorem above we have
+    \(E(Z)=\sum\limits_z z.P(a.X+b.Y=z)=\sum\limits_{x,y} (a.x+b.y).P_{XY}(x,y)  \)
+    \(=\sum\limits_{x,y} (a.x.P_{XY}(x,y)+b.y.P_{XY}(x,y))\)
+    \(=a. \sum\limits_{x,y} x.P_{XY}(x,y)+b.\sum\limits_{x,y}y.P_{XY}(x,y) \)
+    \(=a. \sum\limits_{x}  \sum\limits_{y} x.P_{XY}(x,y)+b.\sum\limits_{y} \sum\limits_{x} y.P_{XY}(x,y)  \)
+    \(= a. \sum\limits_{x}  x.\sum\limits_{y} P_{XY}(x,y)+b.\sum\limits_{y} y. \sum\limits_{x} P_{XY}(x,y)  \)
+      \(= a. \sum\limits_{x}  x.P_X(x)+b.\sum\limits_{y} y. P_Y(y) \) 
+      <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    see marginal probability
+  </span>
+     \(= a. E(X)+b.E(Y) \) 
+  </span>
+
+<h3 id="5_1_5">5.1.5 Expected value of the product of two RVs</h3>
+E(X.Y)=E(X).E(Y) provided that X and Y are two independent RVs.
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+    Let Z=X.Y, we have  \(E(Z)=\sum\limits_z z.P(X.Y=z)=\sum\limits_{x,y} (x.y).P_{XY}(x,y)  \)
+   \(=\sum\limits_{x,y} (x.y).P_X(x).P_Y(y)\)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     \(P_{XY}(x,y) =P_X(x).P_Y(y)\) because X and Y are independent.
+  </span>
+   \(=\sum\limits_{x} \sum\limits_{y} x.P_X(x).y.P_Y(y) \)
+   \(=\sum\limits_{x}  x.P_X(x).\sum\limits_{y} y.P_Y(y)=E(X).E(Y) \)
+  
+</span>
+
+<h3 id="5_1_6">5.1.6 Monotonicity and Expected Value</h3>
+ X &le; Y &rArr; E(X) &le; E(Y) 
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    X &le; Y &rArr; X(s) &le; Y(s) &forall; s &isin; S
+    <br> Actually  E(Z) &ge; 0 where Z=Y-X, because Z is positive, we know also that E(Z)=E(Y)-E(X), 
+    so E(Y)  &ge; E(X)
+    <br> Another property that we can derive directly from the property above is :
+     \(X &le; 0 \Rightarrow E(X) &le; 0 \) and  \(X &ge; 0 \Rightarrow E(X) &ge; 0 \)
+  </span>
+
+
+
+<h2 id="5_2">5.2 Absolutely continuous case</h2>
+<h3 id="5_2_1">5.2.1 Definition</h3>
+\(E(X)=\int_{-\infty}^{+\infty}x.f_X(x).dx \) is the expectation of an absolutely continuous RV X
+
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, we can generalize the definition of expectation we've seen in the case of discrete RV, by 
+    putting \( E(X)\approx \sum\limits_i i.\epsilon.P_X(i.\epsilon &le; X &le; (i+1).\epsilon) \), (we divide the set of real numbers
+    \(\mathbb{R}\) to extremely small intervals to stay close to every real number x we want to include in the sum
+    and we calculate the probability around x ), since \( \epsilon \) is extremely small we can write
+     \( x \approx i.\epsilon \), so 
+     \( E(X)\approx \sum\limits_i x.\int_{i.\epsilon}^{(i+1).\epsilon}f_X(t).dt \), 
+     \(=\sum\limits_i x.\int_{x}^{x+\epsilon}f_X(t).dt \)
+     \(=\sum\limits_i x.f_X(x).\int_{x}^{x+\epsilon}.dt  \)
+ \(=\sum\limits_i x.f_X(x).\epsilon  \)
+  \(=\sum\limits_i x.f_X(x).\epsilon  \), \(\epsilon \) is a small variation around x, this can be written as dx, so 
+  \( E(X)=\sum\limits_i x.f_X(x).dx \), 
+ 
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+    around x \(f_X(t)=f_X(x) \) 
+</span>
+so   \( E(X)=\int_{-\infty}^{+\infty  } x.f_X(x).dx \)
+  </span>
+
+<h3 id="5_2_2">5.2.2 Expected values of some known absolutely continuous distributions</h3>
+&#9755; \(E(Uniform[0,1])=\frac{1}{2}\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Let X~Uniform[0,1], then \(E(X)=\int_{-\infty}^{+\infty  } x.f_X(x).dx \)
+    \(=\int_{0}^{1  } x.dx =\frac{1}{2}\)
+  </span>
+
+<br>&#9755; \(E(Uniform[L,R])=\frac{R+L}{2}\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(E(Uniform[L,R])=\int_{-\infty}^{+\infty  } x.f_X(x).dx=\int_{L}^{R} x.\frac{dx}{R-L}\)
+    \(= \frac{1}{R-L}.\int_{L}^{R} x.dx=\frac{1}{R-L}.\frac{R^2-L^2}{2}\)
+    \( = \frac{R+L}{2}\)
+  </span>
+<br>&#9755; \(E(Exponential(\lambda))=\frac{1}{\lambda}\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(E(Exponential(\lambda)))=\int_{-\infty}^{+\infty  } x.f_X(x).dx=\)
+    \( \int_{0}^{+\infty  } x.\lambda.e^{-\lambda.x}.dx\), we note that 
+    \(d(x.e^{-\lambda.x})=e^{-\lambda.x }.dx-\lambda.x.e^{-\lambda.x }.dx  \), so 
+        \(E(Exponential(\lambda)))= \int_{0}^{+\infty  } e^{-\lambda.x}.dx- \int_{0}^{+\infty} d(x.e^{-\lambda.x}) \)
+        \(=[\frac{-1}{\lambda}  e^{-\lambda.x}]_0^{+\infty } -[ x.e^{-\lambda.x}]_0^{+\infty } \)
+        \(=[0-(\frac{-1}{\lambda} ) ]-[ 0-0]=\frac{1}{\lambda} \)
+  </span>
+
+<br>&#9755; \(E(Normal(0,1))=0\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(E(Normal(0,1))=\int_{-\infty}^{+\infty  } x.f_X(x).dx=\)
+        \(\int_{-\infty}^{+\infty  } x.{1 \over \sqrt{2 \pi} } e^ {-{x^2 \over 2} }.dx=\)
+        \( {1 \over \sqrt{2 \pi} }.\int_{-\infty}^{+\infty  } x. e^ {-{x^2 \over 2} }.dx= \)
+        \({1 \over \sqrt{2 \pi} }.\int_{-\infty}^{+\infty  } d(-e^ {-{x^2 \over 2} } )=  \)
+        \({1 \over \sqrt{2 \pi} }.\int_{-\infty}^{+\infty  } d(-e^ {-{x^2 \over 2} } )=  \)
+           \({1 \over \sqrt{2 \pi} } [ e^ {-{x^2 \over 2} } ]_{+\infty}^{-\infty  } =  \)
+              \({1 \over \sqrt{2 \pi} } [0-0 ] =  0\)
+  </span>
+
+	 
+	<h3 id="5_2_3">5.2.3 Transform of RV and Expected value</h3> 
+	1.&#9755; \(E(g(X))=\)
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     \(E(g(X=x))=\), don't forget this notation, it will be helpful in next lines.
+  </span>
+	 \(\int_{-\infty}^{+\infty}g(x).f_X(x).dx \) 
+	 <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  Provided that E(g(X)) exists.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Another way to write  expected values properties  is
+   \(E(g(X))=E^X(g(X)) \), this way is especially helpful when we use several variables, for example
+    \(E(g(X,Y))\) can be written \(E^{X,Y}(g(X,Y))\), that means
+   that both X and Y are varying, whereas  \(E^X(g(X,Y)|_Y) \) means that only X is varying.
+  </span>
+  
+    
+     <br>We prove this  for the case where g is a one-to-one function and \(g^{-1}\) is monotonic.
+	 <br>Actually, if we put y=g(x), that is \(x(y)=g^{-1}(y) \), so \(\frac{dx}{dy}= \frac{1}{g'(g^{-1}(y))}  \), we have
+	  \(\int_{-\infty}^{+\infty}g(x).f_X(x).dx =\) 
+	  \(\int_{-\infty}^{+\infty}y.f_X(g^{-1}(y)).dx=  \)
+  \(\int_{-\infty}^{+\infty}y.f_X(g^{-1}(y)).\frac{dy}{g'(g^{-1}(y))}=  \)
+	   \(\int_{-\infty}^{+\infty}y.\frac{f_X(g^{-1}(y))}{g'(g^{-1}(y))}.dy=  \)
+	   \(\int_{-\infty}^{+\infty}y.f_Y(y).dy=  \)
+	   	 <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    See probability density function of transform of RV
+    
+  </span>
+	 E(Y) where Y=g(X)
+  </span>
+	
+	<br> 2.&#9755; \(E(h(X,Y))=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}h(x,y).f_{XY}(x,y)dx.dy \)
+	 <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Provided this expected value exists
+  </span>
+  <br> 3.&#9755; \(E(g(X,Y)|_{Y=y})\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(=E^X(g(X,Y)|_{Y=y})\)
+  </span>
+  \(=\int_{-\infty}^{+\infty}g(t,y).f_{X_{|{Y=y}}}(t).dt\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>Actually, let h be the function of one RV \(h(X)=g(X,y)\), where y is the conditioning factor 
+  (in the  property above), we have \(E(g(X,Y)|_{Y=y})=E(g(X,y)|_{Y=y})=E(h(X)|_{Y=y})=\)
+ \( \int_{-\infty}^{+\infty}h(x).f_{X_{|{Y=y}}}(x).dx=\int_{-\infty}^{+\infty}g(x,y).f_{X_{|{Y=y}}}(x).dx=\)
+ \( \int_{-\infty}^{+\infty}g(x,y)\frac{f_{XY}(x,y)}{f_Y(y)}.dx\) 
+
+  </span>
+	 <br> 4.&#9755; \(E(g(X,Y))=E(E(g(X,Y)|_Y))\)
+	 <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     \(=E^{Y}(E^X(g(X,Y)|_{Y=y}))\)
+  </span>
+	 
+	 \(=E(E(g(X,Y)|_X))\)
+	 <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   \(=E^X(E^Y(g(X,Y)|_{X=x}))\)
+ 
+    <br>Actually \(E^{Y}(E^X(g(X,Y)|_{Y=y}))=E^{Y}(\int_{-\infty}^{+\infty} g(t,y).f_{X_{|{Y=y}}}(t).dt )=\)
+ \( \int_{-\infty}^{+\infty}(\int_{-\infty}^{+\infty} g(t,y).f_{X_{|{Y=y}}}(t).dt ).f_Y(y).dy=\)
+ \( \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} g(t,y).f_{X_{|{Y=y}}}(t).f_Y(y).dt.dy=\)
+  \( \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} g(t,y).f_{XY}(t,y).dt.dy=E(g(X,Y))\)
+  </span>
+	<h3 id="5_2_4">5.2.4 Linearity of Expected Value </h3> 
+&#9755;	 \(E(a.X+b.Y)=a.E(X)+b.E(Y) \)
+	 <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Where a and b are two real numbers and X and Y are two  absolutely jointly continuous RVs.
+    Actually:
+    
+    <br>Let Z=a.X+b.Y, then \( E(h(X,Y))=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}h(x,y).f_{XY}(x,y)dx.dy \)
+  where h(x,y)=a.x+b.y, so 
+  \( E(Z)=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}(a.x+b.y ).f_{XY}(x,y)dx.dy= \)
+  \(\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}a.x.f_{XY}(x,y)dx.dy+ \)
+    \( \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}b.y.f_{XY}(x,y)dx.dy= \)
+    \(\int_{-\infty}^{+\infty}a.x.dx.\int_{-\infty}^{+\infty}f_{XY}(x,y)dy+ \)
+    \( \int_{-\infty}^{+\infty}b.y.dy\int_{-\infty}^{+\infty}f_{XY}(x,y)dx= \)
+    
+        \(\int_{-\infty}^{+\infty}a.x.dx.f_X(x)+ \)
+    \( \int_{-\infty}^{+\infty}a.y.dy.f_Y(y)= \)
+    
+  \(a.\int_{-\infty}^{+\infty}x.f_X(x).dx+ \)
+  \( b.\int_{-\infty}^{+\infty}y.f_Y(y).dy=a.E(X)+b.E(Y) \)
+  </span>
+  <br>&#9755; <b>Example:</b>\(E( N(\mu, \sigma ))=\mu\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Before trying to prove this we will introduce the following formula E(X+c)=E(X)+c, where 
+    X is a continuous RV and c is a constant, the RV X+c is neither discrete nor continuous, 
+    this case is not yet covered so far, we will cover it in subsequent paragraphs, for now we take this
+     result "as is".
+     <br>Going back to the expected value of a Normal distribution, let X be a RV normally distributed, 
+     let also Z be a RV such as  \(Z= \frac{X-\mu}{\sigma} \), we know that Z~N(0,1), so 
+     \(E(Z)=E(\frac{X-\mu}{\sigma})=E(\frac{X}{\sigma})-E(\frac{\mu}{\sigma}) \), that is 
+      \(\sigma.E(Z)=E(X)-E(\mu) \), that is \(E(X)=E(\mu)=\mu \)
+  </span>
+  	<h3 id="5_2_5">5.2.5 Expected Value of the product of two RVs</h3> 
+  &#9755; \(E(X.Y)=E(X).E(Y) \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Provided that X and Y are independent.
+    <br>Actually:
+    <br> \(E(X.Y)=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}(x.y).f_{XY}(x,y).dx.dy  \)
+    \(=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}(x.y).f_X(x).f_Y(y).dx.dy  \)
+     \(=\int_{-\infty}^{+\infty}x.dx.f_X(x).\int_{-\infty}^{+\infty}y.f_{Y}(y).dy  \)
+     \(=E(X).E(Y) \)
+  </span>
+  
+  <h3 id="5_2_6">5.2.6 Monotonicity and Expected Value</h3>
+ X &le; Y &rArr; E(X) &le; E(Y) 
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    X &le; Y &rArr; X(s) &le; Y(s) &forall; s &isin; S
+    <br> Actually  E(Z) &ge; 0 where Z=Y-X, because Z is positive, we know also that E(Z)=E(Y)-E(X), 
+    so E(Y)  &ge; E(X)
+    <br> We can prove that E(Z) is positive differently, actually 
+    \(E(Z)=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}(y-x).f_{XY}(x,y).dx.dy \)
+      \(=\int\int_{y &ge; x}(y-x).f_{XY}(x,y).dx.dy \), because \(f_{XY}(x,y)=0  \) whenever y &lt; x, 
+      besides \(f_{XY}(x,y) &ge; 0 \), because it's a probability density function, so \(E(Z) \geqslant 0 \)
+    <br> Another property that we can derive directly from the property above is :
+     \(X &le; 0 \Rightarrow E(X) &le; 0 \) and  \(X &ge; 0 \Rightarrow E(X) &ge; 0 \)
+  </span>
+  
+ <h3 id="5_3">5.3 Variance, Co-variance and Correlation</h3>
+ <h3 id="5_3_1">5.3.1 Variance </h3>
+    &#9755; \(Var(X)=E((X-E(X))^2) \)
+    
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>Expectation and variance are note always defined, example the Cauchy distribution has neither 
+  a mean nor a variance.
+  <br>This can be written in the following form
+    \(Var(X)=E((X-\mu_x)^2) \), where \(\mu=E(X)  \), the variance is always  positive.
+  </span>
+  <h3 id="5_3_2">5.3.2 Standard Deviation </h3>
+     &#9755;\( sd(X)=\sigma_x=\sqrt{Var(X)  } \)
+     <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   for any real number a and RV X we have \( \sigma_{a.X}=|a|.\sigma_x \)
+  </span>
+      <h3 id="5_3_3">5.3.3 Some important properties of Variance</h3>
+                a) \(Var(X) &ge; 0 \)
+        <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    because  \((X-E(X))^2 \) is positive so \(E((X-E(X))^2) \)
+  </span>        
+      <br> b) \(Var(a.X+b) =a^2.Var(X) \)
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+    Let's prove first that \( Var(X+c)=Var(X) \), 
+    <br>Actually,  \( Var(X+c)=Var(Y)=E((X+c-E(X)-c)^2)=E((X-E(X))^2) \)
+    <br>Now let's prove that \(E(a.X)=a^2.E(X)\)
+    <br>Actually \(Var(a.X)=E((a.X-E(a.X))^2) = E(a^2.(X-E(X))^2)=a^2.E((X-E(X))^2)=a^2.Var(X)\)
+</span>
+      <br> c) \( Var(X) =E(X^2)-\mu_x^2=E(X^2)-(E(X))^2 \)
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+    \( Var(X) =E((X-E(X))^2)=E(X^2-2.X.E(X)+(E(X))^2)=E(X^2)-2.(E(X))^2+(E(X))^2 =\)
+    \(E(X^2)-(E(X))^2 \)
+</span>
+      <br> d) \( Var(X) &le; E(X^2) \)
+      <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   this is true because  we subtract \((E(X))^2\) which is a positive number from E(X^2).
+  </span>
+  <br><b>Examples:</b>
+  <br>
+    &#9755; \(Var( Bernoulli(\theta))=\theta(1-\theta) \)
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+ <br>   Let \( X \sim Bernoulli(\theta) \), we have \(E(X)=E((X-\mu_x)^2)=E((X-\theta)^2)= \)
+ \( E(X^2-2.\theta.X+\theta^2)=E(X^2)-2.\theta.E(X)+\theta^2=\)
+ \( \sum\limits_i x_i^2.p_i -2.\theta.\theta+\theta^2=\theta-\theta^2=\theta.(1-\theta)  \)
+ <br>We could've done this an other way 
+ \(E(X)=E((X-\mu_x)^2)=\sum\limits_i (x_i-\theta)^2.p_i= (1-\theta)^2.\theta +(0-\theta)^2.(1-\theta) \)
+ \(= (1-2.\theta+\theta^2).\theta +\theta^2.(1-\theta) \)
+  \(= \theta-2.\theta^2+\theta^3 +\theta^2-\theta^3=\theta-\theta^2=\theta.(1-\theta) \)
+
+</span>
+	<br>   &#9755; \(Var( Exponential(\lambda))=\frac{1}{\lambda^2} \)
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+Let X~Exponential(&lambda;), we have
+\(Var(X)=E(X^2)-(E(X))^2=	\int_{0}^{+\infty}x^2.\lambda.e^{-\lambda.x}.dx-\frac{1}{\lambda^2} \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    , because the probability density function of the exponential distribution is 0 for negative values, 
+  </span>
+
+on the other hand 
+ \(d(x^2.e^{-\lambda.x})=2.x.e^{-\lambda.x}.dx-\lambda.x^2.e^{-\lambda.x}.dx \), that is
+  \(	\int_{0}^{+\infty}x^2.\lambda.e^{-\lambda.x}.dx =
+  2.\int_{0}^{+\infty} x.e^{-\lambda.x}.dx  - \int_{0}^{+\infty}d(x^2.e^{-\lambda.x})=\)
+ \(\frac{2}{\lambda}.\int_{0}^{+\infty} \lambda.x.e^{-\lambda.x}.dx  - [x^2.e^{-\lambda.x} ]_0^{+\infty }=\)
+ \(\frac{2}{\lambda}.E(X)  -[0-0  ]=\frac{2}{\lambda^2}\), so \(Var(X)=\frac{1}{\lambda^2} \)
+	
+</span>
+<br>   &#9755; \(Var( Normal(\mu,\sigma))=\sigma^2 \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>   Let Z~Normal(0,1), we have \(Var(Z)=E(Z^2)-(E(Z))^2=\int_{-\infty}^{+\infty} z^2.\frac{1}{\sqrt{2.\pi }}.e^{-\frac{z^2}{2} }.dz-(0)^2= \)
+  \(\int_{-\infty}^{+\infty} z^2.\frac{1}{\sqrt{2.\pi }}.e^{-\frac{z^2}{2} }.dz \), besides we know that 
+ \( d(z.e^{-\frac{z^2}{2} })=dz.e^{-\frac{z^2}{2} }-z^2.e^{-\frac{z^2}{2} }.dz \), that is 
+  \( \int_{-\infty}^{+\infty}  z^2.e^{-\frac{z^2}{2} }.dz =
+  \int_{-\infty}^{+\infty} dz.e^{-\frac{z^2}{2} }-\int_{-\infty}^{+\infty} d(z.e^{-\frac{z^2}{2} })= \)
+  \(  \int_{-\infty}^{+\infty} dz.e^{-\frac{z^2}{2} }-[0-0]=\int_{-\infty}^{+\infty} dz.e^{-\frac{z^2}{2} }=
+\frac{1}{\sqrt{2.\pi }}\), that is \( Var(Z)=1 \)
+<br>Now let X be a RV such as \(X~Normal(\mu;,\sigma;)\), let Z be a RV such as
+ \(Z=\frac{X-\mu}{\sigma} \) we know that Z~Normal(0,1), so \(Var(Z)=1\), that is \( Var(\frac{X-\mu}{\sigma})=1\)
+  that is \( Var(\frac{X}{\sigma}-\frac{\mu}{\sigma})=1\), that is \( Var(\frac{X}{\sigma})=1\), hence 
+  \( \frac{Var(X)}{\sigma^2}=1\), finally we get \(Var(X)=\sigma^2\)
+  </span>
+    <br>
+&#9755;  \(Var(Binomial(\theta)=n.\theta.(1-\theta)\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    because if \(X \sim Binomial(\theta) \) then we can write \( X=X_1+X_2+..+X_n \), where \(X_i\) are 
+    n independent \(Bernoulli(\theta)\) RVs, so \(Var(X)= \sum\limits_i Var(X_i)=
+    \sum\limits_i \theta.(1-\theta) =n.\theta.(1-\theta)\)
+  </span>
+
+<br>&#9755;  \(Var(Uniform[0,1]=1/12\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  Let \(X \sim Uniform[0,1]\)
+   \( Var(X)=E(X^2)-(E(X))^2=\int_0^1x^2.1.dx-(1/2)^2=(1/3-1/4)=1/12\)
+  </span>
+  
+   <h3 id="5_3_4">5.3.4 Co-Variance</h3>
+   <h4 id="5_3_4_1">5.3.4.1 Definition</h4>
+ \(Cov(X,Y)=\sigma_{xy}=E((X-\mu_x)(Y-\mu_y)) \)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    The covariance is a measure of how X changes when Y changes (it is positive when one of the two 
+    variables increases when the other increases, and negative in the opposite case). 
+  </span>
+  <h4 id="5_3_4_2">5.3.4.2 Properties of Variance</h4>
+   
+  1. <b>Commutativity of covariance:</b> \(Cov(X,Y)=Cov(Y,X)\)
+ 
+ <br> 2. <b>Linearity of covariance:</b> \(Cov(a.X+b.Y,Z)=a.Cov(X,Z)+b.Cov(Y,Z) \)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+      Actually, \(Cov(a.X+b.Y,Z)=E((a.X+b.Y-\mu_{a.X+b.Y})(Z-\mu_y)) =\)
+  \(E((a.X+b.Y-(a.\mu_x+b.\mu_y))(Z-\mu_y)) =\)
+    \(E((a(X-\mu_x)+b.(Y-\mu_y))(Z-\mu_y)) =\)
+     \(E(a(X-\mu_x).(Z-\mu_y)+b.(Y-\mu_y).(Z-\mu_y)) =\)
+       \(E(a(X-\mu_x).(Z-\mu_y))+E(b.(Y-\mu_y).(Z-\mu_y))) =\)
+         \(a.E((X-\mu_x).(Z-\mu_y))+b.E((Y-\mu_y).(Z-\mu_y))) =a.Cov(X,Y)+b.Cov(X,Z)\)
+  </span>
+   <br>  3.  \(Cov(X+c,Y)=Cov(X,Y)\)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    use 2 and take Y=1
+  </span>
+ <br> 4. <b>\(Cov(X,Y)=E(X.Y)- E(X).E(Y)\)</b> 
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  
+    \(Cov(X,Y)=E((X-\mu_x)(Y-\mu_y))=E(X.Y-X.\mu_y-\mu_x.Y+\mu_x.\mu_y)\)
+    \(=E(X.Y)-E(X).\mu_y-\mu_x.E(Y)+\mu_x.\mu_y\)
+    \(=E(X.Y)-\mu_x.\mu_y-\mu_x.\mu_y+\mu_x.\mu_y\)
+    \(=E(X.Y)-\mu_x.\mu_y\)
+    \(=E(X.Y)-E(X).E(Y)\)           
+  </span>
+ <br>  5.  \(Cov(X,X)=Var(X)\)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    use 4
+  </span>
+
+  
+  <br> 6. <b>X and Y independent \( \Rightarrow Cov(X,Y)=0\)</b> 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    because X and Y independent means that E(X.Y)=E(X).E(Y), the converse is false.
+  </span>
+  <br> 7. <b>\(Var(\sum\limits_{i} X_i)=\sum\limits_{i}Var(X_i)+ 2.\sum\limits_{i &lt; j }Cov(X_i,X_j)\)</b> 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    for any limited sequence of RVs \( X_i\)
+    <br>A more elaborate form of this equality is:
+    \(Var(\sum\limits_{1 &le; i &le; n} X_i)=\sum\limits_{1 &le; i &le; n}Var(X_i)+ 2.\sum\limits_{i &lt; j \;and\; 1 &le; i,j &le; n }Cov(X_i,X_j)\)
+      <br>Let's prove this first for two RVs, that is <b>\(Var(X+Y)=Var(X)+Var(Y)+ 2.Cov(X,Y)\)</b> 
+    <br>Actually, \(Var(X+Y)=E((X+Y)^2)-(E(X+Y))^2=\)
+     \(E((X+Y)^2)-(E(X+Y))^2=E(X^2+2.X.Y+Y^2 )-(\mu_x+\mu_y)^2\)
+      \(=E(X^2+2.X.Y+Y^2 )-(\mu_x^2+2.\mu_x.\mu_y+\mu_y^2)\)
+      \(=E(X^2)+2.E(X.Y)+E(Y^2)-\mu_x^2-2.\mu_x.\mu_y-\mu_y^2)\)
+      \(=(E(X^2)-\mu_x^2)+(E(Y^2)-\mu_y^2)+2.(E(X.Y)-\mu_x.\mu_y)=Var(X)+Var(Y)+2.Cov(X,Y)\)
+      <br>For the general case let's proceed by recursion, that is we suppose the preposition is true for n
+       RVs and we prove it's also true for n+1 RVs.
+       <br>Actually \( Var(\sum\limits_{1 &le; i &le; n+1}  X_i)=Var(\sum\limits_{1 &le; i &le; n}  X_i+X_{n+1})\)
+        \( =Var(\sum\limits_{1 &le; i &le; n}  X_i)+Var(X_{n+1})+2.Cov(\sum\limits_{1 &le; i &le; n}  X_i,X_{n+1})\)
+        \(=\sum\limits_{1 &le; i &le; n}Var(X_i)+ 2.\sum\limits_{i &lt; j \;and\; 1 &le; i,j &le; n }Cov(X_i,X_j)
+        +Var(X_{n+1})+2.Cov(\sum\limits_{1 &le; i &le; n}  X_i,X_{n+1}) =\)
+          \(=\sum\limits_{1 &le; i &le; n}Var(X_i)+Var(X_{n+1})+ 2.\sum\limits_{i &lt; j \;and\; 1 &le; i,j &le; n }cov(X_i,X_j)
+        +2.\sum\limits_{1 &le; i &le; n} Cov(  X_i,X_{n+1}) \)
+      <br>To avoid cumbersome formulas let's note by \(co_n\) the sum 
+      \(\sum\limits_{i &lt; j \;and\; 1 &le; i,j &le; n }Cov(X_i,X_j) \)
+        so \(co_{n+1}=\sum\limits_{i &lt; j \;and\; 1 &le; i,j &le; n+1 }cov(X_i,X_j) \), 
+        we want to prove \(co_{n+1 }=co_n+\sum\limits_{1 &le; i &le; n} Cov(  X_i,X_{n+1}) \)
+        we note also \( Cov(X_i,X_j)=a_{ij}\)
+        <br>
+        <img src="/img/figure130.png"  style="float: right; width: 35%; height: 55%;" class="image1">
+	 <img src="/img/figure131.png"  style="float: right; width: 35%; height: 55%;" class="image1">
+	 As we can see in figures 130 and 131, \(co_{n+1} \) is just adding its last column to \(co_n\), which
+	  is \(\sum\limits_{1 &le; i &le; n} cov(  X_i,X_{n+1}) \)
+  </span>
+   <br> 8. <b>\(X_i\) are independent RVs \(\Leftrightarrow Cov(X_i,Y_j)=0 \;\forall i \neq j 
+   \Leftrightarrow Var(\sum\limits_i X_i)=\sum\limits_i Var(X_i) \) </b>
+   
+    <br>  9.  \(Cov(\sum\limits_{i=1}^{m }a_i.X_i,\sum\limits_{j=1}^{n }b_j.Y_j)=
+    \sum\limits_{i=1}^{m }\sum\limits_{j=1}^{n }a_i.b_j.Cov(X_i,Y_j)\)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    use 2, we have \(Cov(\sum\limits_{i=1}^{m }a_i.X_i,\sum\limits_{j=1}^{n }b_j.Y_j)= \)
+    \(\sum\limits_{i=1}^{m }a_i Cov(X_i,\sum\limits_{j=1}^{n }b_j.Y_j)=
+    \sum\limits_{i=1}^{m }a_i \sum\limits_{j=1}^{n }b_j.Cov(X_i,Y_j)=
+   \sum\limits_{i=1}^{m } \sum\limits_{j=1}^{n }a_i.b_j.Cov(X_i,Y_j)
+    \)
+  </span>
+   
+
+ <br> <b>Example:</b>
+ <br> &#9755;Let X and Y be two RVs where \((X,Y) \sim NBV(\mu_x, \mu_y, \sigma_x, \sigma_y, \rho) \), 
+ what is \(Cov(X,Y) \) ?
+ <span class="tooltip">&#128216;</span>
+ <span class="tooltiptext">
+    We have \(Cov(X,Y)=E((X-\mu_x)(Y-\mu_y))\), by using \(E(g(X,Y))=E^{Y}(E^X(g(X,Y)|_{Y=y}))\), 
+    we have \(Cov(X,Y)=E^{Y}(E^X((X-\mu_x)(Y-\mu_y))|_{Y=y})=E^{Y}((Y-\mu_y)E^X((X-\mu_x)|_{Y=y})\)
+  <br>We know that when X and Y are normal bivariate then \(Y|_X\) and \(X|_Y\) are normal 
+  bivariate   with  \(X|_{Y=y} \sim N(\mu_x+\rho.\sigma_x.z_y, \sigma_x^2(1-\rho^2)  ) \), that is 
+  \( E^X((X-\mu_x)|_{Y=y})= \rho.\sigma_x.z_y=\rho.\sigma_x.\frac{Y-\mu_y}{\sigma_y}\), 
+  thus \(Cov(X,Y)=E^{Y}((Y-\mu_y).\rho.\sigma_x.\frac{Y-\mu_y}{\sigma_y}))=
+  \frac{\rho.\sigma_x}{\sigma_y}.E^Y((Y-\mu_y)^2)=\)
+  \( \frac{\rho.\sigma_x}{\sigma_y}.\sigma_y^2=\rho.\sigma_x.\sigma_y\)
+  </span>
+   
+  <h3 id="5_3_5">5.3.5 Correlation</h3>
+    <h4 id="5_3_5_1">5.3.5.1 Definition</h4>
+  &#9755;  \(Corr(X,Y)=\rho_{xy}=\frac{Cov(X,Y)}{Sd(X).Sd(Y)}=\frac{Cov(X,Y)}{\sqrt{Var(X).Var(Y)}} =
+ \frac{\sigma_{xy}}{\sigma_{x}.\sigma_{y}}\) is the
+   correlation of the RVs X and Y.
+   <br><b>Example:</b>Let \((X,Y) \sim NBV(\mu_x, \mu_y, \sigma_x, \sigma_y, \rho \)), then 
+   \(Corr(X,Y)=\rho\), 
+   
+<h2 id="5_4">5.4 Generating functions</h2>
+<h3 id="5_4_1">5.4.1 Probability Generating functions</h3>
+<h4 id="5_4_1_1">5.4.1.1 Definition</h4> 
+ &#9755; \(r_X(t)=E(t^X), \forall t \in \mathbb{R}\), is the probability-generating function of
+ the RV X.
+	 <br><b>Examples:</b>
+	 <br>&#9755; \(r_{X}(t)=(t.\theta+1-\theta )^n\), where \(X \sim Binomial(n,\theta) \)
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+    Let \(X \sim Binomial(n,\theta) \), we have \(r_X(t)=E(t^X)=  \sum\limits_{i=0 }^{n }.t^i.P(X=i)=
+    \sum\limits_{i=0 }^{n }.t^i.\binom{n}{i}.\theta^i.(1-\theta)^{n-k}=
+    \sum\limits_{i=0 }^{n }.\binom{n}{i}.(\theta.t)^i.(1-\theta)^{n-k}=(t.\theta+1-\theta)^{n}
+    \)
+</span>
+ <br>&#9755; \(r_{X}(t)=e^{\lambda.(t-1)  }\), where \(X \sim Poisson(\lambda ) \)
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+    Let \(X \sim Poisson(\lambda) \), we have \(r_X(t)=E(t^X)=  \sum\limits_{i=0 }^{n }.t^i.P(X=i)=
+    \sum\limits_{i=0 }^{n }t^i.e^{-\lambda}.\frac{\lambda^i }{i!}=
+e^{-\lambda} \sum\limits_{i=0 }^{n }\frac{(t.\lambda)^i }{i!}=e^{-\lambda} .e^{\lambda.t }=
+e^{\lambda.(t-1) }
+    \)
+</span>
+<h4 id="5_4_1_2">5.4.1.2 \(k^{th} \) derivative of Probability Generating Function :</h4> 
+
+	<div class="box1">
+		 Let X be a discrete RV whose possible values are positive integers, suppose also that there 
+		 exists a real number \(t_0 &gt; 0 \) such as  \(r_X(t_0) &lt; \infty \), then
+	
+\(r^{(k)}_X(0)=k!.P_X(k)\), where k is \(k^{th} \) derivative.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  note that \(r^{(0)}_X=r_X \)
+  <br>Actually, let Y be the RV such that \(Y=t^X \), so the possible values that Y takes are \( t^{x_i}\),
+where  \(x_i\) are the possible values that X takes, so
+  \(E(Y)=\sum\limits_{i=0 }^{\infty}y_i.P_Y(Y=y_i) =\sum\limits_{i=0 }^{\infty}t^{x_i}.P_X(x_i) \), 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(P(Y=y_i)=P(X=x_i|t^{x_i}=y_i),  y_i=t^{x_i} \Leftrightarrow ln(y_i)=x_i.ln(t)
+    \Leftrightarrow x_i=\frac{ln(y_i)}{ln(t)}\) so there is a unique \(x_i \) such as \(y_i=t^{x_i}\)
+  </span>
+  that is  \(r_X(t)=\sum\limits_{i=0 }^{\infty}t^{x_i}.p_{xi} \), where \(p_i=P_X(x_i)  \), 
+  we can write this formula as the following:
+  <br>&#9755; \(r_X(t)=r^{(0)}_X(t)=t^{0}.p_0+t^{1}.p_1+t^{2}.p_2+t^{3}.p_3+t^{4}.p_4+..+t^{k}.p_k+..\), 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    for example if X takes the values {4,7,8,...}, \(p_0=p_1=p_2=p_3=p_5=p_6=0} and \(p_4=P_X(4)\)
+   here  \(x_1=4 , x_2=7,x_3=8,..\)
+  </span>
+  that is:
+ <br>&#9755; \(r'_X(t)=r^{(1)}_X(t)=p_1+2.t^{1}.p_2+3.t^{2}.p_3+4.t^{3}.p_4+..+k.t^{k-1}.p_k+..\)
+ <br>&#9755; \(r''_X(t)=r^{(2)}_X(t)=2.p_2+3.2.t^{1}.p_3+4.3.t^2.p_4+..+k.(k-1).t^{k-2}.p_k+..\)
+ <br>&#9755; \(r'''_X(t)=r^{(3)}_X(t)=3.2.1.p_3+4.3.2.1.t^1.p_4+..+k.(k-1).(k-2).t^{k-3}.p_k+..\)
+ <br>.
+ <br>.
+
+ <br>&#9755; \(r^{(k)}_X(t)=k!.p_k+a_1.t+a_2.t^2+....\), where \(a_i\), are some positive integers
+ associated to \(t^k\)
+  
+  so \(r^{(k)}_X(0)=k!.p_k=k!.P_X(k)\)
+  </span>
+  	</div>
+  <h3 id="5_4_2">5.4.2 Moment Generating Function</h3>
+    <h4 id="5_4_2_1">5.4.2.1 \(k^{th} \) Moment</h4>
+    
+   &#9755; <b>\(\mathbf{E(X^k)}\)</b> provided it exists is called the \(k^{th} \) Moment of the RV X
+   where k is a positive integer.
+   
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    if \(E(X^k)\) exists, then \(E(X^l)\) also exists for every \(0 &le; l &lt;k \) 
+  </span>
+  <h4 id="5_4_2_2">5.4.2.2 Moment Generating Function</h4>
+&#9827; \( \mathbf{m_X(s)=E(e^{s.X })} \) where \(s \in \mathbb{R} \) is the Moment Generating 
+   Function of the RV X, and we have \(m_X(s)=r_X(e^s) \)
+
+   <br>&#9755; \(X \sim Exponential(\lambda) \Rightarrow m_X(s)=\frac{\lambda }{\lambda-s} \) where 
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+    Actually, \(m_X(s)=E(e^{s.X })=\int_{0 }^{+\infty}e^{s.x }f_X(x).dx=
+    \int_{0 }^{+\infty}e^{s.x }.\lambda.e^{-\lambda.x }.dx=
+ \int_{0 }^{+\infty}\lambda.e^{(s-\lambda).x }dx =\)
+  \(  \lambda.[\frac{e^{(s-\lambda).x }}{s-\lambda} ]_0^{+\infty } \), this integral doesn't converge
+  unless  \( s &le; \lambda \), so  \(m_X(s)=\lambda.\frac{0-1}{s-\lambda}=\frac{\lambda }{\lambda-s}\)
+
+</span>
+<br>&#9755; \( X \sim Gamma(\alpha,\lambda) 
+\Rightarrow m_X(s)=
+  \left\{\begin{matrix}
+(1-\frac{s}{\lambda})^{-\alpha }  &  &  for \; s &lt; \lambda \\
+ 0  &  &  for \; s &ge; \lambda  \\
+
+\end{matrix}\right.\)
+
+
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+ <br>   Actually, \(m_X(s)=E(e^{X.s})=\int_{-\infty}^{\infty} e^{t.s}.f_X(t).dt=\)
+ \(m_X(s)=\int_{0}^{\infty} e^{t.s}.f_X(t).dt=\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    since \(f_X(t)=0 \) for negative values
+  </span>
+   \(\int_{0}^{\infty} e^{t.s}.{ \lambda^\alpha.t^{\alpha-1} \over \Gamma(\alpha) } .e^{-\lambda t}.dt=\)
+\({ \lambda^\alpha \over \Gamma(\alpha) }.\int_{0}^{\infty} e^{t.s}.
+t^{\alpha-1}.e^{-\lambda t}.dt=\)
+\({ \lambda^\alpha \over \Gamma(\alpha) }.\int_{0}^{\infty} e^{-(\lambda-s).t}.
+t^{\alpha-1}.dt\), this integral is finite only when \(s &lt; \lambda \), so with a variable 
+change \((\lambda-s).t=u\), we have 
+
+  \(m_X(s)={ \lambda^\alpha \over {\Gamma(\alpha).(\lambda-s)^{\alpha} }}.\int_{0}^{\infty} e^{-u}.
+ u^{\alpha-1}.du=
+ { \lambda^\alpha \over {\Gamma(\alpha).(\lambda-s)^{\alpha} }}.\Gamma(\alpha)=
+ (\frac{\lambda}{\lambda-s})^\alpha=(\frac{\lambda-s}{\lambda})^{-\alpha}=
+(1-\frac{s}{\lambda})^{-\alpha}
+ \)
+ <br>PS: By definition \(\alpha &gt;0\) and \(\lambda &gt;0\)
+</span> 
+
+<h4 id="5_4_2_3">5.4.2.3 Moment Generating Function and Expected Value:</h4>
+
+&#9755; \( m_X^{(k)}(0)=E(X^k) \) provided \(m_X(s) &lt; \infty \) whenever 
+\( -s_0 \leqslant s \leqslant+s_0 \) where \(s_0 &gt; 0 \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually we have: 
+    <br> - \(m'_X(s)=E(X.e^{s.X })\) 
+    <br> - \(m''_X(s)=E(X^2.e^{s.X })\) 
+    <br>-  \(m'''_X(s)=E(X^3.e^{s.X })\) 
+    <br>- .
+    <br>- .
+    <br>- \(m^{(k) }_X(s)=E(X^k.e^{s.X })\), that is \(m^{(k) }_X(0)=E(X^k)\)
+  </span>
+
+ <b>Example:</b>
+  <br>&#9755; Mean and Variance of Exponential Distribution 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>  Let \(X \sim Exponential(\lambda) \), then \(m'_X(s)=(\lambda.(\lambda-s)^{ -1})'=
+    (-1).(-1).\lambda.(\lambda-s)^{ -2} =\frac{\lambda}{(\lambda-s)^{ 2}}\), 
+    so \(E(X)=\frac{\lambda}{(\lambda-0)^{ 2}}=\frac{1}{\lambda}\), on the other hand 
+    \(m''_X(s)=(-2).(-1).\lambda.(\lambda-s)^{ -3}=2.\lambda.(\lambda-s)^{ -3}\), 
+    so \( E(X^2)=\frac{ 2}{\lambda^2 } \), that is \(Var(X)=E(X^2)-E^2(X)
+    =\frac{ 2}{\lambda^2 } -\frac{ 1}{\lambda^2 }=\frac{ 1}{\lambda^2 } \)
+  </span>
+<br>&#9755; Mean and Variance of Poisson Distribution
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br>   Let \( X \sim Poisson(\lambda) \), 
+    we have \(m_X(s)=r_X(e^s)=e^{\lambda.(e^s-1)  } =e^{\lambda.e^s}.e^{-\lambda}\) so 
+    \(m'_X(s)=\lambda.e^s.e^{-\lambda}.e^{\lambda.e^s}=\)
+      \(m'_X(s)=\lambda.e^s.e^{\lambda.(e^s-1)}\) so  \(m'_X(0)=\lambda.e^0.e^{\lambda.(e^0-1)}=
+      \lambda.1.e^{\lambda.(1-1)}=\lambda.1.1=\lambda  \)
+      so \(E(X)=\lambda\), on the other hand 
+           \(m''_X(s)=\lambda.e^s.e^{\lambda.(e^s-1)}+\lambda.e^s.\lambda.e^s.e^{\lambda.(e^s-1)}\) 
+           so  \(m''_X(s)=\lambda.e^s.e^{\lambda.(e^s-1)}+\lambda^2.e^{2.s}.e^{\lambda.(e^s-1)}\), 
+           that is \(m''_X(s)=E(X^2)=\lambda.1.1+\lambda^2.1.1=\lambda+\lambda^2\)
+           so \(Var(X)=E(X^2)-E^2(X)=\lambda+\lambda^2- \lambda^2=\lambda\)
+      
+  </span>
+ <h4 id="5_4_2_4">5.4.2.4 Moment Generating Function of Normal RV :</h4>
+
+  &#9755; \( X \sim N(0,1) \Rightarrow m_X(s)=e^{s^2 /2} \)
+ 
+  
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually \(m_X(s)=E(e^{s.X }) =
+\int_{-\infty}^{+\infty}e^{s.x }. e^ {-{x^2 \over 2} }.dx=
+{1 \over \sqrt{2 \pi} }.\int_{-\infty}^{+\infty} e^ {(s.x-{x^2 \over 2}) }.dx=
+{1 \over \sqrt{2 \pi} }.\int_{-\infty}^{+\infty} e^ {\frac{-1 }{2 }.(x^2 -2.s.x+s^2-s^2) }.dx \), hence
+\(m_X(s)=  {1 \over \sqrt{2 \pi} }.\int_{-\infty}^{+\infty} e^ {\frac{-1 }{2 }.((x-s)^2 -s^2) }.dx=
+{{e^ {\frac{s^2 }{2 }  }  } \over \sqrt{2 \pi} }.\int_{-\infty}^{+\infty} e^ {\frac{-(x-s)^2 }{2 }  }.dx
+={{e^ {\frac{s^2 }{2 }  }  } \over \sqrt{2 \pi} }.\int_{-\infty}^{+\infty} e^ {\frac{-y^2 }{2 }  }.dy
+ \) where y=x-s, so 
+ \(m_X(s)={{e^ {\frac{s^2 }{2 }  }  } \over \sqrt{2 \pi} }.\sqrt{2 \pi}={e^ {\frac{s^2 }{2 }  }  }
+ \)
+  </span>
+<br> &#9755; \( X \sim N(0,1) \Rightarrow E(X^4)=3 \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+<br>  \( m_X^{(1)}(s)=s.e^{s^2 /2} \)
+<br>  \( m_X^{(2)}(s)=e^{s^2 /2}+s^2. e^{s^2 /2}\)
+<br>  \( m_X^{(3)}(s)=s.e^{s^2 /2}+2.s.e^{s^2 /2}+s^3.e^{s^2 /2}\)
+<br>  \( m_X^{(4)}(s)=e^{s^2 /2}+s^2.e^{s^2 /2}+2.e^{s^2 /2}+2.s^2.e^{s^2 /2}+
+3.s^2.e^{s^2 /2}+s^4.e^{s^2 /2}\)
+  </span>
+   <br>
+  <h4 id="5_4_2_5">5.4.2.5 Addition of Moment Generating Function :</h4>
+  
+  Let X and Y be two independent RV, we have:
+<br>  &#9755; \(r_{X+Y }(t)=r_X(t).r_Y(t)  \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually, \(r_{X+Y }(t)=E(t^{X+Y})=E(t^X.t^Y)=E(t^X).E(t^Y)=r_X(t).r_Y(t)\) because if X and Y 
+    are independent then g(X) and f(Y) are independent.
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    another way to prove this 
+      \(E(t^X.t^Y)=  \int_{-\infty }^{+\infty }\int_{-\infty }^{+\infty } t^x.t^y.f_{XY}(x,y).dx.dy=
+      \int_{-\infty }^{+\infty }\int_{-\infty }^{+\infty } t^x.t^y.f_{X}(x).f_{Y}(y).dx.dy=  \)
+      \(   \int_{-\infty }^{+\infty }t^x.f_{X}(x).dx\int_{-\infty }^{+\infty } t^y.f_{Y}(y).dy= E(t^X).E(t^Y)\)
+  </span>
+ </span>
+
+<br>  &#9755; \(m_{X+Y}(t)=m_X(t).m_Y(t)  \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(m_{X+Y}(t)=r_{X+Y}(e^t)=r_X(e^t).r_Y(e^t)=m_X(t).m_Y(t)  \)
+  </span>
+
+<h4 id="5_4_2_6">5.4.2.6 Uniqueness of Moment Generating Function :</h4>
+
+<div class="box1"> 
+Let X be a RV such that \(m_X(s) &lt; \infty \) for every \(-s_0&lt; s  &lt;s_0  \) where \(s_0  \) is some
+ positive integer.
+ <br>If Y is some RV where \(m_Y(s)=m_X(s) \) whenever \(-s_0&lt; s  &lt;s_0  \), then X and Y have the 
+same distribution.
+
+</div>
+<b>Examples:</b>
+<br>&#9755; Let  Y=a.X+b, then \(r_Y(t)=t^b.r_X(t^a) \) and   \(m_Y(t)=e^{t.b}.m_X(t.a)\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>\(r_Y(t)=E(t^Y)=E(t^{(a.X+b) })=E(t^b.t^{a.X })=t^b.E(t^{a.X } )=\)
+    
+   \( t^b.E(({t^a})^X)=t^b.r_X(t^a)\), so \(m_Y(t)= r_Y(e^t)=(e^t)^b.r_X((e^t)^a )=e^{t.b}.r_X(e^{t.a})
+    =e^{t.b}.m_X(t.a)\)
+    
+  </span>
+
+<br>&#9755; \(m_X(s)=e^{ (\mu.s+\frac{\sigma^2.s^2 }{2 } )}\) where \(X \sim N(\mu, \sigma^2) \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Actually: \(X=\sigma.Z+\mu  \) where \(Z \sim N(0,1 ) \), hence 
+    \(m_X(t)=e^{t.\mu}.m_Z(t.\sigma) =e^{t.\mu}.e^{\frac{{(t.\sigma)}^2}{2}}=e^{(t.\mu+{\frac{{(t.\sigma)}^2}{2}} ) } \)
+  </span>
+  <br>&#9755;  \(X_i \sim N(\mu_i,\sigma_i) \;and\; X_i \; independent \Rightarrow 
+  \sum\limits_{i=1}^n a_i.X_i +b
+ \sim N(\sum\limits_{i=1}^n a_i.\mu_i+b,\sum\limits_{i=1}^n a_i^2.\sigma_i^2  )  \)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>We have
+     \(X_i \sim N(\mu_i,\sigma_i^2) \Rightarrow \sum\limits_{i=1}^n X_i 
+ \sim N(\sum\limits_{i=1}^n\mu_i,\sum\limits_{i=1}^n\sigma_i^2  )  \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, let \(Y=\sum\limits_{i=1}^n X_i \) , then \(m_Y(t)=\prod\limits_{i=1}^{n}m_{X_i}(t)=\)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    because \(X_i\) are independent
+  </span>
+   
+ \(  \prod\limits_{i=1}^{n}e^{(\mu_i.t+\frac{\sigma_i^2.t^2}{2})} =
+   e^{(\sum\limits_{i=1}^n \mu_i.t+\sum\limits_{i=1}^n \frac{\sigma_i^2.t^2}{2} )}=
+   e^{((\sum\limits_{i=1}^n \mu_i).t+ \frac{(\sum\limits_{i=1}^n\sigma_i^2).t^2}{2} )}
+ =e^{ (\mu_y.t+\frac{\sigma_y^2.t^2 }{2 } )}  \), 
+ where \(\mu_y=\sum\limits_{i=1}^n \mu_i \) and \(\sigma_y^2=
+ (\sum\limits_{i=1}^n\sigma_i^2)  \)
+, using uniqueness theorem we conclude that \(Y \sim N(\mu_y, \sigma_y) \) 
+</span>
+and since \(X_i \sim N(\mu_i,\sigma_i^2) \) we have 
+\( a_i.X_i \sim N(a_i.\mu_i,a_i^2.\sigma_i^2) \), that is 
+\( \sum\limits_{i=1}^na_i.X_i \sim N(\sum\limits_{i=1}^na_i.\mu_i,\sum\limits_{i=1}^na_i^2.\sigma_i^2) \)
+  that is 
+  \( \sum\limits_{i=1}^na_i.X_i+b \sim N(b+\sum\limits_{i=1}^na_i.\mu_i,\sum\limits_{i=1}^na_i^2.\sigma_i^2) \)
+  </span>
+ <br>&#9755; \(X_i \sim N(\mu,\sigma^2) \) and \(X_i\) are independent 
+ \(\Rightarrow  \overline{X} \sim N(\mu,\sigma^2/n)  \), where 
+ \(  \overline{X}=\frac{X_1+..+X_n}{n}\)
+ <br>&#9755; \(\displaystyle \lim_{n \to \infty}[m_X(\frac{s}{n}) ]^n=e^{s.E(X) }\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Where \(m_X\) is defined on some interval [-c,c].
+    <br>Actually, let's prove that:
+    \(\displaystyle \lim_{n \to \infty}Ln([m_X(\frac{s}{n}) ]^n)=Ln(e^{s.E(X) })\).
+    <br> We have \(\displaystyle \lim_{n \to \infty}Ln([m_X(\frac{s}{n}) ]^n)= \)
+    \(\displaystyle \lim_{n \to \infty}n.Ln([m_X(\frac{s}{n}) ])= \)
+     \(\displaystyle \lim_{n \to \infty}\frac{Ln([m_X(\frac{s}{n}) ])}{\frac{1}{n}}= \)
+     \(\displaystyle \lim_{t \to 0}\frac{Ln([m_X(s.t) ])}{t} \) using l'Hopital's rule we can 
+     write \(\displaystyle \lim_{n \to \infty}\frac{Ln([m_X(s.t) ])}{t}= \)
+        \(\displaystyle \lim_{t \to 0}\frac{\frac{s.m'_X(s.t)}{m_X(s.t)}}{1}= \)
+        \(\displaystyle \lim_{t \to 0}\frac{s.m'_X(s.t)}{m_X(s.t)}= \)
+                \(\frac{s.m'_X(0)}{m_X(0)}=\frac{s.E(X)}{1}=s.E(X)=Ln(e^{s.E(X)}) \)
+  </span>
+  <br>&#9755; \(\displaystyle \lim_{n \to \infty}[m_X(\frac{s}{\sqrt{n}}) ]^n=e^{\frac{s^2}{2}}\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>We have 
+    \(\displaystyle \lim_{n \to \infty}Ln([m_X(\frac{s}{\sqrt{n}}) ]^n)=\)
+     \(\displaystyle \lim_{n \to \infty}n.Ln([m_X(\frac{s}{\sqrt{n}}) ])=\)
+       \(\displaystyle \lim_{n \to \infty}\frac{Ln([m_X(\frac{s}{\sqrt{n}}) ])}{\frac{1}{n}}=\)
+  \(\displaystyle \lim_{t \to 0}\frac{Ln([m_X(s.t) ])}{t^2}=\)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    using l'Hopital's rule
+  </span>
+    \(\displaystyle \lim_{t \to 0}s.m'_X(s.t)\frac{\frac{1}{m_X(s.t)}}{2.t}=\)
+     \(s.\displaystyle \lim_{t \to 0}\frac{m'_X(s.t)}{2.t.m_X(s.t)}=\)
+       <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    using l'Hopital's rule
+  </span>
+       \(s.\displaystyle \lim_{t \to 0}\frac{s.m''_X(s.t)}{2.m_X(s.t)+2.t.s.m'_X(s.t)}=\)
+          \(s^2.\frac{m''_X(0)}{2.m_X(0)+2.0.s.m'_X(0)}=\)
+           \(s^2.\frac{m''_X(0)}{2.m_X(0)}=s^2.\frac{E(X^2)}{2}=s^2.\frac{Var(X)+(E(X))^2}{2}\)
+           \(=s^2.\frac{1+0}{2}=\frac{s^2}{2}\)
+  </span>
+  <br>&#9755; \(\displaystyle \lim_{n \to \infty}m_{Z_n(s)}=e^{\frac{s^2}{2}}\)
+   
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Where  \(Z_n=\frac{\overline{X}-\mu_{\overline{X} }}{\sigma_{\overline{X} }}=
+  \frac{\overline{X}-\mu}{\sigma/\sqrt{n}} =\frac{X_1+X_2+..+X_n-n.\mu}{\sqrt{n}.\sigma} \), 
+  <br>Actually, 
+  \(\frac{X_1-\mu}{\sigma} +\frac{X_2-\mu}{\sigma}+..+\frac{X_n-\mu}{\sigma} 
+   =Y_1+..+Y_n\), where \(Y_i=\frac{X_i-\mu}{\sigma}\), we can see that \(E(Y_i)=0\)
+, and \(Var(Y_i)=\frac{Var(X_i^2)}{\sigma^2} =\frac{\sigma^2}{\sigma^2}=1 \), 
+on the other hand we have \(Y_1+Y_2+..+Y_n=\sqrt{n}.Z_n \), so 
+\(m_{Y_1+Y_2+..+Y_n}(s)=m_{\sqrt{n}.Z_n }(s)\), since \(\left\{X_i \right\}  \) 
+are independent we have \(m_{Y_1}(s).m_{Y_2}(s)..m_{Y_n}(s)=m_{Z_n}(\sqrt{n}.s)\), 
+since  \(\left\{X_i \right\}  \) are identically distributed we have 
+ \([m_{Y_1}(s)]^n=m_{Z_n}(\sqrt{n}.s)\), with the variable change  \(s=\frac{t}{\sqrt{n}}\)
+ we have  \([m_{Y_1}(\frac{t}{\sqrt{n}})]^n=m_{Z_n}(t)\), that is 
+ \(\displaystyle \lim_{n \to \infty}[m_{Y_1}(\frac{t}{\sqrt{n}})]^n=
+ 
+ \displaystyle \lim_{n \to \infty}m_{Z_n}(t)  \), since \(E(Y_1)=0\) and \(Var(Y_1)=1\), we 
+ have \(\displaystyle \lim_{n \to \infty}m_{Z_n}(t)=e^{\frac{t^2}{2}}  \)
+
+
+
+</span>
+ <h4 id="5_4_2_7">5.4.2.7 Compound Distribution</h4>
+The RV defined as  \(S=\sum\limits_{i=1}^N X_i \) is called a compound distribution, where 
+\(X_1, X_2,..  \) are i.i.d RVs and N a positive valued integer RV independent of  \(\left\{X_i\right\} \), 
+and we have:
+<br>&#9755; \(E(S)=E(X_1).E(N)  \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br>We can write \(S=\sum\limits_{i=1}^{\infty }I_i.X_i \), where \(I_i=1 \) if i &le; N and \(I_i=0 \)
+ otherwise, since  \(I_i\) are defined solely by N and N is independent of \(\left\{X_i\right\} \), then
+  \(\left\{I_i\right\} \) is  independent of N, we have then  \(E(S)=E(\sum\limits_{i=1}^{\infty }I_i.X_i  )=
+  \sum\limits_{i=1}^{\infty }E(I_i.X_i)=\sum\limits_{i=1}^{\infty }E(I_i).E(X_i)=
+  E(X_1).\sum\limits_{i=1}^{\infty }E(I_i)=E(X_1).E(\sum\limits_{i=1}^{\infty }I_i)=E(X_1).E(N) \)
+   </span>
+
+<br>&#9755; \( m_S(s)=r_N(m_{X_1}(s)) \) <span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+    <br>Actually,
+			\(E(e^{\sum\limits_{i=1}^Ns.X_i})=E(e^{s.\sum\limits_{i=1}^N.X_i})=
+			E(e^{s.S})=m_S(s)= m_{\sum\limits_{i=1}^N X_i}(s)
+			=\prod\limits_{i=1}^{N}m_{X_i}(s)= (m_{X_1}(s))^N \)
+		</span>
+  
+  <h2 id="5_4_3">5.4.3 Characteristic function</h2> 
+  <h3 id="5_4_3_1">5.4.3.1 Definition</h3> 
+  The function \(c_X(s)= E(e^{i.s.X})\) where \(s \in \mathbb{R}\) and \(i^2=-1 \) is the characteristic 
+  function of the   RV X.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(c_X(s)= E(cos(s.X)+i.sin(s.X )=E(cos(s.X))+i.E(sin(s.X ))\), unlike moment-generating-function 
+    the characteristic function although can be imaginary but it is always finite, actually
+     ( \(|e^{i.s.X}|=1\)).
+  </span>
+      <h4 id="5_4_3_2">5.4.3.2 \(k^{th}\) Derivative of Characteristic function at 0</h4> 
+&#9755; \(c_X^{(k)}(0)=i^k.E(X^k)\)
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+ \(c_X^{(0)}(0)=c_X(0)=1\)
+ </span>
+    <h4 id="5_4_3_3">5.4.3.3 Characteristic function of the addition of two independent RV</h4> 
+    &#9755; \(c_{X+Y}(s)=c_X(s).c_Y(s)\) where X and Y are two independent RV.
+   <br><b>Example</b>
+   
+   <div class="box1">
+\( E(X)=0  \Leftrightarrow  P(X=0)=1\) where Y is a nonnegative RV.
+<span class="tooltip">&#128216;</span>
+
+<span class="tooltiptext">
+<br>P(X=0)=1 means X=0 with probability 1 which can be also expressed by "almost surely ". 
+  <br> Actually, suppose X is discrete so \(E(X)=0\) means 
+  \(\sum_\limits{x_k \in R_X}x_k.p_X(x_k) =0\), since all terms \(x_k.p_X(x_k) &ge;0 \),  
+  \(\sum_\limits{x_k \in R_X}x_k.p_X(x_k) =0\) means that for every k we have \(x_k.p_X(x_k)=0 \), 
+  so \(x_k \neq 0 \) means \(p_X(x_k)=0\), so for all k such as  \(x_k \neq 0 \) we have \(p_X(x_k)=0 \), 
+  that is \(\sum_\limits{x_k \in R_X}p_X(x_k) =p_X(0)\)
+  knowing that   \(\sum_\limits{x_k \in R_X}p_X(x_k) =1\), we conclude that \( p_X(0)=1\),
+   
+  </span>
+   </div>
+   
+    <h2 id="5_5">5.5 Conditional Expectation:</h2> 
+    <h3 id="5_5_1">5.5.1 Discrete case</h3>
+<b> Definitions</b>
+  <br>  &#9755; \( E(X|_A)=\sum\limits_{x \in  \mathbb{R} }x.P(X=x|_A)=
+    \sum\limits_{x \in  \mathbb{R} }x.\frac{P(X=x, A) } {P(A) }
+     \), where X is a RV and A some event is called the conditional expectation.
+    <br>  &#9755; \( E(X|_{Y=y })=
+       \sum\limits_{x \in  \mathbb{R} }x.\frac{p_{XY }(x,y) } {p_Y(y) }    \) , where X and Y are two discrete 
+       RVs.
+       <span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+        \( E(X|_{Y=y })=\sum\limits_{x \in  \mathbb{R} }x.P(X=x|_{Y=y  })=
+      \sum\limits_{x \in  \mathbb{R} }x.\frac{P(X=x, Y=y) } {P(Y=y) } =
+       \sum\limits_{x \in  \mathbb{R} }x.\frac{p_{XY }(x,y) } {p_Y(y) }    \)
+</span>
+       <br>  &#9755; \(Z= E(X|_{Y })=g(Y) \) is a RV and we have \(g(y)=E(X|_{Y=y}) \)
+       <br>  &#9755; \( Z= E(a.X+b.Z|_{Y })=a.E(X|_{Y })+b.E(Z|_{Y }) \)
+<h3 id="5_5_2">5.5.2 Absolutely Continuous case</h3>   
+   \( E(X|_{Y=y })=\int_{x \in \mathbb{R}  } x.f_{X|Y=y)}(x).dx=
+ \int_{x \in \mathbb{R}} x.\frac{f_{XY}(x,y) }{f_Y(y) } .dx  \)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     \( E(X|_{Y=y })\ this is obviously a function of the RV Y as it depends solely on values that Y can 
+     take, so we can write \( E(X|_{Y=y })=g(y)\).
+     
+     <br>
+  </span>
+   <h3 id="5_5_3">5.5.3 Double Expectation</h3>       
+&#9755;   \( E(E(X|_Y)) =E(X)\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  This is called Theorem of Total Expectation, this a special case of the theorem below 
+  (taking g(Y)=1), but for more precision we can prove it for discrete case (absolutely continuous 
+  case is then straightforward)
+  
+  <br> \( E(E(X|_Y)) = E(E(X|_{Y=y})) =
+  E( \sum\limits_{x \in  \mathbb{R} }x.\frac{p_{XY }(x,y) } {p_Y(y) })=E(g(Y=y)) \) 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    We put \(g(Y=y)\) instead of \(g(Y)\) because we can't express \(g(Y)\) unless we take a value y 
+    for Y (see one-dimensional change of variable) 
+  </span>
+  where \(g(y)=\sum\limits_{x \in  \mathbb{R} }x.\frac{p_{XY }(x,y) } {p_Y(y) }\), so
+    \(E(E(X|_Y)) =\sum\limits_{y \in  \mathbb{R} }g(y).p_Y(y)=
+     \sum\limits_{y \in  \mathbb{R} } \sum\limits_{x \in  \mathbb{R} }x.\frac{p_{XY }(x,y) } {p_Y(y) }.p_Y(y)
+     =\)
+     \(  \sum\limits_{y \in  \mathbb{R} } \sum\limits_{x \in  \mathbb{R} }x.p_{XY }(x,y) 
+     =\)
+       \(  \sum\limits_{x \in  \mathbb{R} } x. \sum\limits_{y \in  \mathbb{R} }p_{XY }(x,y) 
+     =\)
+        \(  \sum\limits_{x \in  \mathbb{R} } x. p_{X}(x) 
+     =E(X)\)
+  </span>
+<br>&#9755; \(E(g(Y).E(X|_Y))=E(g(Y).X) \) where X and Y are RVs, and
+  \(g:\mathbb{R}^1 \rightarrow \mathbb{R}^1\) any  function. 
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>- \(1^{st} \) Case: X and Y are discrete
+    \( E(g(Y)E(X|_Y))=\sum\limits_{y \in \mathbb{R}}g(y).E(X|_{Y=y}).P(Y=y)=
+    \sum\limits_{y \in \mathbb{R}}g(y). (\sum\limits_{x \in \mathbb{R}}x.P(X=x|_{Y=y})).P(Y=y)= \)
+    \(    \sum\limits_{y \in \mathbb{R}}g(y). (\sum\limits_{x \in \mathbb{R}}x.\frac{P(X=x,Y=y)}{P_Y(y)}).P_Y(y)=   \)
+    \( \sum\limits_{y \in \mathbb{R}}g(y). \sum\limits_{x \in \mathbb{R}}x.P(X=x,Y=y)= \)
+    \(\sum\limits_{y \in \mathbb{R}}\sum\limits_{x \in \mathbb{R}}g(y). x.P(X=x,Y=y)=   \)
+    \( \sum\limits_{(x,y) \in \mathbb{R}^2}f(x,y).P_{XY}(x,y)=E(f(X,Y))=E(g(Y).X)  \), where
+     \(f(x,y)=x.g(y)\)
+  <br>- \(2^{nd} \) Case: X and Y are absolutely continuous RVs:
+  <br>\(E(g(Y).E(X|_Y))=E(h(Y)) \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    where \(h(Y)=g(Y).E(X|_Y) \)
+  </span>
+  \(=\int_{-\infty}^{+\infty}h(y).f_Y(y).dy= \)
+  \(\int_{-\infty}^{+\infty}g(y).E(X|_{Y=y}).f_Y(y).dy = \)
+   \(\int_{-\infty}^{+\infty}g(y).(\int_{-\infty}^{+\infty}x.\frac{f_{XY}(x,y)}{f_Y(y)}).dx.f_Y(y).dy = \)
+   \(\int_{-\infty}^{+\infty}g(y).(\int_{-\infty}^{+\infty}x.f_{XY}(x,y))dx.dy = \)
+      \(\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}g(y).x.f_{XY}(x,y).dx.dy =E(g(Y).X) \)
+  </span>
+<br>&#9755; \( E(g(Y).X|_Y)=g(Y).E(X|_Y) \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \( E(g(Y).X|_Y)=E(g(Y=y).X|_{Y=y})=g(Y=y).E(X|_{Y=y})=g(Y).E(X|_{Y})\)
+  </span>
+
+<h2 id="5_6">5.6 Conditional Variance:</h2> 
+Let X and Y be some two RVs and A an event where P(A) &gt; 0, conditional variance is defined as 
+follows:
+<br>&#9755; \( Var(X|_A)=E((X-E(X|_A))^2|_A) =E(X^2|_A )-(E(X|_A))^2\)
+<br>&#9755; \( Var(X|_{Y=y})=E((X-E(X|_{Y=y}))^2|_{Y=y}) =E(X^2|_{Y=y})-(E(X|_{Y=y}))^2\) 
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    this is a real number
+  </span>
+<br>&#9755; \( Var(X|_Y)=E((X-E(X|_Y))^2|_A) =E(X^2|_Y)-(E(X|_Y))^2\)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    this is a RV
+  </span>
+  <br>and we have the following property: \( Var(X)=Var(E(X|_Y) )+E(Var(X|_Y) ) \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Actually, let \(U=Var(X|_Y)\) and \(V=E(X|_Y) \), then \(U=E(X^2|_Y)-(E(X|_Y))^2=E(X^2|_Y)-V^2\), so
+    \(E(U)=E(E(X^2|_Y))-E(V^2)=E(X^2)-E(V^2) \), we know that \( Var(V)=E(V^2)-(E(V))^2 \), that is
+    \(Var(V)+E(U)=E(X^2)-(E(V))^2  \), knowing that \(E(V)=E(E(X|_Y))=E(X) \), that is 
+     \(Var(V)+E(U)=E(X^2)-(E(X))^2=Var(X)  \), we conclude then that
+      \(Var(X)=Var(E(X|_Y))+E(Var(X|_Y))  \)
+  </span>
+  <h2 id="5_7">5.7 Inequalities:</h2> 
+   <h3 id="5_7_1">5.7.1 Markov's inequality:</h3> 
+  &#9755; \( P(X \geqslant  a) \leqslant  \frac{E(X) }{a }\) for any RV X and  real number a such as 
+  \(X \geqslant 0 \) and \(a &gt; 0 \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>Let Z be the RV defined as :  \(Z:\left\{\begin{matrix}
+a  &  &  for \; X &ge; a  \\
+ 0  &  &  elsewhere  \\
+
+\end{matrix}\right.\)
+<br> Then we have \(Z \leqslant X\), that is \(E(Z) \leqslant E(X)  \).
+<br>\(E(Z)=a.P(Z=a)=a.P(X &ge; a) \), that is   \( P(X \geqslant  a) \leqslant  \frac{E(X) }{a }\)
+    
+  </span>
+   <h3 id="5_7_2">5.7.2 Chebychev's inequality:</h3> 
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    Chebychev's inequality is one of the most important inequalities in probability theory (if it's not the
+    most important one)
+  </span>
+  &#9755; \( P( |Y-\mu_y| \geqslant a) \leqslant \frac{Var(Y)}{a^2}  \) for all \(a \geqslant 0 \)
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    we apply Markov's inequality to the RV \((Y-\mu_y)^2\), we have 
+    \( P(|Y-\mu_y| \geqslant  a)= P((Y-\mu_y)^2 \geqslant  a^2) 
+    \leqslant  \frac{E((Y-\mu_y)^2) }{a^2}\), that is
+     \( P(|Y-\mu_y| \geqslant  a) \leqslant  \frac{Var(Y)}{a^2}  \)
+  </span>
+   <h3 id="5_7_3">5.7.3 Cauchy-Shwartz inequality:</h3> 
+&#9755; \(|E(X.Y)| &le; \sqrt{E(X^2).E(Y^2) } \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br> Actually, consider the RV \(Z=(X-a.Y)^2\), where a is any real number, 
+   since Z is nonnegative we have 
+   \(0 &le; E(Z)=E(X^2-2.a.X.Y+(a.Y)^2)=E(X^2)-2.a.E(X.Y)+a^2.E(Y^2) \), if we choose 
+   \(a=\frac{E(X.Y) }{E(Y^2) } \), that is
+    \(0 &le; E(X^2)-2.\frac{(E(X.Y))^2 }{E(Y^2) }+\frac{(E(X.Y))^2 }{E(Y^2) } \), hence 
+    \(0 &le; E(X^2)-\frac{(E(X.Y))^2 }{E(Y^2) } \), that is 
+    \(E(X^2) .E(Y^2) &ge; (E(X.Y))^2  \), we conclude then the inequality.
+   
+  </span>
+<br>&#9755; \(|E(X.Y)| = \sqrt{E(X^2).E(Y^2) } \Leftrightarrow \;\exists \;a \; | \; P(X=a.Y)=1 \)  
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+
+   <br>Now let's suppose that  \(|E(X.Y)| = \sqrt{E(X^2).E(Y^2) }\) and show that there exists a real 
+   number a such as \(P(X=a.Y )=1\).
+   <br> Again consider the RV \(Z=(X-a.Y)^2\), where \(a=\frac{E(X.Y) }{E(Y^2) } \), we have 
+   \(E(Z)=E(X^2)-\frac{(E(X.Y))^2 }{E(Y^2) }=E(X^2)-\frac{E(X^2).E(Y^2) }{E(Y^2) }=E(X^2)-E(X^2)=0 \)
+   , that E(Z)=0, and since Z is nonnegative we conclude that P(Z=0)=1, that is P(X=a.Y)=1.
+  </span>
+<br>&#9755;  \(|Cov(X,Y) | \leqslant \sqrt{Var(X).Var(Y) } \) 
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    provided both variances are finite, actually :
+    <br> Let \(Y'=Y-\mu_y\) and \(X'=X-\mu_x\), and a any real number, we have
+    \(E((X'-x.Y')^2)=E(X'^2-2.x.X'.Y'+x^2.Y'^2)=E(X'^2)-2.x.E(X'.Y')+x^2.E(Y'^2)=  \)
+    \(Var(X)-2.x.Cov(X.Y)+x^2.Var(Y)  \), consider the function \( f(x)=a.x^2+b.x+c \), where 
+    \(a=E(Y'^2) \), \(b=-2.E(X'.Y')\) and \( c=E(X'^2) \), we know that \(f(x) &ge;0\), because 
+    \(f(x)=E((X'-x.Y')^2) \) which is positive, so the only way that this is true is by the condition 
+    \(b^2-4.a.c \leqslant 0\), 
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  f is positive means it is positive also in its minima, the minimum of f is \(f'(x_0)=0  \), that is 
+  \(2.a.x+b=0 \), hence \(x_0=-\frac{b }{2.a }  \), so \(f(x_0) \geqslant 0 \), that is 
+  \(a.\frac{b^2 }{4.a^2 }-\frac{b^2 }{2.a} +c \geqslant 0 \), that is \(a.b^2-2.a.b^2+4.a^2.c \geqslant 0 \)
+     , hence \(-a.b^2+4.a^2.c \geqslant 0 \)  , so \(b^2 \geqslant 4.a.c \)
+     <img src="/img/figure137.png"  style="float: right; width: 22%; height: 45%;" class="image1">	
+  </span>
+    so \(4.(E(X'.Y'))^2 \leqslant  4.E(X').E(Y') \), that is \((E(X'.Y'))^2 \leqslant  E(X').E(Y') \), hence 
+    \(|E(X'.Y')| \leqslant  \sqrt{E(X').E(Y')} \), we conclude then the inequality.
+    <br>
+  </span>
+<br> &#9755; \(|Cov(X,Y) | =\sqrt{Var(X).Var(Y) } \Leftrightarrow 
+\frac{X- \mu_x }{Y- \mu_y } =\frac{Cov(X,Y) }{Var(Y) } \) 
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <br>provided \(Var(Y)  \neq 0\),
+  <br>Actually, equality is attained means that there exists a real number d such as \(P(X'=d.Y')=1\), 
+  or we can just write that there exists a real number d such as \(X'=d.Y'\) almost surely, that is
+  \(X-\mu_x=d.(Y-\mu_y) \), now let's determine this real nulber d, we have 
+  \((X-\mu_x).(Y-\mu_y)=d.(Y-\mu_y)^2 \), hence  \(E((X-\mu_x).(Y-\mu_y))=d.E((Y-\mu_y)^2) \), hence
+   \(E((X-\mu_x).(Y-\mu_y))=d.E((Y-\mu_y)^2) \), that is 
+      \(Cov(X,Y)=d.Var(Y) \), that is    \(d=\frac{Cov(X,Y)}{Var(Y) }\)
+  
+  <br>It follows that \( |Corr(X,Y)| \leqslant 1\)
+  </span>, it follows that \( |Corr(X,Y)| \leqslant 1\)
+  <h3 id="5_7_4">5.7.4 Jensen’s Inequality:</h3> 
+  &#9755; \(f(E(X)) \leqslant E(f(X)) \)
+  <br>&#9755;  \(f(E(X)) = E(f(X)) \Leftrightarrow f \; is \; linear\)
+  <br>Provided f is a convex function and \(E(f(X))\) is finite.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <img src="/img/figure133.png"  style="float: right; width: 22%; height: 45%;" class="image1">	
+  <br> Actually:
+   <br> Let's take the tangent line to f at E(X), suppose the equation of this line is g(x)=a.x+b.
+   <br>We have \(f(E(X))=g(E(X)\), since f is a convex function we have \( g(x)  \leqslant  f(x) \), that is 
+    \( g(X)  \leqslant  f(X) \), knowing  that E conserves monotocity we have   \( E(g(X)) \leqslant E(f(X)) \), 
+    that is \( E(a.X+b)) \leqslant E(f(X)) \), \( a.E(X)+b \leqslant E(f(X)) \),  thus 
+    \( g(E(X)) \leqslant E(f(X)) \), since  \(f(E(X))=g(E(X)\), we conclude that \( f(E(X)) \leqslant E(f(X)) \).
+    <br>For the second part suppose \(f(E(X)) = E(f(X)) \), 
+    consider the tangent g to f at E(X), we have \( g(E(X))=f(E(X)) \), that is \(a.E(X)+b=E(f(X))\), 
+    that is \(E(a.X+b)=E(f(X))\), thus \(E(g(X))=E(f(X))\), hence \(E(g(X)-f(X))=0\), that is g(X)=f(X) 
+    (see example at the end of 5.4), so we conclude that f is linear.
+   <br>   
+  </span>
+  <h3 id="5_8">5.8 General Expectation:</h3> 
+  &#9755; \( E(X)=\int_0^{+\infty}P(X &gt; t).dt-\int_{-\infty}^0 P(X &lt; t).dt \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br>This definition is true whether X is a discrete, continuous or neither discrete nor continuous RV, 
+ so it's more general than the definition of expectation we had previously.
+ <br>Actually, let's prove this for a discrete RV then for an absolutely continuous RV.
+ <br><b>\(- 1^{st}\) case: X is a discrete RV</b>
+
+ <br>- \( \int_0^{+\infty}P(X &gt; t).dt=\int_0^{+\infty}\sum\limits_{\begin{align*}
+i  \\
+x_i & &gt; t 
+\end{align*} }p_{x_i}.dt=\sum\limits_{i }\int_0^{x_i}p_{x_i}.dt=\sum\limits_{i }p_{x_i}\int_0^{x_i}dt=
+\sum\limits_{i }x_i.p_{x_i}
+\),  for this integral \(x_i &gt;0 \) (because t is positive)
+ <br>- \( \int_{-\infty}^0 P(X &lt; t).dt=\int_{-\infty}^0\sum\limits_{\begin{align*}
+i  \\
+x_i & &lt; t  
+\end{align*} }p_{x_i}.dt=\sum\limits_{i }\int_{x_i}^0p_{x_i}.dt=\sum\limits_{i }p_{x_i}\int_{x_i}^0dt=
+-\sum\limits_{i }x_i.p_{x_i}
+\),  for this integral \(x_i &lt;0 \) (because t is negative)
+so, 
+<br>\(\int_0^{+\infty}P(X &gt; t).dt-\int_{-\infty}^0 P(X &lt; t).dt= 
+\sum\limits_{\begin{align*}
+i & \\
+x_i & &gt;0
+\end{align*} }x_i.p_{x_i}
+\)
+ 
+ \(+
+ 
+ \sum\limits_{\begin{align*}
+i & \\
+x_i & &lt;0
+\end{align*} }x_i.p_{x_i}
+ \)
+ \(= \sum\limits_{\begin{align*}
+i & \\
+x_i & \neq 0
+\end{align*} }x_i.p_{x_i}
+ \)
+ \(=\sum\limits_{i }x_i.p_{x_i}
+ \), because for \(x_i=0\), \(x_i.p_{x_i}=0\)
+  <br><b>\(- 2^{nd}\) case: X is an absolutely continuous RV</b>
+<br>- \( \int_0^{+\infty}P(X &gt; t).dt=\int_0^{+\infty}(\int_t^{+\infty}f_X(x).dx).dt=\)
+\(\int_x\int_tg(x,t.)dx.dt
+\), where t is varying from 0 to \(+\infty\)  and x is varying from t to \(+\infty\), this is the same as
+to say x is varying from 0 to \(+\infty\) and t is varying from 0 to x, so 
+<br>\( \int_0^{+\infty}P(X &gt; t).dt=\int_0^{+\infty}(\int_0^{x}.dt)f_X(x).dx=
+\int_0^{+\infty}x.f_X(x).dx
+\), on the other hand
+<br>-\(\int_{-\infty}^0 P(X &lt; t).dt =\int_{-\infty}^0 (\int_{-\infty}^tf_X(x).dx).dt=
+ \int_{-\infty}^0 (\int_{x}^0 dt)f_X(x).dx=-\int_{-\infty}^0 x.f_X(x).dx.\)
+ <br>So in the case of absolutely continuous RV we have:
+ \( \int_0^{+\infty}P(X &gt; t).dt-\int_{-\infty}^0 P(X &lt; t).dt =
+ \int_0^{+\infty}x.f_X(x).dx-(-\int_{-\infty}^0 x.f_X(x).dx.)=\)
+ 
+ \( \int_0^{+\infty}x.f_X(x).dx+\int_{-\infty}^0 x.f_X(x).dx.=
+ \int_{-\infty}^{+\infty}x.f_X(x).dx=E(X)
+ \).
+
+
+ </span>
+<br>&#9755; General expectation has the same properties as the standard expectation (linearity, 
+product of independent RV, monotocity)
+<br>&#9755; \(E(X)=\sum\limits_{i=1}^{k }p_i.E(X_i)  \), where X and \(\left\{X_i \right\}\)
+ are RV, such that  \(F_X(x)=\sum\limits_{i=1}^{k }p_i.F_{X_i}(x) \) and \(\sum\limits_{i=1}^{k }p_i=1 \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <br>Actually from the definition we know that:
+    <br>\( E(X)=\int_0^{+\infty}P(X &gt; t).dt-\int_{-\infty}^0 P(X &lt; t).dt \), let's calculate the two
+     integrals separately, we have 
+     \( P(X &gt; t)=1-P(X &le; t)=1-F_X(t)=1-\sum\limits_{i=1}^{k }p_i.F_{X_i}(t)=
+     \sum\limits_{i=1}^{k }p_i-\sum\limits_{i=1}^{k }p_i.F_{X_i}(t)=
+     \sum\limits_{i=1}^{k }p_i(1-F_{X_i}(t))=\)
+     \( \sum\limits_{i=1}^{k }p_iP(X_i &gt; t)\), similarly we have
+      \(P(X &lt; t)= F_X^-(t)= \sum\limits_{i=1}^{k }p_i.F_{X_i}^-(t)=
+      \sum\limits_{i=1}^{k }p_i.P(X_i &lt; t )
+      \)
+      
+      <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    \(F_X^-(t)=\displaystyle \lim_{x \to t^-}F_X(x)\)
+  </span>
+  , hence
+  \( E(X)=\int_0^{+\infty}P(X &gt; t).dt-\int_{-\infty}^0 P(X &lt; t).dt=
+  
+  \int_0^{+\infty}P(X &gt; t).dt-\int_{-\infty}^0 P(X &lt; t).dt\)
+ \( =\int_0^{+\infty}  \sum\limits_{i=1}^{k }p_iP(X_i &gt; t )-
+ \int_{-\infty}^{0} \sum\limits_{i=1}^{k }p_i.P(X_i &lt; t )=
+ \sum\limits_{i=1}^{k }p_i.(\int_0^{+\infty}P(X_i &gt; t).dt-\int_{-\infty}^{0}P(X_i &lt; t).dt)=\)
+  \(\sum\limits_{i=1}^{k }p_i.E(X_i)  \)
+  </span>
+<br><br><br><br><br><br>
+	</div>
+	
+
+
+</body>
+</html>

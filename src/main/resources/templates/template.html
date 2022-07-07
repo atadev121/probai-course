@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="utf-8">
+<title>Probability Course</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyle.css}" />
+
+ <script data-main = "/js/config" src = "/js/require.js"></script>
+ 
+	<script>  
+
+	//console.log("before require myf")
+	requirejs([ 'side' ,'toggleNotes','nextPrevious'], function(m,k) {
+	
+	});
+
+
+</script>
+
+</head>
+<body>
+	<div class="navbar1" id="menu1">
+		<div class="nabar1ItemClass1" id="operations">
+		 <img src="/img/glossary.png" id="arrow">
+			<a class="link" th:href="@{/probabilityCourse/introductionToPan#1}">Glossary</a>
+		</div>
+		<div class="nabar1ItemClass1" id="comptes">
+			<a th:href="@{/probabilityCourse/introductionToPan#1}" class="link">Comptes</a>
+		</div>
+		<div class="nabar1ItemClass1" id="clients">
+			<a th:href="@{/probabilityCourse/introductionToPan#1}" class="link">Clients</a>
+		</div>
+	</div>
+	 
+<div id="container">
+
+<div class="side" id="side">
+       <a  class="big noSelect">0. Tools and preamble on calculus  for probability and statistics</a>
+       <a th:href="@{/probabilityCourse/pream#0_1}" class="meduim noSelect">0.1 Prelude on calculus for probability and statistics</a>
+       <a th:href="@{/probabilityCourse/simul#0_2}" class="meduim noSelect">0.2 Tools for probability and statistics</a>
+       <a th:href="@{/probabilityCourse/introductionToPan#1}" class="big noSelect">1 Introduction to probability and statistics</a>
+       <a th:href="@{/probabilityCourse/introductionToPan#1_1}" class="meduim noSelect">1.1 Real life example</a>
+       <a th:href="@{/probabilityCourse/introductionToPan#1_2}" class="meduim noSelect">1.2 Population</a>
+       <a th:href="@{/probabilityCourse/introductionToPan#1_3}" class="meduim noSelect">1.3 The coin toss trap</a>
+	   <a th:href="@{/probabilityCourse/introductionToPan#1_3_1}" class="small noSelect">1.3.1 Tossing a biased coin n times</a>
+       <a th:href="@{/probabilityCourse/introductionToPan#1_3_2}" class="small noSelect">1.3.2 Distribution</a>
+	   <a th:href="@{/probabilityCourse/setTheory1#2}" class="big noSelect">2 Set theory: Review</a>
+	   <a th:href="@{/probabilityCourse/setTheory1#2_1}" class="meduim noSelect">2.1 What is a set</a> 
+	   <a th:href="@{/probabilityCourse/setTheory1#2_2}" class="meduim noSelect">2.2 Universal set</a> 
+	   <a th:href="@{/probabilityCourse/setTheory1#2_3}" class="meduim noSelect">2.3 Operations on sets</a>
+	   <a th:href="@{/probabilityCourse/setTheory1#2_3_1}" class="small noSelect">2.3.1 Venn diagram</a>
+       <a th:href="@{/probabilityCourse/setTheory1#2_3_2}" class="small noSelect">2.3.2 Inclusion</a>
+	   <a th:href="@{/probabilityCourse/setTheory1#2_3_3}" class="small noSelect">2.3.3 Union</a>
+	   <a th:href="@{/probabilityCourse/setTheory1#2_3_4}" class="small noSelect">2.3.4 Intersection</a>
+	   <a th:href="@{/probabilityCourse/setTheory1#2_3_5}" class="small noSelect">2.3.5 Subtraction</a>
+	   <a th:href="@{/probabilityCourse/setTheory1#2_3_6}" class="small noSelect">2.3.6 Complement</a>
+	   <a th:href="@{/probabilityCourse/setTheory1#2_3_7}" class="small noSelect">2.3.7 Mutually exclusive</a>
+	   <a th:href="@{/probabilityCourse/setTheory1#2_3_8}" class="small noSelect">2.3.8 Partition</a>
+       <a th:href="@{/probabilityCourse/setTheory1#2_3_9}" class="small noSelect">2.3.9 Morgan's Law</a>
+       <a th:href="@{/probabilityCourse/setTheory1#2_3_10}" class="small noSelect">2.3.10 Distributive law</a>
+       <a th:href="@{/probabilityCourse/setTheory1#2_3_11}" class="small noSelect">2.3.11 Cartesian Product</a>
+       <a th:href="@{/probabilityCourse/setTheory2#2_3_12}" class="small noSelect">2.3.12 Cardinality of a set</a>
+       <a th:href="@{/probabilityCourse/setTheory2#2_3_13}" class="small noSelect">2.3.13 Finite and infinite sets</a>
+	   <a th:href="@{/probabilityCourse/setTheory2#2_4}" class="meduim noSelect">2.4 Functions</a>
+	   <a th:href="@{/probabilityCourse/setTheory2#2_4_1}" class="small noSelect">2.4.1 What is a function</a>
+       <a th:href="@{/probabilityCourse/setTheory2#2_5}" class="meduim noSelect">2.5 Combinatorics</a>
+       <a th:href="@{/probabilityCourse/setTheory2#2_5_1}" class="small noSelect">2.5.1 Introduction</a>
+       <a th:href="@{/probabilityCourse/setTheory2#2_5_2}" class="small noSelect">2.5.2 Ordered sampling without replacement</a>
+       <a th:href="@{/probabilityCourse/setTheory2#2_5_3}" class="small noSelect">2.5.3 Unordered sampling without replacement</a>
+       <a th:href="@{/probabilityCourse/setTheory2#2_5_4}" class="small noSelect">2.5.4 Ordered sampling with replacement</a>
+       <a th:href="@{/probabilityCourse/setTheory2#2_5_5}" class="small noSelect">2.5.5 Unordered sampling with replacement</a>
+       <a th:href="@{/probabilityCourse/setTheory2#2_5_6}" class="small noSelect">2.5.6 Combinatorics computation</a>
+	   <a th:href="@{/probabilityCourse/randomExperiment#3}" class="big noSelect">3 Founding concepts</a>
+	   <a th:href="@{/probabilityCourse/randomExperiment#2_4}" class="meduim noSelect">3.1 Introduction</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_2}" class="meduim noSelect">3.2 Random experiment</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_2_1}" class="small noSelect">3.2.1 What is an experiment</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_2_2}" class="small noSelect">3.2.2 Outcome</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_2_3}" class="small noSelect">3.2.3 Sample space</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_2_4}" class="small noSelect">3.2.4 Trial</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_2_5}" class="small noSelect">3.2.5 Event</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_2_6}" class="small noSelect">3.2.6 Elementary event</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_3}" class="meduim noSelect">3.3 Probabilities</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_3_1}" class="small noSelect">3.3.1 What is a probability</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_3_2}" class="small noSelect">3.3.2 Axioms of probabilities</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_3_3}" class="small noSelect">3.3.3 Intersection, union and probabilities</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_3_4}" class="small noSelect">3.3.4 Calculating probability</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_3_5}" class="small noSelect">3.3.5 Some important properties from probability axioms</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_3_6}" class="small noSelect">3.3.6 Discrete probability model</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_3_7}" class="small noSelect">3.3.7 Continuous probability models</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_4}" class="meduim noSelect">3.4 Conditional Probability</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_4_1}" class="small noSelect">3.4.1 General formulae for conditional Probability</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_4_2}" class="small noSelect">3.4.2 Chain rule for conditional probability</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_4_3}" class="small noSelect">3.4.3 Independent event</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_4_4}" class="small noSelect">3.4.4 Law of total probability</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_4_5}" class="small noSelect">3.4.5 Bayes' Rule</a>
+       <a th:href="@{/probabilityCourse/randomExperiment#3_4_6}" class="small noSelect">3.4.6 Conditional Independence</a>
+       <a th:href="@{/probabilityCourse/randomvariable#4}" class="big noSelect">4 Random Variable</a>
+       <a th:href="@{/probabilityCourse/randomvariable#4_1}" class="meduim noSelect">4.1 Distribution</a>
+       <a th:href="@{/probabilityCourse/randomvariable#4_1_1}" class="meduim noSelect">4.1.1 Probability distribution</a>
+	   <a th:href="@{/probabilityCourse/randomvariable#4_1_2}" class="meduim noSelect">4.1.2 Distribution of random variable</a>
+	   <a th:href="@{/probabilityCourse/randomvariable#4_2}" class="meduim noSelect">4.2 Discrete Random Variable</a>
+	   <a th:href="@{/probabilityCourse/randomvariable#4_2_1}" class="meduim noSelect">4.2.1 Law of total probability -discrete random variable version-</a>
+	   <a th:href="@{/probabilityCourse/randomvariable#4_2_2}" class="meduim noSelect">4.2.2 Probability Mass Function (PMF)</a>
+	   <a th:href="@{/probabilityCourse/randomvariable#4_2_3}" class="meduim noSelect">4.2.3 Special distribution</a>
+	   <a th:href="@{/probabilityCourse/randomvariable#4_2_3_1}" class="meduim noSelect">4.2.3.1 Bernoulli distribution</a>
+	   <a th:href="@{/probabilityCourse/randomvariable#4_2_3_2}" class="meduim noSelect">4.2.3.2 Geometric distribution:</a>
+	   <a th:href="@{/probabilityCourse/randomvariable#4_2_3_3}" class="meduim noSelect">4.2.3.3 Binomial distribution:</a>
+   	   <a th:href="@{/probabilityCourse/randomvariable#4_2_3_4}" class="meduim noSelect">4.2.3.4 Negative Binomial (Pascal) Distribution</a>
+   	   <a th:href="@{/probabilityCourse/randomvariable#4_2_3_5}" class="meduim noSelect">4.2.3.5 Hypergeometric Distribution</a>
+   	   <a th:href="@{/probabilityCourse/randomvariable#4_2_3_6}" class="meduim noSelect">4.2.3.6 Poisson Distribution</a>
+    	   <a th:href="@{/probabilityCourse/randomvariable#4_2_3_7}" class="meduim noSelect">4.2.3.7 Point Distribution</a>
+   	   <a th:href="@{/probabilityCourse/randomvariable#4_3}" class="meduim noSelect">4.3 Continuous random variables</a>
+   	   <a th:href="@{/probabilityCourse/randomvariable#4_3_1}" class="meduim noSelect">4.3.1 Definition</a>   	   
+   	      	   <a th:href="@{/probabilityCourse/randomvariable#4_3_2}" class="meduim noSelect">4.3.2 Uniform distribution</a>   	
+   	      	   <a th:href="@{/probabilityCourse/randomvariable#4_3_3}" class="meduim noSelect">4.3.3 Probability Density Function (PDF)</a> 
+   	      	   <a th:href="@{/probabilityCourse/randomvariable#4_3_4}" class="meduim noSelect">4.3.4 Special continuous distribution</a>    	   
+   	      	   <a th:href="@{/probabilityCourse/randomvariable#4_3_4_1}" class="meduim noSelect">4.3.4.1 Exponential distribution</a>       	   
+   	      	   <a th:href="@{/probabilityCourse/randomvariable#4_3_4_2}" class="meduim noSelect">4.3.4.2 The Gamma Distribution</a>  
+   	      	   <a th:href="@{/probabilityCourse/randomvariable#4_3_4_3}" class="meduim noSelect">4.3.4.3 Normal distribution</a>  
+   	      	   <a th:href="@{/probabilityCourse/randomvariable#4_4}" class="meduim noSelect">4.4 Important properties of RVs</a>  
+   	      	   <a th:href="@{/probabilityCourse/randomvariable#4_4_1}" class="meduim noSelect">4.4.1 Cumulative distribution function</a>  
+   	      	   <a th:href="@{/probabilityCourse/randomvariable#4_4_1_1}" class="meduim noSelect">4.4.1.1 Definition</a>     	      	   
+   	      	   <a th:href="@{/probabilityCourse/randomvariable#4_4_1_2}" class="meduim noSelect">4.4.1.2 Properties of Distribution Functions</a>     		      	   
+   	      	   <a th:href="@{/probabilityCourse/randomvariable#4_4_1_3}" class="meduim noSelect">4.4.1.3 Cdfs of Discrete Distributions</a>   
+   	      	   <a th:href="@{/probabilityCourse/randomvariable#4_4_1_4}" class="meduim noSelect">4.4.1.4 Cdfs of absolutely continuous Distributions</a>  
+   	      	       <a th:href="@{/probabilityCourse/randomvariable#4_4_4}" class="meduim noSelect">4.4.4 Joint probability distributions (JPD)</a>
+   	      	       
+ <a th:href="@{/probabilityCourse/randomvariable#4_4_4_1}" class="meduim noSelect">4.4.4.1 Joint Probability Mass Function (JPMF)</a>  
+ <a th:href="@{/probabilityCourse/randomvariable#4_4_4_2}" class="meduim noSelect">4.4.4.2 Marginal PMF</a>  
+ <a th:href="@{/probabilityCourse/randomvariable#4_4_4_3}" class="meduim noSelect">4.4.4.3 Joint cumulative distribution:JCD</a>  
+ <a th:href="@{/probabilityCourse/randomvariable#4_4_4_4}" class="meduim noSelect">4.4.4.4 Marginal joint cumulative distribution</a>  
+ <a th:href="@{/probabilityCourse/randomvariable#4_4_4_5}" class="meduim noSelect">4.4.4.5 Joint probability distribution for continuous RVs</a>  
+ <a th:href="@{/probabilityCourse/randomvariable#4_4_4_6}" class="meduim noSelect">4.4.4.6 More than two RVs</a>  
+ <a th:href="@{/probabilityCourse/randomvariable#4_4_4_7}" class="meduim noSelect">4.4.4.7 Conditional Distribution and Independence</a>  
+ <a th:href="@{/probabilityCourse/randomvariable#4_4_4_8}" class="meduim noSelect">4.4.4.8 Conditioning on Continuous Random Variables</a>  
+ <a th:href="@{/probabilityCourse/randomvariable#4_4_4_9}" class="meduim noSelect">4.4.4.9 Generalization to n RVs</a>  
+ <a th:href="@{/probabilityCourse/randomvariable#4_4_5}" class="meduim noSelect">4.4.5 Order statistics</a>  
+ <a th:href="@{/probabilityCourse/randomvariable#4_5}" class="meduim noSelect">4.5 Multidimensional change of variable</a>  
+ <a th:href="@{/probabilityCourse/randomvariable#4_5_1}" class="meduim noSelect">4.5.1 Discret case</a>  
+ <a th:href="@{/probabilityCourse/randomvariable#4_5_2}" class="meduim noSelect">4.5.2 Absolutely continuous case</a>     	      	      	      	      	      	      	      	      	      	   
+  <a th:href="@{/probabilityCourse/randomvariable#4_6}" class="meduim noSelect">4.6 Simulating Random variables and probabilities</a>  
+   <a th:href="@{/probabilityCourse/randomvariable#4_6_1}" class="meduim noSelect">4.6.1 Simulating discrete RV</a>  
+    <a th:href="@{/probabilityCourse/randomvariable#4_6_2}" class="meduim noSelect">4.6.2 Simulating Continuous RV</a>  
+     <a th:href="@{/probabilityCourse/randomvariable#4_6_3}" class="meduim noSelect">4.6.3 Sampling from a distribution</a>  
+
+   	      	   
+   	      	        <a th:href="@{/probabilityCourse/expectation#5}" class="meduim noSelect">5 Expectation of a RV</a>  
+   	      	      	<a th:href="@{/probabilityCourse/expectation#5_1}" class="meduim noSelect">5.1 Discrete case</a>       
+   	      	      	<a th:href="@{/probabilityCourse/expectation#5_1_1}" class="meduim noSelect">5.1.1 Definition </a> 	   
+   	    <a th:href="@{/probabilityCourse/expectation#5_1_2}" class="meduim noSelect">5.1.2 Expected values of some known discrete RV </a> 	  	      	          	   
+   <a th:href="@{/probabilityCourse/expectation#5_1_3}" class="meduim noSelect">5.1.3 RV transform and Expectation (discrete case) </a>	   
+   <a th:href="@{/probabilityCourse/expectation#5_1_4}" class="meduim noSelect">5.1.4 Linearity of Expected value</a>                   
+	<a th:href="@{/probabilityCourse/expectation#5_1_5}" class="meduim noSelect">5.1.5 Expected value of the product of two RVs</a>   
+	<a th:href="@{/probabilityCourse/expectation#5_1_6}" class="meduim noSelect">5.1.6 Monotonicity and Expected Value</a>   
+		<a th:href="@{/probabilityCourse/expectation#5_2}" class="meduim noSelect">5.2 Absolutely continuous case</a>   
+	<a th:href="@{/probabilityCourse/expectation#5_2_1}" class="meduim noSelect">5.2.1 Definition</a>   
+	<a th:href="@{/probabilityCourse/expectation#5_2_3}" class="meduim noSelect">5.2.3 Transform of RV and Expected value</a>
+	<a th:href="@{/probabilityCourse/expectation#5_2_4}" class="meduim noSelect">5.2.4 Linearity of Expected Value</a>
+	<a th:href="@{/probabilityCourse/expectation#5_2_5}" class="meduim noSelect">5.2.5 Expected Value of the product of two RVs</a>
+	<a th:href="@{/probabilityCourse/expectation#5_2_6}" class="meduim noSelect">5.2.6 Monotonicity and Expected Value</a>
+	<a th:href="@{/probabilityCourse/expectation#5_3}" class="meduim noSelect">5.3 Variance, Co-variance and Correlation</a>
+	<a th:href="@{/probabilityCourse/expectation#5_3_1}" class="meduim noSelect">5.3.1 Linearity of Expected Value</a>
+   	<a th:href="@{/probabilityCourse/expectation#5_3_1}" class="meduim noSelect">5.3.1 Linearity of Expected Value</a>
+   		<a th:href="@{/probabilityCourse/expectation#5_3_2}" class="meduim noSelect">5.3.2 Standard Deviation</a>
+   			<a th:href="@{/probabilityCourse/expectation#5_3_3}" class="meduim noSelect">5.3.3 Some important properties of Variance</a>
+   				<a th:href="@{/probabilityCourse/expectation#5_3_4}" class="meduim noSelect">5.3.4 Co-Variance</a>
+	<a th:href="@{/probabilityCourse/expectation#5_3_4_1}" class="meduim noSelect">5.3.4.1 Definition</a>
+	<a th:href="@{/probabilityCourse/expectation#5_3_4_2}" class="meduim noSelect">5.3.4.2 Properties of Variance</a>
+<a th:href="@{/probabilityCourse/expectation#5_3_5}" class="meduim noSelect">5.3.5 Correlation</a>
+	<a th:href="@{/probabilityCourse/expectation#5_3_5_1}" class="meduim noSelect">5.3.5.1 Definition</a>
+	<a th:href="@{/probabilityCourse/expectation#5_4}" class="meduim noSelect">5.4 Generating functions</a>   
+	<a th:href="@{/probabilityCourse/expectation#5_4_1}" class="meduim noSelect">5.4.1 Probability Generating functions</a>
+		<a th:href="@{/probabilityCourse/expectation#5_4_1_1}" class="meduim noSelect">5.4.1.1 Definition</a>
+		<a th:href="@{/probabilityCourse/expectation#5_4_1_2}" class="meduim noSelect">5.4.1.2 k<sup>th</sup> derivative of Probability Generating Function</a>
+			<a th:href="@{/probabilityCourse/expectation#5_4_2}" class="meduim noSelect">5.4.2 Moment Generating Function</a>
+			<a th:href="@{/probabilityCourse/expectation#5_4_2_1}" class="meduim noSelect">5.4.2.1 k<sup>th</sup> Moment</a>
+			<a th:href="@{/probabilityCourse/expectation#5_4_2_2}" class="meduim noSelect">5.4.2.2 Moment Generating Function</a>
+	<a th:href="@{/probabilityCourse/expectation#5_4_2_3}" class="meduim noSelect">5.4.2.3 Moment Generating Function and Expected Value</a>
+	<a th:href="@{/probabilityCourse/expectation#5_4_2_4}" class="meduim noSelect">5.4.2.4 Moment Generating Function of Normal RV</a>
+	<a th:href="@{/probabilityCourse/expectation#5_4_2_5}" class="meduim noSelect">5.4.2.5 Addition of Moment Generating Function</a>
+	<a th:href="@{/probabilityCourse/expectation#5_4_2_6}" class="meduim noSelect">5.4.2.6 Uniqueness of Moment Generating Function</a>
+	<a th:href="@{/probabilityCourse/expectation#5_4_2_6}" class="meduim noSelect">5.4.2.7 Compound Distribution</a>
+		<a th:href="@{/probabilityCourse/expectation#5_4_3}" class="meduim noSelect">5.4.3 Characteristic function</a>
+		<a th:href="@{/probabilityCourse/expectation#5_4_3_1}" class="meduim noSelect">5.4.3.1 Definition</a>
+		<a th:href="@{/probabilityCourse/expectation#5_4_3_2}" class="meduim noSelect">5.4.3.2 k<sup>th</sup> Derivative of Characteristic function at 0</a>
+		<a th:href="@{/probabilityCourse/expectation#5_4_3_3}" class="meduim noSelect">5.4.3.3 Characteristic function of the addition of two independent RV</a>
+		<a th:href="@{/probabilityCourse/expectation#5_5}" class="meduim noSelect">5.5 Conditional Expectation</a>
+		<a th:href="@{/probabilityCourse/expectation#5_5_1}" class="meduim noSelect">5.5.1 Discrete case</a>
+		<a th:href="@{/probabilityCourse/expectation#5_5_2}" class="meduim noSelect">5.5.2 Absolutely Continuous case</a>
+		<a th:href="@{/probabilityCourse/expectation#5_5_3}" class="meduim noSelect">5.5.3 Double Expectation</a>
+				<a th:href="@{/probabilityCourse/expectation#5_6}" class="meduim noSelect">5.6 Conditional Variance</a>
+<a th:href="@{/probabilityCourse/expectation#5_7}" class="meduim noSelect">5.7 Inequalities</a>
+<a th:href="@{/probabilityCourse/expectation#5_7_1}" class="meduim noSelect">5.7.1 Markov's inequality</a>
+	<a th:href="@{/probabilityCourse/expectation#5_7_2}" class="meduim noSelect">5.7.2 Chebychev's inequality</a>	
+		<a th:href="@{/probabilityCourse/expectation#5_7_3}" class="meduim noSelect">5.7.3 Cauchy-Shwartz inequality</a>	
+			<a th:href="@{/probabilityCourse/expectation#5_7_4}" class="meduim noSelect">5.7.4 Jensen’s Inequality</a>	
+	<a th:href="@{/probabilityCourse/expectation#5_8}" class="meduim noSelect">5.8 General Expectation</a>
+	<a th:href="@{/probabilityCourse/sdl#6}" class="meduim noSelect">6 Sampling Distributions and Limits</a>
+		<a th:href="@{/probabilityCourse/sdl#6_1}" class="meduim noSelect">6.1 Introduction</a>
+			<a th:href="@{/probabilityCourse/sdl#6_2}" class="meduim noSelect">6.2 Convergence</a>
+			<a th:href="@{/probabilityCourse/sdl#6_2_1}" class="meduim noSelect">6.2.1 Convergence in probability</a>
+<a th:href="@{/probabilityCourse/sdl#6_2_2}" class="meduim noSelect">6.2.2 The Weak Law of Large Numbers Theorem</a>
+<a th:href="@{/probabilityCourse/sdl#6_2_3}" class="meduim noSelect">6.2.3 Convergence with probability 1</a>
+<a th:href="@{/probabilityCourse/sdl#6_2_4}" class="meduim noSelect">6.2.4 Convergence with probability 1 implies converge in probability</a>
+<a th:href="@{/probabilityCourse/sdl#6_2_5}" class="meduim noSelect">6.2.5 Strong Law of Large Numbers</a>
+<a th:href="@{/probabilityCourse/sdl#6_2_6}" class="meduim noSelect">6.2.6 Convergence in Distribution</a>
+<a th:href="@{/probabilityCourse/sdl#6_2_7}" class="meduim noSelect">6.2.7 Convergence of Moment Generating Function implies convergence in Distribution</a>
+<a th:href="@{/probabilityCourse/sdl#6_2_8}" class="meduim noSelect">6.2.8 Continuous mapping theorem</a>
+
+<a th:href="@{/probabilityCourse/sdl#6_3}" class="meduim noSelect">6.3 Central Limit Theorem</a>
+<a th:href="@{/probabilityCourse/sdl#6_4}" class="meduim noSelect">6.4 Important distributions based on normal distribution</a>
+<a th:href="@{/probabilityCourse/sdl#6_4_1}" class="meduim noSelect">6.4.1 Linear transformation of Normal distributions</a>
+<a th:href="@{/probabilityCourse/sdl#6_4_2}" class="meduim noSelect">6.4.2 The Chi-squared Distribution</a>
+<a th:href="@{/probabilityCourse/sdl#6_4_3}" class="meduim noSelect">6.4.3 The t-Distribution</a>
+<a th:href="@{/probabilityCourse/sdl#6_4_4}" class="meduim noSelect">6.4.4 The F-Distribution</a>	
+	
+<a th:href="@{/probabilityCourse/sic#7}" class="big noSelect">7 Classical approach to statistical inference</a>
+<a th:href="@{/probabilityCourse/sic#7_1}" class="meduim noSelect">7.1 Random sampling</a>	
+<a th:href="@{/probabilityCourse/sic#7_1_1}" class="small noSelect">7.1.1 Introduction</a>	
+<a th:href="@{/probabilityCourse/sic#7_1_2}" class="small noSelect">7.1.2 Order statistics</a>	
+<a th:href="@{/probabilityCourse/sic#7_2}" class="meduim noSelect">7.2 Point estimation </a>	
+<a th:href="@{/probabilityCourse/sic#7_2_1}" class="small noSelect">7.2.1 Estimators</a>
+<a th:href="@{/probabilityCourse/sic#7_2_2}" class="small noSelect">7.2.2 Evaluating Estimators</a>
+<a th:href="@{/probabilityCourse/sic#7_2_3}" class="small noSelect">7.2.3 Point Estimators for Mean and Variance</a>
+<a th:href="@{/probabilityCourse/sic#7_2_4}" class="small noSelect">7.2.4 Maximum Likelihood Estimation MLE</a>
+<a th:href="@{/probabilityCourse/sic#7_2_5}" class="small noSelect">7.2.5 Asymptotic Properties of MLEs</a>
+<a th:href="@{/probabilityCourse/sic#7_2_5}" class="meduim noSelect">7.3 Interval Estimation (Confidence Intervals)</a>
+<a th:href="@{/probabilityCourse/sic#7_3_1}" class="small noSelect">7.3.1 Definitions</a>
+<a th:href="@{/probabilityCourse/sic#7_3_2}" class="small noSelect">7.3.2 Finding the confidence interval</a>
+<a th:href="@{/probabilityCourse/sic#7_3_3}" class="small noSelect">7.3.3 Confidence interval in case of Normal distribution</a>
+<a th:href="@{/probabilityCourse/sic#7_3_1}" class="meduim noSelect">7.4 Hypothesis testing</a>
+<a th:href="@{/probabilityCourse/sic#7_4_1}" class="small noSelect">7.4.1 Setting the framework</a>
+<a th:href="@{/probabilityCourse/sic#7_4_1}" class="small noSelect">7.4.2 Definitions</a>
+<a th:href="@{/probabilityCourse/sic#7_4_1}" class="small noSelect">7.4.3 Testing for the Mean</a>
+<a th:href="@{/probabilityCourse/sic#7_4_1}" class="small noSelect">7.4.3.1 Two sided test</a>
+<a th:href="@{/probabilityCourse/sic#7_4_1}" class="small noSelect">7.4.3.2 One sided test</a>
+<a th:href="@{/probabilityCourse/sic#7_4_1}" class="small noSelect">7.4.4 P values</a>
+<a th:href="@{/probabilityCourse/sic#7_4_1}" class="small noSelect">7.4.5 The Likelihood Ratio Test</a>
+<a th:href="@{/probabilityCourse/lmra#7_4_1}" class="big noSelect">8. Linear models and regression analysis</a>
+<a th:href="@{/probabilityCourse/lmra#8_1}" class="meduim noSelect">8.1 Simple linear regression</a>
+<a th:href="@{/probabilityCourse/lmra#8_1_1}" class="small noSelect">8.1.1 Least squares estimation</a>
+<a th:href="@{/probabilityCourse/la#1}" class="big noSelect">1 Linear algebra</a>
+	</div>
+
+ 	<div layout:fragment="content" id="section" class="section">
+	
+	section body
+	
+	</div>
+	</div>
+	<div class="footer" id="footer1">
+
+	<span id="gestionCompteFooter">@Gestion Comptes</span>
+		<span id="nextFooter">next</span>
+	   <img id="nextIconId" class="pointable" src="/img/nextPage.png"  style="position: relative; width: 3%; height: 70%;left:80%;top:-10%">
+	    <span id="previousFooter">previous</span>
+	    <img id="previousIconId" class="pointable" src="/img/previousPage.png"  style="position: relative; width: 3%; height: 70%;left:50%;top:-10%">
+	
+
+	
+	</div> 
+	
+</body>
+
+</html>

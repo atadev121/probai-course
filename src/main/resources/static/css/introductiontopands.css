@@ -1,0 +1,9 @@
+@charset "ISO-8859-1";
+
+
+.myChart {
+	position: relative; 
+	background-color:#e5e5e5;
+	width: 98%; 
+	height: 140%;
+}

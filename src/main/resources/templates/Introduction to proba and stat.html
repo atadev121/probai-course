@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="utf-8">
+<title>Introduction to probability</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+		<script>
+	
+			console.log("before require myf")
+			requirejs([ 'introduction','chartBar' ], function(m, k) {
+
+			});
+		</script>
+
+			<h1 id="1"> 1. Introduction to probability and statistics</h1>
+			<h2 id="1_1"> 1.1 Real life example</h2>
+		<img style="float:right;width:15%;height:35%;" src="/img/leak.jpg" id="productionImg" class="image1">
+		 Flow Ti is a first class company designing and producing pipes for many applications 
+		such as irrigation and waste management, Flow Ti is committed to deliver to its customers leak proof pipes 
+		with a probability of leaks at the field less than 5% with 99% certainty.  
+		<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">as you may guess only God knows with 100% certainty 
+   if a pipe will or won't leak in the field.</span>
+	<br>	For this it has required from its subsidiaries that all production lots of the 
+		pipes holding their trademark must undergo a hydraulic or leak test, by testing a sample from that lot and if 
+		some rejection threshold is reached (say 1 or 2  out of a sample  of 10 pipes has leak), 100% of the lot 
+		must be tested, for this, their quality manager  had to set the sample size and the rejection threshold.
+	
+	
+	 
+
+	<h2 id="1_2"> 1.2 Population</h2>
+	<h3 id="1_2_1"> 1.2.1 Comparing populations</h3>
+
+	
+	<img src="/img/figure18.png" id="bwtHis" class="image1" style="float:right;width:45%;height:65%">
+	Before going any further in this example, let's consider the concept of population.
+	<br>Generally speaking, in a given context a population is a set of objects with some "identical" characteristics.
+	In figure 18, we have a histogram of 1100 women heights in USA, women in USA belong to the same women height population, 
+	this histogram would've been  "shifted" to the left if the data was drawn from a population of women in a south Asian country.
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">we know that women in north America or Europe are likely to be taller than women in South Asia, so women in 
+	USA belong to the same women height population.</span>
+	<br><br><br><br><br>
+	 <img src="/img/figure19.png" id="bloodPressureSys" class="image1" style="float:right;width:45%;height:65%">
+	
+
+	
+		Figure 19 shows two populations, the blue one is related to patients with   "high blood pressure" 
+		who don't take a given Blood Pressure (BP) treatment, the red one is related to patients with high BP  
+		who take this treatment, notice that the red population is "shifted" relatively to the left, we can say loosely that individuals 
+		in the red population have relatively lower blood pressure.
+
+	 	<br><br><br><br><br>
+	<h3 id="1_2_2"> 1.2.2 Populations in manufacturing</h3>
+		
+	  <img src="/img/200w.webp" id="productionImg" class="image1" style="float:right;width:30%;height:50%;">
+	Coming back to Flow Ti pipes,	  a population of pipes is a set of pipes produced under the same set of production conditions 
+	(environment(temperature,  dust, air flow), raw materials,  work force, process configuration..).
+	  But these conditions are likely to change (or drift) over time, so if we take pipes produced within a reduced time-frame, 
+	  we can say that production conditions during this time frame didn't change significantly, hence those pipes belong to the 
+	  same (production) population.
+	  	
+	  The more we restrict this time-frame the more realistic our hypothesis is.
+	  To be more precise let's say a population is much related to a production lot, which is a production of a shift (7 hours of production).
+	  
+	   For the sake of simplicity, let's suppose that we are producing pipes of small diameter, and that we need 
+	   less than one shift to produce 100 pipes, so the size of our production lots is 100 pipes.
+	  
+	Suppose also that we want to assess the impact of changing the supplier of a raw material (say sand or fiber glass), on rejection rate at leak test gate.
+	For this, we produced two lots, one with the new raw material an the other with the conventional one, and we compared the results at leak test, 
+	After testing the whole production lots we found \(R_{1}=2 \) % (rejection rate for the new raw material) and  \(R_{2}=4 \) %, so the proportion of defective 
+	pipes in the first population is 2% and 4% at the second one, that means if you pick two pipes one from the first population and one from the second one, 
+	the probability of this pipe being defective is respectively  2% and 4%.
+	The issue is that we are interested in drawing conclusion about the quality (measured here by 
+	rejection rate ) 	all the pipes produced using the new raw materials not only this small
+	 population of 100 pipes, so in this regard this population will constitute the sample 
+	 and the objective is to adopt the conclusion the new raw materials improves the quality 
+	 of production.
+	 
+	 The rates we found above 4% and 2% are also subject to random variation not only 
+	 from the process parameters which we neglect in this study but also from the raw 
+	 materials, so this rate can fluctuate, the sample size will also have an impact on this rate.
+	 
+
+	
+	
+<h2 id="1_3"> 1.3 Falling back in the coin toss trap</h2>
+<img src="/img/coin-toss.jpg" id="coinTossImg" class="image1" style="float:right;width:15%;height:45%">
+
+Picking a pipe from the  first population is exactly like tossing a biased coin with the probability of head coming up equal to 2%.
+Picking two pipes is tossing this coin twice, picking three pipes is tossing the coin three times and so on.
+ 
+
+
+
+<h3 id="1_3_1"> 1.3.1 Tossing a biased coin n times</h3>
+Let's do an experiment, toss a biased <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">a biased coin is a coin with the probability of getting head and tail not the same, if we toss a fair coin,
+   the probability of having a head is the same as the probability of having a tail which is 50% or 0.5</span>
+			coin n times and note how many heads we get. <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"> getting a head is called a success in the probability terminology, because this is what we're concerned about, 
+  this has nothing to do with whether or not it's a "good"  thing, note that for  Flow Tit it's a failure to have a pipe with leak, 
+  though we call this outcome a success, having a good pipe is not something worth studying. </span>
+
+<br>Suppose also that it'is less probable to have a head than to have a tail, and the probability of having a head is p.
+
+ <br>In the following box enter n and p and get a random result.
+
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">keep pushing the "Toss button" for more trials.</span>
+
+
+
+			<br><span>Enter n:</span><input id="numberOfTosses" type="text"
+				value="1000"
+				style="position: relative; width: 10%; height: 5%; top: 1%; left: 1%; border-style: groove;">
+			<span style="padding: 1%;">Enter p:</span><input
+				id="probabilityOfHavingHeads" value="0.1" type="text"
+				style="position: relative; width: 10%; height: 5%; top: 1%; left: 1%; border-style: groove;">
+			<button id="tosseButton" type="button" 	style="position: relative; width: 10%; height: 7%; cursor:pointer;top: 1%; left: 1%; border-style: groove;">Toss!</button>
+			&nbsp;&nbsp;&nbsp;&nbsp; the result is the following:
+ <span id="probabilityOfSuccess" style="display:none;">0.1
+				</span>
+	
+
+
+
+
+	
+			
+			<br>	 &nbsp;&nbsp;- Number of Heads (nh) <span id="numberOfTossesN" style="display:none;">1000</span>
+			=<span id="numberOfHeads" >99</span>
+
+		<br>&nbsp;&nbsp;- <span style="font-size:1.5em;"> \({   {  (n*p-nh)*100}\over nh    }   =\) </span><span id="nTimesPid" >1%</span>
+
+			
+
+
+		
+		<br>	&nbsp;&nbsp;-  Outcomes =<span class="tooltip">&#128216;</span>
+			<span id="tossResult" class="tooltiptext">...</span>
+		<br>	<br><span>As you may have noticed the number of heads is around n*p, but this value can fluctuate significantly 
+		depending on n*p, as n*p grows this fluctuation gets smaller and smaller.
+		 </span>
+			<span class="tooltip">&#128216;</span>
+			<span class="tooltiptext">To get some insight from this experiment, try to enter different values of n, and p that 
+			gives less heads, for example for n=1 and p=0.1 you won't be able to have a head unless 
+			you do several trials, around 10, you can be very lucky and get a head in the first toss, but generally it is very unlikely 
+			to not have  a head after 10 tosses.
+			<br> To see the effect of the number of tosses keep p=0.5 (fair coin) and start to increase n, you'll notice 
+			that for small values of n (below 10) the difference between the number of heads and tails is quiet significant, 
+			but as soon as n starts to grow this difference gets smaller and smaller</span>
+	
+		<h3 id="1_3_2">1.3.2 Distribution</h3>
+		In the n times coin tossing  random experiment, tossing the coin n times is called a trial, let's do many trials and
+		note the number of heads in each trial, that is toss the coin n times then toss it another n times, then another n times until we get k trials, 
+		the number of heads in each trial is of
+		course random, it can vary from 0 to n, but it depends most certainly
+		on n and p, for the sake of simplicity let's suppose that our coin is
+		fair, that is p=0.5, so having the majority of trials with no heads or
+		no tails is very unlikely, for example in 10 tosses we expect to
+		have almost as many heads as tails, this guess is not valid for each
+		single trial, but it is for the whole set of trials, let's see how..
+		<br>Let's do a simulation of the random experiment above, and record how many heads we get in each trial, 
+		with  k trials,  n tosses and probability of head coming up equal to p
+		
+
+		<br>	<span>Enter k:</span><input id="numberOfTrialsInput" type="text"
+				value="1000"
+				style="position: relative;  width: 10%; height: 5%; top: 0%; left: 1%; border-style: groove;">
+			<button id="numberOfHeadsButton" type="button" class="myButton1"
+				style="position: relative; width: 13%; height: 7%; top: 0%; left: 1%; border-style: groove;">Keep pushing!</button>
+				<span class="tooltip">&nbsp;&nbsp;&#128216;</span>	<span  class="tooltiptext" >you can change n,p in the boxes above</span>
+		<br>
+	<span>Result of a set of </span>	<span id="numberOfTrials" >1000</span>&nbsp;trials:
+		
+	<br>
+		<span>- The mean value of Number of heads:</span> <span id="meanValueOfNumberOfHeads">100</span>
+	
+		<br><span>- A combination of number of heads:</span><span class="tooltip">&#128216;</span>	<span id="numberOfHeadsInktrials" class="tooltiptext">....</span>
+	
+		
+		
+
+<div style="position: absolute; width: 90%; height: 70%;background-color:black; overflow: hidden;">
+<canvas  id="barChart" style="  max-height: 100%; "></canvas> 
+	<button id="refreshButton" type="button" class="myButton1"
+				style="position: absolute; width: 12%; height: 10%; top: 20%; left: 86%; border-style: groove;">
+				Keep pushing!</button>
+				<span style="position: absolute; width: 12%; height: 15%; top: 30%; left: 86%; ">
+				n=<span id="nubmberOfTossesInsideChart"></span><br>
+				p=<span id="probabilityInsideChart"></span><br>
+				k=<span id="numberOfTrialsInsideChart"></span><br>
+				Mean=<span id="meanValueInsideChart"></span><br>
+				n*p=<span id="nTimespInsideChart"></span>
+				</span>
+</div>
+
+<div>
+<br><br><br><br><br><br><br><br><br><br><br>
+<br><h4>Analysis of the distribution:</h4>
+<div 	style="position: relative; left: 2%;width:98%">
+Let's denote by X the RV associated with the number of heads:
+<br>1/ The number of possible values that X can take is equal to n+1, 
+
+
+	<span class="tooltip">&nbsp;&nbsp;&#128216;</span>	
+	<span  class="tooltiptext" >for example for n=10, this number is 10, for n=100 this number is 100,
+	because when you toss a coin 10 times, you can have no heads, one head, 2,3..or 10 heads, so the graphic above 
+representing the histogram of number of heads in k trials contains theoretically n values, </span>
+
+
+<br>2/ The values that the RV X   can take concentrate around the expected value of X.
+<span class="tooltip">&nbsp;&nbsp;&#128216;</span>	
+	<span  class="tooltiptext" >
+	this is more clear for bigger values of the expected value of X
+ (the expected value of X is not the value of X, for example if n=100 and p=0.3, X can be any number form 0 to 100, 
+ but the expected value of X as the term "Expected" may suggest is 100*0.3=30  )  for example for n=100 and p=0.5, the expected number of heads is 50, so values that are far from this 
+value (0,1,2, 98,99,100), are almost certain not to occur  (because the expected value of X is 50), and the probability to have such values gets smaller 
+as those values gets farther from the expected value.
+	</span>
+
+</div>
+
+</div>
+
+		
+</div>
+
+
+
+</body>
+</html>

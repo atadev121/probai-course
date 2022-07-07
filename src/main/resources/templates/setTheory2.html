@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="utf-8">
+<title>Set theory,latex.codecogs.com</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+	
+		  <script>
+			console.log("before require myf")
+			requirejs([ 'setTheory2' ], function(m) {
+			});
+		</script>
+
+  <h3 id="2_3_12">2.3.12 Cardinality of a set</h3>
+  The cardinality of a set is the number of elements in this set, it's denoted by |A|, for finite sets we have: 
+ <br> \( 1.&#9755; |A_{1} \times A_{2} \times .. \times A_{n}|=|A_{1}|*|A_{2}| *..*| A_{n}|  \)<br>
+\(  2.&#9755; |A \cup B|=|A|+|B|-| A \cap B|  \)
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure10.png"  style="float: right; width: 25%; height: 45%;" class="image1">
+  <br>According to figure 10, we have: \(A=C \cup D, B=D \cup E, so\; A \cup B=(C \cup D) \cup (D \cup E)=C \cup D \cup E \) 
+ and since C,D,E are disjoint we have \(|A \cup B|=|C|+|D|+|E| \), we have also |A|=|C|+|D| and |B|=|D|+|E|
+ <br> we have also \(A \cap B=D\), so \(|A|+|B|-|A \cap B|=|C|+|D|+|D|+|E| - |D|=|C|+|D|+|E|=| A \cup B|\)
+  <br> let's take an example A={1,2,3,6}, B={9,0,10,1,2}, so \(  A \cup B  \)={1,2,3,6,9,0,10}
+  
+and \(  | A \cup B|  =7=|A|+|B|-|A \cap B|=4+5-2\)</span>
+<br>
+\(  3.&#9755; |A \cup B \cup C|=|A|+|B|+|C|-| A \cap B| -| A \cap C| -| B \cap C| +| A \cap B \cap \;C|\)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">Just take\( A \cup B =D \) and apply the equality above</span>
+  <br>4.&#9755; More generally:
+ \( |\bigcup\limits_{i=1}^{n} A_{i}|=\sum\limits_{i=1}^{n}|A_{i}|-\sum\limits_{i &lt; j}^{n}|A_{i}\cap A_{j}|+\sum\limits_{i &lt; j &lt; k}^{n}|A_{i}\cap A_{j} \cap A_{k}|-..+(-1)^{n+1}|A_{1}\cap A_{2}\; \cap ..A_{n}| \) &emsp;  (a)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+<br> Another way to write the equality above is:\( |\bigcup\limits_{i=1}^{n} A_{i}|=\sum\limits_{k=1}^{n} B_{k}^{n}\) 
+<br>where
+\(B_{k}^{n}=(-1)^{k+1} \sum a_{i_{1}i_{2}..i_{k}}^{n} \) and  \( a_{i_{1}i_{2}..i_{k}}^n=  |A_{i_{1}}\cap A_{i_{2}}.. \cap \;A_{i_{k}}|\), finally, \( i_{1}, i_{2},..,i_{k} \) 
+is a combination of k elements from a set of elements varying from 1 to n (no replacement, order doesn't matter).
+<br>For example:
+<br> - For k=3, and n=5 we have:
+\( B_{3}^{5} =(-1)^{3+1}(a_{123}^5+ a_{124}^5+a_{125}^5+a_{134}^5
++a_{135}^5+a_{145}^5+ a_{345}^5 + a_{245}^5+ a_{243}^5+ a_{235}^5)\) 
+(use combinatorics simulator!)
+<br> - \( B_{1}^{n}= \sum\limits_{i=1}^{n}|A_{i}| \)  (no matter what n is)
+<br> - \( B_{n}^{n}= (-1)^{n+1}|A_{1}\cap A_{2}\; \cap ..A_{n}|  \) 
+<br> So in the equality above (a) four terms are developed and  shown the first is \(B_{1}^{n} \), the second is \(B_{2}^{n}\), the fourth is \(B_{3}^{n} \) 
+and the last one is \(B_{n}^{n} \)
+</span>
+<br>&#9755; Proof: 
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+
+Suppose the equality above is true for n and let's prove it for n+1 
+<br>we have:
+  \( |\bigcup\limits_{i=1}^{n+1} A_{i}|= |(\bigcup\limits_{i=1}^{n} A_{i}) \bigcup A_{n+1}|=|\bigcup\limits_{i=1}^{n} A_{i}| + |A_{n+1}|- |(\bigcup\limits_{i=1}^{n} A_{i}) \cap A_{n+1}|=|\bigcup\limits_{i=1}^{n} A_{i}| + |A_{n+1}|- |\bigcup\limits_{i=1}^{n} (A_{i} \cap A_{n+1})|\)
+<br> So   \( |\bigcup\limits_{i=1}^{n+1} A_{i}|= |A_{n+1}|+\sum\limits_{k=1}^{n} B_{k}^{n} - \sum\limits_{k=1}^{n} C_{k}^{n} \), where 
+\(
+ C_{k}^{n}=(-1)^{k+1} \sum c_{i_{1}i_{2}..i_{k}}^n \) and \( c_{i_{1}i_{2}..i_{k}}^n=  |(A_{i_{1}}\cap A_{n+1}) \cap (A_{i_{2}} \cap A_{n+1}).. \cap \;(A_{i_{k}} \cap A_{n+1})|\)
+ that is  \( c_{i_{1}i_{2}..i_{k}}^n=  |A_{i_{1}} \cap A_{i_{2}} .. \cap \;A_{i_{k}} \cap A_{n+1}|=a_{i_{1}i_{2}..i_{k}(n+1)}^{n+1}\)
+<br>it follows: 
+\( |\bigcup\limits_{i=1}^{n+1} A_{i}|=|A_{n+1}|+B_{1}^n+B_{2}^n - C_{1}^n+B_{3}^n - C_{2}^n+..+B_{n}^n - C_{n-1}^n-C_{n}^n \)
+
+we have: \(B_{k}^n - C_{k-1}^n=B_{k}^{n+1} \) 
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    because: \(B_{k}^n - C_{k-1}^n=(-1)^{k+1} \sum a_{i_{1}i_{2}..i_{k}}^{n}-(-1)^{k} \sum c_{i_{1}i_{2}..i_{k-1}}^n=
+   (-1)^{k+1} \sum a_{i_{1}i_{2}..i_{k}}^{n}+(-1)^{k+1} \sum a_{i_{1}i_{2}..i_{k-1}(n+1)}^{n+1} = (-1)^{k+1} \sum a_{i_{1}i_{2}..i_{k}}^{n+1}\)=\(B_k^{n+1}\)
+ <br>
+  </span>
+
+and  \( |A_{n+1}|+B_{1}^n=B_{1}^{n+1} \), so
+\(  |\bigcup\limits_{i=1}^{n+1} A_{i}|=B_{1}^{n+1}+B_{2}^{n+1}+..+B_{n}^{n+1}-C_{n}^n\), we have \( -C_{n}^n=-(-1)^{n+1}a_{12..(n+1)} =B_{n+1}^{n+1}\)
+
+<br>that is: \( |\bigcup\limits_{i=1}^{n+1} A_{i}|=\sum\limits_{k=1}^{n+1} B_{k}^{n+1} \), this is what we've been looking for!
+</span>
+
+   <br>&#9755;  Example: <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure20.png"  style="float: right; width: 25%; height: 45%;" class="image1">
+  <br>* In an ice cream shop, 30 customers had ordered ice creams as follows:
+ <br>- 9 with Mango flavor, 3 of them in cornetto
+ <br>- 8 with Chocolate flavor, 5 of them in cornetto.
+
+<br>How many customers had ordered ice cream in cornetto ?
+  
+ <br>* Solution:<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  
+ <br> If C and M are respectively the sets of ice cream orders with Chocolate and 
+ Mango flavour, and Co is the set of orders in Cornetto then, 
+  \( |C \cup M \cup Co|=|C|+|M|+|Co|-|C \cap M|-|C \cap Co|-|M \cap Co|+|C \cap M \cap Co|\) 
+  <br> so 30=8+9+|Co|-0-5-3+0 so |Co|=21 (the are no orders with both flavors)
+  </span>
+  </span>
+  <br>############################################################################################
+<br> Example:
+<br>&#9755;\(P(A \cap B )&ge;1-P(\overline{A})-P(\overline{B}  )\)
+<span class="tooltip">&#128216;</span>
+<span class="tooltiptext">
+    \( (A \cap B) \cup (\overline{A \cap B})=S\), that is     \( P(A \cap B) +P ( \overline{A} \cup \overline{B})=1\)
+so \( P(A \cap B) +P ( \overline{A}) +P( \overline{B})-P(A \cap B )=1\), hence 
+\( P(A \cap B)=1-P( \overline{B})-P ( \overline{A})+P(A \cap B )\), we conclude then 
+\(P(A \cap B )&ge;1-P(\overline{A})-P(\overline{B}  )\)
+</span>
+<h3>2.3.13 Finite and infinite sets</h3>
+ * A finite set is a set that has a finite number of elements <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">that we could count and finish counting, for example A={1,3,5,7}, B={1,3,5,7,11,..,97}</span>
+  
+<br> * An  infinite set is a set that is not finite <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">that we can't count and finish counting, for example A={1,3,5,7...}, B=[0,1/2] (all real numbers between 0 and 1/2)</span>
+  <h3 id="2_3_14">2.3.14 Countable and uncountable sets</h3>
+a) A countable set is a set with the same cardinality as some subset of the set of natural numbers<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">  every element of the set is associated with a unique natural number (at most one natural number, it can be shown that this implies (since the set is infinite) 
+  there is bijection (one-to-one association in both directions) between the set of natural numbers and any
+   infinite countable set ),( the counting of a countable set may never finish )  </span>
+ <br>b) A countable set is either finite or infinite (countably infinite)
+ <br> c) A set is countable if its elements can be enumerated or listed in a sequence.<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">This is equivalent  to the one-to-one association with natural numbers definition, but you have to get rid of redundant element first</span>
+ \( A=\left\{ a_{1},a_{2},a_{3}..\right\} \)
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"><br>Example: 
+ \(
+ \text{Set A is obviously countable: }
+ A=\left\{(n+1)^{2},  n \in \mathbb{N} \right\}
+\\ 
+ \text{the set of integers } \mathbb{Z} =  \left\{  0,1,-1,2,-2,3,-3,.. \right\}   \text{ is countable as the function f is a bijection }
+ 
+ \\f:\mathbb{N}\rightarrow \mathbb{Z} \\
+ n\rightarrow f(n)=
+
+ \left\{\begin{matrix}n/2, \text{if n is even}
+ \\
+
+\\-(n-1)/2, \text{if n is uneven}
+\end{matrix}\right.
+ \)
+ </span>
+ <br>d) We can show that \(  
+
+ 
+  A= \bigcup\limits_{i,j=1}^{\infty }a_{ij}=\bigcup\limits_{i=1}^{\infty}\bigcup\limits_{j=1}^{\infty}a_{ij} 
+   
+    \;\)is countable, Proof:
+    <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"><br>
+    <img src="/img/figure9.png"  style="float: right; width: 25%; height: 45%;" class="image1">
+  all we have to do is to figure out a way to put those elements in a sequence, since , 
+  \(    A=\left\{a_{11},a_{12},a_{13},..,a_{21},a_{22},a_{23},...,a_{31},a_{32},a_{33},... \right\}\)
+  we can put those elements in the sequence shown by the following picture </span>
+  <br>e) We can show also that  if \(   A_1,A_2,A_3,...\) are countable, their union is countable
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+ <br> because \(   A_1=\left\{a_{11},a_{12},a_{13},...\right\},A_2=\left\{a_{21},a_{22},a_{23},...\right\}, A_3=\left\{a_{31},a_{32},a_{33},...\right\}...,\text{ since those sets are countable }\)
+ (direct result of d)
+</span>
+  <br> f) The set of positive rational numbers is countable, since it is the union of \(a_{ij}= {i\over j}  \) numbers where i and j are natural numbers
+  
+<br>g)  If a and b are two real numbers where \( a < b \), then the set [a,b] <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">(\( [a,b]=\left\{x \in \mathbb{R}, where\; a\leqslant x \leqslant b \right\}  \))</span> is uncountable, Proof:
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"><br>To make things simpler let's prove this for [0,1] by contradiction
+  <br> Suppose that [0,1] is countable, then there is a bijection from this interval to the set of natural number and vice-versa
+  so every natural number is associated to a a number in this interval, and since we're talking about real numbers
+  each number can be written in this form  \( 0.a_{01}a_{02} a_{03}...   (ex:0.23412563446234243...)
+  \\
+    0 \to  x_{0}=   0.a_{01}a_{02} a_{03}a_{04}...  (ex:0.2356437....)\\
+   1 \to x_{1}=0.a_{11}a_{12} a_{13}a_{14}...  (ex:0.1056464....)\\
+   2 \to x_{2}=0.a_{21}a_{22} a_{23}a_{24}...  (ex:0.6396477....)\\
+   3 \to x_{3}=0.a_{31}a_{32} a_{33}a_{34}...  (ex:0.24590433....)\\
+   4 \to x_{4}=0.a_{41}a_{42} a_{43}a_{44}...  (ex:0.1376539....)\\
+   ....
+   \\
+  \)
+ <br> so in the form above we took all the numbers in the interval [0,1] and we associated them with a natural number
+ <br>notice that numbers which have a finite number of digits after decimal point like 0.5, 0.23, ..  can be also written in the form above, 
+ for example 0.5=0.49999999999...
+ 
+ <br>* Let's come up with a number \(x_{new}\) which is not equal to any number \(x_{i}\) in the form above,  since this number is also a real number it can be written in this form also:
+ \(x_{new}=0.b_{0}b_{1}b_{2}b_{3}b_{4}.... \\
+\text{we have:} \\
+* b_{0}\neq a_{01} \Rightarrow  x_{new}\neq x_{0} \;in\; the\; example\; above\; a_{01}=2,\; so \;b_{0} \;can\; be\; 0,1,3,4,5,6,7,8 \;or\; 9\\
+* b_{1}\neq a_{12} \Rightarrow  x_{new}\neq x_{1} \;in\; the\; example\; above\; a_{12}=0,\; so \;b_{1} \;can\; be\; 1,2,3,4,5,6,7,8 \;or\; 9\\
+ * b_{2}\neq a_{23} \Rightarrow  x_{new}\neq x_{2} \;in\; the\; example\; above\; a_{23}=9,\; so \;b_{2} \;can\; be\; 0,1,2,3,4,5,6,7 \;or\; 8\\
+
+*in\;general\;we\;have:\;b_{i}\neq a_{i(i+1)} \Rightarrow  x_{new}\neq x_{i}
+ \) 
+
+ <br> so if we choose  \(  b_{i} \) in the way described above we can come up with a number which is different from all numbers in the interval [0,1] 
+ , the existence of such number is a contradiction with the assumption that we made earlier (listing all the numbers in the interval [0,1]), so we have just proved that [0,1] is uncountable.
+ 
+ <br>For [a,b], notice that there is a bijection f from [a,b] to [0,b-a]  (f(x)=x-a), 
+ <br>if b-a>1 then [0,1] is a subset of [a,b], it means that also [a,b] is uncountable
+ <br> if b-a &lt;1 the reasoning we did above still stands true
+  </span>
+  <br>
+h) If A and B are countable then A x B is countable
+
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+   <img src="/img/figure11.png"  style="float: right; width: 25%; height: 45%;" class="image1">
+  since A and B are countable they can be written as:
+  \(  A=\left\{a_{1},a_{2},a_{3},...\right\},
+  B=\left\{b_{1},b_{2},b_{3},...\right\},   
+  so\; A\times B=\left\{(a_{i},b_{j}),| a_{i} \in A, b_{j} \in B\right\}
+  \) As illustrated in figure 10, we can write A x B in the form of a sequence
+</span>
+<br>i) Countable sets can't be always written as an ordered series of elements.
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br>the set of natural numbers can be written as an ordered series {0,1,2,3,..}, but the set of 
+    integers can't be, unless we change the meaning of order, that is order from small to big for 
+    positive number and from big to small for negative numbers, that is 
+    \(\mathbb{Z}=  \left\{0,1,2,.. \right\} \cup \left\{-1,-2,-3,.. \right\} \)
+     
+  </span> 
+ 
+ 
+   <h2 id="2_4">2.4 Functions</h2>
+		<h3 id="2_4_1">2.4.1 What is a function</h3>
+ A function is a binary relation <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <img src="/img/figure5.png" id="vennPresentationImg" style="float: right; width: 35%; height: 55%;" class="image1">
+  a binary relation over sets X and Y is a set of ordered pairs (x,y) where\(  \;x  \in X\;and\; y\in Y  \) 
+  <br>(x,y) is an ordered pair means that \( x\neq y \Rightarrow (x,y)\neq (y,x)\)
+  </span>or association between two sets X and Y which 
+ associates every element in set X to exactly one element in set Y.
+ 
+ <br>
+ \(
+ 
+   1.&#9755; \;f:A \rightarrow B, \;\; A:Domain\;,B:Co-domain, 
+ 
+ \)
+ the Range is all possible values of f(x) with x &in;A.
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     And we have \(R_f=\left\{ y \in B \setminus \exists x \in A \;such \;as \; f(x)=y \right\}\)
+ (the range is a subset of B).
+  </span>
+
+ <br>2.&#9755; Injective function: f is an injection if for every element y in \( R_f\) there is only one element x in A such as f(x)=y.
+  <br>3.&#9755; Surjective function: f is a surjection if for every element y in B there is at least one element x in A such as f(x)=y.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+     It's the same as writing \(R_f =B\)
+  </span>
+ 
+  <br>4.&#9755; Bijective function:We say that f is a bijection if it is both injective and surjective.
+ <br>Examples:
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+
+    <img src="/img/figure6.png"  style="float: right; width: 25%; height: 45%;" class="image1">
+   <img src="/img/figure7.png"  style="float: right; width: 25%; height: 45%;" class="image1">
+      <img src="/img/figure8.png"  style="float: right; width: 25%; height: 45%;" class="image1">
+ <br>- The relation in figure 6 is a function, because each element in X={1,2,9} is associated to exactly 
+  one element in Y={8,4,5}, the set of ordered pairs is: { (1,4), (2,4), (9,5)}, the range ={4,5}
+  and we have f(1)=4,f(2)=4, f(9)=5, Y={4,5,8}
+  <br>- The relation in figure 7 is not a function because not every element of X is associated to an element from Y (6)
+ <br>- The relation in figure 8 is not a function because the element 1 of X is associated to more than one element (4,5)
+  </span>
+  <h3 id="2_4_1">2.4.2 Cardinality revisited</h3>
+
+  1. Two sets are said to be equi-cardinal (|A|=|B|) if there is a bijection from A to B.
+ <br>2. B has a greater cardinality than A \((|B| \geqslant  |A|) \) if there is an injection from A to B.
+  <br>3. B has a strictly greater cardinality than A (|B| &gt; |A|) if there is an injection from A to B 
+  but there is no surjection from A to B.
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">A and B might not be finite</span>
+  <h2 id="2_5">2.5 Combinatorics</h2>
+   <h3 id="2_5_1">2.5.1 Introduction</h3>
+    
+We are going to see further in this course that if S is a finite sample space with equally likely outcomes, 
+then for any event A we have: \(P(A)={|A| \over |S|} \).
+  So calculating probabilities consists simply of counting number of possibilities.
+  <br>For example  a random experiment consists of drawing k balls from a box containing n balls.
+   This experiment differs depending on the way we draw the balls, and how we make distinction between outcomes.
+  
+   
+   <h3 id="2_5_2">2.5.2 Ordered sampling without replacement</h3>
+ 
+Ordered sampling without replacement<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"> If the balls are numbered, and order makes a distinction between outcomes, that is (b1,b4,b5)
+   is different from (b4,b1,b5) ( k=3, n=5)  and when we draw a 
+  ball we don't put it back in the box before making the following draw (suppose we draw b1 in the first draw, 
+  we don't put it back in the box before doing the second draw), an example of this sampling method could be the following:
+  <br> 20 people are racing, the first, second and third in this race will have different prizes depending on their rank, how many possibilities are there? </span>
+   is called a permutation and the number of possibilities   in this sampling method is given by the formulae:
+ \(  P_{k}^{n}={n! \over (n-k)!} \), Proof:<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">we have n possibility for the first draw, (n-1) for the second, and (n-(k-1)) for the k<sup>th</sup> draw
+  so there are n.(n-1).(n-2)..(n-(k-1)) possibilities, that is \( {{1.2.3..n} \over {1.2..(n-k)}} ={ {n!} \over {(n-k)!}} \) </span>
+ <h3 id="2_5_3">2.5.3 Unordered sampling without replacement</h3>
+ 
+ Unordered sampling without replacement <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"> If the balls are numbered,  but order makes no distinction between outcomes, that is all we care about is if a ball is drawn or not, 
+  that is (b1,b4,b5) is the same as  (b4,b1,b5) (we suppose k=3 and n=5)  and when we draw a ball we don't return it in the box before making the following drawing, 
+ ( suppose we draw b1 in the first drawing, we don't put it back in the box before doing the second draw), an example of this sampling method could be the following:
+  <br> 20 people are racing, the first three people will have a prize (that is the first, the second and the third will have identical prizes), how many possibilities are there ? </span>
+  is called a combination and the number of possibilities in this sampling method is given by the formula:
+ \(  \binom{n}{k}={n! \over k!(n-k)!} \).
+ <br>Proof and examples:<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"> 
+   <img src="/img/figure12.png"  style="float: right; width: 35%; height: 85%;" class="image1">
+
+ <br>In this case order is not a distinguishing factor between possible outcomes, that is if n=5 and k=3, (b1,b3,b5) is the same as (b3,b5,b1) 
+ 
+ and each outcome corresponds to \( P_{k}^{k}=k! \) permutations
+ so \(  \binom{n}{k}.k!={n! \over (n-k)!} \)
+ <br> Figure 12 gives all possible outcomes in the case of four balls and three draws with order and without replacement, 
+ in this case the number of all possible outcomes is 24
+ <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+      \(\frac{4!}{(4-3)!}= \frac{4!}{1!}=\frac{1*2*3*4}{1}=24\)
+  </span>.
+
+ <br>To get the possibilities of unordered draws we must get rid of redundant outcomes
+  for example (b1,b3,b4) and (b4,b3,b1) and (b3,b1,b4).
+  </span>
+  <h4 id="2_5_3_1">2.5.3.1 Number of distinct sequences</h4>
+The number of distinct sequences formed by n entities A and p entities B is \(  \binom{n+p}{p}\).
+<br>Proof and example:<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+<br> Distinct sequences imply just order in a given number of two or more different entities, 
+ for example, we have two different entities A and B, we have 4 A's and 6 B's, we want to count the number of all different sequences, 
+ for example:
+ <br>AABABBABBB, BBBAABABAB, BABABABABB,..It's like  putting the A's and B's in ten
+  ordered cases (or digits if A and B were numbers, for example 1151551555,..).
+ <br>A way to form a sequence is to place all A's in four cases, then to put the B's in the cases left, that is to choose 4 cases from 
+ the 10 cases where we will put the A's, then put the B's in cases left, 
+ choosing 4 cases from 10 cases correspond to: \(  \binom{10}{4}\) outcomes.
+ <br>
+ </span>
+ <h3 id="2_5_4">2.5.4 Ordered sampling with replacement</h3>
+ The number of possibilities in this sampling method is given by the formula:\(  n^k \), Proof:<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">In each draw (k draws) we have n possibility</span>
+
+  
+  <br>Example: <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">In a presidential debate, 20 journalists are preparing to ask 
+  three questions to the candidates,  a journalist can ask more than one question. 
+  <br>How many possibilities are there?
+  The first question can be asked by any of the 20 journalist, so there is 20 possibilities, 
+  the second one can also be asked by any one of the journalist so there is 20 possibilities, the same for the third, so the total number of possibilities is 20*20*20, 
+  hence the general formulae \(  n^k \).
+  <br>If this experiment were designed with no replacement, a journalist can ask only one question
+  <br> If this experiment were designed without order,that means, there is no difference as what question was asked by which journalist, that is journalist A asks question 1, B asks question 2 and C asks question 3 (A1, B2,C3) :, is the same as (A3,B1,C2)
+  <span class="tooltip">&#128216;</span>Caution!
+  <span class="tooltiptext">You must be careful as to how the design of the experiment is done, as the outcomes can differ significantly according to the design,
+  
+  For example: suppose that in this same situation, we pick a journalist randomly (20 possibilities) and we invite him to ask the three questions in the order he sees fit \(  P_3^3 =6\) possibilities, so there is 60 possibilities</span>
+  </span>
+  <br>As an application of this formula, the number of subsets in a set of n elements is \(  2^n \)
+  <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">While choosing a subset, for every element in this subset there is two 
+  possibilities, either this elements is included or not in this subset, so there is  \(  2^n \) possibility</span>
+ <h3 id="2_5_5">2.5.5 Unordered sampling with replacement</h3> 
+ The number of possibilities in this sampling method is given by the formulae:\(  \binom{n+k-1}{k} \) 
+<br>Proof and example:<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  
+  <br>Let's take an example:
+  
+  <br>In a secondary school 7 students were competing to get four prizes, one in literature, one in math, 
+  one in physics and one in computational thinking, knowing that:
+  <br> - Each student can win multiple prizes (in different fields )
+  <br> - Each prize must be wined by exactly one student (for example the prize in math can be wined by one student at most and at least one student)
+  <br> - The prizes are identical that is if student1 wined the math prize  and the physics prize that means simply that student1 wined two prizes   . 
+  <br> How many possibilities are there ?
+  <br> Solution:<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  <img src="/img/figure21.png"  style="float: right; width: 65%; height: 45%;" class="image1">
+
+  <br> Let S be the set of students,  hence we have S= {S<sub>1</sub>,S<sub>2</sub>,S<sub>3</sub>,S<sub>4</sub>,S<sub>5</sub>,S<sub>6</sub>,S<sub>7</sub>}
+ <br> Some examples of possibilities: 
+  <br> S<sub>1</sub>S<sub>1</sub>S<sub>2</sub>S<sub>7</sub>, means student 1 wins two prizes and student 2 and 7 win one prize, 
+  the four other students don't win any prize.
+  <br> S<sub>7</sub>S<sub>6</sub>S<sub>6</sub>S<sub>4</sub>, means student 7 and 4 win one prize each and student 6 wins two.
+    
+     
+  <br> Since the prizes are the same, S<sub>1</sub>S<sub>1</sub>S<sub>2</sub>S<sub>7</sub> =  S<sub>1</sub>S<sub>7</sub>S<sub>1</sub>S<sub>2</sub>=S<sub>1</sub>S<sub>7</sub>S<sub>2</sub>S<sub>1</sub>=..
+  <br>So setting a possibility is equivalent to setting how many times each student is present in this possibility,  for example the possibility S<sub>4</sub>S<sub>3</sub>S<sub>3</sub>S<sub>6</sub> can be uniquely described as - -xx-x- -x-
+  , see figure 21 for a detailed explanation.
+  <br>So all possibilities correspond to distinct sequences from taking 4 x and 6 -, so the number of all possibilities as seen in 2.5.3.1 is  \(  \binom{10}{4}\) 
+            
+  </span>
+  </span>
+  <br><b> Summary:</b>
+  <table style="width:100%">
+  <tr>
+    <th style="width:30%">Sampling method</th>
+    <th style="width:56%">Example with n=4, k=2</th>
+    <th style="width:14%">Number of possibilities</th>
+  </tr>
+  <tr>
+    <td>No replacement, Order matters (permutation)</td>
+    <td>[b1-b2],[b1-b3],[b1-b4],[b2-b1],[b2-b3],[b2-b4],[b3-b1],[b3-b2],[b3-b4],[b4-b1],[b4-b2],[b4-b3]</td>
+     <td>\(  P_{k}^{n}={n! \over (n-k)!} \)</td>
+  </tr>
+  <tr>
+    <td>No replacement, Order doesn't matter (combination)</td>
+    <td>[b4-b3],[b4-b2],[b4-b1],[b3-b2],[b3-b1],[b2-b1] </td>
+   <td> \(  \binom{n}{k}={n! \over k!(n-k)!} \) </td>
+  </tr>
+    <tr>
+    <td>With replacement, Order matters</td>
+    <td>[b1-b1],[b1-b2],[b1-b3],[b1-b4],[b2-b1],[b2-b2],[b2-b3],[b2-b4],<br>[b3-b1],[b3-b2],[b3-b3],[b3-b4],[b4-b1],[b4-b2],[b4-b3],[b4-b4]</td>
+    <td>\(  n^k \)</td>
+  </tr>
+  
+   <tr>
+    <td>With replacement, Order doesn't matter</td>
+    <td>[b4-b4],[b3-b4],[b2-b4],[b1-b4],[b3-b3],[b2-b3],[b1-b3],[b2-b2],
+    <br>[b1-b2],[b1-b1]</td>
+    <td>\(  \binom{n+k-1}{k} \) </td>
+  </tr>
+  
+   <tr>
+    <td>Sequence</td>
+    <td>Four A's and 2 B's: AAAABB-AAABAB-AAABBA-AABAAB-AABABA-AABBAA-ABAAAB-ABAABA-ABABAA-ABBAAA-BAAAAB-BAAABA-BAABAA-BABAAA-BBAAAA</td>
+    <td>\(  \binom{n+k}{k} \) </td>
+  </tr>
+
+   
+</table>
+<h3 id="2_5_6">2.5.6 Combinatorics calculator</h3>
+The following is a small module developed in javascript which gives you all the possibilities by sampling methods, 
+and gives you also the number of those possibilities.
+<div class="box1">
+<span >Enter sampling parameter (n and k): </span>
+<br><span id="numberOfBallsLabel">- n: </span><input id="numberOfBallsInput" type="text" value="10"
+				style="position: relative; width: 10%; height: 10%; top: 1%; left: 1%; border-style: groove;">
+				<span id="numberOfBallsLabel">- k: </span><input id="numberOfWithdrawalInput" type="text" value="3"
+				style="position: relative; width: 10%; height: 10%; top: 1%; left: 1%; border-style: groove;">
+ <br> <label for="samplingMethods">- Choose sampling method:</label>
+  <select name="samplingMethods" id="samplingMethods">
+    <option value="owor">Ordered without replacement :</option>
+    <option value="uwor">Unordered without replacement :</option>
+    <option value="owr">Ordered with replacement :</option>
+    <option value="uwr">Unordered with replacement :</option>
+  </select>
+  	<button id="calculateButton" type="button" class="myButton1"
+				style="position: relative; width: 12%; height: 10%; top: 1%; left: 1%; border-style: groove;">
+				Calculate!</button>
+				
+			<br>	<span >- Number of possible outcomes: </span><span id="NumberOfPossibilitiesResult"> 270 </span>
+			<br>	<span >- List of all outcomes: </span><span id="listOfAllOutcomesResult"> ... </span>	
+			
+			<br>Examples:
+			<br> - What is the sampling method corresponding to a random experiment which consists of tossing 
+			a coin 10 times ?, how many outcomes are possible ? <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\( 2^{10}\)</span>
+			<br> - How many possibilities to have a head in the first and last toss  ? <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\( 2^{8}\)</span>
+  <br> - How many possibilities to have three heads  ? <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">\( \binom{10}{3}\)</span>
+</div>
+</div>
+
+</body>
+</html>

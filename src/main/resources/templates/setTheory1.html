@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="utf-8">
+<title>Set theory,latex.codecogs.com</title>
+</head>
+<script>
+
+  </script>
+  
+
+<body>
+
+	<div layout:fragment="content">
+	
+		<h1 id="2">2 Set theory: Review</h1>
+		<h2 id="2_1">2.1 What is a set</h2>
+		A set is a collection of some elements for example:	
+		Set1={<span style="font-size:1.1em;">&#8619;,&#8621;,&#9827;,&#9824;,&#9925;</span><span style="font-size:0.9em;">,123,AED,John}</span>	
+	,Set2={\(x^2\), where x&#8712;&#8477;}<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">,so Set2 is the set of positive real numbers (&#8477; is the set of real numbers)</span>
+
+\(Set3=\left \{ x^3, where \;x &#8712;(1,3,5)\right \} \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">, so Set3={1,9,512}
+</span>
+			
+			<h2 id="2_2">2.2 Special sets</h2>
+			<h3 id="2_2_1">2.2.1 Universal set</h3>
+			The set of all possibly imagined elements <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">that we can consider in a given context</span>  is called the universal set, it's denoted by &#937; or S
+			<h3 id="2_2_2">2.2.2 Empty set</h3>	
+ The null set is a set with no elements, it's denoted by \(\phi \;or \left\{ \right\} \)
+			, for any set A, we have  \(\phi \subset A\)
+			
+			<h3 id="2_2_3">2.2.3 Distinct sets</h3>
+			Two sets are distinct if they are different, that means there is at least one element that belongs to one of the two sets and doesn't 
+			belong to other.<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">not to mix with disjoint, see later.</span>
+  <h3 id="2_2_4">2.2.4 Disjoint sets</h3>
+	A sequence  of sets \(     A_{1}, A_{2},A_{3},..  \) are considered to be  disjoint if \(     A_{i} \cap A_{j}=\varnothing, \vee i\neq j      \)
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">See mutually exclusive events for comparison of the two concepts. </span>
+<h2 id="2_3">2.3 Operations on sets</h2>
+	<h3 id="2_3_1"> 2.3.1 Venn diagram</h3>
+	A Venn diagram is a visual presentation of sets, see the following diagram:
+	<img src="/img/VennDiagram.png" id="vennPresentationImg" style="float: right; width: 25%; height: 45%;">
+	<h3 id="2_3_2">2.3.2 Inclusion</h3>
+	We say set A is a subset of set B if all elements in set A belong to set B, we write:\(A\subset B\)
+	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">A is included in B, with mathematical expressions we write:\((\vee x\in\Omega, x\in A\Rightarrow x\in B)\Leftrightarrow (A\subset B\))</span>
+
+<br>Example: A={1,2,jhk,&#8619;,&#8621;}, B={2,jhk,&#8621;}, we have \(B\subset A\)
+
+<br> * For two subsets A and B we have:
+
+	\( A=B\;\Leftrightarrow \;A \subset B \) and \(B \subset A\) 	<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">because\((A= B) \Leftrightarrow  (\vee x\in \Omega, x\in A \Leftrightarrow x\in B \Leftrightarrow A \subset B \;and\; B \subset A )  \)</span>
+
+
+	<h3 id="2_3_3">2.3.3 Union</h3>
+	The union of two sets A and B is a set consisting of all elements in set A and all elements in set B
+	<br>The union is denoted by \(A\cup B\), and we have \( \vee x\in \Omega , x\in A\cup B\Leftrightarrow x\in A \;or\; x\in B \)
+	<br>For example if A={1,"R","ED"} and B={3,4,"T"}, \(  A\cup B=\left\{1,"R","ED",3,4,"T" \right\}      \)
+	<h3 id="2_3_4">2.3.4 Intersection</h3>
+	<img src="/img/VennIntersection.png" id="vennPresentationImg" style="float: right; width: 35%; height: 45%;">
+	Intersection of two sets A and B is a set consisting of all elements that belong to both sets,
+	this set is denoted by \( A \cap B\).
+	<h3 id="2_3_5">2.3.5 Subtraction (Difference)</h3>
+	The subtraction of a set B from a set A is a set consisting of all elements that belong 
+	to set A but not to set B, it's denoted by A-B.
+		<h3 id="2_3_6">2.3.6 Complement</h3>
+		The complement of a set A is a set consisting of all elements but not those belonging 
+		to A, it's denoted by \(    \overline{A} \;or\; A^{c}  \)
+		<br>We have \(      A-B=A\cap \overline{B}      \)
+		<img src="/img/Disjoint.png" id="vennPresentationImg" style="float: right; width: 35%; height: 45%;">
+		<br>
+			<h3 id="2_3_7">2.3.7 Mutually exclusive</h3>
+			The terms Mutually exclusive and disjoint are used interchangeably.
+<br>	<h3 id="2_3_8">2.3.8 Partition</h3>
+
+A partition is a group of sets that satisfy the following conditions:<br>
+  -They are disjoint<br>
+  -Their union is equal to the universal set
+<h3 id="2_3_9">2.3.9 Morgan's Law</h3>
+For any n sets we have:<br>
+	<img src="/img/partition.png" id="vennPresentationImg" style="float: right; width: 35%; height: 45%;">
+\(*\;\overline{A_{1}\cup A_{2}\;\cup ..A_{n}}=\overline{A_{1}}\cap \overline{A_{2}}..\cap\; \overline{A_{n}} \\
+* \overline{A_{1}\cap A_{2}\;\cap ..A_{n}}=\overline{A_{1}}\cup \overline{A_{2}}..\cup\; \overline{A_{n}}
+\)  
+
+proof:
+<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+  
+  \(x\in \overline{A\cup B}\Leftrightarrow x\notin (A\cup B)\Leftrightarrow \neg [x\in (A\cup B) ]\Leftrightarrow \neg[x\in A \;or\; x\in B]\)
+\( \Leftrightarrow x\notin A \;and\; x\notin B \Leftrightarrow x\in \overline{A}\;and\; x\in \overline{B} \)
+ \(\Leftrightarrow x\in (\overline{A}\cap \overline{B}) \)  
+( \(  \neg \)  is the negation operator.)
+  <br> we prove the general case by recurrence 
+   </span>
+ <br>Example:<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext"> 
+   \(  \text{If A, B and C are three sets where }A=\left\{1,3,5,67,8,9,32 \right\},\)
+       \( B=\left\{5,7,22 \right\}
+       \;and\;C=\left\{90,34,8 \right\}  \) and \(S= \left\{1,3,5,67,8,9,32,7,22,90,34\right\}\)
+\(then:
+
+\\   \quad *\overline{A}= \left\{7,22,90,34\right\}
+\\   \quad *\overline{B}= \left\{1,3,67,8,9,32,34,90\right\}
+     \\ \quad *A \cup B=\left\{1,3,5,67,8,9,32,7,22\right\}
+       \\ \quad *A \cup B \cup C=S
+         \\ \quad *A \cap B=\left\{5\right\}
+         \\   \quad *\overline{A} \cap \overline{B}=\left\{34,90\right\}=\overline{A \cup B}
+\\ \quad *\left\{1,5,7,3,67\right\},  \left\{22,8\right\}, \left\{8,9,32,1\right\} are\; disjoint
+
+        \)</span>
+        
+   
+   
+   
+   
+   
+   
+   
+   
+       <h3 id="2_3_10">2.3.10 Laws related to union and intersection of sets</h3>
+        <h4 id="2_3_10_1">2.3.10.1 Distributive law</h4>
+   a)    \( A \cup (B \cap C)=(A \cup B) \cap (A \cup C)  \) 
+  <br>b)     \(  A \cap (B \cup C)=(A \cap B) \cup (A \cap C) \) 
+  
+   <span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">
+    <br> <img src="/img/DistributiveLawFigure1.png" id="vennPresentationImg" style="float: right; width: 15%; height: 35%;" class="image1">
+      <img src="/img/DistributiveLawFigure2.png" id="vennPresentationImg" style="float: right; width: 15%; height: 35%;" class="image1">
+       <img src="/img/DistributiveLawFigure3.png" id="vennPresentationImg" style="float: right; width: 15%; height: 35%;" class="image1">
+          <img src="/img/DistributiveLawFigure4.png" id="vennPresentationImg" style="float: right; width: 15%; height: 35%;" class="image1">
+      <br>  - \( blue=B \cup C\)  (figure 3)<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">The blue part in figure 3 is the union of B and C</span> 
+      <br>  -  \( red=A \cap (B \cup C)\)  (figure 4)<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">The red part in figure 4 is obviously the intersection of A and the union of B and C</span>
+      
+     <br>  - \( yellow=A \cap C\)  (figure 2)<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">The yellow part in figure 2 is the intersection of a and C</span>
+       <br>  - \( pink=A \cap B\)  (figure 1)<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">The Pink part in figure 1 is the intersection of A and B</span>
+      <br>    - \( red=pink \cup yellow \)
+
+       </span>
+  
+  
+  <br> c) If \( B_{1},B_{2},.. \) is a partition, then for any event A we have: \( A=(A\cap B_{1}) \cup (A\cap B_{2}) \;\cup ... \)<span class="tooltip">&#128216;</span>
+  <span class="tooltiptext">Every element in A belongs to one of the sets of the partition.</span>
+ <h4 id="2_3_10_2">2.3.10.2 Commutative law</h4>
+       a) \( A \cup  B = B \cup A \)  
+       <br>b)  \( A \cap  B = B \cap A \)
+        <h4 id="2_3_10_3">2.3.10.3 Associative law</h4>
+       a) \( (A \cup  B) \cup C = A \cup (B  \cup C) \)  
+       <br>b)  \( (A \cap  B) \cap C = A \cap (B  \cap C) \)  
+       
+      
+         <h3 id="2_3_11">2.3.11 Cartesian Product</h3>
+       The Cartesian product of any n sets in some given order is the union of all n-tuple formed by all elements in those n sets in that specified order:
+       The Cartesian product of sets \(A_{1}, A_{2},..A_{n}\) in this order is denoted by  \(A_{1} \times A_{2} \times .. \times A_{n}\) and is defined as the following:
+       \(A_{1} \times A_{2} \times .. \times A_{n} =\left\{ (a_{1},a_{2},..,a_{n}),where\; a_{i} \in A_{i}\right\} \)
+  
+ 
+
+ <br><br><br><br>
+   
+  <br><br>
+</div>
+
+</body>
+</html>

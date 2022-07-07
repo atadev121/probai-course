@@ -1,0 +1,184 @@
+@charset "ISO-8859-1";
+
+#containerGraph{
+	position:absolute;
+   top:2%;
+	 border: 1px solid #ffffff;
+	 padding:0% 0% 0% 1%;
+	 width: 97%; 
+	 height: 96%; 
+
+}
+
+#selectFunctionSettingsGraph{
+	position:absolute;
+    left:2%;
+    top:70%;
+	 width: 50%; 
+	 height: 15%;
+display:none;
+z-index:4;
+}
+
+#graphSettingsImg{
+position:absolute;
+left:0%;
+top:85%;
+	 width: 15%; 
+	 height: 15%;
+	 cursor:pointer;
+	 z-index:4;
+	   -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+
+
+.enterFunctionInput{
+	position:relative;
+	width: 74%; 
+	height: 6%; 
+	top: 1%; 
+	left: 1%; 
+	border-style: groove;
+	background-color:#d8d8d8; 
+	z-index:2;
+}
+
+#span2Graph{
+	position:relative;
+	top: 1%; 
+	left: 1%; 
+	height:90%
+}
+
+#span1Graph{
+	position:relative;
+	top: 1%; 
+	left: 1%; 
+	height:90%
+}
+
+.cancelSpanGraph{
+	position:relative;
+	top: 1%; 
+	left: 3%; 
+	cursor:pointer;
+}
+
+#span1Graph{
+	position:relative;
+	top: 1%; 
+	left: 3%; 
+}
+
+.settingsByFunctionGraph{
+		position:relative;
+	top: 1%; 
+	left: 2%; 
+	cursor:pointer;
+
+}
+.inputGraphSetting{
+	position:relative;
+	top: 1%; 
+	left: 1%; 
+	height:10%;
+	width: 6%; 
+}
+
+
+.spanGrpahSetting{
+	position:relative;
+	top: 0%; 
+	left: 1%; 
+	height:20%;
+	width: 5%; 
+	 padding:0% 0% 0% 3%;
+}
+
+.graphText{
+	
+	width: 75%; 
+}
+
+#functionSettings{
+	position:absolute;
+	top: 20%; 
+	left: 36%; 
+	height:70%;
+	width: 50%; 
+	border-style: groove;
+	z-index:3;
+	background:black;
+	display:none;
+	
+}
+
+
+
+#graphSettings{
+	position:absolute;
+	top: 20%; 
+	left: 36%; 
+	height:70%;
+	width: 50%; 
+	border-style: groove;
+	z-index:3;
+	background:black;
+	display:none;
+	
+}
+
+.insertTextGraph{
+	position:absolute;
+	top: 20%; 
+	left: 36%; 
+	height:40%;
+	width: 50%; 
+	border-style: groove;
+	display:none;
+	background:black;
+	 z-index:5;
+	
+}
+#enterFunctionsBox{
+	position:absolute;
+	 border: 1px solid #ffffff;
+	 padding:0% 0% 0% 1%;
+	 left:0.2%;
+	 top:0.2%;
+	 width: 26%; 
+	 height: 99%; 
+	 z-index:0;
+}
+#graphCanvas{
+	position:absolute;
+	top: 0%; 
+	left: 27.5%; 
+width: 72%; 
+height: 99%;
+background-color:#000000; 
+border-style: groove;
+ z-index:0;
+}
+#barChartGraph{
+	color:white;
+	 position:absolute;
+width: auto; 
+height: auto;
+z-index:0;
+background:black;
+padding:1%;
+}
+
+#drawGraphButton{
+	position:absolute;
+	left:62%;
+	top:92%
+}
